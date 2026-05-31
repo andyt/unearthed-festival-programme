@@ -869,13 +869,10 @@
 <footer>
   <a href="https://www.unearthedfestival.co.uk" target="_blank">unearthedfestival.co.uk</a>
   &nbsp;·&nbsp; Programme guide · unofficial companion app
-  &nbsp;·&nbsp; <a id="builder-link" href="https://www.facebook.com/ash.triggs/" target="_blank">Built by Ash</a>
+  &nbsp;·&nbsp; <a href="https://www.facebook.com/ash.triggs/" target="_blank">Built by Ash</a>
 </footer>
 
 <script>
-const BUILDER_URL = 'https://www.facebook.com/ash.triggs/';
-document.getElementById('builder-link').href = BUILDER_URL;
-
 // ——— DATA — sourced from official Canva schedule ———
 
 // Stage colour mapping — each stage gets its own bold colour from the festival palette
@@ -950,8 +947,8 @@ const ACTS = [
   { id: 103, name: "Queen Beezie",                      day: "sat", time: "15:00", stage: "Main Stage",   type: "Music",    headliner: false, desc: "Powerhouse performer blending grime, soul and uncut charisma." },
   { id: 104, name: "Twmpath",                           day: "sat", time: "17:30", stage: "Main Stage",   type: "Music",    headliner: false, desc: "A traditional Welsh ceilidh — communal dancing with a caller and live folk band. No experience needed, just willingness to join in. One of the great Unearthed traditions." },
   { id: 105, name: "Dan Bettridge",                     day: "sat", time: "19:00", stage: "Main Stage",   type: "Music",    headliner: false, desc: "Welsh singer-songwriter. Heartfelt, precise, utterly magnetic.", links: [{label:"Spotify", url:"https://open.spotify.com/artist/626PNFpj7VtxuYllBq7Ju1"}, {label:"Website", url:"https://www.danbettridge.com"}] },
-  { id: 106, name: "Sky Barkers",                       day: "sat", time: "20:30", stage: "Main Stage",   type: "Music",    headliner: false, desc: "Indie rock with teeth. Loud, melodic, cathartic." },
-  { id: 107, name: "The League of Rebelz",              day: "sat", time: "22:00", stage: "Main Stage",   type: "Music",    headliner: false, desc: "High-energy reggae and dancehall unit bringing righteous fire." },
+  { id: 106, name: "Sky Barkers",                       day: "sat", time: "20:30", stage: "Main Stage",   type: "Music",    headliner: false, desc: "Indie rock with teeth. Loud, melodic, cathartic.", links: [{label:"Spotify", url:"https://open.spotify.com/artist/3LIG6kfiFeiLBgYn4PBW6u"}, {label:"SoundCloud", url:"https://soundcloud.com/sky-barkers"}] },
+  { id: 107, name: "The League of Rebelz",              day: "sat", time: "22:00", stage: "Main Stage",   type: "Music",    headliner: false, desc: "High-energy reggae and dancehall unit bringing righteous fire.", links: [{label:"Spotify", url:"https://open.spotify.com/artist/0hzcRkyNO09e1xzwy58EpI"}] },
   { id: 108, name: "Goldie Lookin Chain",               day: "sat", time: "23:30", stage: "Main Stage",   type: "Music",    headliner: true,  desc: "Newport's finest — the GLC have been Wales's most irreverent rap collective since the early 2000s. Massive in da house. Guns Don't Kill People, Rappers Do. You Are Not a Chav. A riotous, essential late-night headline.", links: [{label:"Spotify", url:"https://open.spotify.com/artist/1SHQE5VKnHD4MPAQdKe4sX"}, {label:"Facebook", url:"https://www.facebook.com/GoldieChain"}] },
   { id: 109, name: "Timbali Live ft Natty D & Man Up A Tree", day: "sat", time: "01:00", stage: "Main Stage", type: "Music", headliner: false, desc: "Roots reggae collaboration into the small hours. Rootsy, warm and righteous." },
   { id: 110, name: "DJ Uncle Funk",                     day: "sat", time: "02:00", stage: "Main Stage",   type: "DJ",       headliner: false, desc: "Closing out the main stage with funk and soul." },
@@ -981,7 +978,7 @@ const ACTS = [
   { id: 146, name: "Sylark",                            day: "sat", time: "17:30", stage: "Cosmic Cwtsh", type: "DJ",       headliner: false, desc: "Driving electronic selections into the evening." },
   { id: 147, name: "DJ Froo",                           day: "sat", time: "19:00", stage: "Cosmic Cwtsh", type: "DJ",       headliner: false, desc: "Eclectic selector spanning jungle, garage and beyond." },
   { id: 148, name: "Nook",                              day: "sat", time: "20:00", stage: "Cosmic Cwtsh", type: "DJ",       headliner: false, desc: "Niche selections with broad appeal. Trust the Nook." },
-  { id: 149, name: "Lusärdi",                           day: "sat", time: "21:30", stage: "Cosmic Cwtsh", type: "DJ",       headliner: false, desc: "Forest floor electronics into the Saturday night." },
+  { id: 149, name: "Lusärdi",                           day: "sat", time: "21:30", stage: "Cosmic Cwtsh", type: "DJ",       headliner: false, desc: "Forest floor electronics into the Saturday night.", links: [{label:"SoundCloud", url:"https://soundcloud.com/eugenelusardi"}] },
   { id: 150, name: "Sonic Smudge",                      day: "sat", time: "23:00", stage: "Cosmic Cwtsh", type: "DJ",       headliner: false, desc: "Late night hypnosis and sonic ceremony." },
   { id: 151, name: "Vegetable Matrix",                  day: "sat", time: "00:30", stage: "Cosmic Cwtsh", type: "DJ",       headliner: false, desc: "Organic electronics grown locally, served fresh." },
   { id: 152, name: "G.E.O.R.G.E",                      day: "sat", time: "02:00", stage: "Cosmic Cwtsh", type: "DJ",       headliner: false, desc: "Closing the Cosmic Cwtsh — soulful and considered." },
