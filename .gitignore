@@ -1,3 +1,5 @@
 assets
 claude.ai.session
 private/
+playlist/.env
+playlist/.spotify_cache
