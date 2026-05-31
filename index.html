@@ -8,6 +8,7 @@
 <meta name="apple-mobile-web-app-capable" content="yes">
 <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
 <meta name="apple-mobile-web-app-title" content="Unearthed 26">
+<meta name="app-version" content="__BUILD_VERSION__">
 <link rel="manifest" id="pwa-manifest">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=Cinzel+Decorative:wght@700;900&amp;family=Crimson+Pro:ital,wght@0,300;0,400;0,600;1,300;1,400&amp;family=Space+Mono:wght@400;700&amp;display=swap" rel="stylesheet">
@@ -724,6 +725,7 @@
     cursor: pointer;
     text-transform: uppercase;
   }
+  .update-toast.show { transform: translateX(-50%) translateY(0); }
 
   .act-links {
     display: flex;
@@ -1740,23 +1742,32 @@ self.addEventListener('message', e => {
 if ('serviceWorker' in navigator) {
   const swBlob = new Blob([SW_CODE], { type: 'application/javascript' });
   const swUrl = URL.createObjectURL(swBlob);
-  navigator.serviceWorker.register(swUrl).then(reg => {
-    reg.addEventListener('updatefound', () => {
-      const newSW = reg.installing;
-      newSW.addEventListener('statechange', () => {
-        if (newSW.state === 'installed' && navigator.serviceWorker.controller) {
-          // New version available
-          const ut = document.getElementById('update-toast');
-          ut.classList.add('show');
-          ut.addEventListener('click', () => {
-            newSW.postMessage('skipWaiting');
-            window.location.reload();
-          });
-        }
-      });
-    });
-  }).catch(e => console.warn('SW registration failed:', e));
+  navigator.serviceWorker.register(swUrl).catch(e => console.warn('SW registration failed:', e));
 }
+
+// ——— VERSION POLLING — check for updates every 5 minutes ———
+(function () {
+  const CURRENT_VERSION = document.querySelector('meta[name="app-version"]')?.content;
+  if (!CURRENT_VERSION) return;
+
+  function showUpdateToast() {
+    const ut = document.getElementById('update-toast');
+    if (!ut || ut.classList.contains('show')) return;
+    ut.classList.add('show');
+    ut.addEventListener('click', () => window.location.reload());
+  }
+
+  async function checkVersion() {
+    try {
+      const res = await fetch(location.href, { cache: 'no-store' });
+      const text = await res.text();
+      const match = text.match(/<meta name="app-version" content="([^"]+)"/);
+      if (match && match[1] !== CURRENT_VERSION) showUpdateToast();
+    } catch (_) {}
+  }
+
+  setInterval(checkVersion, 5 * 60 * 1000);
+})();
 
 // ——— DEV MODE — gated on ?dev query param ———
 // To enable: add ?dev to the URL. Remove for production.
@@ -1784,6 +1795,16 @@ if (IS_DEV) {
     display.textContent = simulatedTime
       ? `Simulating: ${dayNames[t.getDay()]} ${t.toLocaleTimeString('en-GB', {hour:'2-digit',minute:'2-digit'})}`
       : `Real time: ${t.toLocaleTimeString('en-GB', {hour:'2-digit',minute:'2-digit'})}`;
+    if (simulatedTime) {
+      // Switch to Now & Next so the simulated time is immediately visible
+      currentView = 'nownext';
+      document.querySelectorAll('.view-tab').forEach(t => t.classList.toggle('active', t.dataset.view === 'nownext'));
+      document.getElementById('grid-view').style.display      = 'none';
+      document.getElementById('timeline-view').style.display  = 'none';
+      document.getElementById('nownext-view').style.display   = '';
+      document.getElementById('myprog-view').style.display    = 'none';
+      document.getElementById('results-meta').textContent     = '';
+    }
     if (currentView === 'nownext') renderNowNext();
     updateClock();
   }
