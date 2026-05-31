@@ -133,11 +133,27 @@
     pointer-events: none;
   }
 
+  #search-clear {
+    position: absolute;
+    right: 0.6rem;
+    top: 50%;
+    transform: translateY(-50%);
+    background: none;
+    border: none;
+    color: var(--mid);
+    cursor: pointer;
+    font-size: 1.1rem;
+    line-height: 1;
+    padding: 0 0.1rem;
+    display: none;
+  }
+  #search-clear:hover { color: var(--cream); }
+
   #search {
     width: 100%;
     background: var(--dark-3);
     border: 2px solid var(--teal);
-    padding: 0.55rem 0.75rem 0.55rem 2.4rem;
+    padding: 0.55rem 2rem 0.55rem 2.4rem;
     color: var(--cream);
     font-family: 'Crimson Pro', serif;
     font-size: 1rem;
@@ -763,6 +779,7 @@
     <div class="search-wrap">
       <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.35-4.35"/></svg>
       <input type="text" id="search" placeholder="Search acts, stages, types…" autocomplete="off">
+      <button id="search-clear" aria-label="Clear search">&times;</button>
     </div>
     <div class="filter-group" id="day-filters">
       <button class="filter-btn active" data-day="all">All Days</button>
@@ -1540,7 +1557,8 @@ document.getElementById('modal-notify').addEventListener('click', () => {
 
 // ——— URL ROUTING ———
 function syncURLToState() {
-  const params = new URLSearchParams();
+  const params = new URLSearchParams(window.location.search);
+  ['v', 'day', 'stage', 'q', 'saved'].forEach(k => params.delete(k));
   if (currentView !== 'grid') params.set('v', currentView);
   if (currentFilters.day !== 'all') params.set('day', currentFilters.day);
   if (currentFilters.stage !== 'all') params.set('stage', currentFilters.stage);
@@ -1559,7 +1577,7 @@ function applyURLState() {
   const stage = params.get('stage');
   if (stage) currentFilters.stage = stage;
   const q = params.get('q');
-  if (q) { currentFilters.search = q; document.getElementById('search').value = q; }
+  if (q) { currentFilters.search = q; document.getElementById('search').value = q; document.getElementById('search-clear').style.display = 'block'; }
   if (params.get('saved') === '1') currentFilters.savedOnly = true;
 
   document.querySelectorAll('[data-day]').forEach(b => b.classList.toggle('active', b.dataset.day === currentFilters.day));
@@ -1598,8 +1616,21 @@ function render() {
 }
 
 // ——— EVENT LISTENERS ———
-document.getElementById('search').addEventListener('input', e => {
+const searchEl = document.getElementById('search');
+const searchClear = document.getElementById('search-clear');
+
+searchEl.addEventListener('input', e => {
   currentFilters.search = e.target.value.trim();
+  searchClear.style.display = currentFilters.search ? 'block' : 'none';
+  render();
+  syncURLToState();
+});
+
+searchClear.addEventListener('click', () => {
+  searchEl.value = '';
+  currentFilters.search = '';
+  searchClear.style.display = 'none';
+  searchEl.focus();
   render();
   syncURLToState();
 });
