@@ -22,6 +22,7 @@ ARTISTS = [
     ("Goldie Lookin Chain",  "0pobPzcYFoVSprUnwY2Bio"),
     ("Dylan Fowler",         "0SfxBmOJtvAgYZCJbEPET2"),
     ("Queen Beezie",         "3JN0z89EyKXHabR9KCCevt"),
+    ("Arron Kirwan",         "6o59Rm36G0Zbkb7MpWlyXk"),
     ("Timbali",              "3uhmYgpdouANfuan9nk0tq"),
     ("Omega Nebula",         "2iWJJEfxmQK1CZeWqjh4Xn"),
 ]
