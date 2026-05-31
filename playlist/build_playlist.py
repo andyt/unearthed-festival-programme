@@ -21,6 +21,8 @@ ARTISTS = [
     ("The League of Rebelz", "0hzcRkyNO09e1xzwy58EpI"),
     ("Goldie Lookin Chain",  "0pobPzcYFoVSprUnwY2Bio"),
     ("Dylan Fowler",         "0SfxBmOJtvAgYZCJbEPET2"),
+    ("Queen Beezie",         "3JN0z89EyKXHabR9KCCevt"),
+    ("Timbali",              "3uhmYgpdouANfuan9nk0tq"),
     ("Omega Nebula",         "2iWJJEfxmQK1CZeWqjh4Xn"),
 ]
 
