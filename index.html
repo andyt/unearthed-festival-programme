@@ -1467,7 +1467,7 @@ function renderMyProg() {
 }
 
 // ——— MODAL ———
-function openModal(id) {
+function openModal(id, pushHistory = true) {
   const act = ACTS.find(a => a.id === id);
   if (!act) return;
   modalActId = id;
@@ -1488,6 +1488,22 @@ function openModal(id) {
   tags.innerHTML = `${stageTag(act.stage)}<span class="tag tag-type">${act.type}</span>${act.headliner ? '<span class="tag tag-headliner">Headliner</span>' : ''}`;
   updateModalButtons(id);
   document.getElementById('modal').classList.add('open');
+  if (pushHistory) {
+    const params = new URLSearchParams(window.location.search);
+    params.set('act', id);
+    history.pushState(null, '', `?${params.toString()}`);
+  }
+}
+
+function closeModal() {
+  document.getElementById('modal').classList.remove('open');
+  modalActId = null;
+  const params = new URLSearchParams(window.location.search);
+  if (params.has('act')) {
+    params.delete('act');
+    const str = params.toString();
+    history.replaceState(null, '', str ? `?${str}` : window.location.pathname);
+  }
 }
 
 function updateModalButtons(id) {
@@ -1509,11 +1525,9 @@ function updateModalButtons(id) {
   }
 }
 
-document.getElementById('modal-close').addEventListener('click', () => {
-  document.getElementById('modal').classList.remove('open');
-});
+document.getElementById('modal-close').addEventListener('click', closeModal);
 document.getElementById('modal').addEventListener('click', e => {
-  if (e.target === document.getElementById('modal')) document.getElementById('modal').classList.remove('open');
+  if (e.target === document.getElementById('modal')) closeModal();
 });
 document.getElementById('modal-save').addEventListener('click', () => { toggleSave(modalActId); updateModalButtons(modalActId); });
 document.getElementById('modal-notify').addEventListener('click', () => {
@@ -1522,6 +1536,54 @@ document.getElementById('modal-notify').addEventListener('click', () => {
     return;
   }
   toggleNotify(modalActId);
+});
+
+// ——— URL ROUTING ———
+function syncURLToState() {
+  const params = new URLSearchParams();
+  if (currentView !== 'grid') params.set('v', currentView);
+  if (currentFilters.day !== 'all') params.set('day', currentFilters.day);
+  if (currentFilters.stage !== 'all') params.set('stage', currentFilters.stage);
+  if (currentFilters.search) params.set('q', currentFilters.search);
+  if (currentFilters.savedOnly) params.set('saved', '1');
+  const str = params.toString();
+  history.replaceState(null, '', str ? `?${str}` : window.location.pathname);
+}
+
+function applyURLState() {
+  const params = new URLSearchParams(window.location.search);
+  const v = params.get('v');
+  if (v && ['grid','timeline','nownext','myprog'].includes(v)) currentView = v;
+  const day = params.get('day');
+  if (day && ['all','fri','sat','sun'].includes(day)) currentFilters.day = day;
+  const stage = params.get('stage');
+  if (stage) currentFilters.stage = stage;
+  const q = params.get('q');
+  if (q) { currentFilters.search = q; document.getElementById('search').value = q; }
+  if (params.get('saved') === '1') currentFilters.savedOnly = true;
+
+  document.querySelectorAll('[data-day]').forEach(b => b.classList.toggle('active', b.dataset.day === currentFilters.day));
+  document.querySelectorAll('[data-stage]').forEach(b => b.classList.toggle('active', b.dataset.stage === currentFilters.stage));
+  document.querySelectorAll('.view-tab').forEach(t => t.classList.toggle('active', t.dataset.view === currentView));
+  document.getElementById('saved-toggle').classList.toggle('active', currentFilters.savedOnly);
+  document.getElementById('grid-view').style.display     = currentView === 'grid'     ? '' : 'none';
+  document.getElementById('timeline-view').style.display = currentView === 'timeline' ? '' : 'none';
+  document.getElementById('nownext-view').style.display  = currentView === 'nownext'  ? '' : 'none';
+  document.getElementById('myprog-view').style.display   = currentView === 'myprog'   ? '' : 'none';
+
+  const actId = params.get('act');
+  if (actId) setTimeout(() => openModal(+actId, false), 0);
+}
+
+window.addEventListener('popstate', () => {
+  const params = new URLSearchParams(window.location.search);
+  const actId = params.get('act');
+  if (actId) {
+    openModal(+actId, false);
+  } else if (modalActId !== null) {
+    document.getElementById('modal').classList.remove('open');
+    modalActId = null;
+  }
 });
 
 // ——— MAIN RENDER ———
@@ -1539,6 +1601,7 @@ function render() {
 document.getElementById('search').addEventListener('input', e => {
   currentFilters.search = e.target.value.trim();
   render();
+  syncURLToState();
 });
 
 document.getElementById('day-filters').addEventListener('click', e => {
@@ -1546,6 +1609,7 @@ document.getElementById('day-filters').addEventListener('click', e => {
   currentFilters.day = e.target.dataset.day;
   document.querySelectorAll('[data-day]').forEach(b => b.classList.toggle('active', b.dataset.day === currentFilters.day));
   render();
+  syncURLToState();
 });
 
 
@@ -1553,6 +1617,7 @@ document.getElementById('saved-toggle').addEventListener('click', () => {
   currentFilters.savedOnly = !currentFilters.savedOnly;
   document.getElementById('saved-toggle').classList.toggle('active', currentFilters.savedOnly);
   render();
+  syncURLToState();
 });
 
 document.querySelectorAll('.view-tab').forEach(tab => {
@@ -1569,6 +1634,7 @@ document.querySelectorAll('.view-tab').forEach(tab => {
     } else {
       render();
     }
+    syncURLToState();
   });
 });
 
@@ -1577,6 +1643,7 @@ document.getElementById('stage-filters').addEventListener('click', e => {
   currentFilters.stage = e.target.dataset.stage;
   document.querySelectorAll('[data-stage]').forEach(b => b.classList.toggle('active', b.dataset.stage === currentFilters.stage));
   render();
+  syncURLToState();
 });
 
 document.getElementById('enable-notifications').addEventListener('click', requestNotificationPermission);
@@ -1906,6 +1973,7 @@ document.getElementById('now-pill-btn').addEventListener('click', () => {
   document.getElementById('myprog-view').style.display = 'none';
   document.getElementById('results-meta').textContent = '';
   renderNowNext();
+  syncURLToState();
 });
 
 // ——— INIT ———
@@ -1976,7 +2044,13 @@ document.getElementById('subscribe-btn').addEventListener('click', () => {
 
 updateNotifStatus();
 restoreNotifications();
-render();
+applyURLState();
+if (currentView === 'nownext') {
+  document.getElementById('results-meta').textContent = '';
+  renderNowNext();
+} else {
+  render();
+}
 </script>
 </body>
 </html>
