@@ -22,6 +22,15 @@ The app is designed to let festival-goers browse acts, save favourites, and get 
 - Notification scheduling is based on the festival dates `19–21 June 2026`.
 - The calendar subscription URL is a placeholder and requires a deployed worker at `WORKER_URL`.
 
+## GitHub & Deployment
+
+- Repository: `https://github.com/andyt/unearthed-festival-programme`
+- Default branch: `main`
+- Hosted on GitHub Pages at: `https://andyt.github.io/unearthed-festival-programme/`
+- Deployment is automatic via `.github/workflows/pages.yml` on push to `main`
+- Pages source is set to GitHub Actions (not branch/folder mode)
+- `private/` and `assets/` directories are in `.gitignore` and not published
+
 ## Next steps
 
 - Verify the schedule data against the official programme images or source.

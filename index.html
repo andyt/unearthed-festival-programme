@@ -818,7 +818,7 @@
   <div id="myprog-view" style="display:none">
     <div class="notify-banner">
       <div>
-        <p>Enable browser notifications to get reminders before acts you've saved start. You'll get a nudge 15 minutes before curtain.</p>
+        <p>Enable notifications to get reminders before acts you've saved start. You'll get a nudge 15 minutes before curtain.</p>
         <p class="notif-info" id="notif-status">Notifications: checking…</p>
       </div>
       <button class="notify-btn" id="enable-notifications">Enable Alerts</button>
@@ -869,9 +869,13 @@
 <footer>
   <a href="https://www.unearthedfestival.co.uk" target="_blank">unearthedfestival.co.uk</a>
   &nbsp;·&nbsp; Programme guide · unofficial companion app
+  &nbsp;·&nbsp; <a id="builder-link" href="https://www.facebook.com/ash.triggs/" target="_blank">Built by Ash</a>
 </footer>
 
 <script>
+const BUILDER_URL = 'https://www.facebook.com/ash.triggs/';
+document.getElementById('builder-link').href = BUILDER_URL;
+
 // ——— DATA — sourced from official Canva schedule ———
 
 // Stage colour mapping — each stage gets its own bold colour from the festival palette
@@ -902,7 +906,7 @@ const ACTS = [
   { id: 8,   name: "Beans on Toast",                    day: "fri", time: "22:00", stage: "Main Stage",   type: "Music",    headliner: true,  desc: "Jay McAllister has been the folk circuit's most beloved troublemaker since 2005 — fifteen albums, a Glastonbury appearance every year since 2007, and songs that make you laugh and ache in equal measure. Heart-on-sleeve songwriting for the wide-eyed and world-weary.", links: [{label:"Spotify", url:"https://open.spotify.com/artist/6fVeXD7D2RpFoR6bzNEDPo"}, {label:"Website", url:"https://www.beansontoastmusic.com"}] },
   { id: 9,   name: "Roni Size",                         day: "fri", time: "23:30", stage: "Main Stage",   type: "Music",    headliner: true,  desc: "Born and raised in Bristol, Roni Size won the Mercury Prize in 1997 with Reprazent's New Forms — one of the defining drum & bass albums ever made. A rare and special late-night headline set.", links: [{label:"Spotify", url:"https://open.spotify.com/artist/5UjqeSp9dX6Nrge7WdDukr"}, {label:"Website", url:"https://ronisize.co.uk"}] },
   { id: 10,  name: "DJ Moonshine",                      day: "fri", time: "01:00", stage: "Main Stage",   type: "DJ",       headliner: false, desc: "Late night selections keeping the energy flowing." },
-  { id: 11,  name: "DJ Norizee",                        day: "fri", time: "02:00", stage: "Main Stage",   type: "DJ",       headliner: false, desc: "Into the small hours — deep and driven." },
+  { id: 11,  name: "Norizee",                            day: "fri", time: "02:00", stage: "Main Stage",   type: "DJ",       headliner: false, desc: "A husband-and-wife spiritual Drum & Bass duo — Nori (vocalist, relationship therapist) and Zee (producer, mix engineer). Fusing healing frequencies with rolling DnB and Jungle roots, their sets twist and evolve on a deeper level. Music as medicine, rhythm as awakening." },
 
   // FRIDAY — DUB CORNER
   { id: 20,  name: "Roberto Canassa",                   day: "fri", time: "11:00", stage: "Dub Corner",   type: "Music",    headliner: false, desc: "World music 2hr set. Rich, soulful and globally informed." },
@@ -919,9 +923,9 @@ const ACTS = [
   { id: 31,  name: "Silent Disco (Menikoo / Rackitt)",  day: "fri", time: "02:00", stage: "Dub Corner",   type: "DJ",       headliner: false, desc: "Silent Disco: Menikoo 2–4am, Rackitt 4–6am." },
 
   // FRIDAY — COSMIC CWTSH
-  { id: 40,  name: "Lusärdi",                           day: "fri", time: "16:00", stage: "Cosmic Cwtsh", type: "DJ",       headliner: false, desc: "Forest floor electronics and verdant bass frequencies." },
+  { id: 40,  name: "Lusärdi",                           day: "fri", time: "16:00", stage: "Cosmic Cwtsh", type: "DJ",       headliner: false, desc: "Forest floor electronics and verdant bass frequencies.", links: [{label:"SoundCloud", url:"https://soundcloud.com/eugenelusardi"}] },
   { id: 41,  name: "Daszol",                            day: "fri", time: "18:00", stage: "Cosmic Cwtsh", type: "DJ",       headliner: false, desc: "Avant-garde electronic sound with cinematic scope." },
-  { id: 42,  name: "Arwenvarda",                        day: "fri", time: "19:30", stage: "Cosmic Cwtsh", type: "Music",    headliner: false, desc: "Celtic folk and sacred song. Ancient sounds for open hearts." },
+  { id: 42,  name: "Arwenvarda",                        day: "fri", time: "19:30", stage: "Cosmic Cwtsh", type: "Music",    headliner: false, desc: "Celtic folk and sacred song. Ancient sounds for open hearts.", links: [{label:"SoundCloud", url:"https://soundcloud.com/user-57378154"}] },
   { id: 43,  name: "Wholly Moses",                      day: "fri", time: "21:00", stage: "Cosmic Cwtsh", type: "DJ",       headliner: false, desc: "Roots, righteousness and excellent selection." },
   { id: 44,  name: "Sylark",                            day: "fri", time: "22:30", stage: "Cosmic Cwtsh", type: "DJ",       headliner: false, desc: "Driving electronic selections deep into the night." },
   { id: 45,  name: "DJ LSGD",                           day: "fri", time: "00:00", stage: "Cosmic Cwtsh", type: "DJ",       headliner: false, desc: "Heavy selector with a taste for the rare and righteous." },
@@ -942,10 +946,10 @@ const ACTS = [
   // ═══════════════════════════════════════════
   { id: 100, name: "Manifestation Breathwork — Freya MacFarlane", day: "sat", time: "10:00", stage: "Main Stage", type: "Workshop", headliner: false, desc: "Open Saturday with intention. Freya MacFarlane leads a powerful breathwork and manifestation session on the main stage — a collective reset before the day unfolds." },
   { id: 101, name: "Bonnie Medicine",                   day: "sat", time: "12:00", stage: "Main Stage",   type: "Music",    headliner: false, desc: "Singer, songweaver and medicine musician from Scotland. Her music fuses Celtic roots with New Age folk and spiritual overtones — songs of remembrance, land, unity and freedom.", links: [{label:"Spotify", url:"https://open.spotify.com/artist/2Z6yCCJNCe0KfixGqJncRi"}, {label:"Bandcamp", url:"https://bonniemedicine.bandcamp.com"}] },
-  { id: 102, name: "Tomos Newman",                      day: "sat", time: "13:30", stage: "Main Stage",   type: "Music",    headliner: false, desc: "Intimate, beautifully crafted songs from a rising Welsh voice." },
+  { id: 102, name: "Tomos Newman",                      day: "sat", time: "13:30", stage: "Main Stage",   type: "Music",    headliner: false, desc: "Intimate, beautifully crafted songs from a rising Welsh voice.", links: [{label:"Spotify", url:"https://open.spotify.com/artist/2B1Y51FScTXm9gG6c4nTJk"}] },
   { id: 103, name: "Queen Beezie",                      day: "sat", time: "15:00", stage: "Main Stage",   type: "Music",    headliner: false, desc: "Powerhouse performer blending grime, soul and uncut charisma." },
   { id: 104, name: "Twmpath",                           day: "sat", time: "17:30", stage: "Main Stage",   type: "Music",    headliner: false, desc: "A traditional Welsh ceilidh — communal dancing with a caller and live folk band. No experience needed, just willingness to join in. One of the great Unearthed traditions." },
-  { id: 105, name: "Dan Bettridge",                     day: "sat", time: "19:00", stage: "Main Stage",   type: "Music",    headliner: false, desc: "Welsh singer-songwriter. Heartfelt, precise, utterly magnetic." },
+  { id: 105, name: "Dan Bettridge",                     day: "sat", time: "19:00", stage: "Main Stage",   type: "Music",    headliner: false, desc: "Welsh singer-songwriter. Heartfelt, precise, utterly magnetic.", links: [{label:"Spotify", url:"https://open.spotify.com/artist/626PNFpj7VtxuYllBq7Ju1"}, {label:"Website", url:"https://www.danbettridge.com"}] },
   { id: 106, name: "Sky Barkers",                       day: "sat", time: "20:30", stage: "Main Stage",   type: "Music",    headliner: false, desc: "Indie rock with teeth. Loud, melodic, cathartic." },
   { id: 107, name: "The League of Rebelz",              day: "sat", time: "22:00", stage: "Main Stage",   type: "Music",    headliner: false, desc: "High-energy reggae and dancehall unit bringing righteous fire." },
   { id: 108, name: "Goldie Lookin Chain",               day: "sat", time: "23:30", stage: "Main Stage",   type: "Music",    headliner: true,  desc: "Newport's finest — the GLC have been Wales's most irreverent rap collective since the early 2000s. Massive in da house. Guns Don't Kill People, Rappers Do. You Are Not a Chav. A riotous, essential late-night headline.", links: [{label:"Spotify", url:"https://open.spotify.com/artist/1SHQE5VKnHD4MPAQdKe4sX"}, {label:"Facebook", url:"https://www.facebook.com/GoldieChain"}] },
@@ -1212,7 +1216,7 @@ function showToast(msg) {
 // ——— NOTIFICATIONS ———
 function requestNotificationPermission() {
   if (!('Notification' in window)) {
-    showToast('Notifications not supported in this browser');
+    showToast('Notifications not supported on this device');
     return;
   }
   Notification.requestPermission().then(perm => {
@@ -1220,7 +1224,8 @@ function requestNotificationPermission() {
     if (perm === 'granted') {
       showToast('Notifications enabled!');
     } else {
-      showToast('Permission denied — check browser settings');
+      const isStandalone = window.matchMedia('(display-mode: standalone)').matches;
+      showToast(`Permission denied — check ${isStandalone ? 'app' : 'browser'} settings`);
     }
   });
 }
@@ -1228,19 +1233,19 @@ function requestNotificationPermission() {
 function updateNotifStatus() {
   const el = document.getElementById('notif-status');
   const btn = document.getElementById('enable-notifications');
+  const banner = document.querySelector('.notify-banner');
+  const isStandalone = window.matchMedia('(display-mode: standalone)').matches;
   if (!('Notification' in window)) {
-    el.textContent = 'Notifications not supported in this browser';
+    el.textContent = 'Notifications not supported on this device';
     btn.disabled = true;
   } else if (Notification.permission === 'granted') {
-    el.textContent = 'Notifications: enabled ✓';
-    btn.textContent = 'Enabled ✓';
-    btn.disabled = true;
+    banner.style.display = 'none';
   } else if (Notification.permission === 'denied') {
-    el.textContent = 'Notifications blocked — allow in browser settings';
+    el.textContent = `Notifications blocked — allow in ${isStandalone ? 'app' : 'browser'} settings`;
     btn.textContent = 'Blocked';
     btn.disabled = true;
   } else {
-    el.textContent = 'Notifications: click to enable';
+    el.textContent = 'Notifications: tap to enable';
     btn.disabled = false;
   }
 }
