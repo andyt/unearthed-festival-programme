@@ -35,6 +35,8 @@
     --text-dim: #8ab0b0;
   }
 
+  html { font-size: 18px; }
+
   * { margin: 0; padding: 0; box-sizing: border-box; }
 
   body {
@@ -175,7 +177,7 @@
     color: var(--text-dim);
     padding: 0.35rem 0.75rem;
     font-family: 'Space Mono', monospace;
-    font-size: 0.58rem;
+    font-size: 0.7rem;
     letter-spacing: 0.1em;
     text-transform: uppercase;
     cursor: pointer;
@@ -192,7 +194,7 @@
     color: var(--magenta-l);
     padding: 0.35rem 0.75rem;
     font-family: 'Space Mono', monospace;
-    font-size: 0.58rem;
+    font-size: 0.7rem;
     letter-spacing: 0.1em;
     text-transform: uppercase;
     cursor: pointer;
@@ -209,31 +211,30 @@
   .view-tabs {
     display: flex;
     margin-bottom: 1.5rem;
-    border-bottom: 3px solid var(--teal-d);
+    gap: 3px;
     overflow-x: auto;
     scrollbar-width: none;
   }
   .view-tabs::-webkit-scrollbar { display: none; }
 
   .view-tab {
-    background: none;
+    background: var(--dark-3);
     border: none;
-    border-bottom: 3px solid transparent;
+    border-top: 3px solid transparent;
     color: var(--text-dim);
     font-family: 'Space Mono', monospace;
     font-size: 0.6rem;
     font-weight: 700;
     letter-spacing: 0.12em;
     text-transform: uppercase;
-    padding: 0.6rem 1rem 0.8rem;
+    padding: 0.7rem 1.1rem;
     cursor: pointer;
-    margin-bottom: -3px;
     transition: all 0.15s;
     white-space: nowrap;
   }
 
-  .view-tab:hover { color: var(--cream); }
-  .view-tab.active { color: var(--yellow); border-bottom-color: var(--yellow); }
+  .view-tab:hover { background: var(--mid); color: var(--cream); }
+  .view-tab.active { background: var(--teal-d); color: var(--yellow); border-top-color: var(--yellow); }
 
   /* ——— DAY HEADERS ——— */
   .day-header {
@@ -290,7 +291,7 @@
 
   .tag {
     font-family: 'Space Mono', monospace;
-    font-size: 0.52rem;
+    font-size: 0.62rem;
     letter-spacing: 0.08em;
     padding: 0.2rem 0.5rem;
     text-transform: uppercase;
@@ -317,25 +318,12 @@
   .act-card.saved .save-btn { color: var(--magenta-l); }
 
   /* ——— TIMELINE VIEW ——— */
-  .timeline-stage { margin-bottom: 2rem; }
-
-  .stage-label {
-    font-family: 'Space Mono', monospace;
-    font-size: 0.6rem;
-    letter-spacing: 0.2em;
-    text-transform: uppercase;
-    font-weight: 700;
-    margin-bottom: 3px;
-    padding: 0.4rem 0.75rem;
-    color: var(--dark);
-  }
-
-  .timeline-row { display: flex; flex-direction: column; gap: 2px; }
+  .timeline-row { display: flex; flex-direction: column; gap: 2px; margin-bottom: 2rem; }
 
   .timeline-act {
     display: flex;
     align-items: center;
-    gap: 1rem;
+    gap: 0.75rem;
     padding: 0.65rem 1rem;
     background: var(--dark-2);
     cursor: pointer;
@@ -350,8 +338,20 @@
     font-family: 'Space Mono', monospace;
     font-size: 0.62rem;
     color: var(--teal-l);
-    min-width: 60px;
+    min-width: 42px;
     font-weight: 700;
+  }
+
+  .tl-stage {
+    font-family: 'Space Mono', monospace;
+    font-size: 0.55rem;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    font-weight: 700;
+    padding: 0.2rem 0.45rem;
+    border-radius: 3px;
+    white-space: nowrap;
+    flex-shrink: 0;
   }
 
   .tl-name { flex: 1; font-size: 1.05rem; font-weight: 600; }
@@ -765,7 +765,7 @@
     .controls-inner { flex-direction: column; align-items: stretch; }
     .filter-group { justify-content: flex-start; }
     .programme-grid, .now-grid { grid-template-columns: 1fr; }
-    .view-tabs { font-size: 0.55rem; }
+    .view-tabs { font-size: 0.62rem; }
     .festival-name { text-shadow: 3px 3px 0 var(--orange), 5px 5px 0 var(--magenta); }
   }
 </style>
@@ -777,7 +777,6 @@
   <div class="festival-year">· 2026 Programme ·</div>
   <div class="festival-subtitle">Music · Healing · Wilderness · Community</div>
   <div class="header-dates">Pembrokeshire · 19–21 June 2026</div>
-  <div><button class="now-pill" id="now-pill-btn"><span class="dot"></span> Now &amp; Next</button></div>
 </header>
 
 <div class="controls">
@@ -805,16 +804,15 @@
       <button class="filter-btn" data-stage="Tea of Life">Tea of Life</button>
       <button class="filter-btn" data-stage="Kids &amp; Youth">Kids &amp; Youth</button>
     </div>
-    <button class="saved-toggle" id="saved-toggle">♥ My List</button>
     <button class="saved-toggle" id="subscribe-btn" title="Subscribe to your saved acts in your calendar app">📅 Subscribe</button>
   </div>
 </div>
 
 <main>
   <div class="view-tabs">
-    <button class="view-tab active" data-view="grid">Grid</button>
+    <button class="view-tab active" data-view="nownext">Now &amp; Next</button>
+    <button class="view-tab" data-view="grid">Grid</button>
     <button class="view-tab" data-view="timeline">Timeline</button>
-    <button class="view-tab" data-view="nownext">Now &amp; Next</button>
     <button class="view-tab" data-view="myprog">My Programme</button>
   </div>
 
@@ -1191,8 +1189,8 @@ const ACTS = [
 // ——— STATE ———
 let saved = JSON.parse(localStorage.getItem('uf26_saved') || '[]');
 let notifications = JSON.parse(localStorage.getItem('uf26_notif') || '[]');
-let currentFilters = { day: 'all', stage: 'all', search: '', savedOnly: false };
-let currentView = 'grid';
+let currentFilters = { day: 'all', stage: 'all', search: '' };
+let currentView = 'nownext';
 let modalActId = null;
 
 // ——— UTILITIES ———
@@ -1296,7 +1294,6 @@ function getFiltered() {
   return ACTS.filter(act => {
     if (currentFilters.day !== 'all' && displayDay(act) !== currentFilters.day) return false;
     if (currentFilters.stage !== 'all' && act.stage !== currentFilters.stage) return false;
-    if (currentFilters.savedOnly && !isSaved(act.id)) return false;
     if (currentFilters.search) {
       const q = currentFilters.search.toLowerCase();
       if (!act.name.toLowerCase().includes(q)) return false;
@@ -1389,37 +1386,34 @@ function renderTimeline(acts) {
   const byDay = {};
   acts.forEach(a => {
     const dday = displayDay(a);
-    if (!byDay[dday]) byDay[dday] = {};
-    if (!byDay[dday][a.stage]) byDay[dday][a.stage] = [];
-    byDay[dday][a.stage].push(a);
+    if (!byDay[dday]) byDay[dday] = [];
+    byDay[dday].push(a);
   });
 
   const dayOrder = ['fri', 'sat', 'sun'];
   let html = '';
   dayOrder.forEach(day => {
     if (!byDay[day]) return;
-    html += `<div class="day-header">${dayLabel(day)}</div>`;
-    Object.entries(byDay[day]).forEach(([stage, stageActs]) => {
-      stageActs.sort((a, b) => {
-        const ha = parseInt(a.time.split(':')[0], 10);
-        const hb = parseInt(b.time.split(':')[0], 10);
-        const sa = ha < DAY_CUTOFF_HOUR ? ha + 24 : ha;
-        const sb = hb < DAY_CUTOFF_HOUR ? hb + 24 : hb;
-        return sa - sb;
-      });
-      html += `<div class="timeline-stage">
-        <div class="stage-label" style="background:${(STAGE_COLOURS[stage]||{bg:'#2a4a4a'}).bg};color:${(STAGE_COLOURS[stage]||{label:'#8ab0b0'}).label||'#fff'}">${stage}</div>
-        <div class="timeline-row">`;
-      stageActs.forEach(act => {
-        const s = isSaved(act.id);
-        html += `<div class="timeline-act${s ? ' saved' : ''}" data-id="${act.id}">
-          <span class="tl-time">${act.time}</span>
-          <span class="tl-name">${act.name}${act.headliner ? ' ★' : ''}</span>
-          <button class="tl-save" data-id="${act.id}">${s ? '♥' : '♡'}</button>
-        </div>`;
-      });
-      html += `</div></div>`;
+    byDay[day].sort((a, b) => {
+      const ha = parseInt(a.time.split(':')[0], 10);
+      const hb = parseInt(b.time.split(':')[0], 10);
+      const sa = ha < DAY_CUTOFF_HOUR ? ha + 24 : ha;
+      const sb = hb < DAY_CUTOFF_HOUR ? hb + 24 : hb;
+      if (sa !== sb) return sa - sb;
+      return parseInt(a.time.split(':')[1], 10) - parseInt(b.time.split(':')[1], 10);
     });
+    html += `<div class="day-header">${dayLabel(day)}</div><div class="timeline-row">`;
+    byDay[day].forEach(act => {
+      const s = isSaved(act.id);
+      const sc = STAGE_COLOURS[act.stage] || { bg: '#2a4a4a', label: '#8ab0b0' };
+      html += `<div class="timeline-act${s ? ' saved' : ''}" data-id="${act.id}">
+        <span class="tl-time">${act.time}</span>
+        <span class="tl-stage" style="background:${sc.bg};color:${sc.label||'#fff'}">${act.stage}</span>
+        <span class="tl-name">${act.name}${act.headliner ? ' ★' : ''}</span>
+        <button class="tl-save" data-id="${act.id}">${s ? '♥' : '♡'}</button>
+      </div>`;
+    });
+    html += `</div>`;
   });
 
   wrap.innerHTML = html;
@@ -1561,12 +1555,11 @@ document.getElementById('modal-notify').addEventListener('click', () => {
 // ——— URL ROUTING ———
 function syncURLToState() {
   const params = new URLSearchParams(window.location.search);
-  ['v', 'day', 'stage', 'q', 'saved'].forEach(k => params.delete(k));
-  if (currentView !== 'grid') params.set('v', currentView);
+  ['v', 'day', 'stage', 'q'].forEach(k => params.delete(k));
+  if (currentView !== 'nownext') params.set('v', currentView);
   if (currentFilters.day !== 'all') params.set('day', currentFilters.day);
   if (currentFilters.stage !== 'all') params.set('stage', currentFilters.stage);
   if (currentFilters.search) params.set('q', currentFilters.search);
-  if (currentFilters.savedOnly) params.set('saved', '1');
   const str = params.toString();
   history.replaceState(null, '', str ? `?${str}` : window.location.pathname);
 }
@@ -1581,12 +1574,9 @@ function applyURLState() {
   if (stage) currentFilters.stage = stage;
   const q = params.get('q');
   if (q) { currentFilters.search = q; document.getElementById('search').value = q; document.getElementById('search-clear').style.display = 'block'; }
-  if (params.get('saved') === '1') currentFilters.savedOnly = true;
-
   document.querySelectorAll('[data-day]').forEach(b => b.classList.toggle('active', b.dataset.day === currentFilters.day));
   document.querySelectorAll('[data-stage]').forEach(b => b.classList.toggle('active', b.dataset.stage === currentFilters.stage));
   document.querySelectorAll('.view-tab').forEach(t => t.classList.toggle('active', t.dataset.view === currentView));
-  document.getElementById('saved-toggle').classList.toggle('active', currentFilters.savedOnly);
   document.getElementById('grid-view').style.display     = currentView === 'grid'     ? '' : 'none';
   document.getElementById('timeline-view').style.display = currentView === 'timeline' ? '' : 'none';
   document.getElementById('nownext-view').style.display  = currentView === 'nownext'  ? '' : 'none';
@@ -1646,13 +1636,6 @@ document.getElementById('day-filters').addEventListener('click', e => {
   syncURLToState();
 });
 
-
-document.getElementById('saved-toggle').addEventListener('click', () => {
-  currentFilters.savedOnly = !currentFilters.savedOnly;
-  document.getElementById('saved-toggle').classList.toggle('active', currentFilters.savedOnly);
-  render();
-  syncURLToState();
-});
 
 document.querySelectorAll('.view-tab').forEach(tab => {
   tab.addEventListener('click', () => {
