@@ -1297,10 +1297,7 @@ function getFiltered() {
     if (currentFilters.savedOnly && !isSaved(act.id)) return false;
     if (currentFilters.search) {
       const q = currentFilters.search.toLowerCase();
-      if (!act.name.toLowerCase().includes(q) &&
-          !act.stage.toLowerCase().includes(q) &&
-          !act.type.toLowerCase().includes(q) &&
-          !act.desc.toLowerCase().includes(q)) return false;
+      if (!act.name.toLowerCase().includes(q)) return false;
     }
     return true;
   }).sort((a, b) => {
