@@ -1,0 +1,1980 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Unearthed 2026 · Programme</title>
+<meta name="theme-color" content="#0a1a1a">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+<meta name="apple-mobile-web-app-title" content="Unearthed 26">
+<link rel="manifest" id="pwa-manifest">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Cinzel+Decorative:wght@700;900&amp;family=Crimson+Pro:ital,wght@0,300;0,400;0,600;1,300;1,400&amp;family=Space+Mono:wght@400;700&amp;display=swap" rel="stylesheet">
+
+<style>
+  /* ——— FESTIVAL PALETTE — drawn from official schedule images ——— */
+  :root {
+    --teal:     #0d7a7a;
+    --teal-l:   #12a0a0;
+    --teal-d:   #083d3d;
+    --orange:   #e8631a;
+    --orange-l: #f5843a;
+    --magenta:  #c8235a;
+    --magenta-l:#e03d72;
+    --purple:   #5a3dbf;
+    --yellow:   #f5c800;
+    --yellow-d: #c8a000;
+    --cream:    #f5e8c8;
+    --cream-d:  #e0cfaa;
+    --dark:     #0a1a1a;
+    --dark-2:   #0f2525;
+    --dark-3:   #183030;
+    --mid:      #2a4a4a;
+    --text-dim: #8ab0b0;
+  }
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  body {
+    background: var(--dark);
+    color: var(--cream);
+    font-family: 'Crimson Pro', Georgia, serif;
+    min-height: 100vh;
+    overflow-x: hidden;
+  }
+
+  /* ——— HEADER ——— */
+  header {
+    background: var(--teal-d);
+    border-bottom: 4px solid var(--yellow);
+    text-align: center;
+    padding: 2.5rem 1rem 1.5rem;
+    position: relative;
+    overflow: hidden;
+  }
+
+  header::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: repeating-linear-gradient(-45deg, transparent, transparent 20px, rgba(255,255,255,0.015) 20px, rgba(255,255,255,0.015) 40px);
+    pointer-events: none;
+  }
+
+  .festival-name {
+    font-family: 'Cinzel Decorative', serif;
+    font-size: clamp(2.5rem, 10vw, 5.5rem);
+    font-weight: 900;
+    letter-spacing: 0.04em;
+    color: var(--yellow);
+    text-shadow: 4px 4px 0 var(--orange), 7px 7px 0 var(--magenta);
+    line-height: 1;
+    position: relative;
+  }
+
+  .festival-year {
+    font-family: 'Space Mono', monospace;
+    font-size: 0.8rem;
+    color: var(--teal-l);
+    letter-spacing: 0.4em;
+    margin-top: 0.5rem;
+    text-transform: uppercase;
+  }
+
+  .festival-subtitle {
+    font-size: 1.1rem;
+    font-style: italic;
+    color: var(--cream-d);
+    margin-top: 0.4rem;
+    font-weight: 300;
+  }
+
+  .header-dates {
+    display: inline-block;
+    margin-top: 0.8rem;
+    padding: 0.4rem 1.4rem;
+    background: var(--orange);
+    font-family: 'Space Mono', monospace;
+    font-size: 0.7rem;
+    color: #fff;
+    letter-spacing: 0.2em;
+    font-weight: 700;
+    text-transform: uppercase;
+  }
+
+  /* ——— CONTROLS ——— */
+  .controls {
+    position: sticky;
+    top: 0;
+    z-index: 100;
+    background: var(--dark-2);
+    border-bottom: 3px solid var(--teal);
+    padding: 0.7rem 1rem;
+  }
+
+  .controls-inner {
+    max-width: 1100px;
+    margin: 0 auto;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+    align-items: center;
+  }
+
+  .search-wrap { flex: 1; min-width: 180px; position: relative; }
+
+  .search-wrap svg {
+    position: absolute;
+    left: 0.75rem;
+    top: 50%;
+    transform: translateY(-50%);
+    color: var(--yellow);
+    pointer-events: none;
+  }
+
+  #search {
+    width: 100%;
+    background: var(--dark-3);
+    border: 2px solid var(--teal);
+    padding: 0.55rem 0.75rem 0.55rem 2.4rem;
+    color: var(--cream);
+    font-family: 'Crimson Pro', serif;
+    font-size: 1rem;
+    outline: none;
+    transition: border-color 0.2s;
+  }
+
+  #search:focus { border-color: var(--yellow); }
+  #search::placeholder { color: var(--mid); }
+
+  .filter-group { display: flex; gap: 0.3rem; flex-wrap: wrap; }
+
+  .filter-btn {
+    background: transparent;
+    border: 2px solid var(--mid);
+    color: var(--text-dim);
+    padding: 0.35rem 0.75rem;
+    font-family: 'Space Mono', monospace;
+    font-size: 0.58rem;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    cursor: pointer;
+    transition: all 0.12s;
+    font-weight: 700;
+  }
+
+  .filter-btn:hover { border-color: var(--yellow); color: var(--yellow); }
+  .filter-btn.active { background: var(--yellow); border-color: var(--yellow); color: var(--dark); }
+
+  .saved-toggle {
+    background: transparent;
+    border: 2px solid var(--magenta);
+    color: var(--magenta-l);
+    padding: 0.35rem 0.75rem;
+    font-family: 'Space Mono', monospace;
+    font-size: 0.58rem;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    cursor: pointer;
+    transition: all 0.12s;
+    font-weight: 700;
+  }
+
+  .saved-toggle:hover, .saved-toggle.active { background: var(--magenta); color: #fff; }
+
+  /* ——— MAIN ——— */
+  main { max-width: 1100px; margin: 0 auto; padding: 1.5rem 1rem 6rem; }
+
+  /* ——— VIEW TABS ——— */
+  .view-tabs {
+    display: flex;
+    margin-bottom: 1.5rem;
+    border-bottom: 3px solid var(--teal-d);
+    overflow-x: auto;
+  }
+
+  .view-tab {
+    background: none;
+    border: none;
+    border-bottom: 3px solid transparent;
+    color: var(--text-dim);
+    font-family: 'Space Mono', monospace;
+    font-size: 0.6rem;
+    font-weight: 700;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    padding: 0.6rem 1rem 0.8rem;
+    cursor: pointer;
+    margin-bottom: -3px;
+    transition: all 0.15s;
+    white-space: nowrap;
+  }
+
+  .view-tab:hover { color: var(--cream); }
+  .view-tab.active { color: var(--yellow); border-bottom-color: var(--yellow); }
+
+  /* ——— DAY HEADERS ——— */
+  .day-header {
+    font-family: 'Cinzel Decorative', serif;
+    font-size: 1.2rem;
+    color: var(--dark);
+    background: var(--yellow);
+    margin: 2rem 0 0;
+    padding: 0.5rem 1rem;
+    letter-spacing: 0.05em;
+    grid-column: 1 / -1;
+    text-shadow: 2px 2px 0 rgba(0,0,0,0.2);
+  }
+
+  /* ——— GRID VIEW ——— */
+  .programme-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(255px, 1fr));
+    gap: 3px;
+    background: var(--teal-d);
+  }
+
+  .act-card {
+    background: var(--dark-2);
+    padding: 1.1rem 1rem 0.9rem;
+    cursor: pointer;
+    transition: background 0.12s;
+    position: relative;
+    overflow: hidden;
+    border-top: 3px solid transparent;
+  }
+
+  .act-card:hover { background: var(--dark-3); border-top-color: var(--yellow); }
+  .act-card.saved { background: rgba(13,122,122,0.2); border-top-color: var(--teal-l); }
+
+  .act-time {
+    font-family: 'Space Mono', monospace;
+    font-size: 0.62rem;
+    color: var(--teal-l);
+    letter-spacing: 0.15em;
+    margin-bottom: 0.2rem;
+    font-weight: 700;
+  }
+
+  .act-name {
+    font-size: 1.25rem;
+    font-weight: 600;
+    color: var(--cream);
+    line-height: 1.2;
+    margin-bottom: 0.4rem;
+  }
+
+  .act-meta { display: flex; gap: 0.4rem; flex-wrap: wrap; align-items: center; }
+
+  .tag {
+    font-family: 'Space Mono', monospace;
+    font-size: 0.52rem;
+    letter-spacing: 0.08em;
+    padding: 0.2rem 0.5rem;
+    text-transform: uppercase;
+    font-weight: 700;
+  }
+
+  .tag-type { background: var(--purple); color: #fff; border: none; }
+  .tag-headliner { background: var(--orange); color: #fff; border: none; }
+
+  .save-btn {
+    position: absolute;
+    top: 0.65rem;
+    right: 0.65rem;
+    background: none;
+    border: none;
+    cursor: pointer;
+    color: var(--mid);
+    font-size: 1.15rem;
+    transition: color 0.12s, transform 0.12s;
+    line-height: 1;
+  }
+
+  .save-btn:hover { color: var(--magenta-l); transform: scale(1.2); }
+  .act-card.saved .save-btn { color: var(--magenta-l); }
+
+  /* ——— TIMELINE VIEW ——— */
+  .timeline-stage { margin-bottom: 2rem; }
+
+  .stage-label {
+    font-family: 'Space Mono', monospace;
+    font-size: 0.6rem;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    font-weight: 700;
+    margin-bottom: 3px;
+    padding: 0.4rem 0.75rem;
+    color: var(--dark);
+  }
+
+  .timeline-row { display: flex; flex-direction: column; gap: 2px; }
+
+  .timeline-act {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    padding: 0.65rem 1rem;
+    background: var(--dark-2);
+    cursor: pointer;
+    transition: background 0.12s;
+    border-left: 4px solid transparent;
+  }
+
+  .timeline-act:hover { background: var(--dark-3); border-left-color: var(--yellow); }
+  .timeline-act.saved { border-left-color: var(--teal-l); background: rgba(13,122,122,0.15); }
+
+  .tl-time {
+    font-family: 'Space Mono', monospace;
+    font-size: 0.62rem;
+    color: var(--teal-l);
+    min-width: 60px;
+    font-weight: 700;
+  }
+
+  .tl-name { flex: 1; font-size: 1.05rem; font-weight: 600; }
+
+  .tl-save { background: none; border: none; cursor: pointer; color: var(--mid); font-size: 1rem; transition: color 0.12s; }
+  .timeline-act.saved .tl-save { color: var(--magenta-l); }
+  .tl-save:hover { color: var(--magenta-l); }
+
+  /* ——— MY PROGRAMME ——— */
+  .my-prog-empty { text-align: center; padding: 3rem; font-style: italic; color: var(--mid); font-size: 1.1rem; }
+
+  .notify-banner {
+    background: rgba(13,122,122,0.12);
+    border: 2px solid var(--teal);
+    padding: 1rem 1.2rem;
+    margin-bottom: 1.5rem;
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+  }
+
+  .notify-banner p { flex: 1; font-size: 0.95rem; color: var(--cream-d); line-height: 1.5; }
+
+  .notify-btn {
+    background: var(--teal);
+    border: none;
+    color: #fff;
+    font-family: 'Space Mono', monospace;
+    font-size: 0.58rem;
+    font-weight: 700;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    padding: 0.55rem 1rem;
+    cursor: pointer;
+    white-space: nowrap;
+    transition: background 0.15s;
+  }
+
+  .notify-btn:hover { background: var(--teal-l); }
+  .notif-info { font-size: 0.78rem; color: var(--text-dim); margin-top: 0.4rem; font-style: italic; }
+
+  /* ——— MODAL ——— */
+  .modal-overlay {
+    display: none;
+    position: fixed;
+    inset: 0;
+    background: rgba(0,0,0,0.9);
+    z-index: 500;
+    align-items: center;
+    justify-content: center;
+    padding: 1rem;
+  }
+
+  .modal-overlay.open { display: flex; }
+
+  .modal {
+    background: var(--dark-2);
+    border: 3px solid var(--teal);
+    max-width: 480px;
+    width: 100%;
+    padding: 2rem;
+    position: relative;
+    box-shadow: 8px 8px 0 var(--teal-d);
+  }
+
+  .modal-close {
+    position: absolute;
+    top: 0.75rem; right: 0.75rem;
+    background: var(--teal-d);
+    border: none;
+    color: var(--cream);
+    font-size: 1.3rem;
+    cursor: pointer;
+    width: 2rem; height: 2rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: background 0.12s;
+  }
+
+  .modal-close:hover { background: var(--magenta); }
+
+  .modal-time {
+    font-family: 'Space Mono', monospace;
+    font-size: 0.62rem;
+    color: var(--teal-l);
+    letter-spacing: 0.2em;
+    margin-bottom: 0.5rem;
+    font-weight: 700;
+    text-transform: uppercase;
+  }
+
+  .modal-name {
+    font-family: 'Cinzel Decorative', serif;
+    font-size: 1.4rem;
+    color: var(--yellow);
+    margin-bottom: 0.6rem;
+    line-height: 1.2;
+    text-shadow: 2px 2px 0 var(--orange);
+  }
+
+  .modal-tags { display: flex; gap: 0.5rem; flex-wrap: wrap; margin-bottom: 1rem; }
+
+  .modal-desc { font-size: 1rem; line-height: 1.65; color: var(--cream-d); margin-bottom: 1.5rem; font-style: italic; font-weight: 300; }
+
+  .modal-actions { display: flex; gap: 0.6rem; flex-wrap: wrap; }
+
+  .modal-save-btn {
+    flex: 1;
+    background: var(--magenta);
+    border: none;
+    color: #fff;
+    font-family: 'Space Mono', monospace;
+    font-size: 0.58rem;
+    font-weight: 700;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    padding: 0.75rem 1rem;
+    cursor: pointer;
+    transition: background 0.15s;
+  }
+
+  .modal-save-btn:hover { background: var(--magenta-l); }
+  .modal-save-btn.saved { background: var(--mid); color: var(--text-dim); }
+
+  .modal-notify-btn {
+    flex: 1;
+    background: transparent;
+    border: 2px solid var(--orange);
+    color: var(--orange);
+    font-family: 'Space Mono', monospace;
+    font-size: 0.58rem;
+    font-weight: 700;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    padding: 0.75rem 1rem;
+    cursor: pointer;
+    transition: all 0.15s;
+  }
+
+  .modal-notify-btn:hover { background: var(--orange); color: #fff; }
+  .modal-notify-btn.notified { border-color: var(--mid); color: var(--text-dim); }
+
+  /* ——— TOAST ——— */
+  .toast {
+    position: fixed;
+    bottom: 1.5rem; right: 1.5rem;
+    background: var(--teal-d);
+    border: 2px solid var(--teal-l);
+    color: var(--cream);
+    padding: 0.75rem 1.2rem;
+    z-index: 1000;
+    transform: translateY(120px);
+    opacity: 0;
+    transition: all 0.3s;
+    max-width: 300px;
+    line-height: 1.4;
+    font-family: 'Space Mono', monospace;
+    font-size: 0.65rem;
+    letter-spacing: 0.05em;
+  }
+
+  .toast.show { transform: translateY(0); opacity: 1; }
+
+  .results-meta {
+    font-family: 'Space Mono', monospace;
+    font-size: 0.58rem;
+    color: var(--mid);
+    letter-spacing: 0.12em;
+    margin-bottom: 1rem;
+    text-transform: uppercase;
+  }
+
+  .empty-state { text-align: center; padding: 4rem 2rem; font-style: italic; color: var(--mid); font-size: 1.1rem; }
+
+  footer {
+    text-align: center;
+    padding: 2rem 1rem;
+    border-top: 2px solid var(--teal-d);
+    font-size: 0.65rem;
+    color: var(--mid);
+    font-family: 'Space Mono', monospace;
+    letter-spacing: 0.1em;
+  }
+
+  footer a { color: var(--teal-l); text-decoration: none; }
+
+  /* ——— NOW PILL ——— */
+  .now-pill {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    background: var(--orange);
+    color: #fff;
+    font-family: 'Space Mono', monospace;
+    font-size: 0.7rem;
+    font-weight: 700;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    padding: 0.55rem 1.4rem;
+    border: none;
+    cursor: pointer;
+    margin-top: 0.8rem;
+    box-shadow: 4px 4px 0 var(--magenta);
+    transition: transform 0.12s, box-shadow 0.12s;
+    animation: pulse-orange 2.5s ease-in-out infinite;
+  }
+
+  .now-pill:hover { transform: translate(-2px,-2px); box-shadow: 6px 6px 0 var(--magenta); }
+  .now-pill:active { transform: translate(2px,2px); box-shadow: 2px 2px 0 var(--magenta); }
+
+  .now-pill .dot {
+    width: 8px; height: 8px;
+    background: var(--yellow);
+    border-radius: 50%;
+    animation: blink 1s ease-in-out infinite;
+  }
+
+  @keyframes pulse-orange {
+    0%, 100% { box-shadow: 4px 4px 0 var(--magenta); }
+    50% { box-shadow: 4px 4px 0 var(--magenta), 0 0 24px rgba(232,99,26,0.45); }
+  }
+
+  @keyframes blink {
+    0%, 100% { opacity: 1; }
+    50% { opacity: 0.1; }
+  }
+
+  /* ——— NOW & NEXT VIEW ——— */
+  #nownext-view { display: none; }
+
+  .festival-clock {
+    font-family: 'Space Mono', monospace;
+    font-size: 0.7rem;
+    color: var(--teal-l);
+    letter-spacing: 0.2em;
+    text-align: center;
+    margin-bottom: 1.5rem;
+    text-transform: uppercase;
+    padding: 0.5rem;
+    border: 1px solid var(--teal-d);
+  }
+
+  .now-section-label {
+    font-family: 'Space Mono', monospace;
+    font-size: 0.62rem;
+    font-weight: 700;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    margin: 1.5rem 0 0.5rem;
+    padding: 0.55rem 0.9rem;
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+  }
+
+  .now-section-label.on-now { background: var(--orange); color: #fff; }
+  .now-section-label.up-next { background: var(--teal-d); color: var(--teal-l); border: 1px solid var(--teal); }
+
+  .now-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
+    gap: 3px;
+    background: var(--teal-d);
+    margin-bottom: 0.5rem;
+  }
+
+  .now-card {
+    background: var(--dark-2);
+    padding: 1rem;
+    cursor: pointer;
+    transition: background 0.12s;
+    position: relative;
+    border-left: 4px solid transparent;
+  }
+
+  .now-card.is-now { border-left-color: var(--orange); background: rgba(232,99,26,0.1); }
+  .now-card.is-next { border-left-color: var(--teal); }
+  .now-card:hover { background: var(--dark-3); }
+
+  .now-card-time {
+    font-family: 'Space Mono', monospace;
+    font-size: 0.6rem;
+    color: var(--teal-l);
+    letter-spacing: 0.15em;
+    margin-bottom: 0.25rem;
+    font-weight: 700;
+  }
+
+  .now-card-name { font-size: 1.15rem; font-weight: 600; line-height: 1.2; margin-bottom: 0.35rem; color: var(--cream); }
+
+  .now-save-btn {
+    position: absolute;
+    top: 0.65rem; right: 0.65rem;
+    background: none; border: none;
+    cursor: pointer; color: var(--mid);
+    font-size: 1.1rem; transition: color 0.12s;
+  }
+
+  .now-card.saved .now-save-btn { color: var(--magenta-l); }
+  .now-save-btn:hover { color: var(--magenta-l); }
+
+  .nothing-on {
+    text-align: center;
+    padding: 3rem;
+    font-style: italic;
+    color: var(--mid);
+    font-size: 1.1rem;
+    border: 2px dashed var(--teal-d);
+    margin-top: 1rem;
+  }
+
+  /* ——— DEV OVERLAY ——— */
+  #dev-overlay {
+    display: none;
+    position: fixed;
+    bottom: 0; left: 0; right: 0;
+    background: #000;
+    border-top: 3px solid var(--yellow);
+    padding: 1rem 1.2rem;
+    z-index: 800;
+    font-family: 'Space Mono', monospace;
+  }
+
+  #dev-overlay.open { display: block; }
+
+  .dev-header { display: flex; justify-content: space-between; align-items: center; margin-bottom: 0.6rem; }
+
+  .dev-title { font-size: 0.58rem; letter-spacing: 0.2em; color: var(--yellow); text-transform: uppercase; font-weight: 700; }
+
+  .dev-close {
+    background: var(--yellow); border: none; color: #000;
+    font-size: 1rem; cursor: pointer; width: 1.6rem; height: 1.6rem;
+    font-weight: 700; display: flex; align-items: center; justify-content: center;
+  }
+
+  .dev-time-display { font-size: 0.78rem; color: var(--orange); margin-bottom: 0.5rem; letter-spacing: 0.1em; font-weight: 700; }
+
+  #dev-scrubber { width: 100%; accent-color: var(--yellow); margin-bottom: 0.6rem; }
+
+  .dev-day-btns { display: flex; gap: 0.3rem; flex-wrap: wrap; }
+
+  .dev-day-btn {
+    background: var(--dark-3);
+    border: 1px solid var(--teal-d);
+    color: var(--text-dim);
+    padding: 0.3rem 0.7rem;
+    font-family: 'Space Mono', monospace;
+    font-size: 0.55rem;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    cursor: pointer;
+    font-weight: 700;
+    transition: all 0.12s;
+  }
+
+  .dev-day-btn:hover, .dev-day-btn.active { background: var(--yellow); border-color: var(--yellow); color: var(--dark); }
+
+  /* ——— UPDATE TOAST ——— */
+  .update-toast {
+    position: fixed;
+    top: 1rem; left: 50%;
+    transform: translateX(-50%) translateY(-80px);
+    background: var(--teal);
+    border: 2px solid var(--yellow);
+    color: #fff;
+    padding: 0.6rem 1.2rem;
+    font-family: 'Space Mono', monospace;
+    font-size: 0.62rem;
+    font-weight: 700;
+    letter-spacing: 0.1em;
+    z-index: 1000;
+    transition: transform 0.3s;
+    white-space: nowrap;
+    cursor: pointer;
+    text-transform: uppercase;
+  }
+
+  .act-links {
+    display: flex;
+    gap: 0.5rem;
+    flex-wrap: wrap;
+    margin-top: 1rem;
+  }
+
+  .act-link {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.3rem;
+    background: var(--dark-3);
+    border: 1px solid var(--teal);
+    color: var(--teal-l);
+    font-family: 'Space Mono', monospace;
+    font-size: 0.55rem;
+    font-weight: 700;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    padding: 0.3rem 0.7rem;
+    text-decoration: none;
+    transition: all 0.12s;
+  }
+
+  .act-link:hover { background: var(--teal); color: #fff; }
+  .act-link.spotify { border-color: #1db954; color: #1db954; }
+  .act-link.spotify:hover { background: #1db954; color: #000; }
+
+
+
+  @media (max-width: 600px) {
+    .controls-inner { flex-direction: column; align-items: stretch; }
+    .filter-group { justify-content: flex-start; }
+    .programme-grid, .now-grid { grid-template-columns: 1fr; }
+    .view-tabs { font-size: 0.55rem; }
+    .festival-name { text-shadow: 3px 3px 0 var(--orange), 5px 5px 0 var(--magenta); }
+  }
+</style>
+</head>
+<body>
+
+<header>
+  <div class="festival-name">Unearthed</div>
+  <div class="festival-year">· 2026 Programme ·</div>
+  <div class="festival-subtitle">Music · Healing · Wilderness · Community</div>
+  <div class="header-dates">Pembrokeshire · 19–21 June 2026</div>
+  <div><button class="now-pill" id="now-pill-btn"><span class="dot"></span> Now &amp; Next</button></div>
+</header>
+
+<div class="controls">
+  <div class="controls-inner">
+    <div class="search-wrap">
+      <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.35-4.35"/></svg>
+      <input type="text" id="search" placeholder="Search acts, stages, types…" autocomplete="off">
+    </div>
+    <div class="filter-group" id="day-filters">
+      <button class="filter-btn active" data-day="all">All Days</button>
+      <button class="filter-btn" data-day="fri">Fri</button>
+      <button class="filter-btn" data-day="sat">Sat</button>
+      <button class="filter-btn" data-day="sun">Sun</button>
+    </div>
+    <div class="filter-group" id="stage-filters">
+      <button class="filter-btn active" data-stage="all">All Stages</button>
+      <button class="filter-btn" data-stage="Main Stage">Main</button>
+      <button class="filter-btn" data-stage="Freedom Stage">Freedom</button>
+      <button class="filter-btn" data-stage="Dub Corner">Dub Corner</button>
+      <button class="filter-btn" data-stage="Cosmic Cwtsh">Cosmic Cwtsh</button>
+      <button class="filter-btn" data-stage="Temple Tent">Temple</button>
+      <button class="filter-btn" data-stage="Sacred Fire">Sacred Fire</button>
+      <button class="filter-btn" data-stage="GeoJam">GeoJam</button>
+      <button class="filter-btn" data-stage="Tea of Life">Tea of Life</button>
+      <button class="filter-btn" data-stage="Kids &amp; Youth">Kids &amp; Youth</button>
+    </div>
+    <button class="saved-toggle" id="saved-toggle">♥ My List</button>
+    <button class="saved-toggle" id="subscribe-btn" title="Subscribe to your saved acts in your calendar app">📅 Subscribe</button>
+  </div>
+</div>
+
+<main>
+  <div class="view-tabs">
+    <button class="view-tab active" data-view="grid">Grid</button>
+    <button class="view-tab" data-view="timeline">Timeline</button>
+    <button class="view-tab" data-view="nownext">Now &amp; Next</button>
+    <button class="view-tab" data-view="myprog">My Programme</button>
+  </div>
+
+  <div id="results-meta" class="results-meta"></div>
+
+  <!-- GRID VIEW -->
+  <div id="grid-view">
+    <div id="programme-grid" class="programme-grid"></div>
+    <div id="empty-state" class="empty-state" style="display:none">Nothing found — try a different search</div>
+  </div>
+
+  <!-- TIMELINE VIEW -->
+  <div id="timeline-view" style="display:none">
+    <div id="timeline-content"></div>
+  </div>
+
+  <!-- NOW & NEXT VIEW -->
+  <div id="nownext-view" style="display:none">
+    <div class="festival-clock" id="festival-clock"></div>
+    <div id="nownext-content"></div>
+  </div>
+
+  <!-- MY PROGRAMME VIEW -->
+  <div id="myprog-view" style="display:none">
+    <div class="notify-banner">
+      <div>
+        <p>Enable browser notifications to get reminders before acts you've saved start. You'll get a nudge 15 minutes before curtain.</p>
+        <p class="notif-info" id="notif-status">Notifications: checking…</p>
+      </div>
+      <button class="notify-btn" id="enable-notifications">Enable Alerts</button>
+    </div>
+    <div id="my-programme-list"></div>
+  </div>
+</main>
+
+<div class="modal-overlay" id="modal">
+  <div class="modal">
+    <button class="modal-close" id="modal-close">×</button>
+    <div class="modal-time" id="modal-time"></div>
+    <div class="modal-name" id="modal-name"></div>
+    <div class="modal-tags" id="modal-tags"></div>
+    <div class="modal-desc" id="modal-desc"></div>
+    <div class="act-links" id="modal-links" style="display:none;margin-bottom:1rem"></div>
+    <div class="modal-actions">
+      <button class="modal-save-btn" id="modal-save">♥ Save to My List</button>
+      <button class="modal-notify-btn" id="modal-notify">🔔 Notify Me</button>
+    </div>
+  </div>
+</div>
+
+<div class="toast" id="toast"></div>
+<div class="update-toast" id="update-toast">✦ Update available — tap to refresh</div>
+
+<!-- DEVELOPER OVERLAY — gated by ?dev in URL -->
+<div id="dev-overlay">
+  <div class="dev-header">
+    <span class="dev-title">⚙ Developer · Time Simulation</span>
+    <button class="dev-close" id="dev-close">×</button>
+  </div>
+  <div class="dev-time-display" id="dev-time-display"></div>
+  <input type="range" id="dev-scrubber" min="0" max="100" value="0" step="0.1">
+  <div class="dev-day-btns">
+    <button class="dev-day-btn" data-jump="fri-10">Fri 10:00</button>
+    <button class="dev-day-btn" data-jump="fri-19">Fri 19:00</button>
+    <button class="dev-day-btn" data-jump="fri-23">Fri 23:00</button>
+    <button class="dev-day-btn" data-jump="sat-10">Sat 10:00</button>
+    <button class="dev-day-btn" data-jump="sat-17">Sat 17:00</button>
+    <button class="dev-day-btn" data-jump="sat-23">Sat 23:00</button>
+    <button class="dev-day-btn" data-jump="sun-10">Sun 10:00</button>
+    <button class="dev-day-btn" data-jump="sun-20">Sun 20:00</button>
+    <button class="dev-day-btn" data-jump="real">Real Time</button>
+  </div>
+</div>
+
+<footer>
+  <a href="https://www.unearthedfestival.co.uk" target="_blank">unearthedfestival.co.uk</a>
+  &nbsp;·&nbsp; Programme guide · unofficial companion app
+</footer>
+
+<script>
+// ——— DATA — sourced from official Canva schedule ———
+
+// Stage colour mapping — each stage gets its own bold colour from the festival palette
+const STAGE_COLOURS = {
+  "Main Stage":    { bg: "#e8631a", text: "#fff",     border: "#e8631a",  label: "#fff"     }, // orange
+  "Freedom Stage": { bg: "#c8235a", text: "#fff",     border: "#c8235a",  label: "#fff"     }, // magenta
+  "Dub Corner":    { bg: "#0d7a7a", text: "#fff",     border: "#0d7a7a",  label: "#fff"     }, // teal
+  "Cosmic Cwtsh":  { bg: "#5a3dbf", text: "#fff",     border: "#5a3dbf",  label: "#fff"     }, // purple
+  "Temple Tent":   { bg: "#f5c800", text: "#0a1a1a",  border: "#f5c800",  label: "#0a1a1a"  }, // yellow
+  "Sacred Fire":   { bg: "#c8235a", text: "#fff",     border: "#c8235a",  label: "#fff"     }, // magenta-alt
+  "GeoJam":        { bg: "#12a0a0", text: "#fff",     border: "#12a0a0",  label: "#fff"     }, // teal-light
+  "Tea of Life":   { bg: "#3a7adf", text: "#fff",     border: "#3a7adf",  label: "#fff"     }, // blue
+  "Kids & Youth":  { bg: "#f5c800", text: "#0a1a1a",  border: "#f5c800",  label: "#0a1a1a"  }, // yellow
+};
+
+const ACTS = [
+
+  // ═══════════════════════════════════════════
+  // FRIDAY — MAIN STAGE
+  // ═══════════════════════════════════════════
+  { id: 1,   name: "Dance Workshop with Lucy Hurst",    day: "fri", time: "10:00", stage: "Main Stage",   type: "Workshop", headliner: false, desc: "Start Friday morning with movement. Lucy Hurst leads an energising dance workshop to open the weekend." },
+  { id: 2,   name: "Cosmic Smiles",                     day: "fri", time: "11:00", stage: "Main Stage",   type: "Music",    headliner: false, desc: "Space rock veterans from the Welsh Marches — swirling, cosmic and joyous. The perfect Friday morning opener.", links: [{label:"Spotify", url:"https://open.spotify.com/artist/1fBAtXPNZIdhgiRagbEQbG"}] },
+  { id: 3,   name: "Twpsyn",                            day: "fri", time: "13:30", stage: "Main Stage",   type: "Music",    headliner: false, desc: "South Wales band formed in 2024 with a debut EP dropping in 2026. Anarchic, witty and utterly Welsh. FOMO Magazine called them \"one to be excited about.\"", links: [{label:"Spotify", url:"https://open.spotify.com/artist/02yBquhX7ueKHmZrxfjlim"}, {label:"YouTube", url:"https://www.youtube.com/@Twpsyn-band"}] },
+  { id: 4,   name: "Excellent Birds",                   day: "fri", time: "15:00", stage: "Main Stage",   type: "Music",    headliner: false, desc: "Live music with a wide-eyed, exploratory feel." },
+  { id: 5,   name: "The Pavillion",                     day: "fri", time: "17:30", stage: "Main Stage",   type: "Music",    headliner: false, desc: "A festival favourite bringing warmth and groove to the early evening." },
+  { id: 6,   name: "Amy True",                          day: "fri", time: "19:00", stage: "Main Stage",   type: "Music",    headliner: false, desc: "London-based Irish/Ugandan poet, rapper and singer-songwriter creating universal hip hop, soul and jazz. Has collaborated with Akala, Benjamin Zephaniah and Asian Dub Foundation.", links: [{label:"Spotify", url:"https://open.spotify.com/artist/7oVEKfsDB4c8t7RMPfNyWv"}, {label:"Bandcamp", url:"https://amytrue.bandcamp.com"}] },
+  { id: 7,   name: "Samana",                            day: "fri", time: "20:30", stage: "Main Stage",   type: "Music",    headliner: false, desc: "British duo Rebecca Rose and Franklin Mockett, creating music from their analogue studio in the remote valleys of Wales. Forged from dreams, ancient rituals, and interior discovery. Utterly transcendent.", links: [{label:"Spotify", url:"https://open.spotify.com/artist/1cPLRFJQvhGW1nYPWqGYJc"}, {label:"Website", url:"https://www.samanaroad.com"}, {label:"Facebook", url:"https://www.facebook.com/samanamusic"}] },
+  { id: 8,   name: "Beans on Toast",                    day: "fri", time: "22:00", stage: "Main Stage",   type: "Music",    headliner: true,  desc: "Jay McAllister has been the folk circuit's most beloved troublemaker since 2005 — fifteen albums, a Glastonbury appearance every year since 2007, and songs that make you laugh and ache in equal measure. Heart-on-sleeve songwriting for the wide-eyed and world-weary.", links: [{label:"Spotify", url:"https://open.spotify.com/artist/6fVeXD7D2RpFoR6bzNEDPo"}, {label:"Website", url:"https://www.beansontoastmusic.com"}] },
+  { id: 9,   name: "Roni Size",                         day: "fri", time: "23:30", stage: "Main Stage",   type: "Music",    headliner: true,  desc: "Born and raised in Bristol, Roni Size won the Mercury Prize in 1997 with Reprazent's New Forms — one of the defining drum & bass albums ever made. A rare and special late-night headline set.", links: [{label:"Spotify", url:"https://open.spotify.com/artist/5UjqeSp9dX6Nrge7WdDukr"}, {label:"Website", url:"https://ronisize.co.uk"}] },
+  { id: 10,  name: "DJ Moonshine",                      day: "fri", time: "01:00", stage: "Main Stage",   type: "DJ",       headliner: false, desc: "Late night selections keeping the energy flowing." },
+  { id: 11,  name: "DJ Norizee",                        day: "fri", time: "02:00", stage: "Main Stage",   type: "DJ",       headliner: false, desc: "Into the small hours — deep and driven." },
+
+  // FRIDAY — DUB CORNER
+  { id: 20,  name: "Roberto Canassa",                   day: "fri", time: "11:00", stage: "Dub Corner",   type: "Music",    headliner: false, desc: "World music 2hr set. Rich, soulful and globally informed." },
+  { id: 21,  name: "Jacob White",                       day: "fri", time: "13:00", stage: "Dub Corner",   type: "DJ",       headliner: false, desc: "Roots and dub selections from one of the corner's finest." },
+  { id: 22,  name: "David Taylor",                      day: "fri", time: "15:00", stage: "Dub Corner",   type: "DJ",       headliner: false, desc: "Heavyweight dub frequencies. Bass you can feel." },
+  { id: 23,  name: "Steve J Rad",                       day: "fri", time: "18:00", stage: "Dub Corner",   type: "DJ",       headliner: false, desc: "Roots and culture with deep bass conviction." },
+  { id: 24,  name: "Ozimu Sound",                       day: "fri", time: "19:00", stage: "Dub Corner",   type: "DJ",       headliner: false, desc: "Sound system culture at its finest." },
+  { id: 25,  name: "Unity Sound",                       day: "fri", time: "20:00", stage: "Dub Corner",   type: "DJ",       headliner: false, desc: "Unity in bass — bringing people together through dub." },
+  { id: 26,  name: "Upstepper",                         day: "fri", time: "21:00", stage: "Dub Corner",   type: "DJ",       headliner: false, desc: "Stepping up the riddim into the night." },
+  { id: 27,  name: "Idris Soundsystem",                 day: "fri", time: "22:00", stage: "Dub Corner",   type: "DJ",       headliner: false, desc: "Full sound system power for the late hours." },
+  { id: 28,  name: "DJ Sal",                            day: "fri", time: "23:00", stage: "Dub Corner",   type: "DJ",       headliner: false, desc: "Night-time selections heading deep into the dark." },
+  { id: 29,  name: "DJ Uncle Funk",                     day: "fri", time: "00:00", stage: "Dub Corner",   type: "DJ",       headliner: false, desc: "Funk, soul and bass into the early morning." },
+  { id: 30,  name: "Maya Mitten",                       day: "fri", time: "01:00", stage: "Dub Corner",   type: "DJ",       headliner: false, desc: "Leftfield selections and beautiful sonic surprises." },
+  { id: 31,  name: "Silent Disco (Menikoo / Rackitt)",  day: "fri", time: "02:00", stage: "Dub Corner",   type: "DJ",       headliner: false, desc: "Silent Disco: Menikoo 2–4am, Rackitt 4–6am." },
+
+  // FRIDAY — COSMIC CWTSH
+  { id: 40,  name: "Lusärdi",                           day: "fri", time: "16:00", stage: "Cosmic Cwtsh", type: "DJ",       headliner: false, desc: "Forest floor electronics and verdant bass frequencies." },
+  { id: 41,  name: "Daszol",                            day: "fri", time: "18:00", stage: "Cosmic Cwtsh", type: "DJ",       headliner: false, desc: "Avant-garde electronic sound with cinematic scope." },
+  { id: 42,  name: "Arwenvarda",                        day: "fri", time: "19:30", stage: "Cosmic Cwtsh", type: "Music",    headliner: false, desc: "Celtic folk and sacred song. Ancient sounds for open hearts." },
+  { id: 43,  name: "Wholly Moses",                      day: "fri", time: "21:00", stage: "Cosmic Cwtsh", type: "DJ",       headliner: false, desc: "Roots, righteousness and excellent selection." },
+  { id: 44,  name: "Sylark",                            day: "fri", time: "22:30", stage: "Cosmic Cwtsh", type: "DJ",       headliner: false, desc: "Driving electronic selections deep into the night." },
+  { id: 45,  name: "DJ LSGD",                           day: "fri", time: "00:00", stage: "Cosmic Cwtsh", type: "DJ",       headliner: false, desc: "Heavy selector with a taste for the rare and righteous." },
+  { id: 46,  name: "Psymoth",                           day: "fri", time: "01:30", stage: "Cosmic Cwtsh", type: "DJ",       headliner: false, desc: "Psychedelic and driving — for those still dancing at 1:30am." },
+
+  // FRIDAY — FREEDOM STAGE
+  { id: 50,  name: "Dance Workshop 2–4",                day: "fri", time: "14:00", stage: "Freedom Stage", type: "Workshop", headliner: false, desc: "Grand Finale Dance Practice — learn the moves before the big moment." },
+  { id: 51,  name: "Open Stage / Mic",                  day: "fri", time: "17:00", stage: "Freedom Stage", type: "Workshop", headliner: false, desc: "Open platform for all — step up and share your gift." },
+  { id: 52,  name: "NKC & Jack Ford",                   day: "fri", time: "18:00", stage: "Freedom Stage", type: "Music",    headliner: false, desc: "Collaborative set spanning hip-hop, soul and electronics." },
+  { id: 53,  name: "Ari Anne Wen",                      day: "fri", time: "19:00", stage: "Freedom Stage", type: "DJ",       headliner: false, desc: "Melodic and expansive electronic selections." },
+  { id: 54,  name: "Iestyn Gordon",                     day: "fri", time: "20:00", stage: "Freedom Stage", type: "DJ",       headliner: false, desc: "Deep grooves and Welsh soul." },
+  { id: 55,  name: "Luke Elford & Josie",               day: "fri", time: "21:00", stage: "Freedom Stage", type: "Music",    headliner: false, desc: "A special collaborative performance into the Friday night." },
+  { id: 56,  name: "Alexander Canwell",                 day: "fri", time: "22:00", stage: "Freedom Stage", type: "DJ",       headliner: false, desc: "Thoughtful, deep electronic selections." },
+  { id: 57,  name: "Freaky Deaky Takeover",             day: "fri", time: "23:00", stage: "Freedom Stage", type: "Music",    headliner: false, desc: "Comedy / Theatre: Freaky Deaky take over the Freedom Stage for a late-night spectacular." },
+
+  // ═══════════════════════════════════════════
+  // SATURDAY — MAIN STAGE
+  // ═══════════════════════════════════════════
+  { id: 100, name: "Manifestation Breathwork — Freya MacFarlane", day: "sat", time: "10:00", stage: "Main Stage", type: "Workshop", headliner: false, desc: "Open Saturday with intention. Freya MacFarlane leads a powerful breathwork and manifestation session on the main stage — a collective reset before the day unfolds." },
+  { id: 101, name: "Bonnie Medicine",                   day: "sat", time: "12:00", stage: "Main Stage",   type: "Music",    headliner: false, desc: "Singer, songweaver and medicine musician from Scotland. Her music fuses Celtic roots with New Age folk and spiritual overtones — songs of remembrance, land, unity and freedom.", links: [{label:"Spotify", url:"https://open.spotify.com/artist/2Z6yCCJNCe0KfixGqJncRi"}, {label:"Bandcamp", url:"https://bonniemedicine.bandcamp.com"}] },
+  { id: 102, name: "Tomos Newman",                      day: "sat", time: "13:30", stage: "Main Stage",   type: "Music",    headliner: false, desc: "Intimate, beautifully crafted songs from a rising Welsh voice." },
+  { id: 103, name: "Queen Beezie",                      day: "sat", time: "15:00", stage: "Main Stage",   type: "Music",    headliner: false, desc: "Powerhouse performer blending grime, soul and uncut charisma." },
+  { id: 104, name: "Twmpath",                           day: "sat", time: "17:30", stage: "Main Stage",   type: "Music",    headliner: false, desc: "A traditional Welsh ceilidh — communal dancing with a caller and live folk band. No experience needed, just willingness to join in. One of the great Unearthed traditions." },
+  { id: 105, name: "Dan Bettridge",                     day: "sat", time: "19:00", stage: "Main Stage",   type: "Music",    headliner: false, desc: "Welsh singer-songwriter. Heartfelt, precise, utterly magnetic." },
+  { id: 106, name: "Sky Barkers",                       day: "sat", time: "20:30", stage: "Main Stage",   type: "Music",    headliner: false, desc: "Indie rock with teeth. Loud, melodic, cathartic." },
+  { id: 107, name: "The League of Rebelz",              day: "sat", time: "22:00", stage: "Main Stage",   type: "Music",    headliner: false, desc: "High-energy reggae and dancehall unit bringing righteous fire." },
+  { id: 108, name: "Goldie Lookin Chain",               day: "sat", time: "23:30", stage: "Main Stage",   type: "Music",    headliner: true,  desc: "Newport's finest — the GLC have been Wales's most irreverent rap collective since the early 2000s. Massive in da house. Guns Don't Kill People, Rappers Do. You Are Not a Chav. A riotous, essential late-night headline.", links: [{label:"Spotify", url:"https://open.spotify.com/artist/1SHQE5VKnHD4MPAQdKe4sX"}, {label:"Facebook", url:"https://www.facebook.com/GoldieChain"}] },
+  { id: 109, name: "Timbali Live ft Natty D & Man Up A Tree", day: "sat", time: "01:00", stage: "Main Stage", type: "Music", headliner: false, desc: "Roots reggae collaboration into the small hours. Rootsy, warm and righteous." },
+  { id: 110, name: "DJ Uncle Funk",                     day: "sat", time: "02:00", stage: "Main Stage",   type: "DJ",       headliner: false, desc: "Closing out the main stage with funk and soul." },
+
+  // SATURDAY — DUB CORNER
+  { id: 120, name: "Jacob White",                       day: "sat", time: "11:00", stage: "Dub Corner",   type: "DJ",       headliner: false, desc: "World music 2hr set to open the Dub Corner on Saturday." },
+  { id: 121, name: "David Taylor",                      day: "sat", time: "13:00", stage: "Dub Corner",   type: "DJ",       headliner: false, desc: "Heavyweight dub frequencies. Bass you can feel." },
+  { id: 122, name: "Jiva Harrison",                     day: "sat", time: "15:00", stage: "Dub Corner",   type: "DJ",       headliner: false, desc: "Deep, conscious selections from a masterful selector." },
+  { id: 123, name: "Dub in the Barn",                   day: "sat", time: "17:00", stage: "Dub Corner",   type: "Music",    headliner: false, desc: "The barn shakes with full dub sound system pressure." },
+  { id: 124, name: "Unity Sound",                       day: "sat", time: "18:00", stage: "Dub Corner",   type: "DJ",       headliner: false, desc: "Unity in bass — bringing people together through dub." },
+  { id: 125, name: "Steve J Rad",                       day: "sat", time: "19:00", stage: "Dub Corner",   type: "DJ",       headliner: false, desc: "Roots and culture with deep bass conviction." },
+  { id: 126, name: "Idris Soundsystem",                 day: "sat", time: "20:00", stage: "Dub Corner",   type: "DJ",       headliner: false, desc: "Full sound system power for the late hours." },
+  { id: 127, name: "Nathan Stardust",                   day: "sat", time: "21:00", stage: "Dub Corner",   type: "DJ",       headliner: false, desc: "Cosmic frequencies from a stellar selector." },
+  { id: 128, name: "Upstepper",                         day: "sat", time: "22:00", stage: "Dub Corner",   type: "DJ",       headliner: false, desc: "Stepping up the riddim deep into Saturday night." },
+  { id: 129, name: "Dub in the Barn",                   day: "sat", time: "23:00", stage: "Dub Corner",   type: "Music",    headliner: false, desc: "Late night dub in the barn — deep and hypnotic." },
+  { id: 130, name: "Solja",                             day: "sat", time: "00:00", stage: "Dub Corner",   type: "DJ",       headliner: false, desc: "Into midnight with driving bass selections." },
+  { id: 131, name: "Pendub",                            day: "sat", time: "01:00", stage: "Dub Corner",   type: "DJ",       headliner: false, desc: "Pembrokeshire dub and roots. Home crowd pride, late night edition." },
+  { id: 132, name: "Silent Disco (Arianarchy / Morfa)", day: "sat", time: "02:00", stage: "Dub Corner",   type: "DJ",       headliner: false, desc: "Silent Disco: Arianarchy 2–4am, Morfa 4–6am." },
+
+  // SATURDAY — COSMIC CWTSH
+  { id: 140, name: "Tell Your Friends (TYF)",           day: "sat", time: "11:00", stage: "Cosmic Cwtsh", type: "DJ",       headliner: false, desc: "The name says it all. Essential Saturday afternoon energy." },
+  { id: 141, name: "Irisa",                             day: "sat", time: "12:30", stage: "Cosmic Cwtsh", type: "DJ",       headliner: false, desc: "Melodic techno and electronic soundscapes." },
+  { id: 142, name: "Menikoo",                           day: "sat", time: "13:30", stage: "Cosmic Cwtsh", type: "DJ",       headliner: false, desc: "Warm electronics and dub-soaked frequencies." },
+  { id: 143, name: "Didge Beat George",                 day: "sat", time: "14:30", stage: "Cosmic Cwtsh", type: "Music",    headliner: false, desc: "Didgeridoo-led rhythmic soundscapes. Earthy, primal and extraordinary." },
+  { id: 144, name: "Geoffungus",                        day: "sat", time: "15:30", stage: "Cosmic Cwtsh", type: "DJ",       headliner: false, desc: "Experimental and psychedelic electronics." },
+  { id: 145, name: "Recomb",                            day: "sat", time: "16:30", stage: "Cosmic Cwtsh", type: "DJ",       headliner: false, desc: "Reconfigured beats and rhythmic recombinations." },
+  { id: 146, name: "Sylark",                            day: "sat", time: "17:30", stage: "Cosmic Cwtsh", type: "DJ",       headliner: false, desc: "Driving electronic selections into the evening." },
+  { id: 147, name: "DJ Froo",                           day: "sat", time: "19:00", stage: "Cosmic Cwtsh", type: "DJ",       headliner: false, desc: "Eclectic selector spanning jungle, garage and beyond." },
+  { id: 148, name: "Nook",                              day: "sat", time: "20:00", stage: "Cosmic Cwtsh", type: "DJ",       headliner: false, desc: "Niche selections with broad appeal. Trust the Nook." },
+  { id: 149, name: "Lusärdi",                           day: "sat", time: "21:30", stage: "Cosmic Cwtsh", type: "DJ",       headliner: false, desc: "Forest floor electronics into the Saturday night." },
+  { id: 150, name: "Sonic Smudge",                      day: "sat", time: "23:00", stage: "Cosmic Cwtsh", type: "DJ",       headliner: false, desc: "Late night hypnosis and sonic ceremony." },
+  { id: 151, name: "Vegetable Matrix",                  day: "sat", time: "00:30", stage: "Cosmic Cwtsh", type: "DJ",       headliner: false, desc: "Organic electronics grown locally, served fresh." },
+  { id: 152, name: "G.E.O.R.G.E",                      day: "sat", time: "02:00", stage: "Cosmic Cwtsh", type: "DJ",       headliner: false, desc: "Closing the Cosmic Cwtsh — soulful and considered." },
+
+  // SATURDAY — FREEDOM STAGE
+  { id: 160, name: "Dance Workshop 2–4",                day: "sat", time: "10:00", stage: "Freedom Stage", type: "Workshop", headliner: false, desc: "Grand Finale Dance Practice continues — get those moves locked in." },
+  { id: 161, name: "Grand Finale Dance Practice",       day: "sat", time: "11:00", stage: "Freedom Stage", type: "Workshop", headliner: false, desc: "Final rehearsal for the big dance performance." },
+  { id: 162, name: "Kids Theatre",                      day: "sat", time: "12:00", stage: "Freedom Stage", type: "Kids",     headliner: false, desc: "Theatre for kids on the Freedom Stage — fun, colourful and magical." },
+  { id: 163, name: "Destan Donemi",                     day: "sat", time: "13:00", stage: "Freedom Stage", type: "DJ",       headliner: false, desc: "Cosmic electronics and worldly frequencies." },
+  { id: 164, name: "Troi Parker-Roth",                  day: "sat", time: "14:00", stage: "Freedom Stage", type: "DJ",       headliner: false, desc: "Finessed and inventive electronic selections." },
+  { id: 165, name: "Fossilheads",                       day: "sat", time: "15:00", stage: "Freedom Stage", type: "DJ",       headliner: false, desc: "Old-school rave energy meets modern dancefloor science." },
+  { id: 166, name: "Ribble",                            day: "sat", time: "16:00", stage: "Freedom Stage", type: "DJ",       headliner: false, desc: "Electronic selections with a playful, inventive touch." },
+  { id: 167, name: "Frekshow Theatre Takeover",         day: "sat", time: "17:00", stage: "Freedom Stage", type: "Music",    headliner: false, desc: "Theatre meets festival in a wild Frekshow takeover of the Freedom Stage." },
+  { id: 168, name: "Chant & Jebbers",                   day: "sat", time: "19:00", stage: "Freedom Stage", type: "DJ",       headliner: false, desc: "Breaking dawn with relentless energy." },
+  { id: 169, name: "Didge Beat George",                 day: "sat", time: "20:00", stage: "Freedom Stage", type: "Music",    headliner: false, desc: "Second set — didgeridoo power returning for the Saturday night." },
+  { id: 170, name: "Seven Bears",                       day: "sat", time: "21:00", stage: "Freedom Stage", type: "DJ",       headliner: false, desc: "Warming selections — a steady, soulful hand on the decks." },
+  { id: 171, name: "Midnight Motion Picture",           day: "sat", time: "22:00", stage: "Freedom Stage", type: "DJ",       headliner: false, desc: "Deep into the dark — cinematic late-night sounds." },
+
+  // ═══════════════════════════════════════════
+  // SUNDAY — MAIN STAGE
+  // ═══════════════════════════════════════════
+  { id: 200, name: "CacaoAmor Ecstatic Dance",          day: "sun", time: "10:00", stage: "Main Stage",   type: "Workshop", headliner: false, desc: "Ceremonial cacao and ecstatic dance with Dia and Jazzy Be. Open Sunday with your heart and feet — no experience needed, just willingness to move and be moved." },
+  { id: 201, name: "Ben Roberts",                       day: "sun", time: "12:00", stage: "Main Stage",   type: "DJ",       headliner: false, desc: "Melodic electronic and deep house explorations for the Sunday afternoon." },
+  { id: 202, name: "Dylan Fowler",                      day: "sun", time: "13:30", stage: "Main Stage",   type: "Music",    headliner: false, desc: "Internationally acclaimed Welsh acoustic guitarist born in Libya, raised in Wales. Co-founder of ALAW, the celebrated Welsh folk trio. His music moves between Celtic tradition and world influences with effortless mastery.", links: [{label:"Spotify", url:"https://open.spotify.com/artist/2aBCrmIshpN9mcLsiYrhKs"}, {label:"Website", url:"https://www.dylanfowlerguitar.com"}] },
+  { id: 203, name: "Echoes of the Unknown",             day: "sun", time: "15:00", stage: "Main Stage",   type: "Music",    headliner: false, desc: "Ambient and ceremonial sound explorations — a journey inward." },
+  { id: 204, name: "Sweet Giant",                       day: "sun", time: "17:30", stage: "Main Stage",   type: "Music",    headliner: false, desc: "Big, atmospheric indie folk with a rare emotional weight." },
+  { id: 205, name: "Omega Nebula",                      day: "sun", time: "19:00", stage: "Main Stage",   type: "Music",    headliner: false, desc: "Cosmic psych and space rock explorations. Lose yourself in the orbital drift." },
+  { id: 206, name: "Fire Procession",                   day: "sun", time: "20:30", stage: "Main Stage",   type: "Workshop", headliner: false, desc: "The iconic fire procession weaves from Temple Arena to Main Arena. A ceremony of release and connection." },
+  { id: 207, name: "Los Pulpos del Diablo",             day: "sun", time: "22:00", stage: "Main Stage",   type: "Music",    headliner: false, desc: "Unearthed's very own house band close the festival. Chaotic, joyful, unclassifiable — the perfect end to the weekend." },
+  { id: 208, name: "Silent DJs",                        day: "sun", time: "00:00", stage: "Main Stage",   type: "DJ",       headliner: false, desc: "A silent disco to close out the weekend — headphones on, world off." },
+
+  // SUNDAY — DUB CORNER
+  { id: 220, name: "Jiva Harrison",                     day: "sun", time: "11:00", stage: "Dub Corner",   type: "DJ",       headliner: false, desc: "Deep, conscious selections to open Sunday in the corner." },
+  { id: 221, name: "Roberto Canassa",                   day: "sun", time: "13:00", stage: "Dub Corner",   type: "Music",    headliner: false, desc: "World music 2hr set — rich, soulful and globally informed." },
+  { id: 222, name: "David Taylor",                      day: "sun", time: "15:00", stage: "Dub Corner",   type: "DJ",       headliner: false, desc: "Heavyweight dub frequencies. Bass you can feel." },
+  { id: 223, name: "Sattaman",                          day: "sun", time: "17:00", stage: "Dub Corner",   type: "DJ",       headliner: false, desc: "Roots and righteousness from a steadfast selector." },
+  { id: 224, name: "Nathan Stardust",                   day: "sun", time: "18:00", stage: "Dub Corner",   type: "DJ",       headliner: false, desc: "Cosmic frequencies into the Sunday evening." },
+  { id: 225, name: "Ozimu Sound",                       day: "sun", time: "19:00", stage: "Dub Corner",   type: "DJ",       headliner: false, desc: "Sound system culture at its finest to close the day." },
+  { id: 226, name: "Idris Soundsystem",                 day: "sun", time: "20:00", stage: "Dub Corner",   type: "DJ",       headliner: false, desc: "Full sound system power for the final hours." },
+  { id: 227, name: "Upstepper",                         day: "sun", time: "22:00", stage: "Dub Corner",   type: "DJ",       headliner: false, desc: "Stepping up the riddim for the last time this weekend." },
+  { id: 228, name: "Real Roots Soundsystem",            day: "sun", time: "23:00", stage: "Dub Corner",   type: "DJ",       headliner: false, desc: "Closing the corner with real roots fire." },
+
+  // SUNDAY — COSMIC CWTSH
+  { id: 240, name: "The Re-Psych Project",              day: "sun", time: "10:00", stage: "Cosmic Cwtsh", type: "Music",    headliner: false, desc: "Psychedelic sounds to open the Cosmic Cwtsh on Sunday." },
+  { id: 241, name: "Ginjah",                            day: "sun", time: "12:30", stage: "Cosmic Cwtsh", type: "DJ",       headliner: false, desc: "Roots and culture — righteous dub selections." },
+  { id: 242, name: "Optimystic",                        day: "sun", time: "13:30", stage: "Cosmic Cwtsh", type: "DJ",       headliner: false, desc: "Positive vibrations and uplifting bass frequencies." },
+  { id: 243, name: "Steve J Rad",                       day: "sun", time: "14:30", stage: "Cosmic Cwtsh", type: "DJ",       headliner: false, desc: "Roots and culture with deep bass conviction — Sunday afternoon edition." },
+  { id: 244, name: "Dinomanic",                         day: "sun", time: "15:30", stage: "Cosmic Cwtsh", type: "DJ",       headliner: false, desc: "Heavy-hitting bass music for the final afternoon." },
+  { id: 245, name: "Sanial",                            day: "sun", time: "17:00", stage: "Cosmic Cwtsh", type: "DJ",       headliner: false, desc: "Ethereal electronics and atmospheric bass." },
+  { id: 246, name: "Algae Rhythm",                      day: "sun", time: "18:30", stage: "Cosmic Cwtsh", type: "DJ",       headliner: false, desc: "Organic electronic rhythms growing through the evening." },
+  { id: 247, name: "Professor Jo",                      day: "sun", time: "19:30", stage: "Cosmic Cwtsh", type: "DJ",       headliner: false, desc: "Deep cuts and dancing-shoe calibrations." },
+  { id: 248, name: "Soma & Merakki",                    day: "sun", time: "22:00", stage: "Cosmic Cwtsh", type: "DJ",       headliner: false, desc: "Meditative and expansive DJ duo closing the Cwtsh for the last time." },
+
+  // SUNDAY — FREEDOM STAGE
+  { id: 260, name: "Dance Workshop 2–4",                day: "sun", time: "10:00", stage: "Freedom Stage", type: "Workshop", headliner: false, desc: "Final Grand Finale Dance Practice before the big performance." },
+  { id: 261, name: "Grand Finale Dance Practice",       day: "sun", time: "11:00", stage: "Freedom Stage", type: "Workshop", headliner: false, desc: "Last chance to rehearse — the big moment is coming." },
+  { id: 262, name: "Theatre Takeover",                  day: "sun", time: "12:00", stage: "Freedom Stage", type: "Music",    headliner: false, desc: "Sunday theatre takeover — expect surprise and spectacle." },
+  { id: 263, name: "Open Stage / Mic",                  day: "sun", time: "15:00", stage: "Freedom Stage", type: "Workshop", headliner: false, desc: "Open stage for the final afternoon — your last chance to perform." },
+  { id: 264, name: "Aron Kirwan",                       day: "sun", time: "16:00", stage: "Freedom Stage", type: "Music",    headliner: false, desc: "Closing performances from Aron Kirwan." },
+  { id: 265, name: "Becky the Bullet",                  day: "sun", time: "17:00", stage: "Freedom Stage", type: "Music",    headliner: false, desc: "High energy to close out the Freedom Stage for 2026." },
+  { id: 266, name: "Connor Jillions",                   day: "sun", time: "18:00", stage: "Freedom Stage", type: "DJ",       headliner: false, desc: "Bass-heavy, joyful, boundary-free — a fitting close." },
+
+  // ═══════════════════════════════════════════
+  // TEMPLE TENT
+  // ═══════════════════════════════════════════
+  { id: 300, name: "Yoga — Elle Beamish (Green Lotus Studios)", day: "fri", time: "09:00", stage: "Temple Tent", type: "Workshop", headliner: false, desc: "Start Friday with morning yoga led by Elle Beamish of Green Lotus Studios." },
+  { id: 301, name: "Shaolin Qigong — Rhys Rogers",      day: "fri", time: "10:00", stage: "Temple Tent", type: "Workshop", headliner: false, desc: "Ancient Chinese movement practice for energy, balance and clarity." },
+  { id: 302, name: "Acroyoga — Yoga of Dragons (Sam & Bongo)", day: "fri", time: "11:30", stage: "Temple Tent", type: "Workshop", headliner: false, desc: "Fun and flow — acrobatic yoga with Sam and Bongo of Yoga of Dragons." },
+  { id: 303, name: "Journeying Within — Bronwyn Claire Asha", day: "fri", time: "12:50", stage: "Temple Tent", type: "Workshop", headliner: false, desc: "Myth, story and inner listening. A guided inner journey with Bronwyn Claire Asha." },
+  { id: 304, name: "Opening Ceremony — Hoppi, Dia, Tim, Yeshe", day: "fri", time: "14:00", stage: "Temple Tent", type: "Workshop", headliner: false, desc: "The ceremonial opening of the Temple Tent. Join Hoppi, Dia, Tim and Yeshe to open sacred space." },
+  { id: 305, name: "The Frequency Experience Pt 1 — Adam Slawson", day: "fri", time: "15:45", stage: "Temple Tent", type: "Workshop", headliner: false, desc: "Trust Yourself When It Matters. Part one of Adam Slawson's immersive frequency experience." },
+  { id: 306, name: "RAVE AF: The Frequency Experience Pt 2 — Adam Slawson & DJ Bill T", day: "fri", time: "16:45", stage: "Temple Tent", type: "Workshop", headliner: false, desc: "The frequency experience continues into rave territory. Part 2 with DJ Bill T." },
+  { id: 307, name: "The Intuitive Woman — Sohère Roked", day: "fri", time: "18:00", stage: "Temple Tent", type: "Workshop", headliner: false, desc: "An empowering session exploring intuition, power and feminine wisdom with Sohère Roked." },
+  { id: 308, name: "Magic in Motion Cabaret — Tripod Rig", day: "fri", time: "19:00", stage: "Temple Tent", type: "Music",    headliner: false, desc: "Cabaret at the Tripod Rig — expect magic, motion and wonder." },
+  { id: 309, name: "Celtic Grief Keening — Jewels Wingfield", day: "fri", time: "19:30", stage: "Temple Tent", type: "Workshop", headliner: false, desc: "Rituals of renewal through the ancient Celtic practice of grief keening, led by Jewels Wingfield." },
+
+  { id: 310, name: "Yoga — Elle Beamish (Green Lotus Studios)", day: "sat", time: "08:00", stage: "Temple Tent", type: "Workshop", headliner: false, desc: "Morning yoga to open Saturday. Led by Elle Beamish of Green Lotus Studios." },
+  { id: 311, name: "Shaolin Qigong — Rhys Rogers",      day: "sat", time: "09:00", stage: "Temple Tent", type: "Workshop", headliner: false, desc: "Saturday morning Qigong practice with Rhys Rogers." },
+  { id: 312, name: "Relationship Anarchy — Austin Douillard", day: "sat", time: "11:45", stage: "Temple Tent", type: "Workshop", headliner: false, desc: "Reimagining Intimacy Beyond the Script. A thoughtful exploration of relational freedom with Austin Douillard." },
+  { id: 313, name: "Ceremony of Pollen, Honey & Divine Gold — Hoppi Wimbush", day: "sat", time: "13:15", stage: "Temple Tent", type: "Workshop", headliner: false, desc: "A sacred ceremony of pollen, honey and divine gold with Hoppi Wimbush." },
+  { id: 314, name: "Sacred Shibari — Danielle Landman",  day: "sat", time: "15:00", stage: "Temple Tent", type: "Workshop", headliner: false, desc: "The Rope Temple Sacred Shibari with Danielle Landman. Two sessions." },
+  { id: 315, name: "Contact Improv Dance — Lucia Escuder & Mairead Spangler", day: "sat", time: "17:15", stage: "Temple Tent", type: "Workshop", headliner: false, desc: "Contact improvisation dance session — tuning in to touch, weight and movement together." },
+  { id: 316, name: "Magic in Motion Cabaret — Tripod Rig", day: "sat", time: "18:30", stage: "Temple Tent", type: "Music",    headliner: false, desc: "Saturday cabaret at the Tripod Rig. Magic and motion." },
+  { id: 317, name: "Divinely Untamed Temple — Jessica Ashby", day: "sat", time: "19:00", stage: "Temple Tent", type: "Workshop", headliner: false, desc: "A wild, sacred and liberating ceremony with Jessica Ashby." },
+
+  { id: 320, name: "Yoga Nidra Rest and Reset — Lottie Lernelius-Tonks", day: "sun", time: "08:00", stage: "Temple Tent", type: "Workshop", headliner: false, desc: "Deep rest and reset through Yoga Nidra. The perfect Sunday morning opener." },
+  { id: 321, name: "Shaolin Qigong — Rhys Rogers",      day: "sun", time: "09:00", stage: "Temple Tent", type: "Workshop", headliner: false, desc: "Final morning Qigong practice of the weekend." },
+  { id: 322, name: "Gong Bath — Jay Herring",            day: "sun", time: "12:00", stage: "Temple Tent", type: "Workshop", headliner: false, desc: "Immerse yourself in the healing resonance of gongs with Jay Herring." },
+  { id: 323, name: "Self-Discovery with Life Drawing — Fede Art Muse", day: "sun", time: "13:15", stage: "Temple Tent", type: "Workshop", headliner: false, desc: "Art as self-discovery — life drawing session with Fede Art Muse." },
+  { id: 324, name: "Neurodiversity: It's Not a F*cking Label — Hapus Training & Sam Charlesworth", day: "sun", time: "15:30", stage: "Temple Tent", type: "Workshop", headliner: false, desc: "A frank, empowering talk on neurodiversity with Hapus Training and Sam Charlesworth." },
+  { id: 325, name: "Men's Circle — Charlie Cavell",      day: "sun", time: "17:15", stage: "Temple Tent", type: "Workshop", headliner: false, desc: "A held space for men to gather, share and connect with Charlie Cavell." },
+  { id: 326, name: "Reclaiming Our Humanity — Savannah Lovelock", day: "sun", time: "18:45", stage: "Temple Tent", type: "Workshop", headliner: false, desc: "Reclaiming Our Humanity Through Community — a closing reflection with Savannah Lovelock." },
+  { id: 327, name: "Fire Procession Begins at Sacred Fire", day: "sun", time: "20:00", stage: "Temple Tent", type: "Workshop", headliner: false, desc: "The fire procession begins here, weaving from the Temple Arena to the Main Arena." },
+
+  // ═══════════════════════════════════════════
+  // SACRED FIRE
+  // ═══════════════════════════════════════════
+  { id: 400, name: "'The Words That Come Before All Else'", day: "fri", time: "11:00", stage: "Sacred Fire", type: "Workshop", headliner: false, desc: "A gratitude address from the Haudenosaunee tradition — words spoken before all others." },
+  { id: 401, name: "Opening Ceremony",                   day: "fri", time: "14:00", stage: "Sacred Fire", type: "Workshop", headliner: false, desc: "The ceremonial opening of Unearthed 2026 at the Sacred Fire. Come with intention." },
+  { id: 402, name: "Chief Seattle — A Song in 8 Parts",  day: "fri", time: "16:00", stage: "Sacred Fire", type: "Music",    headliner: false, desc: "A moving musical tribute in eight parts." },
+  { id: 403, name: "Islands of Coherence in a Sea of Chaos", day: "fri", time: "17:00", stage: "Sacred Fire", type: "Workshop", headliner: false, desc: "Finding stillness and coherence — a session around the sacred fire." },
+  { id: 404, name: "Stories & Hot Chocolate round the Fire", day: "fri", time: "20:30", stage: "Sacred Fire", type: "Workshop", headliner: false, desc: "Gather round the fire for stories and hot chocolate. A gentle, nourishing close to the evening." },
+  { id: 405, name: "Queen Beezie",                       day: "fri", time: "21:30", stage: "Sacred Fire", type: "Music",    headliner: false, desc: "Queen Beezie performs at the sacred fire under the stars." },
+
+  { id: 410, name: "Morning Water Blessing",             day: "sat", time: "08:00", stage: "Sacred Fire", type: "Workshop", headliner: false, desc: "Begin Saturday with a blessing of the waters at the sacred fire." },
+  { id: 411, name: "'The Words That Come Before All Else'", day: "sat", time: "11:00", stage: "Sacred Fire", type: "Workshop", headliner: false, desc: "A gratitude address — words spoken before all others." },
+  { id: 412, name: "Celtic Sacred Songlines — Jewels Wingfield", day: "sat", time: "14:00", stage: "Sacred Fire", type: "Music",    headliner: false, desc: "Celtic sacred songlines with Jewels Wingfield — music as ceremony." },
+  { id: 413, name: "Introduction to Nature-Based Tarot", day: "sat", time: "16:00", stage: "Sacred Fire", type: "Workshop", headliner: false, desc: "An accessible introduction to using tarot in connection with nature." },
+  { id: 414, name: "Greeno",                             day: "sat", time: "20:00", stage: "Sacred Fire", type: "Music",    headliner: false, desc: "Music at the fire as the evening deepens." },
+  { id: 415, name: "Stories & Hot Chocolate round the Fire", day: "sat", time: "20:30", stage: "Sacred Fire", type: "Workshop", headliner: false, desc: "Saturday night stories and hot chocolate around the fire." },
+  { id: 416, name: "Arron Kirwan",                       day: "sat", time: "21:30", stage: "Sacred Fire", type: "Music",    headliner: false, desc: "Arron Kirwan performs at the sacred fire." },
+
+  { id: 420, name: "Morning Water Blessing",             day: "sun", time: "08:00", stage: "Sacred Fire", type: "Workshop", headliner: false, desc: "Final morning water blessing of the festival. A sacred start to the closing day." },
+  { id: 421, name: "'The Words That Come Before All Else'", day: "sun", time: "11:00", stage: "Sacred Fire", type: "Workshop", headliner: false, desc: "A gratitude address — the final Sunday morning gathering." },
+  { id: 422, name: "Caves of Power — Ancient Energy Techniques for Healing", day: "sun", time: "14:00", stage: "Sacred Fire", type: "Workshop", headliner: false, desc: "Ancient energy healing techniques from the caves of power tradition." },
+  { id: 423, name: "Vajrasati Yoga with Pandora",        day: "sun", time: "16:00", stage: "Sacred Fire", type: "Workshop", headliner: false, desc: "Yoga in the open air by the sacred fire with Pandora." },
+  { id: 424, name: "Together in Song — Vocal Activation Sound Journey", day: "sun", time: "18:00", stage: "Sacred Fire", type: "Music",    headliner: false, desc: "A collective vocal activation and sound journey to close the festival." },
+  { id: 425, name: "Closing Ceremony Drumming",          day: "sun", time: "20:00", stage: "Sacred Fire", type: "Workshop", headliner: false, desc: "The sacred fire closing ceremony — drumming, release, and gratitude as the weekend ends." },
+
+  // ═══════════════════════════════════════════
+  // GEOJAM & TEA OF LIFE
+  // ═══════════════════════════════════════════
+  { id: 500, name: "Grounded Jam",                       day: "fri", time: "10:00", stage: "GeoJam",      type: "Music",    headliner: false, desc: "Open participatory jam to ground yourself in the festival. All welcome." },
+  { id: 501, name: "Herbal Workshop — Lemon Balm & Sage Flower", day: "fri", time: "12:00", stage: "Tea of Life",  type: "Workshop", headliner: false, desc: "Learn about lemon balm and sage flower — their properties, uses and preparation." },
+  { id: 502, name: "Hum Resonance",                      day: "fri", time: "14:30", stage: "GeoJam",      type: "Workshop", headliner: false, desc: "Vibrational humming practice — tune your body and voice with the resonance of the earth." },
+  { id: 503, name: "A Taste of Tarot",                   day: "fri", time: "16:00", stage: "Tea of Life",  type: "Workshop", headliner: false, desc: "An accessible introduction to tarot — come curious." },
+  { id: 504, name: "Mike Chant & Abbie",                 day: "fri", time: "16:00", stage: "GeoJam",      type: "Music",    headliner: false, desc: "Live music at the GeoJam space." },
+  { id: 505, name: "Hoppi Wimbush",                      day: "fri", time: "20:00", stage: "GeoJam",      type: "Music",    headliner: false, desc: "Sacred music and ceremony from Hoppi Wimbush." },
+  { id: 506, name: "Queen Beezie",                       day: "fri", time: "21:30", stage: "GeoJam",      type: "Music",    headliner: false, desc: "Queen Beezie brings her power to the GeoJam space." },
+
+  { id: 510, name: "Grounded Jam",                       day: "sat", time: "09:30", stage: "GeoJam",      type: "Music",    headliner: false, desc: "Saturday morning grounded jam — open and participatory." },
+  { id: 511, name: "Tin Making Workshop",                day: "sat", time: "10:30", stage: "Tea of Life",  type: "Workshop", headliner: false, desc: "Make something beautiful from tin. A hands-on craft workshop." },
+  { id: 512, name: "Herbal Workshop — Three Mint, Wild Apple & Spearmint", day: "sat", time: "13:00", stage: "Tea of Life", type: "Workshop", headliner: false, desc: "Explore three mint varieties, wild apple and spearmint — their healing properties and uses." },
+  { id: 513, name: "Hum Resonance",                      day: "sat", time: "14:30", stage: "GeoJam",      type: "Workshop", headliner: false, desc: "Vibrational humming practice — Saturday afternoon edition." },
+  { id: 514, name: "The Sun: Tarot, Radiance & Vitality", day: "sat", time: "16:00", stage: "Tea of Life",  type: "Workshop", headliner: false, desc: "Tarot as a tool for exploring radiance and vitality — focusing on The Sun card." },
+  { id: 515, name: "Flux",                               day: "sat", time: "16:00", stage: "GeoJam",      type: "Music",    headliner: false, desc: "Live music — flowing, dynamic and present." },
+  { id: 516, name: "Greeno",                             day: "sat", time: "20:00", stage: "GeoJam",      type: "Music",    headliner: false, desc: "Greeno performs at the GeoJam." },
+  { id: 517, name: "Arron Kirwan",                       day: "sat", time: "21:30", stage: "GeoJam",      type: "Music",    headliner: false, desc: "Arron Kirwan at the GeoJam stage." },
+
+  { id: 520, name: "Herbal Workshop — Thyme & Nettle",  day: "sun", time: "12:00", stage: "Tea of Life",  type: "Workshop", headliner: false, desc: "Thyme and nettle — two powerhouse herbs explored in depth." },
+  { id: 521, name: "Hum Resonance",                      day: "sun", time: "15:00", stage: "GeoJam",      type: "Workshop", headliner: false, desc: "Final Hum Resonance of the weekend — send your vibrations out into the world." },
+  { id: 522, name: "Taste of Tarot",                     day: "sun", time: "16:00", stage: "Tea of Life",  type: "Workshop", headliner: false, desc: "A final taste of tarot to close the Tea of Life programme." },
+  { id: 523, name: "Closing Ceremony Drumming",          day: "sun", time: "20:00", stage: "GeoJam",      type: "Workshop", headliner: false, desc: "The GeoJam joins the closing ceremony with drumming." },
+
+  // ═══════════════════════════════════════════
+  // KIDS & YOUTH
+  // Open: Fri 10:00–18:30 · Sat 10:00–21:30 · Sun 10:00–18:30
+  // ═══════════════════════════════════════════
+  { id: 600, name: "Mini Terrariums",                    day: "fri", time: "10:00", stage: "Kids & Youth", type: "Kids", headliner: false, desc: "Build your own tiny world — make a mini terrarium to take home." },
+  { id: 601, name: "Dreamcatchers",                      day: "fri", time: "11:30", stage: "Kids & Youth", type: "Kids", headliner: false, desc: "Weave your own dreamcatcher with natural materials and colourful thread." },
+  { id: 602, name: "Movement with Fay",                  day: "fri", time: "11:30", stage: "Kids & Youth", type: "Kids", headliner: false, desc: "Outdoor movement session with Fay — playful, energetic and joyful." },
+  { id: 603, name: "Willow",                             day: "fri", time: "12:30", stage: "Kids & Youth", type: "Kids", headliner: false, desc: "Willow weaving craft session — create something beautiful from living willow." },
+  { id: 604, name: "Poi Making",                         day: "fri", time: "13:30", stage: "Kids & Youth", type: "Kids", headliner: false, desc: "Make your own poi and start learning to spin them." },
+  { id: 605, name: "Yoga (Outside)",                     day: "fri", time: "14:00", stage: "Kids & Youth", type: "Kids", headliner: false, desc: "Outdoor kids yoga — playful poses, breathing and fun." },
+  { id: 606, name: "Mooncraft",                          day: "fri", time: "14:30", stage: "Kids & Youth", type: "Kids", headliner: false, desc: "Moon-inspired crafting for young festival-goers." },
+  { id: 607, name: "Solwen Art",                         day: "fri", time: "15:30", stage: "Kids & Youth", type: "Kids", headliner: false, desc: "Creative art session with Solwen — expressive and exploratory." },
+  { id: 608, name: "Poi Making",                         day: "fri", time: "16:30", stage: "Kids & Youth", type: "Kids", headliner: false, desc: "Second poi making session — more spinning, more fun." },
+  { id: 609, name: "Driftwood Decor",                    day: "fri", time: "17:30", stage: "Kids & Youth", type: "Kids", headliner: false, desc: "Create beautiful decorations from driftwood and natural materials." },
+  { id: 610, name: "Amy Singing (Outside)",              day: "fri", time: "17:30", stage: "Kids & Youth", type: "Kids", headliner: false, desc: "Outdoor singing session with Amy — songs, rounds and vocal joy." },
+
+  { id: 620, name: "Willow",                             day: "sat", time: "10:00", stage: "Kids & Youth", type: "Kids", headliner: false, desc: "Saturday willow weaving session — create something beautiful." },
+  { id: 621, name: "Dreamcatchers",                      day: "sat", time: "11:30", stage: "Kids & Youth", type: "Kids", headliner: false, desc: "Weave your own dreamcatcher." },
+  { id: 622, name: "Movement with Fay (Outside)",        day: "sat", time: "12:00", stage: "Kids & Youth", type: "Kids", headliner: false, desc: "Saturday outdoor movement session with Fay." },
+  { id: 623, name: "Mini Terrariums",                    day: "sat", time: "13:00", stage: "Kids & Youth", type: "Kids", headliner: false, desc: "Build your own tiny world — mini terrarium workshop." },
+  { id: 624, name: "TrashCats",                          day: "sat", time: "13:30", stage: "Kids & Youth", type: "Kids", headliner: false, desc: "Creative recycling and upcycling — make art from trash." },
+  { id: 625, name: "Mooncraft",                          day: "sat", time: "14:30", stage: "Kids & Youth", type: "Kids", headliner: false, desc: "Moon-inspired crafting session." },
+  { id: 626, name: "Yoga (Outside)",                     day: "sat", time: "15:00", stage: "Kids & Youth", type: "Kids", headliner: false, desc: "Saturday outdoor kids yoga session." },
+  { id: 627, name: "Solwen Art",                         day: "sat", time: "15:30", stage: "Kids & Youth", type: "Kids", headliner: false, desc: "Creative art with Solwen." },
+  { id: 628, name: "Second Chance Charms",               day: "sat", time: "16:30", stage: "Kids & Youth", type: "Kids", headliner: false, desc: "Turn old things into new treasures — charm making from found objects." },
+  { id: 629, name: "Driftwood Decor",                    day: "sat", time: "17:30", stage: "Kids & Youth", type: "Kids", headliner: false, desc: "Create beautiful decorations from driftwood." },
+  { id: 630, name: "Amy Singing (Outside)",              day: "sat", time: "17:30", stage: "Kids & Youth", type: "Kids", headliner: false, desc: "Saturday outdoor singing with Amy." },
+  { id: 631, name: "Jester Workshop",                    day: "sat", time: "20:30", stage: "Kids & Youth", type: "Kids", headliner: false, desc: "Evening jester and clown skills workshop — a late treat for the young ones." },
+
+  { id: 640, name: "Mooncraft",                          day: "sun", time: "10:00", stage: "Kids & Youth", type: "Kids", headliner: false, desc: "Sunday moon crafting session." },
+  { id: 641, name: "TrashCats",                          day: "sun", time: "11:00", stage: "Kids & Youth", type: "Kids", headliner: false, desc: "Creative recycling — making art from trash." },
+  { id: 642, name: "Movement with Fay (Outside)",        day: "sun", time: "11:30", stage: "Kids & Youth", type: "Kids", headliner: false, desc: "Final outdoor movement session with Fay." },
+  { id: 643, name: "Solwen Art",                         day: "sun", time: "12:00", stage: "Kids & Youth", type: "Kids", headliner: false, desc: "Creative art with Solwen — final Sunday session." },
+  { id: 644, name: "Second Chance Charms",               day: "sun", time: "13:30", stage: "Kids & Youth", type: "Kids", headliner: false, desc: "Make charms from found and repurposed objects." },
+  { id: 645, name: "Willow",                             day: "sun", time: "14:00", stage: "Kids & Youth", type: "Kids", headliner: false, desc: "Sunday willow weaving session." },
+  { id: 646, name: "Yoga (Outside)",                     day: "sun", time: "15:00", stage: "Kids & Youth", type: "Kids", headliner: false, desc: "Final outdoor kids yoga of the weekend." },
+  { id: 647, name: "Dreamcatchers",                      day: "sun", time: "15:00", stage: "Kids & Youth", type: "Kids", headliner: false, desc: "Last dreamcatcher session — weave your memories of the weekend." },
+  { id: 648, name: "Mini Terrariums",                    day: "sun", time: "16:30", stage: "Kids & Youth", type: "Kids", headliner: false, desc: "Final mini terrarium workshop — take a little world home with you." },
+  { id: 649, name: "Tie Dye",                            day: "sun", time: "17:30", stage: "Kids & Youth", type: "Kids", headliner: false, desc: "Tie dye to close the Kids & Youth programme — colourful, messy and brilliant." },
+  { id: 650, name: "Amy Singing (Outside)",              day: "sun", time: "17:30", stage: "Kids & Youth", type: "Kids", headliner: false, desc: "Final outdoor singing with Amy to close the Kids & Youth weekend." },
+];
+
+// ——— STATE ———
+let saved = JSON.parse(localStorage.getItem('uf26_saved') || '[]');
+let notifications = JSON.parse(localStorage.getItem('uf26_notif') || '[]');
+let currentFilters = { day: 'all', stage: 'all', search: '', savedOnly: false };
+let currentView = 'grid';
+let modalActId = null;
+
+// ——— UTILITIES ———
+function isSaved(id) { return saved.includes(id); }
+function isNotified(id) { return notifications.includes(id); }
+
+function toggleSave(id) {
+  if (isSaved(id)) {
+    saved = saved.filter(s => s !== id);
+    showToast('Removed from your list');
+  } else {
+    saved.push(id);
+    showToast('Added to your list ♥');
+  }
+  localStorage.setItem('uf26_saved', JSON.stringify(saved));
+  pushToWorker();
+  render();
+}
+
+function toggleNotify(id) {
+  const act = ACTS.find(a => a.id === id);
+  if (isNotified(id)) {
+    notifications = notifications.filter(n => n !== id);
+    showToast('Reminder cancelled');
+  } else {
+    notifications.push(id);
+    showToast(`🔔 You'll be reminded before ${act.name}`);
+    scheduleNotification(act);
+  }
+  localStorage.setItem('uf26_notif', JSON.stringify(notifications));
+  if (modalActId === id) updateModalButtons(id);
+}
+
+function showToast(msg) {
+  const t = document.getElementById('toast');
+  t.textContent = msg;
+  t.classList.add('show');
+  setTimeout(() => t.classList.remove('show'), 2500);
+}
+
+// ——— NOTIFICATIONS ———
+function requestNotificationPermission() {
+  if (!('Notification' in window)) {
+    showToast('Notifications not supported in this browser');
+    return;
+  }
+  Notification.requestPermission().then(perm => {
+    updateNotifStatus();
+    if (perm === 'granted') {
+      showToast('Notifications enabled!');
+    } else {
+      showToast('Permission denied — check browser settings');
+    }
+  });
+}
+
+function updateNotifStatus() {
+  const el = document.getElementById('notif-status');
+  const btn = document.getElementById('enable-notifications');
+  if (!('Notification' in window)) {
+    el.textContent = 'Notifications not supported in this browser';
+    btn.disabled = true;
+  } else if (Notification.permission === 'granted') {
+    el.textContent = 'Notifications: enabled ✓';
+    btn.textContent = 'Enabled ✓';
+    btn.disabled = true;
+  } else if (Notification.permission === 'denied') {
+    el.textContent = 'Notifications blocked — allow in browser settings';
+    btn.textContent = 'Blocked';
+    btn.disabled = true;
+  } else {
+    el.textContent = 'Notifications: click to enable';
+    btn.disabled = false;
+  }
+}
+
+function scheduleNotification(act) {
+  if (!('Notification' in window) || Notification.permission !== 'granted') return;
+  // Map day + time to a real date (festival is July 2026 — placeholder dates)
+  const dateMap = { fri: '2026-06-19', sat: '2026-06-20', sun: '2026-06-21' };
+  const dateStr = dateMap[act.day];
+  if (!dateStr || !act.time) return;
+  const [h, m] = act.time.split(':').map(Number);
+  const actDate = new Date(`${dateStr}T${String(h).padStart(2,'0')}:${String(m).padStart(2,'0')}:00`);
+  const notifyAt = new Date(actDate.getTime() - 15 * 60 * 1000); // 15 min before
+  const now = new Date();
+  const delay = notifyAt - now;
+  if (delay > 0) {
+    setTimeout(() => {
+      new Notification(`Unearthed 2026 🔔`, {
+        body: `${act.name} starts in 15 minutes on ${act.stage}!`,
+        icon: 'https://www.unearthedfestival.co.uk/cdn/shop/files/full_yin_yang_generic.svg'
+      });
+    }, delay);
+  }
+}
+
+// ——— FILTERING ———
+function getFiltered() {
+  return ACTS.filter(act => {
+    if (currentFilters.day !== 'all' && displayDay(act) !== currentFilters.day) return false;
+    if (currentFilters.stage !== 'all' && act.stage !== currentFilters.stage) return false;
+    if (currentFilters.savedOnly && !isSaved(act.id)) return false;
+    if (currentFilters.search) {
+      const q = currentFilters.search.toLowerCase();
+      if (!act.name.toLowerCase().includes(q) &&
+          !act.stage.toLowerCase().includes(q) &&
+          !act.type.toLowerCase().includes(q) &&
+          !act.desc.toLowerCase().includes(q)) return false;
+    }
+    return true;
+  }).sort((a, b) => {
+    const dayOrder = { fri: 0, sat: 1, sun: 2 };
+    const da = displayDay(a), db = displayDay(b);
+    if (da !== db) return dayOrder[da] - dayOrder[db];
+    // Within the same display day, post-midnight acts sort after late-night ones
+    const ha = parseInt(a.time.split(':')[0], 10);
+    const hb = parseInt(b.time.split(':')[0], 10);
+    const sa = ha < DAY_CUTOFF_HOUR ? ha + 24 : ha;
+    const sb = hb < DAY_CUTOFF_HOUR ? hb + 24 : hb;
+    if (sa !== sb) return sa - sb;
+    return a.time.localeCompare(b.time);
+  });
+}
+
+function dayLabel(d) {
+  return { fri: 'Friday', sat: 'Saturday', sun: 'Sunday' }[d] || d;
+}
+
+// Festival day cutoff — anything before 06:00 belongs to the previous day's programme
+const DAY_CUTOFF_HOUR = 6;
+
+function displayDay(act) {
+  const h = parseInt(act.time.split(':')[0], 10);
+  if (h < DAY_CUTOFF_HOUR) {
+    const prev = { sat: 'fri', sun: 'sat' };
+    return prev[act.day] || act.day;
+  }
+  return act.day;
+}
+
+// ——— RENDER GRID ———
+function renderGrid(acts) {
+  const grid = document.getElementById('programme-grid');
+  const empty = document.getElementById('empty-state');
+  if (acts.length === 0) { grid.innerHTML = ''; empty.style.display = 'block'; return; }
+  empty.style.display = 'none';
+
+  let html = '';
+  let lastDay = null;
+  acts.forEach(act => {
+    const dday = displayDay(act);
+    if (dday !== lastDay) {
+      html += `<div class="day-header" style="grid-column:1/-1">${dayLabel(dday)}</div>`;
+      lastDay = dday;
+    }
+    html += cardHTML(act);
+  });
+  grid.innerHTML = html;
+  grid.querySelectorAll('.act-card').forEach(card => {
+    card.addEventListener('click', e => {
+      if (e.target.classList.contains('save-btn')) return;
+      openModal(+card.dataset.id);
+    });
+  });
+  grid.querySelectorAll('.save-btn').forEach(btn => {
+    btn.addEventListener('click', e => { e.stopPropagation(); toggleSave(+btn.dataset.id); });
+  });
+}
+
+function stageTag(stage) {
+  const c = STAGE_COLOURS[stage] || { bg: "#2a4a4a", text: "#8ab0b0" };
+  return `<span class="tag" style="background:${c.bg};color:${c.text}">${stage}</span>`;
+}
+
+function cardHTML(act) {
+  const s = isSaved(act.id);
+  return `<div class="act-card${s ? ' saved' : ''}" data-id="${act.id}">
+    <button class="save-btn" data-id="${act.id}" title="${s ? 'Remove' : 'Save'}">${s ? '♥' : '♡'}</button>
+    <div class="act-time">${act.time} · ${dayLabel(displayDay(act)).toUpperCase().slice(0,3)}</div>
+    <div class="act-name">${act.name}</div>
+    <div class="act-meta">
+      ${stageTag(act.stage)}
+      <span class="tag tag-type">${act.type}</span>
+      ${act.headliner ? '<span class="tag tag-headliner">Headliner</span>' : ''}
+      ${act.links && act.links.length ? '<span class="tag" style="background:var(--teal-d);color:var(--teal-l);border:1px solid var(--teal)">♫ Links</span>' : ''}
+    </div>
+  </div>`;
+}
+
+// ——— RENDER TIMELINE ———
+function renderTimeline(acts) {
+  const wrap = document.getElementById('timeline-content');
+  if (acts.length === 0) { wrap.innerHTML = '<div class="empty-state">Nothing to show</div>'; return; }
+
+  const byDay = {};
+  acts.forEach(a => {
+    const dday = displayDay(a);
+    if (!byDay[dday]) byDay[dday] = {};
+    if (!byDay[dday][a.stage]) byDay[dday][a.stage] = [];
+    byDay[dday][a.stage].push(a);
+  });
+
+  const dayOrder = ['fri', 'sat', 'sun'];
+  let html = '';
+  dayOrder.forEach(day => {
+    if (!byDay[day]) return;
+    html += `<div class="day-header">${dayLabel(day)}</div>`;
+    Object.entries(byDay[day]).forEach(([stage, stageActs]) => {
+      stageActs.sort((a, b) => {
+        const ha = parseInt(a.time.split(':')[0], 10);
+        const hb = parseInt(b.time.split(':')[0], 10);
+        const sa = ha < DAY_CUTOFF_HOUR ? ha + 24 : ha;
+        const sb = hb < DAY_CUTOFF_HOUR ? hb + 24 : hb;
+        return sa - sb;
+      });
+      html += `<div class="timeline-stage">
+        <div class="stage-label" style="background:${(STAGE_COLOURS[stage]||{bg:'#2a4a4a'}).bg};color:${(STAGE_COLOURS[stage]||{label:'#8ab0b0'}).label||'#fff'}">${stage}</div>
+        <div class="timeline-row">`;
+      stageActs.forEach(act => {
+        const s = isSaved(act.id);
+        html += `<div class="timeline-act${s ? ' saved' : ''}" data-id="${act.id}">
+          <span class="tl-time">${act.time}</span>
+          <span class="tl-name">${act.name}${act.headliner ? ' ★' : ''}</span>
+          <button class="tl-save" data-id="${act.id}">${s ? '♥' : '♡'}</button>
+        </div>`;
+      });
+      html += `</div></div>`;
+    });
+  });
+
+  wrap.innerHTML = html;
+  wrap.querySelectorAll('.timeline-act').forEach(el => {
+    el.addEventListener('click', e => {
+      if (e.target.classList.contains('tl-save')) return;
+      openModal(+el.dataset.id);
+    });
+  });
+  wrap.querySelectorAll('.tl-save').forEach(btn => {
+    btn.addEventListener('click', e => { e.stopPropagation(); toggleSave(+btn.dataset.id); });
+  });
+}
+
+// ——— RENDER MY PROGRAMME ———
+function renderMyProg() {
+  const list = document.getElementById('my-programme-list');
+  const mine = ACTS.filter(a => isSaved(a.id)).sort((a, b) => {
+    const dayOrder = { fri: 0, sat: 1, sun: 2 };
+    const da = displayDay(a), db = displayDay(b);
+    if (da !== db) return dayOrder[da] - dayOrder[db];
+    const ha = parseInt(a.time.split(':')[0], 10);
+    const hb = parseInt(b.time.split(':')[0], 10);
+    const sa = ha < DAY_CUTOFF_HOUR ? ha + 24 : ha;
+    const sb = hb < DAY_CUTOFF_HOUR ? hb + 24 : hb;
+    return sa - sb;
+  });
+
+  if (mine.length === 0) {
+    list.innerHTML = '<div class="my-prog-empty">You haven\'t saved anything yet.<br>Browse the programme and tap ♡ to add acts.</div>';
+    return;
+  }
+
+  let html = '';
+  let lastDay = null;
+  mine.forEach(act => {
+    const dday = displayDay(act);
+    if (dday !== lastDay) {
+      html += `<div class="day-header">${dayLabel(dday)}</div>`;
+      lastDay = dday;
+    }
+    const notified = isNotified(act.id);
+    html += `<div class="timeline-act saved" data-id="${act.id}" style="gap:0.75rem">
+      <span class="tl-time">${act.time}</span>
+      <span class="tl-name" style="flex:1">${act.name}</span>
+      <span class="tag tag-stage" style="font-size:0.55rem">${act.stage}</span>
+      <button class="tl-save" data-id="${act.id}" title="Remove">♥</button>
+      <button class="tl-save notify-act" data-id="${act.id}" title="${notified ? 'Cancel reminder' : 'Set reminder'}" style="color:${notified ? 'var(--amber)' : 'var(--bark)'}">${notified ? '🔔' : '🔕'}</button>
+    </div>`;
+  });
+  list.innerHTML = html;
+
+  list.querySelectorAll('.timeline-act').forEach(el => {
+    el.addEventListener('click', e => {
+      if (e.target.classList.contains('tl-save')) return;
+      openModal(+el.dataset.id);
+    });
+  });
+  list.querySelectorAll('.tl-save:not(.notify-act)').forEach(btn => {
+    btn.addEventListener('click', e => { e.stopPropagation(); toggleSave(+btn.dataset.id); });
+  });
+  list.querySelectorAll('.notify-act').forEach(btn => {
+    btn.addEventListener('click', e => { e.stopPropagation(); toggleNotify(+btn.dataset.id); });
+  });
+}
+
+// ——— MODAL ———
+function openModal(id) {
+  const act = ACTS.find(a => a.id === id);
+  if (!act) return;
+  modalActId = id;
+  document.getElementById('modal-time').textContent = `${dayLabel(displayDay(act))} · ${act.time} · ${act.stage}`;
+  document.getElementById('modal-name').textContent = act.name;
+  document.getElementById('modal-desc').textContent = act.desc;
+  const linksEl = document.getElementById('modal-links');
+  if (act.links && act.links.length) {
+    linksEl.innerHTML = act.links.map(l =>
+      `<a class="act-link${l.label==='Spotify'?' spotify':''}" href="${l.url}" target="_blank" rel="noopener">${l.label==='Spotify'?'♫ ':'↗ '}${l.label}</a>`
+    ).join('');
+    linksEl.style.display = 'flex';
+  } else {
+    linksEl.innerHTML = '';
+    linksEl.style.display = 'none';
+  }
+  const tags = document.getElementById('modal-tags');
+  tags.innerHTML = `${stageTag(act.stage)}<span class="tag tag-type">${act.type}</span>${act.headliner ? '<span class="tag tag-headliner">Headliner</span>' : ''}`;
+  updateModalButtons(id);
+  document.getElementById('modal').classList.add('open');
+}
+
+function updateModalButtons(id) {
+  const saveBtn = document.getElementById('modal-save');
+  const notifyBtn = document.getElementById('modal-notify');
+  if (isSaved(id)) {
+    saveBtn.textContent = '♥ Saved';
+    saveBtn.classList.add('saved');
+  } else {
+    saveBtn.textContent = '♡ Save to My List';
+    saveBtn.classList.remove('saved');
+  }
+  if (isNotified(id)) {
+    notifyBtn.textContent = '🔔 Reminder set';
+    notifyBtn.classList.add('notified');
+  } else {
+    notifyBtn.textContent = '🔕 Notify Me';
+    notifyBtn.classList.remove('notified');
+  }
+}
+
+document.getElementById('modal-close').addEventListener('click', () => {
+  document.getElementById('modal').classList.remove('open');
+});
+document.getElementById('modal').addEventListener('click', e => {
+  if (e.target === document.getElementById('modal')) document.getElementById('modal').classList.remove('open');
+});
+document.getElementById('modal-save').addEventListener('click', () => { toggleSave(modalActId); updateModalButtons(modalActId); });
+document.getElementById('modal-notify').addEventListener('click', () => {
+  if (Notification.permission !== 'granted') {
+    requestNotificationPermission().then && requestNotificationPermission();
+    return;
+  }
+  toggleNotify(modalActId);
+});
+
+// ——— MAIN RENDER ———
+function render() {
+  const acts = getFiltered();
+  const meta = document.getElementById('results-meta');
+  meta.textContent = `${acts.length} act${acts.length !== 1 ? 's' : ''} shown`;
+
+  if (currentView === 'grid') renderGrid(acts);
+  else if (currentView === 'timeline') renderTimeline(acts);
+  else if (currentView === 'myprog') renderMyProg();
+}
+
+// ——— EVENT LISTENERS ———
+document.getElementById('search').addEventListener('input', e => {
+  currentFilters.search = e.target.value.trim();
+  render();
+});
+
+document.getElementById('day-filters').addEventListener('click', e => {
+  if (!e.target.dataset.day) return;
+  currentFilters.day = e.target.dataset.day;
+  document.querySelectorAll('[data-day]').forEach(b => b.classList.toggle('active', b.dataset.day === currentFilters.day));
+  render();
+});
+
+
+document.getElementById('saved-toggle').addEventListener('click', () => {
+  currentFilters.savedOnly = !currentFilters.savedOnly;
+  document.getElementById('saved-toggle').classList.toggle('active', currentFilters.savedOnly);
+  render();
+});
+
+document.querySelectorAll('.view-tab').forEach(tab => {
+  tab.addEventListener('click', () => {
+    currentView = tab.dataset.view;
+    document.querySelectorAll('.view-tab').forEach(t => t.classList.toggle('active', t === tab));
+    document.getElementById('grid-view').style.display     = currentView === 'grid'     ? '' : 'none';
+    document.getElementById('timeline-view').style.display = currentView === 'timeline' ? '' : 'none';
+    document.getElementById('nownext-view').style.display  = currentView === 'nownext'  ? '' : 'none';
+    document.getElementById('myprog-view').style.display   = currentView === 'myprog'   ? '' : 'none';
+    if (currentView === 'nownext') {
+      document.getElementById('results-meta').textContent = '';
+      renderNowNext();
+    } else {
+      render();
+    }
+  });
+});
+
+document.getElementById('stage-filters').addEventListener('click', e => {
+  if (!e.target.dataset.stage) return;
+  currentFilters.stage = e.target.dataset.stage;
+  document.querySelectorAll('[data-stage]').forEach(b => b.classList.toggle('active', b.dataset.stage === currentFilters.stage));
+  render();
+});
+
+document.getElementById('enable-notifications').addEventListener('click', requestNotificationPermission);
+
+// Re-schedule saved notifications on load
+function restoreNotifications() {
+  if (!('Notification' in window) || Notification.permission !== 'granted') return;
+  notifications.forEach(id => {
+    const act = ACTS.find(a => a.id === id);
+    if (act) scheduleNotification(act);
+  });
+}
+
+// ——— PWA MANIFEST (inlined as blob) ———
+const MANIFEST = {
+  name: 'Unearthed Festival 2026',
+  short_name: 'Unearthed 26',
+  description: 'Your personal guide to Unearthed Festival 2026, Pembrokeshire',
+  start_url: './',
+  display: 'standalone',
+  background_color: '#1a1208',
+  theme_color: '#1a1208',
+  icons: [
+    { src: 'https://www.unearthedfestival.co.uk/cdn/shop/files/full_yin_yang_generic.svg', sizes: 'any', type: 'image/svg+xml', purpose: 'any maskable' }
+  ]
+};
+const manifestBlob = new Blob([JSON.stringify(MANIFEST)], { type: 'application/json' });
+document.getElementById('pwa-manifest').href = URL.createObjectURL(manifestBlob);
+
+// ——— SERVICE WORKER (inlined as blob) ———
+const CACHE_NAME = 'unearthed-2026-v1';
+const SW_CODE = `
+const CACHE_NAME = '${CACHE_NAME}';
+self.addEventListener('install', e => {
+  self.skipWaiting();
+  e.waitUntil(caches.open(CACHE_NAME).then(c => c.add('/')));
+});
+self.addEventListener('activate', e => {
+  e.waitUntil(clients.claim());
+  // Clean up old caches
+  e.waitUntil(caches.keys().then(keys =>
+    Promise.all(keys.filter(k => k !== CACHE_NAME).map(k => caches.delete(k)))
+  ));
+});
+self.addEventListener('fetch', e => {
+  e.respondWith(
+    caches.match(e.request).then(cached => {
+      const fresh = fetch(e.request).then(res => {
+        if (res && res.status === 200 && res.type === 'basic') {
+          caches.open(CACHE_NAME).then(c => c.put(e.request, res.clone()));
+        }
+        return res;
+      }).catch(() => cached);
+      return cached || fresh;
+    })
+  );
+});
+self.addEventListener('message', e => {
+  if (e.data === 'skipWaiting') self.skipWaiting();
+});
+`;
+
+if ('serviceWorker' in navigator) {
+  const swBlob = new Blob([SW_CODE], { type: 'application/javascript' });
+  const swUrl = URL.createObjectURL(swBlob);
+  navigator.serviceWorker.register(swUrl).then(reg => {
+    reg.addEventListener('updatefound', () => {
+      const newSW = reg.installing;
+      newSW.addEventListener('statechange', () => {
+        if (newSW.state === 'installed' && navigator.serviceWorker.controller) {
+          // New version available
+          const ut = document.getElementById('update-toast');
+          ut.classList.add('show');
+          ut.addEventListener('click', () => {
+            newSW.postMessage('skipWaiting');
+            window.location.reload();
+          });
+        }
+      });
+    });
+  }).catch(e => console.warn('SW registration failed:', e));
+}
+
+// ——— DEV MODE — gated on ?dev query param ———
+// To enable: add ?dev to the URL. Remove for production.
+const IS_DEV = new URLSearchParams(window.location.search).has('dev');
+let simulatedTime = null; // null = use real time
+
+// Festival time bounds (minutes since epoch for ranging)
+const FEST_START = new Date('2026-06-19T10:00:00').getTime();
+const FEST_END   = new Date('2026-06-21T03:00:00').getTime();
+const FEST_RANGE = FEST_END - FEST_START;
+
+function getNow() {
+  return simulatedTime ? new Date(simulatedTime) : new Date();
+}
+
+if (IS_DEV) {
+  document.getElementById('dev-overlay').classList.add('open');
+
+  const scrubber = document.getElementById('dev-scrubber');
+  const display  = document.getElementById('dev-time-display');
+
+  function updateDevDisplay() {
+    const t = simulatedTime ? new Date(simulatedTime) : new Date();
+    const dayNames = ['Sun','Mon','Tue','Wed','Thu','Fri','Sat'];
+    display.textContent = simulatedTime
+      ? `Simulating: ${dayNames[t.getDay()]} ${t.toLocaleTimeString('en-GB', {hour:'2-digit',minute:'2-digit'})}`
+      : `Real time: ${t.toLocaleTimeString('en-GB', {hour:'2-digit',minute:'2-digit'})}`;
+    if (currentView === 'nownext') renderNowNext();
+    updateClock();
+  }
+
+  scrubber.addEventListener('input', () => {
+    const pct = scrubber.value / 100;
+    simulatedTime = FEST_START + pct * FEST_RANGE;
+    updateDevDisplay();
+  });
+
+  document.getElementById('dev-close').addEventListener('click', () => {
+    document.getElementById('dev-overlay').classList.remove('open');
+  });
+
+  document.querySelectorAll('.dev-day-btn').forEach(btn => {
+    btn.addEventListener('click', () => {
+      const jump = btn.dataset.jump;
+      if (jump === 'real') {
+        simulatedTime = null;
+        scrubber.value = 0;
+      } else {
+        const [day, hour] = jump.split('-');
+        const dateMap = { fri: '2026-06-19', sat: '2026-06-20', sun: '2026-06-21' };
+        simulatedTime = new Date(`${dateMap[day]}T${hour.padStart(2,'0')}:00:00`).getTime();
+        scrubber.value = ((simulatedTime - FEST_START) / FEST_RANGE) * 100;
+      }
+      document.querySelectorAll('.dev-day-btn').forEach(b => b.classList.remove('active'));
+      btn.classList.add('active');
+      updateDevDisplay();
+    });
+  });
+
+  updateDevDisplay();
+}
+
+// ——— END TIME INFERENCE ———
+// Build a map of inferred end times for each act
+// End time = start of next act on same stage+day, or default 90 mins
+function buildEndTimes() {
+  const endTimes = {};
+  const byStageDay = {};
+
+  ACTS.forEach(act => {
+    const key = `${act.stage}||${act.day}`;
+    if (!byStageDay[key]) byStageDay[key] = [];
+    byStageDay[key].push(act);
+  });
+
+  Object.entries(byStageDay).forEach(([key, acts]) => {
+    acts.sort((a, b) => a.time.localeCompare(b.time));
+    acts.forEach((act, i) => {
+      if (i < acts.length - 1) {
+        endTimes[act.id] = acts[i + 1].time;
+      } else {
+        // Last act of night — add 90 mins
+        const [h, m] = act.time.split(':').map(Number);
+        const endMins = h * 60 + m + 90;
+        const endH = Math.floor(endMins / 60) % 24;
+        const endM = endMins % 60;
+        endTimes[act.id] = `${String(endH).padStart(2,'0')}:${String(endM).padStart(2,'0')}`;
+      }
+    });
+  });
+
+  return endTimes;
+}
+const END_TIMES = buildEndTimes();
+
+// Convert day+time string to a comparable Date
+function actDateTime(day, timeStr) {
+  const dateMap = { fri: '2026-06-19', sat: '2026-06-20', sun: '2026-06-21' };
+  // Handle times past midnight (00:xx, 01:xx, 02:xx, 03:xx on a festival night
+  // belong to the same "night" — treat them as next calendar day)
+  const [h] = timeStr.split(':').map(Number);
+  let date = dateMap[day];
+  if (h < 6) {
+    // Next calendar day
+    const d = new Date(date);
+    d.setDate(d.getDate() + 1);
+    date = d.toISOString().split('T')[0];
+  }
+  return new Date(`${date}T${timeStr}:00`);
+}
+
+// ——— NOW & NEXT LOGIC ———
+function getNowNextActs() {
+  const now = getNow();
+  const nowActs  = [];
+  const nextActs = [];
+
+  // Group by stage — find current and next for each
+  const stages = [...new Set(ACTS.map(a => a.stage))];
+
+  stages.forEach(stage => {
+    const stageActs = ACTS
+      .filter(a => a.stage === stage)
+      .sort((a, b) => {
+        const da = actDateTime(a.day, a.time);
+        const db = actDateTime(b.day, b.time);
+        return da - db;
+      });
+
+    let currentIdx = -1;
+    stageActs.forEach((act, i) => {
+      const start = actDateTime(act.day, act.time);
+      const endTime = END_TIMES[act.id];
+      const end = actDateTime(act.day, endTime);
+      if (now >= start && now < end) {
+        currentIdx = i;
+        nowActs.push(act);
+      }
+    });
+
+    // Next = first act starting after now (or after current)
+    const searchFrom = currentIdx >= 0 ? currentIdx + 1 : 0;
+    for (let i = searchFrom; i < stageActs.length; i++) {
+      const act = stageActs[i];
+      const start = actDateTime(act.day, act.time);
+      if (start > now) {
+        nextActs.push(act);
+        break;
+      }
+    }
+  });
+
+  return { nowActs, nextActs };
+}
+
+// ——— RENDER NOW & NEXT ———
+function updateClock() {
+  const el = document.getElementById('festival-clock');
+  if (!el) return;
+  const now = getNow();
+  const days = ['Sunday','Monday','Tuesday','Wednesday','Thursday','Friday','Saturday'];
+  const timeStr = now.toLocaleTimeString('en-GB', { hour: '2-digit', minute: '2-digit', second: '2-digit' });
+  el.textContent = `${days[now.getDay()]} · ${timeStr}${simulatedTime ? ' · simulated' : ''}`;
+}
+
+function nowCard(act, type) {
+  const s = isSaved(act.id);
+  const endTime = END_TIMES[act.id] || '';
+  return `<div class="now-card ${type} ${s ? 'saved' : ''}" data-id="${act.id}">
+    <button class="now-save-btn" data-id="${act.id}">${s ? '♥' : '♡'}</button>
+    <div class="now-card-time">${act.time}${endTime ? ' – ' + endTime : ''}</div>
+    <div class="now-card-name">${act.name}</div>
+    <div class="act-meta" style="margin-top:0.3rem">
+      ${stageTag(act.stage)}
+      <span class="tag tag-type">${act.type}</span>
+    </div>
+  </div>`;
+}
+
+function renderNowNext() {
+  const wrap = document.getElementById('nownext-content');
+  if (!wrap) return;
+  updateClock();
+
+  const { nowActs, nextActs } = getNowNextActs();
+
+  let html = '';
+
+  if (nowActs.length === 0 && nextActs.length === 0) {
+    const now = getNow();
+    const inFest = now >= new Date(FEST_START) && now <= new Date(FEST_END);
+    html = `<div class="nothing-on">${inFest
+      ? 'Nothing on right now — check back soon'
+      : 'The festival hasn\'t started yet — see you 19 June!'
+    }</div>`;
+  } else {
+    if (nowActs.length > 0) {
+      html += `<div class="now-section-label on-now">On Now</div>`;
+      html += `<div class="now-grid">`;
+      nowActs.sort((a,b) => a.stage.localeCompare(b.stage)).forEach(act => {
+        html += nowCard(act, 'is-now');
+      });
+      html += `</div>`;
+    }
+
+    if (nextActs.length > 0) {
+      html += `<div class="now-section-label up-next">Up Next</div>`;
+      html += `<div class="now-grid">`;
+      nextActs.sort((a,b) => a.stage.localeCompare(b.stage)).forEach(act => {
+        html += nowCard(act, 'is-next');
+      });
+      html += `</div>`;
+    }
+  }
+
+  wrap.innerHTML = html;
+
+  wrap.querySelectorAll('.now-card').forEach(card => {
+    card.addEventListener('click', e => {
+      if (e.target.classList.contains('now-save-btn')) return;
+      openModal(+card.dataset.id);
+    });
+  });
+  wrap.querySelectorAll('.now-save-btn').forEach(btn => {
+    btn.addEventListener('click', e => { e.stopPropagation(); toggleSave(+btn.dataset.id); });
+  });
+}
+
+// Auto-refresh Now & Next every 30 seconds
+setInterval(() => {
+  if (currentView === 'nownext') renderNowNext();
+  updateClock();
+}, 30000);
+
+// Clock ticks every second
+setInterval(updateClock, 1000);
+
+// Now pill button
+document.getElementById('now-pill-btn').addEventListener('click', () => {
+  currentView = 'nownext';
+  document.querySelectorAll('.view-tab').forEach(t => t.classList.toggle('active', t.dataset.view === 'nownext'));
+  document.getElementById('grid-view').style.display = 'none';
+  document.getElementById('timeline-view').style.display = 'none';
+  document.getElementById('nownext-view').style.display = '';
+  document.getElementById('myprog-view').style.display = 'none';
+  document.getElementById('results-meta').textContent = '';
+  renderNowNext();
+});
+
+// ——— INIT ———
+// After deploying your Cloudflare Worker, replace this with your worker URL:
+const WORKER_URL = 'https://unearthed-calendar.YOUR_SUBDOMAIN.workers.dev';
+
+// ——— USER IDENTITY ———
+// Generate a UUID on first visit and persist it — this is the key in KV
+function getOrCreateUUID() {
+  let uuid = localStorage.getItem('uf26_uuid');
+  if (!uuid) {
+    uuid = crypto.randomUUID();
+    localStorage.setItem('uf26_uuid', uuid);
+  }
+  return uuid;
+}
+const USER_UUID = getOrCreateUUID();
+
+// ——— PUSH SAVED ACTS TO WORKER ———
+let pushDebounceTimer = null;
+function pushToWorker() {
+  // Debounce — only push after 1s of no further changes
+  clearTimeout(pushDebounceTimer);
+  pushDebounceTimer = setTimeout(async () => {
+    // Build the minimal act objects needed for the calendar
+    const savedActs = ACTS.filter(a => saved.includes(a.id)).map(a => ({
+      id: a.id,
+      name: a.name,
+      day: a.day,
+      time: a.time,
+      stage: a.stage,
+      type: a.type,
+      desc: a.desc,
+    }));
+    try {
+      await fetch(`${WORKER_URL}/acts/${USER_UUID}`, {
+        method: 'PUT',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(savedActs),
+      });
+    } catch (e) {
+      // Silently fail — offline or worker not yet deployed
+      console.warn('Could not sync to worker:', e);
+    }
+  }, 1000);
+}
+
+// ——— SUBSCRIBE BUTTON ———
+document.getElementById('subscribe-btn').addEventListener('click', () => {
+  const webcalUrl = `webcal://${new URL(WORKER_URL).host}/calendar/${USER_UUID}`;
+  const httpsUrl = `${WORKER_URL}/calendar/${USER_UUID}`;
+
+  if (saved.length === 0) {
+    showToast('Save some acts first, then subscribe');
+    return;
+  }
+
+  // Try to open webcal:// directly — calendar apps intercept this
+  window.location.href = webcalUrl;
+
+  // Also show the URL so they can copy it manually
+  setTimeout(() => {
+    const msg = `Calendar URL copied! If it didn't open automatically, paste this into your calendar app:\n\n${httpsUrl}`;
+    navigator.clipboard?.writeText(httpsUrl).catch(() => {});
+    showToast('📅 Opening your calendar app…');
+  }, 300);
+});
+
+updateNotifStatus();
+restoreNotifications();
+render();
+</script>
+</body>
+</html>
