@@ -141,14 +141,16 @@
     transform: translateY(-50%);
     background: none;
     border: none;
-    color: var(--mid);
+    color: var(--cream-d);
     cursor: pointer;
-    font-size: 1.1rem;
+    font-size: 1.25rem;
     line-height: 1;
     padding: 0 0.1rem;
     display: none;
+    opacity: 0.75;
+    transition: opacity 0.15s, color 0.15s;
   }
-  #search-clear:hover { color: var(--cream); }
+  #search-clear:hover { color: var(--yellow); opacity: 1; }
 
   #search {
     width: 100%;
