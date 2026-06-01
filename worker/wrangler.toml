@@ -1,0 +1,7 @@
+name = "unearthed-calendar"
+main = "src/index.js"
+compatibility_date = "2024-01-01"
+
+[[kv_namespaces]]
+binding = "SAVED_ACTS"
+id = "d625f75a98e04042948bae135ea6343e"
