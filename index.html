@@ -65,45 +65,12 @@
     pointer-events: none;
   }
 
-  .festival-name {
-    font-family: 'Cinzel Decorative', serif;
-    font-size: clamp(2.5rem, 10vw, 5.5rem);
-    font-weight: 900;
-    letter-spacing: 0.04em;
-    color: var(--yellow);
-    text-shadow: 4px 4px 0 var(--orange), 7px 7px 0 var(--magenta);
-    line-height: 1;
+  .festival-logo {
+    max-width: min(300px, 80vw);
+    height: auto;
+    display: block;
+    margin: 0 auto;
     position: relative;
-  }
-
-  .festival-year {
-    font-family: 'Space Mono', monospace;
-    font-size: 0.8rem;
-    color: var(--teal-l);
-    letter-spacing: 0.4em;
-    margin-top: 0.5rem;
-    text-transform: uppercase;
-  }
-
-  .festival-subtitle {
-    font-size: 1.1rem;
-    font-style: italic;
-    color: var(--cream-d);
-    margin-top: 0.4rem;
-    font-weight: 300;
-  }
-
-  .header-dates {
-    display: inline-block;
-    margin-top: 0.8rem;
-    padding: 0.4rem 1.4rem;
-    background: var(--orange);
-    font-family: 'Space Mono', monospace;
-    font-size: 0.7rem;
-    color: #fff;
-    letter-spacing: 0.2em;
-    font-weight: 700;
-    text-transform: uppercase;
   }
 
   /* ——— STICKY BAR (tabs + controls) ——— */
@@ -314,7 +281,6 @@
   }
 
   .tag-type { background: var(--purple); color: #fff; border: none; }
-  .tag-headliner { background: var(--orange); color: #fff; border: none; }
 
   .save-btn {
     position: absolute;
@@ -716,10 +682,7 @@
 <body>
 
 <header>
-  <div class="festival-name">Unearthed</div>
-  <div class="festival-year">· 2026 Programme ·</div>
-  <div class="festival-subtitle">Music · Healing · Wilderness · Community</div>
-  <div class="header-dates">Pembrokeshire · 19–21 June 2026</div>
+  <img src="https://www.unearthedfestival.co.uk/cdn/shop/files/mainfestivallogo_date_location.png?v=1770309129&width=300" alt="Unearthed Festival" class="festival-logo">
 </header>
 
 <div class="sticky-bar">
@@ -858,275 +821,273 @@ const ACTS = [
   // ═══════════════════════════════════════════
   // FRIDAY — MAIN STAGE
   // ═══════════════════════════════════════════
-  { id: 1,   name: "Dance Workshop with Lucy Hurst",    day: "fri", time: "10:00", stage: "Main Stage",   type: "Workshop", headliner: false, desc: "Start Friday morning with movement. Lucy Hurst leads an energising dance workshop to open the weekend." },
-  { id: 2,   name: "Cosmic Smiles",                     day: "fri", time: "11:00", stage: "Main Stage",   type: "Music",    headliner: false, desc: "Space rock veterans from the Welsh Marches — swirling, cosmic and joyous. The perfect Friday morning opener.", links: [{label:"Spotify", url:"https://open.spotify.com/artist/1fBAtXPNZIdhgiRagbEQbG"}, {label:"song.link", url:"https://song.link/s/1Z9eMJvbXm2HLBnrU51fyQ"}] },
-  { id: 3,   name: "Twpsyn",                            day: "fri", time: "13:30", stage: "Main Stage",   type: "Music",    headliner: false, desc: "South Wales band formed in 2024 with a debut EP dropping in 2026. Anarchic, witty and utterly Welsh. FOMO Magazine called them \"one to be excited about.\"", links: [{label:"Spotify", url:"https://open.spotify.com/artist/02yBquhX7ueKHmZrxfjlim"}, {label:"song.link", url:"https://song.link/s/3nOKy96QYpqfjlom0w8IWP"}, {label:"YouTube", url:"https://www.youtube.com/@Twpsyn-band"}] },
-  { id: 4,   name: "Excellent Birds",                   day: "fri", time: "15:00", stage: "Main Stage",   type: "Music",    headliner: false, desc: "Live music with a wide-eyed, exploratory feel." },
-  { id: 5,   name: "The Pavillion",                     day: "fri", time: "17:30", stage: "Main Stage",   type: "Music",    headliner: false, desc: "A festival favourite bringing warmth and groove to the early evening." },
-  { id: 6,   name: "Amy True",                          day: "fri", time: "19:00", stage: "Main Stage",   type: "Music",    headliner: false, desc: "London-based Irish/Ugandan poet, rapper and singer-songwriter creating universal hip hop, soul and jazz. Has collaborated with Akala, Benjamin Zephaniah and Asian Dub Foundation.", links: [{label:"Spotify", url:"https://open.spotify.com/artist/7oVEKfsDB4c8t7RMPfNyWv"}, {label:"song.link", url:"https://song.link/s/6frl3NcROXxr9ZbLFtnrfR"}, {label:"Bandcamp", url:"https://amytrue.bandcamp.com"}] },
-  { id: 7,   name: "Samana",                            day: "fri", time: "20:30", stage: "Main Stage",   type: "Music",    headliner: false, desc: "British duo Rebecca Rose and Franklin Mockett, creating music from their analogue studio in the remote valleys of Wales. Forged from dreams, ancient rituals, and interior discovery. Utterly transcendent.", links: [{label:"Spotify", url:"https://open.spotify.com/artist/0gf5phmsYQSLhOvHfgazMz"}, {label:"song.link", url:"https://song.link/s/6GkKg6SwH9I73BMyq361S6"}, {label:"Website", url:"https://www.samanaroad.com"}, {label:"Facebook", url:"https://www.facebook.com/samanamusic"}] },
-  { id: 8,   name: "Beans on Toast",                    day: "fri", time: "22:00", stage: "Main Stage",   type: "Music",    headliner: true,  desc: "Jay McAllister has been the folk circuit's most beloved troublemaker since 2005 — fifteen albums, a Glastonbury appearance every year since 2007, and songs that make you laugh and ache in equal measure. Heart-on-sleeve songwriting for the wide-eyed and world-weary.", links: [{label:"Spotify", url:"https://open.spotify.com/artist/6fVeXD7D2RpFoR6bzNEDPo"}, {label:"song.link", url:"https://song.link/s/2n9HiDWSQ6WCRvxMZQTkwd"}, {label:"Website", url:"https://www.beansontoastmusic.com"}] },
-  { id: 9,   name: "Roni Size",                         day: "fri", time: "23:30", stage: "Main Stage",   type: "Music",    headliner: true,  desc: "Born and raised in Bristol, Roni Size won the Mercury Prize in 1997 with Reprazent's New Forms — one of the defining drum & bass albums ever made. A rare and special late-night headline set.", links: [{label:"Spotify", url:"https://open.spotify.com/artist/5UjqeSp9dX6Nrge7WdDukr"}, {label:"song.link", url:"https://song.link/s/3ZQs8RHO3lPZoUwpavPENL"}, {label:"Website", url:"https://ronisize.co.uk"}] },
-  { id: 10,  name: "DJ Moonshine",                      day: "fri", time: "01:00", stage: "Main Stage",   type: "DJ",       headliner: false, desc: "Late night selections keeping the energy flowing." },
-  { id: 11,  name: "Norizee",                            day: "fri", time: "02:00", stage: "Main Stage",   type: "DJ",       headliner: false, desc: "A husband-and-wife spiritual Drum & Bass duo — Nori (vocalist, relationship therapist) and Zee (producer, mix engineer). Fusing healing frequencies with rolling DnB and Jungle roots, their sets twist and evolve on a deeper level. Music as medicine, rhythm as awakening.", links: [{label:"SoundCloud", url:"https://soundcloud.com/the-dj-zent"}] },
+  { id: 1,   name: "Dance Workshop with Lucy Hurst",    day: "fri", time: "10:00", stage: "Main Stage",   type: "Workshop", desc: "" },
+  { id: 2,   name: "Cosmic Smiles",                     day: "fri", time: "11:00", stage: "Main Stage",   type: "Music", desc: "Space rock veterans from the Welsh Marches — swirling, cosmic and joyous. The perfect Friday morning opener.", links: [{label:"Spotify", url:"https://open.spotify.com/artist/1fBAtXPNZIdhgiRagbEQbG"}, {label:"song.link", url:"https://song.link/s/1Z9eMJvbXm2HLBnrU51fyQ"}] },
+  { id: 3,   name: "Twpsyn",                            day: "fri", time: "13:30", stage: "Main Stage",   type: "Music", desc: "South Wales band formed in 2024 with a debut EP dropping in 2026. Anarchic, witty and utterly Welsh. FOMO Magazine called them \"one to be excited about.\"", links: [{label:"Spotify", url:"https://open.spotify.com/artist/02yBquhX7ueKHmZrxfjlim"}, {label:"song.link", url:"https://song.link/s/3nOKy96QYpqfjlom0w8IWP"}, {label:"YouTube", url:"https://www.youtube.com/@Twpsyn-band"}] },
+  { id: 4,   name: "Excellent Birds",                   day: "fri", time: "15:00", stage: "Main Stage",   type: "Music", desc: "" },
+  { id: 5,   name: "The Pavillion",                     day: "fri", time: "17:30", stage: "Main Stage",   type: "Music", desc: "" },
+  { id: 6,   name: "Amy True",                          day: "fri", time: "19:00", stage: "Main Stage",   type: "Music", desc: "London-based Irish/Ugandan poet, rapper and singer-songwriter creating universal hip hop, soul and jazz. Has collaborated with Akala, Benjamin Zephaniah and Asian Dub Foundation.", links: [{label:"Spotify", url:"https://open.spotify.com/artist/7oVEKfsDB4c8t7RMPfNyWv"}, {label:"song.link", url:"https://song.link/s/6frl3NcROXxr9ZbLFtnrfR"}, {label:"Bandcamp", url:"https://amytrue.bandcamp.com"}] },
+  { id: 7,   name: "Samana",                            day: "fri", time: "20:30", stage: "Main Stage",   type: "Music", desc: "British duo Rebecca Rose and Franklin Mockett, creating music from their analogue studio in the remote valleys of Wales. Forged from dreams, ancient rituals, and interior discovery. Utterly transcendent.", links: [{label:"Spotify", url:"https://open.spotify.com/artist/0gf5phmsYQSLhOvHfgazMz"}, {label:"song.link", url:"https://song.link/s/6GkKg6SwH9I73BMyq361S6"}, {label:"Website", url:"https://www.samanaroad.com"}, {label:"Facebook", url:"https://www.facebook.com/samanamusic"}] },
+  { id: 8,   name: "Beans on Toast",                    day: "fri", time: "22:00", stage: "Main Stage",   type: "Music",  desc: "Jay McAllister has been the folk circuit's most beloved troublemaker since 2005 — fifteen albums, a Glastonbury appearance every year since 2007, and songs that make you laugh and ache in equal measure. Heart-on-sleeve songwriting for the wide-eyed and world-weary.", links: [{label:"Spotify", url:"https://open.spotify.com/artist/6fVeXD7D2RpFoR6bzNEDPo"}, {label:"song.link", url:"https://song.link/s/2n9HiDWSQ6WCRvxMZQTkwd"}, {label:"Website", url:"https://www.beansontoastmusic.com"}] },
+  { id: 9,   name: "Roni Size",                         day: "fri", time: "23:30", stage: "Main Stage",   type: "Music",  desc: "Born and raised in Bristol, Roni Size won the Mercury Prize in 1997 with Reprazent's New Forms — one of the defining drum & bass albums ever made. A rare and special late-night headline set.", links: [{label:"Spotify", url:"https://open.spotify.com/artist/5UjqeSp9dX6Nrge7WdDukr"}, {label:"song.link", url:"https://song.link/s/3ZQs8RHO3lPZoUwpavPENL"}, {label:"Website", url:"https://ronisize.co.uk"}] },
+  { id: 10,  name: "DJ Moonshine",                      day: "fri", time: "01:00", stage: "Main Stage",   type: "DJ", desc: "" },
+  { id: 11,  name: "Norizee",                            day: "fri", time: "02:00", stage: "Main Stage",   type: "DJ", desc: "A husband-and-wife spiritual Drum & Bass duo — Nori (vocalist, relationship therapist) and Zee (producer, mix engineer). Fusing healing frequencies with rolling DnB and Jungle roots, their sets twist and evolve on a deeper level. Music as medicine, rhythm as awakening.", links: [{label:"SoundCloud", url:"https://soundcloud.com/the-dj-zent"}] },
 
   // FRIDAY — DUB CORNER
-  { id: 20,  name: "Roberto Canassa",                   day: "fri", time: "11:00", stage: "Dub Corner",   type: "Music",    headliner: false, desc: "World music 2hr set. Rich, soulful and globally informed." },
-  { id: 21,  name: "Jacob White",                       day: "fri", time: "13:00", stage: "Dub Corner",   type: "DJ",       headliner: false, desc: "Roots and dub selections from one of the corner's finest." },
-  { id: 22,  name: "David Taylor",                      day: "fri", time: "15:00", stage: "Dub Corner",   type: "DJ",       headliner: false, desc: "Heavyweight dub frequencies. Bass you can feel." },
-  { id: 23,  name: "Steve J Rad",                       day: "fri", time: "18:00", stage: "Dub Corner",   type: "DJ",       headliner: false, desc: "Roots and culture with deep bass conviction." },
-  { id: 24,  name: "Ozimu Sound",                       day: "fri", time: "19:00", stage: "Dub Corner",   type: "DJ",       headliner: false, desc: "Sound system culture at its finest." },
-  { id: 25,  name: "Unity Sound",                       day: "fri", time: "20:00", stage: "Dub Corner",   type: "DJ",       headliner: false, desc: "Unity in bass — bringing people together through dub." },
-  { id: 26,  name: "Upstepper",                         day: "fri", time: "21:00", stage: "Dub Corner",   type: "DJ",       headliner: false, desc: "Stepping up the riddim into the night." },
-  { id: 27,  name: "Idris Soundsystem",                 day: "fri", time: "22:00", stage: "Dub Corner",   type: "DJ",       headliner: false, desc: "Full sound system power for the late hours." },
-  { id: 28,  name: "DJ Sal",                            day: "fri", time: "23:00", stage: "Dub Corner",   type: "DJ",       headliner: false, desc: "Night-time selections heading deep into the dark." },
-  { id: 29,  name: "DJ Uncle Funk",                     day: "fri", time: "00:00", stage: "Dub Corner",   type: "DJ",       headliner: false, desc: "Funk, soul and bass into the early morning." },
-  { id: 30,  name: "Maya Mitten",                       day: "fri", time: "01:00", stage: "Dub Corner",   type: "DJ",       headliner: false, desc: "Leftfield selections and beautiful sonic surprises." },
-  { id: 31,  name: "Silent Disco (Menikoo / Rackitt)",  day: "fri", time: "02:00", stage: "Dub Corner",   type: "DJ",       headliner: false, desc: "Silent Disco: Menikoo 2–4am, Rackitt 4–6am." },
+  { id: 20,  name: "Roberto Canassa",                   day: "fri", time: "11:00", stage: "Dub Corner",   type: "Music", desc: "" },
+  { id: 21,  name: "Jacob White",                       day: "fri", time: "13:00", stage: "Dub Corner",   type: "DJ", desc: "" },
+  { id: 22,  name: "David Taylor",                      day: "fri", time: "15:00", stage: "Dub Corner",   type: "DJ", desc: "" },
+  { id: 23,  name: "Steve J Rad",                       day: "fri", time: "18:00", stage: "Dub Corner",   type: "DJ", desc: "" },
+  { id: 24,  name: "Ozimu Sound",                       day: "fri", time: "19:00", stage: "Dub Corner",   type: "DJ", desc: "" },
+  { id: 25,  name: "Unity Sound",                       day: "fri", time: "20:00", stage: "Dub Corner",   type: "DJ", desc: "" },
+  { id: 26,  name: "Upstepper",                         day: "fri", time: "21:00", stage: "Dub Corner",   type: "DJ", desc: "" },
+  { id: 27,  name: "Idris Soundsystem",                 day: "fri", time: "22:00", stage: "Dub Corner",   type: "DJ", desc: "" },
+  { id: 28,  name: "DJ Sal",                            day: "fri", time: "23:00", stage: "Dub Corner",   type: "DJ", desc: "" },
+  { id: 29,  name: "DJ Uncle Funk",                     day: "fri", time: "00:00", stage: "Dub Corner",   type: "DJ", desc: "" },
+  { id: 30,  name: "Maya Mitten",                       day: "fri", time: "01:00", stage: "Dub Corner",   type: "DJ", desc: "" },
+  { id: 31,  name: "Silent Disco (Menikoo / Rackitt)",  day: "fri", time: "02:00", stage: "Dub Corner",   type: "DJ", desc: "" },
 
   // FRIDAY — COSMIC CWTSH
-  { id: 40,  name: "Lusärdi",                           day: "fri", time: "16:00", stage: "Cosmic Cwtsh", type: "DJ",       headliner: false, desc: "Forest floor electronics and verdant bass frequencies.", links: [{label:"SoundCloud", url:"https://soundcloud.com/eugenelusardi"}] },
-  { id: 41,  name: "Daszol",                            day: "fri", time: "18:00", stage: "Cosmic Cwtsh", type: "DJ",       headliner: false, desc: "Avant-garde electronic sound with cinematic scope." },
-  { id: 42,  name: "Arwenvarda",                        day: "fri", time: "19:30", stage: "Cosmic Cwtsh", type: "Music",    headliner: false, desc: "Celtic folk and sacred song. Ancient sounds for open hearts.", links: [{label:"SoundCloud", url:"https://soundcloud.com/user-57378154"}] },
-  { id: 43,  name: "Wholly Moses",                      day: "fri", time: "21:00", stage: "Cosmic Cwtsh", type: "DJ",       headliner: false, desc: "Roots, righteousness and excellent selection." },
-  { id: 44,  name: "Sylark",                            day: "fri", time: "22:30", stage: "Cosmic Cwtsh", type: "DJ",       headliner: false, desc: "Driving electronic selections deep into the night." },
-  { id: 45,  name: "DJ LSGD",                           day: "fri", time: "00:00", stage: "Cosmic Cwtsh", type: "DJ",       headliner: false, desc: "Heavy selector with a taste for the rare and righteous." },
-  { id: 46,  name: "Psymoth",                           day: "fri", time: "01:30", stage: "Cosmic Cwtsh", type: "DJ",       headliner: false, desc: "Psychedelic and driving — for those still dancing at 1:30am." },
+  { id: 40,  name: "Lusärdi",                           day: "fri", time: "16:00", stage: "Cosmic Cwtsh", type: "DJ", desc: "", links: [{label:"SoundCloud", url:"https://soundcloud.com/eugenelusardi"}] },
+  { id: 41,  name: "Daszol",                            day: "fri", time: "18:00", stage: "Cosmic Cwtsh", type: "DJ", desc: "" },
+  { id: 42,  name: "Arwenvarda",                        day: "fri", time: "19:30", stage: "Cosmic Cwtsh", type: "DJ", desc: "", links: [{label:"SoundCloud", url:"https://soundcloud.com/user-57378154"}] },
+  { id: 43,  name: "Wholly Moses",                      day: "fri", time: "21:00", stage: "Cosmic Cwtsh", type: "DJ", desc: "" },
+  { id: 44,  name: "Sylark",                            day: "fri", time: "22:30", stage: "Cosmic Cwtsh", type: "DJ", desc: "" },
+  { id: 45,  name: "DJ LSGD",                           day: "fri", time: "00:00", stage: "Cosmic Cwtsh", type: "DJ", desc: "" },
+  { id: 46,  name: "Psymoth",                           day: "fri", time: "01:30", stage: "Cosmic Cwtsh", type: "DJ", desc: "" },
 
   // FRIDAY — FREEDOM STAGE
-  { id: 50,  name: "Dance Workshop 2–4",                day: "fri", time: "14:00", stage: "Freedom Stage", type: "Workshop", headliner: false, desc: "Grand Finale Dance Practice — learn the moves before the big moment." },
-  { id: 51,  name: "Open Stage / Mic",                  day: "fri", time: "17:00", stage: "Freedom Stage", type: "Workshop", headliner: false, desc: "Open platform for all — step up and share your gift." },
-  { id: 52,  name: "NKC & Jack Ford",                   day: "fri", time: "18:00", stage: "Freedom Stage", type: "Music",    headliner: false, desc: "Collaborative set spanning hip-hop, soul and electronics." },
-  { id: 53,  name: "Ari Anne Wen",                      day: "fri", time: "19:00", stage: "Freedom Stage", type: "DJ",       headliner: false, desc: "Melodic and expansive electronic selections." },
-  { id: 54,  name: "Iestyn Gordon",                     day: "fri", time: "20:00", stage: "Freedom Stage", type: "DJ",       headliner: false, desc: "Deep grooves and Welsh soul." },
-  { id: 55,  name: "Luke Elford & Josie",               day: "fri", time: "21:00", stage: "Freedom Stage", type: "Music",    headliner: false, desc: "A special collaborative performance into the Friday night." },
-  { id: 56,  name: "Alexander Canwell",                 day: "fri", time: "22:00", stage: "Freedom Stage", type: "DJ",       headliner: false, desc: "Thoughtful, deep electronic selections." },
-  { id: 57,  name: "Freaky Deaky Takeover",             day: "fri", time: "23:00", stage: "Freedom Stage", type: "Music",    headliner: false, desc: "Comedy / Theatre: Freaky Deaky take over the Freedom Stage for a late-night spectacular." },
+  { id: 50,  name: "Dance Workshop 2–4",                day: "fri", time: "14:00", stage: "Freedom Stage", type: "Workshop", desc: "" },
+  { id: 51,  name: "Open Stage / Mic",                  day: "fri", time: "17:00", stage: "Freedom Stage", type: "Workshop", desc: "" },
+  { id: 52,  name: "NKC & Jack Ford",                   day: "fri", time: "18:00", stage: "Freedom Stage", type: "Music", desc: "" },
+  { id: 53,  name: "Ari Anne Wen",                      day: "fri", time: "19:00", stage: "Freedom Stage", type: "DJ", desc: "" },
+  { id: 54,  name: "Iestyn Gordon",                     day: "fri", time: "20:00", stage: "Freedom Stage", type: "DJ", desc: "" },
+  { id: 55,  name: "Luke Elford & Josie",               day: "fri", time: "21:00", stage: "Freedom Stage", type: "Music", desc: "" },
+  { id: 56,  name: "Alexander Canwell",                 day: "fri", time: "22:00", stage: "Freedom Stage", type: "DJ", desc: "" },
+  { id: 57,  name: "Freaky Deaky Takeover",             day: "fri", time: "23:00", stage: "Freedom Stage", type: "Music", desc: "" },
 
   // ═══════════════════════════════════════════
   // SATURDAY — MAIN STAGE
   // ═══════════════════════════════════════════
-  { id: 100, name: "Manifestation Breathwork — Freya MacFarlane", day: "sat", time: "10:00", stage: "Main Stage", type: "Workshop", headliner: false, desc: "Open Saturday with intention. Freya MacFarlane leads a powerful breathwork and manifestation session on the main stage — a collective reset before the day unfolds." },
-  { id: 101, name: "Bonnie Medicine",                   day: "sat", time: "12:00", stage: "Main Stage",   type: "Music",    headliner: false, desc: "Singer, songweaver and medicine musician from Scotland. Her music fuses Celtic roots with New Age folk and spiritual overtones — songs of remembrance, land, unity and freedom.", links: [{label:"Spotify", url:"https://open.spotify.com/artist/2Z6yCCJNCe0KfixGqJncRi"}, {label:"song.link", url:"https://song.link/s/4PD5czw2aEfphn5cIWe25s"}, {label:"Bandcamp", url:"https://bonniemedicine.bandcamp.com"}] },
-  { id: 102, name: "Tomos Newman",                      day: "sat", time: "13:30", stage: "Main Stage",   type: "Music",    headliner: false, desc: "Intimate, beautifully crafted songs from a rising Welsh voice.", links: [{label:"Spotify", url:"https://open.spotify.com/artist/2B1Y51FScTXm9gG6c4nTJk"}, {label:"song.link", url:"https://song.link/s/0NvHGD4lUML9au3lxiC302"}] },
-  { id: 103, name: "Queen Beezie",                      day: "sat", time: "15:00", stage: "Main Stage",   type: "Music",    headliner: false, desc: "Powerhouse performer blending grime, soul and uncut charisma.", links: [{label:"Spotify", url:"https://open.spotify.com/artist/3JN0z89EyKXHabR9KCCevt"}, {label:"song.link", url:"https://song.link/s/6u8eRWrJpJbDqfbl6WPb5c"}] },
-  { id: 104, name: "Twmpath",                           day: "sat", time: "17:30", stage: "Main Stage",   type: "Music",    headliner: false, desc: "A traditional Welsh ceilidh — communal dancing with a caller and live folk band. No experience needed, just willingness to join in. One of the great Unearthed traditions." },
-  { id: 105, name: "Dan Bettridge",                     day: "sat", time: "19:00", stage: "Main Stage",   type: "Music",    headliner: false, desc: "Welsh singer-songwriter. Heartfelt, precise, utterly magnetic.", links: [{label:"Spotify", url:"https://open.spotify.com/artist/626PNFpj7VtxuYllBq7Ju1"}, {label:"song.link", url:"https://song.link/s/7g2V6DKBPFzg5OG7I52fQz"}, {label:"Website", url:"https://www.danbettridge.com"}] },
-  { id: 106, name: "Sky Barkers",                       day: "sat", time: "20:30", stage: "Main Stage",   type: "Music",    headliner: false, desc: "Indie rock with teeth. Loud, melodic, cathartic.", links: [{label:"Spotify", url:"https://open.spotify.com/artist/3LIG6kfiFeiLBgYn4PBW6u"}, {label:"song.link", url:"https://song.link/s/6k3FgAt7RBal5AgbuC6iYx"}, {label:"SoundCloud", url:"https://soundcloud.com/sky-barkers"}] },
-  { id: 107, name: "The League of Rebelz",              day: "sat", time: "22:00", stage: "Main Stage",   type: "Music",    headliner: false, desc: "High-energy reggae and dancehall unit bringing righteous fire.", links: [{label:"Spotify", url:"https://open.spotify.com/artist/0hzcRkyNO09e1xzwy58EpI"}, {label:"song.link", url:"https://song.link/s/4evYrkFEFayUh9ubKEsvlZ"}] },
-  { id: 108, name: "Goldie Lookin Chain",               day: "sat", time: "23:30", stage: "Main Stage",   type: "Music",    headliner: true,  desc: "Newport's finest — the GLC have been Wales's most irreverent rap collective since the early 2000s. Massive in da house. Guns Don't Kill People, Rappers Do. You Are Not a Chav. A riotous, essential late-night headline.", links: [{label:"Spotify", url:"https://open.spotify.com/artist/0pobPzcYFoVSprUnwY2Bio"}, {label:"song.link", url:"https://song.link/s/0pls9LP50xr0ZLLmSdxPug"}, {label:"Facebook", url:"https://www.facebook.com/Goldielookinchain"}, {label:"Website", url:"http://www.youknowsit.co.uk/"}] },
-  { id: 109, name: "Timbali Live ft Natty D & Man Up A Tree", day: "sat", time: "01:00", stage: "Main Stage", type: "Music", headliner: false, desc: "Roots reggae collaboration into the small hours. Rootsy, warm and righteous.", links: [{label:"Spotify", url:"https://open.spotify.com/artist/3uhmYgpdouANfuan9nk0tq"}, {label:"song.link", url:"https://song.link/s/4irdOYgxMEl9EUE3lTCXjj"}] },
-  { id: 110, name: "DJ Uncle Funk",                     day: "sat", time: "02:00", stage: "Main Stage",   type: "DJ",       headliner: false, desc: "Closing out the main stage with funk and soul." },
+  { id: 100, name: "Manifestation Breathwork — Freya MacFarlane", day: "sat", time: "10:00", stage: "Main Stage", type: "Workshop", desc: "" },
+  { id: 101, name: "Bonnie Medicine",                   day: "sat", time: "12:00", stage: "Main Stage",   type: "Music", desc: "Singer, songweaver and medicine musician from Scotland. Her music fuses Celtic roots with New Age folk and spiritual overtones — songs of remembrance, land, unity and freedom.", links: [{label:"Spotify", url:"https://open.spotify.com/artist/2Z6yCCJNCe0KfixGqJncRi"}, {label:"song.link", url:"https://song.link/s/4PD5czw2aEfphn5cIWe25s"}, {label:"Bandcamp", url:"https://bonniemedicine.bandcamp.com"}] },
+  { id: 102, name: "Tomos Newman",                      day: "sat", time: "13:30", stage: "Main Stage",   type: "Music", desc: "", links: [{label:"Spotify", url:"https://open.spotify.com/artist/2B1Y51FScTXm9gG6c4nTJk"}, {label:"song.link", url:"https://song.link/s/0NvHGD4lUML9au3lxiC302"}] },
+  { id: 103, name: "Queen Beezie",                      day: "sat", time: "15:00", stage: "Main Stage",   type: "Music", desc: "", links: [{label:"Spotify", url:"https://open.spotify.com/artist/3JN0z89EyKXHabR9KCCevt"}, {label:"song.link", url:"https://song.link/s/6u8eRWrJpJbDqfbl6WPb5c"}] },
+  { id: 104, name: "Twmpath",                           day: "sat", time: "17:30", stage: "Main Stage",   type: "Music", desc: "A traditional Welsh ceilidh — communal dancing with a caller and live folk band. No experience needed, just willingness to join in. One of the great Unearthed traditions." },
+  { id: 105, name: "Dan Bettridge",                     day: "sat", time: "19:00", stage: "Main Stage",   type: "Music", desc: "", links: [{label:"Spotify", url:"https://open.spotify.com/artist/626PNFpj7VtxuYllBq7Ju1"}, {label:"song.link", url:"https://song.link/s/7g2V6DKBPFzg5OG7I52fQz"}, {label:"Website", url:"https://www.danbettridge.com"}] },
+  { id: 106, name: "Sky Barkers",                       day: "sat", time: "20:30", stage: "Main Stage",   type: "Music", desc: "", links: [{label:"Spotify", url:"https://open.spotify.com/artist/3LIG6kfiFeiLBgYn4PBW6u"}, {label:"song.link", url:"https://song.link/s/6k3FgAt7RBal5AgbuC6iYx"}, {label:"SoundCloud", url:"https://soundcloud.com/sky-barkers"}] },
+  { id: 107, name: "The League of Rebelz",              day: "sat", time: "22:00", stage: "Main Stage",   type: "Music", desc: "", links: [{label:"Spotify", url:"https://open.spotify.com/artist/0hzcRkyNO09e1xzwy58EpI"}, {label:"song.link", url:"https://song.link/s/4evYrkFEFayUh9ubKEsvlZ"}] },
+  { id: 108, name: "Goldie Lookin Chain",               day: "sat", time: "23:30", stage: "Main Stage",   type: "Music",  desc: "Newport's finest — the GLC have been Wales's most irreverent rap collective since the early 2000s. Massive in da house. Guns Don't Kill People, Rappers Do. You Are Not a Chav. A riotous, essential late-night headline.", links: [{label:"Spotify", url:"https://open.spotify.com/artist/0pobPzcYFoVSprUnwY2Bio"}, {label:"song.link", url:"https://song.link/s/0pls9LP50xr0ZLLmSdxPug"}, {label:"Facebook", url:"https://www.facebook.com/Goldielookinchain"}, {label:"Website", url:"http://www.youknowsit.co.uk/"}] },
+  { id: 109, name: "Timbali Live ft Natty D & Man Up A Tree", day: "sat", time: "01:00", stage: "Main Stage", type: "Music", desc: "", links: [{label:"Spotify", url:"https://open.spotify.com/artist/3uhmYgpdouANfuan9nk0tq"}, {label:"song.link", url:"https://song.link/s/4irdOYgxMEl9EUE3lTCXjj"}] },
+  { id: 110, name: "DJ Uncle Funk",                     day: "sat", time: "02:00", stage: "Main Stage",   type: "DJ", desc: "" },
 
   // SATURDAY — DUB CORNER
-  { id: 120, name: "Jacob White",                       day: "sat", time: "11:00", stage: "Dub Corner",   type: "DJ",       headliner: false, desc: "World music 2hr set to open the Dub Corner on Saturday." },
-  { id: 121, name: "David Taylor",                      day: "sat", time: "13:00", stage: "Dub Corner",   type: "DJ",       headliner: false, desc: "Heavyweight dub frequencies. Bass you can feel." },
-  { id: 122, name: "Jiva Harrison",                     day: "sat", time: "15:00", stage: "Dub Corner",   type: "DJ",       headliner: false, desc: "Deep, conscious selections from a masterful selector." },
-  { id: 123, name: "Dub in the Barn",                   day: "sat", time: "17:00", stage: "Dub Corner",   type: "Music",    headliner: false, desc: "The barn shakes with full dub sound system pressure." },
-  { id: 124, name: "Unity Sound",                       day: "sat", time: "18:00", stage: "Dub Corner",   type: "DJ",       headliner: false, desc: "Unity in bass — bringing people together through dub." },
-  { id: 125, name: "Steve J Rad",                       day: "sat", time: "19:00", stage: "Dub Corner",   type: "DJ",       headliner: false, desc: "Roots and culture with deep bass conviction." },
-  { id: 126, name: "Idris Soundsystem",                 day: "sat", time: "20:00", stage: "Dub Corner",   type: "DJ",       headliner: false, desc: "Full sound system power for the late hours." },
-  { id: 127, name: "Nathan Stardust",                   day: "sat", time: "21:00", stage: "Dub Corner",   type: "DJ",       headliner: false, desc: "Cosmic frequencies from a stellar selector." },
-  { id: 128, name: "Upstepper",                         day: "sat", time: "22:00", stage: "Dub Corner",   type: "DJ",       headliner: false, desc: "Stepping up the riddim deep into Saturday night." },
-  { id: 129, name: "Dub in the Barn",                   day: "sat", time: "23:00", stage: "Dub Corner",   type: "Music",    headliner: false, desc: "Late night dub in the barn — deep and hypnotic." },
-  { id: 130, name: "Solja",                             day: "sat", time: "00:00", stage: "Dub Corner",   type: "DJ",       headliner: false, desc: "Into midnight with driving bass selections." },
-  { id: 131, name: "Pendub",                            day: "sat", time: "01:00", stage: "Dub Corner",   type: "DJ",       headliner: false, desc: "Pembrokeshire dub and roots. Home crowd pride, late night edition." },
-  { id: 132, name: "Silent Disco (Arianarchy / Morfa)", day: "sat", time: "02:00", stage: "Dub Corner",   type: "DJ",       headliner: false, desc: "Silent Disco: Arianarchy 2–4am, Morfa 4–6am." },
+  { id: 120, name: "Jacob White",                       day: "sat", time: "11:00", stage: "Dub Corner",   type: "DJ", desc: "" },
+  { id: 121, name: "David Taylor",                      day: "sat", time: "13:00", stage: "Dub Corner",   type: "DJ", desc: "" },
+  { id: 122, name: "Jiva Harrison",                     day: "sat", time: "15:00", stage: "Dub Corner",   type: "DJ", desc: "" },
+  { id: 123, name: "Dub in the Barn",                   day: "sat", time: "17:00", stage: "Dub Corner",   type: "Music", desc: "" },
+  { id: 124, name: "Unity Sound",                       day: "sat", time: "18:00", stage: "Dub Corner",   type: "DJ", desc: "" },
+  { id: 125, name: "Steve J Rad",                       day: "sat", time: "19:00", stage: "Dub Corner",   type: "DJ", desc: "" },
+  { id: 126, name: "Idris Soundsystem",                 day: "sat", time: "20:00", stage: "Dub Corner",   type: "DJ", desc: "" },
+  { id: 127, name: "Nathan Stardust",                   day: "sat", time: "21:00", stage: "Dub Corner",   type: "DJ", desc: "" },
+  { id: 128, name: "Upstepper",                         day: "sat", time: "22:00", stage: "Dub Corner",   type: "DJ", desc: "" },
+  { id: 129, name: "Dub in the Barn",                   day: "sat", time: "23:00", stage: "Dub Corner",   type: "Music", desc: "" },
+  { id: 130, name: "Solja",                             day: "sat", time: "00:00", stage: "Dub Corner",   type: "DJ", desc: "" },
+  { id: 131, name: "Pendub",                            day: "sat", time: "01:00", stage: "Dub Corner",   type: "DJ", desc: "" },
+  { id: 132, name: "Silent Disco (Arianarchy / Morfa)", day: "sat", time: "02:00", stage: "Dub Corner",   type: "DJ", desc: "" },
 
   // SATURDAY — COSMIC CWTSH
-  { id: 140, name: "Tell Your Friends (TYF)",           day: "sat", time: "11:00", stage: "Cosmic Cwtsh", type: "DJ",       headliner: false, desc: "The name says it all. Essential Saturday afternoon energy." },
-  { id: 141, name: "Irisa",                             day: "sat", time: "12:30", stage: "Cosmic Cwtsh", type: "DJ",       headliner: false, desc: "Melodic techno and electronic soundscapes." },
-  { id: 142, name: "Menikoo",                           day: "sat", time: "13:30", stage: "Cosmic Cwtsh", type: "DJ",       headliner: false, desc: "Warm electronics and dub-soaked frequencies." },
-  { id: 143, name: "Didge Beat George",                 day: "sat", time: "14:30", stage: "Cosmic Cwtsh", type: "Music",    headliner: false, desc: "Didgeridoo-led rhythmic soundscapes. Earthy, primal and extraordinary." },
-  { id: 144, name: "Geoffungus",                        day: "sat", time: "15:30", stage: "Cosmic Cwtsh", type: "DJ",       headliner: false, desc: "Experimental and psychedelic electronics." },
-  { id: 145, name: "Recomb",                            day: "sat", time: "16:30", stage: "Cosmic Cwtsh", type: "DJ",       headliner: false, desc: "Reconfigured beats and rhythmic recombinations." },
-  { id: 146, name: "Sylark",                            day: "sat", time: "17:30", stage: "Cosmic Cwtsh", type: "DJ",       headliner: false, desc: "Driving electronic selections into the evening." },
-  { id: 147, name: "DJ Froo",                           day: "sat", time: "19:00", stage: "Cosmic Cwtsh", type: "DJ",       headliner: false, desc: "Eclectic selector spanning jungle, garage and beyond." },
-  { id: 148, name: "Nook",                              day: "sat", time: "20:00", stage: "Cosmic Cwtsh", type: "DJ",       headliner: false, desc: "Niche selections with broad appeal. Trust the Nook." },
-  { id: 149, name: "Lusärdi",                           day: "sat", time: "21:30", stage: "Cosmic Cwtsh", type: "DJ",       headliner: false, desc: "Forest floor electronics into the Saturday night.", links: [{label:"SoundCloud", url:"https://soundcloud.com/eugenelusardi"}] },
-  { id: 150, name: "Sonic Smudge",                      day: "sat", time: "23:00", stage: "Cosmic Cwtsh", type: "DJ",       headliner: false, desc: "Late night hypnosis and sonic ceremony." },
-  { id: 151, name: "Vegetable Matrix",                  day: "sat", time: "00:30", stage: "Cosmic Cwtsh", type: "DJ",       headliner: false, desc: "Organic electronics grown locally, served fresh." },
-  { id: 152, name: "G.E.O.R.G.E",                      day: "sat", time: "02:00", stage: "Cosmic Cwtsh", type: "DJ",       headliner: false, desc: "Closing the Cosmic Cwtsh — soulful and considered." },
+  { id: 140, name: "Tell Your Friends (TYF)",           day: "sat", time: "11:00", stage: "Cosmic Cwtsh", type: "DJ", desc: "" },
+  { id: 141, name: "Irisa",                             day: "sat", time: "12:30", stage: "Cosmic Cwtsh", type: "DJ", desc: "" },
+  { id: 142, name: "Menikoo",                           day: "sat", time: "13:30", stage: "Cosmic Cwtsh", type: "DJ", desc: "" },
+  { id: 143, name: "Didge Beat George",                 day: "sat", time: "14:30", stage: "Cosmic Cwtsh", type: "Music", desc: "" },
+  { id: 144, name: "Geoffungus",                        day: "sat", time: "15:30", stage: "Cosmic Cwtsh", type: "Music", desc: "" },
+  { id: 145, name: "Recomb",                            day: "sat", time: "16:30", stage: "Cosmic Cwtsh", type: "DJ", desc: "" },
+  { id: 146, name: "Sylark",                            day: "sat", time: "17:30", stage: "Cosmic Cwtsh", type: "DJ", desc: "" },
+  { id: 147, name: "DJ Froo",                           day: "sat", time: "19:00", stage: "Cosmic Cwtsh", type: "DJ", desc: "" },
+  { id: 148, name: "Nook",                              day: "sat", time: "20:00", stage: "Cosmic Cwtsh", type: "DJ", desc: "" },
+  { id: 149, name: "Lusärdi",                           day: "sat", time: "21:30", stage: "Cosmic Cwtsh", type: "DJ", desc: "", links: [{label:"SoundCloud", url:"https://soundcloud.com/eugenelusardi"}] },
+  { id: 150, name: "Sonic Smudge",                      day: "sat", time: "23:00", stage: "Cosmic Cwtsh", type: "DJ", desc: "" },
+  { id: 151, name: "Vegetable Matrix",                  day: "sat", time: "00:30", stage: "Cosmic Cwtsh", type: "DJ", desc: "" },
+  { id: 152, name: "G.E.O.R.G.E",                      day: "sat", time: "02:00", stage: "Cosmic Cwtsh", type: "DJ", desc: "" },
 
   // SATURDAY — FREEDOM STAGE
-  { id: 160, name: "Dance Workshop 2–4",                day: "sat", time: "10:00", stage: "Freedom Stage", type: "Workshop", headliner: false, desc: "Grand Finale Dance Practice continues — get those moves locked in." },
-  { id: 161, name: "Grand Finale Dance Practice",       day: "sat", time: "11:00", stage: "Freedom Stage", type: "Workshop", headliner: false, desc: "Final rehearsal for the big dance performance." },
-  { id: 162, name: "Kids Theatre",                      day: "sat", time: "12:00", stage: "Freedom Stage", type: "Kids",     headliner: false, desc: "Theatre for kids on the Freedom Stage — fun, colourful and magical." },
-  { id: 163, name: "Destan Donemi",                     day: "sat", time: "13:00", stage: "Freedom Stage", type: "DJ",       headliner: false, desc: "Cosmic electronics and worldly frequencies." },
-  { id: 164, name: "Troi Parker-Roth",                  day: "sat", time: "14:00", stage: "Freedom Stage", type: "DJ",       headliner: false, desc: "Finessed and inventive electronic selections." },
-  { id: 165, name: "Fossilheads",                       day: "sat", time: "15:00", stage: "Freedom Stage", type: "DJ",       headliner: false, desc: "Old-school rave energy meets modern dancefloor science." },
-  { id: 166, name: "Ribble",                            day: "sat", time: "16:00", stage: "Freedom Stage", type: "DJ",       headliner: false, desc: "Electronic selections with a playful, inventive touch." },
-  { id: 167, name: "Frekshow Theatre Takeover",         day: "sat", time: "17:00", stage: "Freedom Stage", type: "Music",    headliner: false, desc: "Theatre meets festival in a wild Frekshow takeover of the Freedom Stage." },
-  { id: 168, name: "Chant & Jebbers",                   day: "sat", time: "19:00", stage: "Freedom Stage", type: "DJ",       headliner: false, desc: "Breaking dawn with relentless energy." },
-  { id: 169, name: "Didge Beat George",                 day: "sat", time: "20:00", stage: "Freedom Stage", type: "Music",    headliner: false, desc: "Second set — didgeridoo power returning for the Saturday night." },
-  { id: 170, name: "Seven Bears",                       day: "sat", time: "21:00", stage: "Freedom Stage", type: "DJ",       headliner: false, desc: "Warming selections — a steady, soulful hand on the decks." },
-  { id: 171, name: "Midnight Motion Picture",           day: "sat", time: "22:00", stage: "Freedom Stage", type: "DJ",       headliner: false, desc: "Deep into the dark — cinematic late-night sounds." },
+  { id: 160, name: "Dance Workshop 2–4",                day: "sat", time: "10:00", stage: "Freedom Stage", type: "Workshop", desc: "" },
+  { id: 161, name: "Grand Finale Dance Practice",       day: "sat", time: "11:00", stage: "Freedom Stage", type: "Workshop", desc: "" },
+  { id: 162, name: "Kids Theatre",                      day: "sat", time: "12:00", stage: "Freedom Stage", type: "Kids", desc: "" },
+  { id: 163, name: "Destan Donemi",                     day: "sat", time: "13:00", stage: "Freedom Stage", type: "DJ", desc: "" },
+  { id: 164, name: "Troi Parker-Roth",                  day: "sat", time: "14:00", stage: "Freedom Stage", type: "DJ", desc: "" },
+  { id: 165, name: "Fossilheads",                       day: "sat", time: "15:00", stage: "Freedom Stage", type: "DJ", desc: "" },
+  { id: 166, name: "Ribble",                            day: "sat", time: "16:00", stage: "Freedom Stage", type: "DJ", desc: "" },
+  { id: 167, name: "Frekshow Theatre Takeover",         day: "sat", time: "17:00", stage: "Freedom Stage", type: "Music", desc: "" },
+  { id: 168, name: "Chant & Jebbers",                   day: "sat", time: "19:00", stage: "Freedom Stage", type: "DJ", desc: "" },
+  { id: 169, name: "Didge Beat George",                 day: "sat", time: "20:00", stage: "Freedom Stage", type: "Music", desc: "" },
+  { id: 170, name: "Seven Bears",                       day: "sat", time: "21:00", stage: "Freedom Stage", type: "DJ", desc: "" },
+  { id: 171, name: "Midnight Motion Picture",           day: "sat", time: "22:00", stage: "Freedom Stage", type: "DJ", desc: "" },
 
   // ═══════════════════════════════════════════
   // SUNDAY — MAIN STAGE
   // ═══════════════════════════════════════════
-  { id: 200, name: "CacaoAmor Ecstatic Dance",          day: "sun", time: "10:00", stage: "Main Stage",   type: "Workshop", headliner: false, desc: "Ceremonial cacao and ecstatic dance with Dia and Jazzy Be. Open Sunday with your heart and feet — no experience needed, just willingness to move and be moved." },
-  { id: 201, name: "Ben Roberts",                       day: "sun", time: "12:00", stage: "Main Stage",   type: "DJ",       headliner: false, desc: "Melodic electronic and deep house explorations for the Sunday afternoon." },
-  { id: 202, name: "Dylan Fowler",                      day: "sun", time: "13:30", stage: "Main Stage",   type: "Music",    headliner: false, desc: "Internationally acclaimed Welsh acoustic guitarist born in Libya, raised in Wales. Co-founder of ALAW, the celebrated Welsh folk trio. His music moves between Celtic tradition and world influences with effortless mastery.", links: [{label:"Spotify", url:"https://open.spotify.com/artist/0SfxBmOJtvAgYZCJbEPET2"}, {label:"song.link", url:"https://song.link/s/0J1kKkafkLSaT89ZIfAH6o"}, {label:"Website", url:"https://www.dylanfowlerguitar.com"}] },
-  { id: 203, name: "Echoes of the Unknown",             day: "sun", time: "15:00", stage: "Main Stage",   type: "Music",    headliner: false, desc: "Ambient and ceremonial sound explorations — a journey inward." },
-  { id: 204, name: "Sweet Giant",                       day: "sun", time: "17:30", stage: "Main Stage",   type: "Music",    headliner: false, desc: "Big, atmospheric indie folk with a rare emotional weight." },
-  { id: 205, name: "Omega Nebula",                      day: "sun", time: "19:00", stage: "Main Stage",   type: "Music",    headliner: false, desc: "Cosmic psych and space rock explorations. Lose yourself in the orbital drift.", links: [{label:"Spotify", url:"https://open.spotify.com/artist/2iWJJEfxmQK1CZeWqjh4Xn"}, {label:"song.link", url:"https://song.link/s/2R62HgT2vamnEgDQ6vS2OO"}, {label:"Bandcamp", url:"https://omega-nebula.bandcamp.com"}] },
-  { id: 206, name: "Fire Procession",                   day: "sun", time: "20:30", stage: "Main Stage",   type: "Workshop", headliner: false, desc: "The iconic fire procession weaves from Temple Arena to Main Arena. A ceremony of release and connection." },
-  { id: 207, name: "Los Pulpos del Diablo",             day: "sun", time: "22:00", stage: "Main Stage",   type: "Music",    headliner: false, desc: "Unearthed's very own house band close the festival. Chaotic, joyful, unclassifiable — the perfect end to the weekend.", links: [{label:"Facebook", url:"https://www.facebook.com/pulposmusic"}] },
-  { id: 208, name: "Silent DJs",                        day: "sun", time: "00:00", stage: "Main Stage",   type: "DJ",       headliner: false, desc: "A silent disco to close out the weekend — headphones on, world off." },
+  { id: 200, name: "CacaoAmor Ecstatic Dance",          day: "sun", time: "10:00", stage: "Main Stage",   type: "Workshop", desc: "" },
+  { id: 201, name: "Ben Roberts",                       day: "sun", time: "12:00", stage: "Main Stage",   type: "DJ", desc: "" },
+  { id: 202, name: "Dylan Fowler",                      day: "sun", time: "13:30", stage: "Main Stage",   type: "Music", desc: "Internationally acclaimed Welsh acoustic guitarist born in Libya, raised in Wales. Co-founder of ALAW, the celebrated Welsh folk trio. His music moves between Celtic tradition and world influences with effortless mastery.", links: [{label:"Spotify", url:"https://open.spotify.com/artist/0SfxBmOJtvAgYZCJbEPET2"}, {label:"song.link", url:"https://song.link/s/0J1kKkafkLSaT89ZIfAH6o"}, {label:"Website", url:"https://www.dylanfowlerguitar.com"}] },
+  { id: 203, name: "Echoes of the Unknown",             day: "sun", time: "15:00", stage: "Main Stage",   type: "Music", desc: "" },
+  { id: 204, name: "Sweet Giant",                       day: "sun", time: "17:30", stage: "Main Stage",   type: "Music", desc: "" },
+  { id: 205, name: "Omega Nebula",                      day: "sun", time: "19:00", stage: "Main Stage",   type: "Music", desc: "", links: [{label:"Spotify", url:"https://open.spotify.com/artist/2iWJJEfxmQK1CZeWqjh4Xn"}, {label:"song.link", url:"https://song.link/s/2R62HgT2vamnEgDQ6vS2OO"}, {label:"Bandcamp", url:"https://omega-nebula.bandcamp.com"}] },
+  { id: 206, name: "Fire Procession",                   day: "sun", time: "20:30", stage: "Main Stage",   type: "Workshop", desc: "" },
+  { id: 207, name: "Los Pulpos del Diablo",             day: "sun", time: "22:00", stage: "Main Stage",   type: "Music", desc: "Unearthed's very own house band close the festival. Chaotic, joyful, unclassifiable — the perfect end to the weekend.", links: [{label:"Facebook", url:"https://www.facebook.com/pulposmusic"}] },
+  { id: 208, name: "Silent DJs",                        day: "sun", time: "00:00", stage: "Main Stage",   type: "DJ", desc: "" },
 
   // SUNDAY — DUB CORNER
-  { id: 220, name: "Jiva Harrison",                     day: "sun", time: "11:00", stage: "Dub Corner",   type: "DJ",       headliner: false, desc: "Deep, conscious selections to open Sunday in the corner." },
-  { id: 221, name: "Roberto Canassa",                   day: "sun", time: "13:00", stage: "Dub Corner",   type: "Music",    headliner: false, desc: "World music 2hr set — rich, soulful and globally informed." },
-  { id: 222, name: "David Taylor",                      day: "sun", time: "15:00", stage: "Dub Corner",   type: "DJ",       headliner: false, desc: "Heavyweight dub frequencies. Bass you can feel." },
-  { id: 223, name: "Sattaman",                          day: "sun", time: "17:00", stage: "Dub Corner",   type: "DJ",       headliner: false, desc: "Roots and righteousness from a steadfast selector." },
-  { id: 224, name: "Nathan Stardust",                   day: "sun", time: "18:00", stage: "Dub Corner",   type: "DJ",       headliner: false, desc: "Cosmic frequencies into the Sunday evening." },
-  { id: 225, name: "Ozimu Sound",                       day: "sun", time: "19:00", stage: "Dub Corner",   type: "DJ",       headliner: false, desc: "Sound system culture at its finest to close the day." },
-  { id: 226, name: "Idris Soundsystem",                 day: "sun", time: "20:00", stage: "Dub Corner",   type: "DJ",       headliner: false, desc: "Full sound system power for the final hours." },
-  { id: 227, name: "Upstepper",                         day: "sun", time: "22:00", stage: "Dub Corner",   type: "DJ",       headliner: false, desc: "Stepping up the riddim for the last time this weekend." },
-  { id: 228, name: "Real Roots Soundsystem",            day: "sun", time: "23:00", stage: "Dub Corner",   type: "DJ",       headliner: false, desc: "Closing the corner with real roots fire." },
+  { id: 220, name: "Jiva Harrison",                     day: "sun", time: "11:00", stage: "Dub Corner",   type: "DJ", desc: "" },
+  { id: 221, name: "Roberto Canassa",                   day: "sun", time: "13:00", stage: "Dub Corner",   type: "Music", desc: "" },
+  { id: 222, name: "David Taylor",                      day: "sun", time: "15:00", stage: "Dub Corner",   type: "DJ", desc: "" },
+  { id: 223, name: "Sattaman",                          day: "sun", time: "17:00", stage: "Dub Corner",   type: "DJ", desc: "" },
+  { id: 224, name: "Nathan Stardust",                   day: "sun", time: "18:00", stage: "Dub Corner",   type: "DJ", desc: "" },
+  { id: 225, name: "Ozimu Sound",                       day: "sun", time: "19:00", stage: "Dub Corner",   type: "DJ", desc: "" },
+  { id: 226, name: "Idris Soundsystem",                 day: "sun", time: "20:00", stage: "Dub Corner",   type: "DJ", desc: "" },
+  { id: 227, name: "Upstepper",                         day: "sun", time: "22:00", stage: "Dub Corner",   type: "DJ", desc: "" },
+  { id: 228, name: "Real Roots Soundsystem",            day: "sun", time: "23:00", stage: "Dub Corner",   type: "DJ", desc: "" },
 
   // SUNDAY — COSMIC CWTSH
-  { id: 240, name: "The Re-Psych Project",              day: "sun", time: "10:00", stage: "Cosmic Cwtsh", type: "Music",    headliner: false, desc: "Psychedelic sounds to open the Cosmic Cwtsh on Sunday." },
-  { id: 241, name: "Ginjah",                            day: "sun", time: "12:30", stage: "Cosmic Cwtsh", type: "DJ",       headliner: false, desc: "Roots and culture — righteous dub selections." },
-  { id: 242, name: "Optimystic",                        day: "sun", time: "13:30", stage: "Cosmic Cwtsh", type: "DJ",       headliner: false, desc: "Positive vibrations and uplifting bass frequencies." },
-  { id: 243, name: "Steve J Rad",                       day: "sun", time: "14:30", stage: "Cosmic Cwtsh", type: "DJ",       headliner: false, desc: "Roots and culture with deep bass conviction — Sunday afternoon edition." },
-  { id: 244, name: "Dinomanic",                         day: "sun", time: "15:30", stage: "Cosmic Cwtsh", type: "DJ",       headliner: false, desc: "Heavy-hitting bass music for the final afternoon." },
-  { id: 245, name: "Sanial",                            day: "sun", time: "17:00", stage: "Cosmic Cwtsh", type: "DJ",       headliner: false, desc: "Ethereal electronics and atmospheric bass." },
-  { id: 246, name: "Algae Rhythm",                      day: "sun", time: "18:30", stage: "Cosmic Cwtsh", type: "DJ",       headliner: false, desc: "Organic electronic rhythms growing through the evening." },
-  { id: 247, name: "Professor Jo",                      day: "sun", time: "19:30", stage: "Cosmic Cwtsh", type: "DJ",       headliner: false, desc: "Deep cuts and dancing-shoe calibrations." },
-  { id: 248, name: "Soma & Merakki",                    day: "sun", time: "22:00", stage: "Cosmic Cwtsh", type: "DJ",       headliner: false, desc: "Meditative and expansive DJ duo closing the Cwtsh for the last time." },
+  { id: 240, name: "The Re-Psych Project",              day: "sun", time: "10:00", stage: "Cosmic Cwtsh", type: "Music", desc: "" },
+  { id: 241, name: "Ginjah",                            day: "sun", time: "12:30", stage: "Cosmic Cwtsh", type: "DJ", desc: "" },
+  { id: 242, name: "Optimystic",                        day: "sun", time: "13:30", stage: "Cosmic Cwtsh", type: "DJ", desc: "" },
+  { id: 243, name: "Steve J Rad",                       day: "sun", time: "14:30", stage: "Cosmic Cwtsh", type: "DJ", desc: "" },
+  { id: 244, name: "Dinomanic",                         day: "sun", time: "15:30", stage: "Cosmic Cwtsh", type: "DJ", desc: "" },
+  { id: 245, name: "Sanial",                            day: "sun", time: "17:00", stage: "Cosmic Cwtsh", type: "DJ", desc: "" },
+  { id: 246, name: "Algae Rhythm",                      day: "sun", time: "18:30", stage: "Cosmic Cwtsh", type: "DJ", desc: "" },
+  { id: 247, name: "Professor Jo",                      day: "sun", time: "19:30", stage: "Cosmic Cwtsh", type: "DJ", desc: "" },
+  { id: 248, name: "Soma & Merakki",                    day: "sun", time: "22:00", stage: "Cosmic Cwtsh", type: "DJ", desc: "" },
 
   // SUNDAY — FREEDOM STAGE
-  { id: 260, name: "Dance Workshop 2–4",                day: "sun", time: "10:00", stage: "Freedom Stage", type: "Workshop", headliner: false, desc: "Final Grand Finale Dance Practice before the big performance." },
-  { id: 261, name: "Grand Finale Dance Practice",       day: "sun", time: "11:00", stage: "Freedom Stage", type: "Workshop", headliner: false, desc: "Last chance to rehearse — the big moment is coming." },
-  { id: 262, name: "Theatre Takeover",                  day: "sun", time: "12:00", stage: "Freedom Stage", type: "Music",    headliner: false, desc: "Sunday theatre takeover — expect surprise and spectacle." },
-  { id: 263, name: "Open Stage / Mic",                  day: "sun", time: "15:00", stage: "Freedom Stage", type: "Workshop", headliner: false, desc: "Open stage for the final afternoon — your last chance to perform." },
-  { id: 264, name: "Arron Kirwan",                      day: "sun", time: "16:00", stage: "Freedom Stage", type: "Music",    headliner: false, desc: "Closing performances from Arron Kirwan.", links: [{label:"Spotify", url:"https://open.spotify.com/artist/6o59Rm36G0Zbkb7MpWlyXk"}, {label:"song.link", url:"https://song.link/s/4hv5gPkG6IlCdRhRqAdcZg"}] },
-  { id: 265, name: "Becky the Bullet",                  day: "sun", time: "17:00", stage: "Freedom Stage", type: "Music",    headliner: false, desc: "High energy to close out the Freedom Stage for 2026." },
-  { id: 266, name: "Connor Jillions",                   day: "sun", time: "18:00", stage: "Freedom Stage", type: "DJ",       headliner: false, desc: "Bass-heavy, joyful, boundary-free — a fitting close." },
+  { id: 260, name: "Dance Workshop 2–4",                day: "sun", time: "10:00", stage: "Freedom Stage", type: "Workshop", desc: "" },
+  { id: 261, name: "Grand Finale Dance Practice",       day: "sun", time: "11:00", stage: "Freedom Stage", type: "Workshop", desc: "" },
+  { id: 262, name: "Theatre Takeover",                  day: "sun", time: "12:00", stage: "Freedom Stage", type: "Music", desc: "" },
+  { id: 263, name: "Open Stage / Mic",                  day: "sun", time: "15:00", stage: "Freedom Stage", type: "Workshop", desc: "" },
+  { id: 264, name: "Arron Kirwan",                      day: "sun", time: "16:00", stage: "Freedom Stage", type: "Music", desc: "", links: [{label:"Spotify", url:"https://open.spotify.com/artist/6o59Rm36G0Zbkb7MpWlyXk"}, {label:"song.link", url:"https://song.link/s/4hv5gPkG6IlCdRhRqAdcZg"}] },
+  { id: 265, name: "Becky the Bullet",                  day: "sun", time: "17:00", stage: "Freedom Stage", type: "Music", desc: "" },
+  { id: 266, name: "Connor Jillions",                   day: "sun", time: "18:00", stage: "Freedom Stage", type: "DJ", desc: "" },
 
   // ═══════════════════════════════════════════
   // TEMPLE TENT
   // ═══════════════════════════════════════════
-  { id: 300, name: "Yoga — Elle Beamish (Green Lotus Studios)", day: "fri", time: "09:00", stage: "Temple Tent", type: "Workshop", headliner: false, desc: "Start Friday with morning yoga led by Elle Beamish of Green Lotus Studios." },
-  { id: 301, name: "Shaolin Qigong — Rhys Rogers",      day: "fri", time: "10:00", stage: "Temple Tent", type: "Workshop", headliner: false, desc: "Ancient Chinese movement practice for energy, balance and clarity." },
-  { id: 302, name: "Acroyoga — Yoga of Dragons (Sam & Bongo)", day: "fri", time: "11:30", stage: "Temple Tent", type: "Workshop", headliner: false, desc: "Fun and flow — acrobatic yoga with Sam and Bongo of Yoga of Dragons." },
-  { id: 303, name: "Journeying Within — Bronwyn Claire Asha", day: "fri", time: "12:50", stage: "Temple Tent", type: "Workshop", headliner: false, desc: "Myth, story and inner listening. A guided inner journey with Bronwyn Claire Asha." },
-  { id: 304, name: "Opening Ceremony — Hoppi, Dia, Tim, Yeshe", day: "fri", time: "14:00", stage: "Temple Tent", type: "Workshop", headliner: false, desc: "The ceremonial opening of the Temple Tent. Join Hoppi, Dia, Tim and Yeshe to open sacred space." },
-  { id: 305, name: "The Frequency Experience Pt 1 — Adam Slawson", day: "fri", time: "15:45", stage: "Temple Tent", type: "Workshop", headliner: false, desc: "Trust Yourself When It Matters. Part one of Adam Slawson's immersive frequency experience." },
-  { id: 306, name: "RAVE AF: The Frequency Experience Pt 2 — Adam Slawson & DJ Bill T", day: "fri", time: "16:45", stage: "Temple Tent", type: "Workshop", headliner: false, desc: "The frequency experience continues into rave territory. Part 2 with DJ Bill T." },
-  { id: 307, name: "The Intuitive Woman — Sohère Roked", day: "fri", time: "18:00", stage: "Temple Tent", type: "Workshop", headliner: false, desc: "An empowering session exploring intuition, power and feminine wisdom with Sohère Roked." },
-  { id: 308, name: "Magic in Motion Cabaret — Tripod Rig", day: "fri", time: "19:00", stage: "Temple Tent", type: "Music",    headliner: false, desc: "Cabaret at the Tripod Rig — expect magic, motion and wonder." },
-  { id: 309, name: "Celtic Grief Keening — Jewels Wingfield", day: "fri", time: "19:30", stage: "Temple Tent", type: "Workshop", headliner: false, desc: "Rituals of renewal through the ancient Celtic practice of grief keening, led by Jewels Wingfield." },
+  { id: 300, name: "Yoga — Elle Beamish (Green Lotus Studios)", day: "fri", time: "09:00", stage: "Temple Tent", type: "Workshop", desc: "" },
+  { id: 301, name: "Shaolin Qigong — Rhys Rogers",      day: "fri", time: "10:00", stage: "Temple Tent", type: "Workshop", desc: "" },
+  { id: 302, name: "Acroyoga — Yoga of Dragons (Sam & Bongo)", day: "fri", time: "11:30", stage: "Temple Tent", type: "Workshop", desc: "" },
+  { id: 303, name: "Journeying Within — Bronwyn Claire Asha", day: "fri", time: "12:50", stage: "Temple Tent", type: "Workshop", desc: "" },
+  { id: 304, name: "Opening Ceremony — Hoppi, Dia, Tim, Yeshe", day: "fri", time: "14:00", stage: "Temple Tent", type: "Workshop", desc: "" },
+  { id: 305, name: "The Frequency Experience Pt 1 — Adam Slawson", day: "fri", time: "15:45", stage: "Temple Tent", type: "Workshop", desc: "" },
+  { id: 306, name: "RAVE AF: The Frequency Experience Pt 2 — Adam Slawson & DJ Bill T", day: "fri", time: "16:45", stage: "Temple Tent", type: "Workshop", desc: "" },
+  { id: 307, name: "The Intuitive Woman — Sohère Roked", day: "fri", time: "18:00", stage: "Temple Tent", type: "Workshop", desc: "" },
+  { id: 308, name: "Magic in Motion Cabaret — Tripod Rig", day: "fri", time: "19:00", stage: "Temple Tent", type: "Music", desc: "" },
+  { id: 309, name: "Celtic Grief Keening — Jewels Wingfield", day: "fri", time: "19:30", stage: "Temple Tent", type: "Workshop", desc: "" },
 
-  { id: 310, name: "Yoga — Elle Beamish (Green Lotus Studios)", day: "sat", time: "08:00", stage: "Temple Tent", type: "Workshop", headliner: false, desc: "Morning yoga to open Saturday. Led by Elle Beamish of Green Lotus Studios." },
-  { id: 311, name: "Shaolin Qigong — Rhys Rogers",      day: "sat", time: "09:00", stage: "Temple Tent", type: "Workshop", headliner: false, desc: "Saturday morning Qigong practice with Rhys Rogers." },
-  { id: 312, name: "Relationship Anarchy — Austin Douillard", day: "sat", time: "11:45", stage: "Temple Tent", type: "Workshop", headliner: false, desc: "Reimagining Intimacy Beyond the Script. A thoughtful exploration of relational freedom with Austin Douillard." },
-  { id: 313, name: "Ceremony of Pollen, Honey & Divine Gold — Hoppi Wimbush", day: "sat", time: "13:15", stage: "Temple Tent", type: "Workshop", headliner: false, desc: "A sacred ceremony of pollen, honey and divine gold with Hoppi Wimbush." },
-  { id: 314, name: "Sacred Shibari — Danielle Landman",  day: "sat", time: "15:00", stage: "Temple Tent", type: "Workshop", headliner: false, desc: "The Rope Temple Sacred Shibari with Danielle Landman. Two sessions." },
-  { id: 315, name: "Contact Improv Dance — Lucia Escuder & Mairead Spangler", day: "sat", time: "17:15", stage: "Temple Tent", type: "Workshop", headliner: false, desc: "Contact improvisation dance session — tuning in to touch, weight and movement together." },
-  { id: 316, name: "Magic in Motion Cabaret — Tripod Rig", day: "sat", time: "18:30", stage: "Temple Tent", type: "Music",    headliner: false, desc: "Saturday cabaret at the Tripod Rig. Magic and motion." },
-  { id: 317, name: "Divinely Untamed Temple — Jessica Ashby", day: "sat", time: "19:00", stage: "Temple Tent", type: "Workshop", headliner: false, desc: "A wild, sacred and liberating ceremony with Jessica Ashby." },
+  { id: 310, name: "Yoga — Elle Beamish (Green Lotus Studios)", day: "sat", time: "08:00", stage: "Temple Tent", type: "Workshop", desc: "" },
+  { id: 311, name: "Shaolin Qigong — Rhys Rogers",      day: "sat", time: "09:00", stage: "Temple Tent", type: "Workshop", desc: "" },
+  { id: 312, name: "Relationship Anarchy — Austin Douillard", day: "sat", time: "11:45", stage: "Temple Tent", type: "Workshop", desc: "" },
+  { id: 313, name: "Ceremony of Pollen, Honey & Divine Gold — Hoppi Wimbush", day: "sat", time: "13:15", stage: "Temple Tent", type: "Workshop", desc: "" },
+  { id: 314, name: "Sacred Shibari — Danielle Landman",  day: "sat", time: "15:00", stage: "Temple Tent", type: "Workshop", desc: "" },
+  { id: 315, name: "Contact Improv Dance — Lucia Escuder & Mairead Spangler", day: "sat", time: "17:15", stage: "Temple Tent", type: "Workshop", desc: "" },
+  { id: 316, name: "Magic in Motion Cabaret — Tripod Rig", day: "sat", time: "18:30", stage: "Temple Tent", type: "Music", desc: "" },
+  { id: 317, name: "Divinely Untamed Temple — Jessica Ashby", day: "sat", time: "19:00", stage: "Temple Tent", type: "Workshop", desc: "" },
 
-  { id: 320, name: "Yoga Nidra Rest and Reset — Lottie Lernelius-Tonks", day: "sun", time: "08:00", stage: "Temple Tent", type: "Workshop", headliner: false, desc: "Deep rest and reset through Yoga Nidra. The perfect Sunday morning opener." },
-  { id: 321, name: "Shaolin Qigong — Rhys Rogers",      day: "sun", time: "09:00", stage: "Temple Tent", type: "Workshop", headliner: false, desc: "Final morning Qigong practice of the weekend." },
-  { id: 322, name: "Gong Bath — Jay Herring",            day: "sun", time: "12:00", stage: "Temple Tent", type: "Workshop", headliner: false, desc: "Immerse yourself in the healing resonance of gongs with Jay Herring." },
-  { id: 323, name: "Self-Discovery with Life Drawing — Fede Art Muse", day: "sun", time: "13:15", stage: "Temple Tent", type: "Workshop", headliner: false, desc: "Art as self-discovery — life drawing session with Fede Art Muse." },
-  { id: 324, name: "Neurodiversity: It's Not a F*cking Label — Hapus Training & Sam Charlesworth", day: "sun", time: "15:30", stage: "Temple Tent", type: "Workshop", headliner: false, desc: "A frank, empowering talk on neurodiversity with Hapus Training and Sam Charlesworth." },
-  { id: 325, name: "Men's Circle — Charlie Cavell",      day: "sun", time: "17:15", stage: "Temple Tent", type: "Workshop", headliner: false, desc: "A held space for men to gather, share and connect with Charlie Cavell." },
-  { id: 326, name: "Reclaiming Our Humanity — Savannah Lovelock", day: "sun", time: "18:45", stage: "Temple Tent", type: "Workshop", headliner: false, desc: "Reclaiming Our Humanity Through Community — a closing reflection with Savannah Lovelock." },
-  { id: 327, name: "Fire Procession Begins at Sacred Fire", day: "sun", time: "20:00", stage: "Temple Tent", type: "Workshop", headliner: false, desc: "The fire procession begins here, weaving from the Temple Arena to the Main Arena." },
+  { id: 320, name: "Yoga Nidra Rest and Reset — Lottie Lernelius-Tonks", day: "sun", time: "08:00", stage: "Temple Tent", type: "Workshop", desc: "" },
+  { id: 321, name: "Shaolin Qigong — Rhys Rogers",      day: "sun", time: "09:00", stage: "Temple Tent", type: "Workshop", desc: "" },
+  { id: 322, name: "Gong Bath — Jay Herring",            day: "sun", time: "12:00", stage: "Temple Tent", type: "Workshop", desc: "" },
+  { id: 323, name: "Self-Discovery with Life Drawing — Fede Art Muse", day: "sun", time: "13:15", stage: "Temple Tent", type: "Workshop", desc: "" },
+  { id: 324, name: "Neurodiversity: It's Not a F*cking Label — Hapus Training & Sam Charlesworth", day: "sun", time: "15:30", stage: "Temple Tent", type: "Workshop", desc: "" },
+  { id: 325, name: "Men's Circle — Charlie Cavell",      day: "sun", time: "17:15", stage: "Temple Tent", type: "Workshop", desc: "" },
+  { id: 326, name: "Reclaiming Our Humanity — Savannah Lovelock", day: "sun", time: "18:45", stage: "Temple Tent", type: "Workshop", desc: "" },
+  { id: 327, name: "Fire Procession Begins at Sacred Fire", day: "sun", time: "20:00", stage: "Temple Tent", type: "Workshop", desc: "" },
 
   // ═══════════════════════════════════════════
   // SACRED FIRE
   // ═══════════════════════════════════════════
-  { id: 400, name: "'The Words That Come Before All Else'", day: "fri", time: "11:00", stage: "Sacred Fire", type: "Workshop", headliner: false, desc: "A gratitude address from the Haudenosaunee tradition — words spoken before all others." },
-  { id: 401, name: "Opening Ceremony",                   day: "fri", time: "14:00", stage: "Sacred Fire", type: "Workshop", headliner: false, desc: "The ceremonial opening of Unearthed 2026 at the Sacred Fire. Come with intention." },
-  { id: 402, name: "Chief Seattle — A Song in 8 Parts",  day: "fri", time: "16:00", stage: "Sacred Fire", type: "Music",    headliner: false, desc: "A moving musical tribute in eight parts." },
-  { id: 403, name: "Islands of Coherence in a Sea of Chaos", day: "fri", time: "17:00", stage: "Sacred Fire", type: "Workshop", headliner: false, desc: "Finding stillness and coherence — a session around the sacred fire." },
-  { id: 404, name: "Stories & Hot Chocolate round the Fire", day: "fri", time: "20:30", stage: "Sacred Fire", type: "Workshop", headliner: false, desc: "Gather round the fire for stories and hot chocolate. A gentle, nourishing close to the evening." },
+  { id: 400, name: "'The Words That Come Before All Else'", day: "fri", time: "11:00", stage: "Sacred Fire", type: "Workshop", desc: "" },
+  { id: 401, name: "Opening Ceremony",                   day: "fri", time: "14:00", stage: "Sacred Fire", type: "Workshop", desc: "" },
+  { id: 402, name: "Chief Seattle — A Song in 8 Parts",  day: "fri", time: "16:00", stage: "Sacred Fire", type: "Music", desc: "" },
+  { id: 403, name: "Islands of Coherence in a Sea of Chaos", day: "fri", time: "17:00", stage: "Sacred Fire", type: "Workshop", desc: "" },
+  { id: 404, name: "Stories & Hot Chocolate round the Fire", day: "fri", time: "20:30", stage: "Sacred Fire", type: "Workshop", desc: "" },
 
-  { id: 410, name: "Morning Water Blessing",             day: "sat", time: "08:00", stage: "Sacred Fire", type: "Workshop", headliner: false, desc: "Begin Saturday with a blessing of the waters at the sacred fire." },
-  { id: 411, name: "'The Words That Come Before All Else'", day: "sat", time: "11:00", stage: "Sacred Fire", type: "Workshop", headliner: false, desc: "A gratitude address — words spoken before all others." },
-  { id: 412, name: "Celtic Sacred Songlines — Jewels Wingfield", day: "sat", time: "14:00", stage: "Sacred Fire", type: "Music",    headliner: false, desc: "Celtic sacred songlines with Jewels Wingfield — music as ceremony." },
-  { id: 413, name: "Introduction to Nature-Based Tarot", day: "sat", time: "16:00", stage: "Sacred Fire", type: "Workshop", headliner: false, desc: "An accessible introduction to using tarot in connection with nature." },
-  { id: 414, name: "Greeno",                             day: "sat", time: "20:00", stage: "Sacred Fire", type: "Music",    headliner: false, desc: "Music at the fire as the evening deepens." },
-  { id: 415, name: "Stories & Hot Chocolate round the Fire", day: "sat", time: "20:30", stage: "Sacred Fire", type: "Workshop", headliner: false, desc: "Saturday night stories and hot chocolate around the fire." },
-  { id: 416, name: "Arron Kirwan",                       day: "sat", time: "21:30", stage: "Sacred Fire", type: "Music",    headliner: false, desc: "Arron Kirwan performs at the sacred fire.", links: [{label:"Spotify", url:"https://open.spotify.com/artist/6o59Rm36G0Zbkb7MpWlyXk"}, {label:"song.link", url:"https://song.link/s/4hv5gPkG6IlCdRhRqAdcZg"}] },
+  { id: 410, name: "Morning Water Blessing",             day: "sat", time: "08:00", stage: "Sacred Fire", type: "Workshop", desc: "" },
+  { id: 411, name: "'The Words That Come Before All Else'", day: "sat", time: "11:00", stage: "Sacred Fire", type: "Workshop", desc: "" },
+  { id: 412, name: "Celtic Sacred Songlines — Jewels Wingfield", day: "sat", time: "14:00", stage: "Sacred Fire", type: "Music", desc: "" },
+  { id: 413, name: "Introduction to Nature-Based Tarot", day: "sat", time: "16:00", stage: "Sacred Fire", type: "Workshop", desc: "" },
+  { id: 415, name: "Stories & Hot Chocolate round the Fire", day: "sat", time: "20:30", stage: "Sacred Fire", type: "Workshop", desc: "" },
 
-  { id: 420, name: "Morning Water Blessing",             day: "sun", time: "08:00", stage: "Sacred Fire", type: "Workshop", headliner: false, desc: "Final morning water blessing of the festival. A sacred start to the closing day." },
-  { id: 421, name: "'The Words That Come Before All Else'", day: "sun", time: "11:00", stage: "Sacred Fire", type: "Workshop", headliner: false, desc: "A gratitude address — the final Sunday morning gathering." },
-  { id: 422, name: "Caves of Power — Ancient Energy Techniques for Healing", day: "sun", time: "14:00", stage: "Sacred Fire", type: "Workshop", headliner: false, desc: "Ancient energy healing techniques from the caves of power tradition." },
-  { id: 423, name: "Vajrasati Yoga with Pandora",        day: "sun", time: "16:00", stage: "Sacred Fire", type: "Workshop", headliner: false, desc: "Yoga in the open air by the sacred fire with Pandora." },
-  { id: 424, name: "Together in Song — Vocal Activation Sound Journey", day: "sun", time: "18:00", stage: "Sacred Fire", type: "Music",    headliner: false, desc: "A collective vocal activation and sound journey to close the festival." },
-  { id: 425, name: "Closing Ceremony Drumming",          day: "sun", time: "20:00", stage: "Sacred Fire", type: "Workshop", headliner: false, desc: "The sacred fire closing ceremony — drumming, release, and gratitude as the weekend ends." },
+  { id: 420, name: "Morning Water Blessing",             day: "sun", time: "08:00", stage: "Sacred Fire", type: "Workshop", desc: "" },
+  { id: 421, name: "'The Words That Come Before All Else'", day: "sun", time: "11:00", stage: "Sacred Fire", type: "Workshop", desc: "" },
+  { id: 422, name: "Caves of Power — Ancient Energy Techniques for Healing", day: "sun", time: "14:00", stage: "Sacred Fire", type: "Workshop", desc: "" },
+  { id: 423, name: "Vajrasati Yoga with Pandora",        day: "sun", time: "16:00", stage: "Sacred Fire", type: "Workshop", desc: "" },
+  { id: 424, name: "Together in Song — Vocal Activation Sound Journey", day: "sun", time: "18:00", stage: "Sacred Fire", type: "Music", desc: "" },
+  { id: 425, name: "Closing Ceremony Drumming",          day: "sun", time: "20:00", stage: "Sacred Fire", type: "Workshop", desc: "" },
 
   // ═══════════════════════════════════════════
   // GEOJAM & TEA OF LIFE
   // ═══════════════════════════════════════════
-  { id: 500, name: "Grounded Jam",                       day: "fri", time: "10:00", stage: "GeoJam",      type: "Music",    headliner: false, desc: "Open participatory jam to ground yourself in the festival. All welcome." },
-  { id: 501, name: "Herbal Workshop — Lemon Balm & Sage Flower", day: "fri", time: "12:00", stage: "Tea of Life",  type: "Workshop", headliner: false, desc: "Learn about lemon balm and sage flower — their properties, uses and preparation." },
-  { id: 502, name: "Hum Resonance",                      day: "fri", time: "14:30", stage: "GeoJam",      type: "Workshop", headliner: false, desc: "Vibrational humming practice — tune your body and voice with the resonance of the earth." },
-  { id: 503, name: "A Taste of Tarot",                   day: "fri", time: "16:00", stage: "Tea of Life",  type: "Workshop", headliner: false, desc: "An accessible introduction to tarot — come curious." },
-  { id: 504, name: "Mike Chant & Abbie",                 day: "fri", time: "16:00", stage: "GeoJam",      type: "Music",    headliner: false, desc: "Live music at the GeoJam space." },
-  { id: 505, name: "Hoppi Wimbush",                      day: "fri", time: "20:00", stage: "GeoJam",      type: "Music",    headliner: false, desc: "Sacred music and ceremony from Hoppi Wimbush." },
-  { id: 506, name: "Queen Beezie",                       day: "fri", time: "21:30", stage: "GeoJam",      type: "Music",    headliner: false, desc: "Queen Beezie brings her power to the GeoJam space.", links: [{label:"Spotify", url:"https://open.spotify.com/artist/3JN0z89EyKXHabR9KCCevt"}, {label:"song.link", url:"https://song.link/s/6u8eRWrJpJbDqfbl6WPb5c"}] },
+  { id: 500, name: "Grounded Jam",                       day: "fri", time: "10:00", stage: "GeoJam",      type: "Music", desc: "" },
+  { id: 501, name: "Herbal Workshop — Lemon Balm & Sage Flower", day: "fri", time: "12:00", stage: "Tea of Life",  type: "Workshop", desc: "" },
+  { id: 502, name: "Hum Resonance",                      day: "fri", time: "14:30", stage: "GeoJam",      type: "Workshop", desc: "" },
+  { id: 503, name: "A Taste of Tarot",                   day: "fri", time: "16:00", stage: "Tea of Life",  type: "Workshop", desc: "" },
+  { id: 504, name: "Mike Chant & Abbie",                 day: "fri", time: "16:00", stage: "GeoJam",      type: "Music", desc: "" },
+  { id: 505, name: "Hoppi Wimbush",                      day: "fri", time: "20:00", stage: "GeoJam",      type: "Music", desc: "" },
+  { id: 506, name: "Queen Beezie",                       day: "fri", time: "21:30", stage: "GeoJam",      type: "Music", desc: "", links: [{label:"Spotify", url:"https://open.spotify.com/artist/3JN0z89EyKXHabR9KCCevt"}, {label:"song.link", url:"https://song.link/s/6u8eRWrJpJbDqfbl6WPb5c"}] },
 
-  { id: 510, name: "Grounded Jam",                       day: "sat", time: "09:30", stage: "GeoJam",      type: "Music",    headliner: false, desc: "Saturday morning grounded jam — open and participatory." },
-  { id: 511, name: "Tin Making Workshop",                day: "sat", time: "10:30", stage: "Tea of Life",  type: "Workshop", headliner: false, desc: "Make something beautiful from tin. A hands-on craft workshop." },
-  { id: 512, name: "Herbal Workshop — Three Mint, Wild Apple & Spearmint", day: "sat", time: "13:00", stage: "Tea of Life", type: "Workshop", headliner: false, desc: "Explore three mint varieties, wild apple and spearmint — their healing properties and uses." },
-  { id: 513, name: "Hum Resonance",                      day: "sat", time: "14:30", stage: "GeoJam",      type: "Workshop", headliner: false, desc: "Vibrational humming practice — Saturday afternoon edition." },
-  { id: 514, name: "The Sun: Tarot, Radiance & Vitality", day: "sat", time: "16:00", stage: "Tea of Life",  type: "Workshop", headliner: false, desc: "Tarot as a tool for exploring radiance and vitality — focusing on The Sun card." },
-  { id: 515, name: "Flux",                               day: "sat", time: "16:00", stage: "GeoJam",      type: "Music",    headliner: false, desc: "Live music — flowing, dynamic and present." },
-  { id: 516, name: "Greeno",                             day: "sat", time: "20:00", stage: "GeoJam",      type: "Music",    headliner: false, desc: "Greeno performs at the GeoJam." },
-  { id: 517, name: "Arron Kirwan",                       day: "sat", time: "21:30", stage: "GeoJam",      type: "Music",    headliner: false, desc: "Arron Kirwan at the GeoJam stage.", links: [{label:"Spotify", url:"https://open.spotify.com/artist/6o59Rm36G0Zbkb7MpWlyXk"}, {label:"song.link", url:"https://song.link/s/4hv5gPkG6IlCdRhRqAdcZg"}] },
+  { id: 510, name: "Grounded Jam",                       day: "sat", time: "09:30", stage: "GeoJam",      type: "Music", desc: "" },
+  { id: 511, name: "Tin Making Workshop",                day: "sat", time: "10:30", stage: "Tea of Life",  type: "Workshop", desc: "" },
+  { id: 512, name: "Herbal Workshop — Three Mint, Wild Apple & Spearmint", day: "sat", time: "13:00", stage: "Tea of Life", type: "Workshop", desc: "" },
+  { id: 513, name: "Hum Resonance",                      day: "sat", time: "14:30", stage: "GeoJam",      type: "Workshop", desc: "" },
+  { id: 514, name: "The Sun: Tarot, Radiance & Vitality", day: "sat", time: "16:00", stage: "Tea of Life",  type: "Workshop", desc: "" },
+  { id: 515, name: "Flux",                               day: "sat", time: "16:00", stage: "GeoJam",      type: "Music", desc: "" },
+  { id: 516, name: "Greeno",                             day: "sat", time: "20:00", stage: "GeoJam",      type: "Music", desc: "" },
+  { id: 517, name: "Arron Kirwan",                       day: "sat", time: "21:30", stage: "GeoJam",      type: "Music", desc: "", links: [{label:"Spotify", url:"https://open.spotify.com/artist/6o59Rm36G0Zbkb7MpWlyXk"}, {label:"song.link", url:"https://song.link/s/4hv5gPkG6IlCdRhRqAdcZg"}] },
 
-  { id: 520, name: "Herbal Workshop — Thyme & Nettle",  day: "sun", time: "12:00", stage: "Tea of Life",  type: "Workshop", headliner: false, desc: "Thyme and nettle — two powerhouse herbs explored in depth." },
-  { id: 521, name: "Hum Resonance",                      day: "sun", time: "15:00", stage: "GeoJam",      type: "Workshop", headliner: false, desc: "Final Hum Resonance of the weekend — send your vibrations out into the world." },
-  { id: 522, name: "Taste of Tarot",                     day: "sun", time: "16:00", stage: "Tea of Life",  type: "Workshop", headliner: false, desc: "A final taste of tarot to close the Tea of Life programme." },
-  { id: 523, name: "Closing Ceremony Drumming",          day: "sun", time: "20:00", stage: "GeoJam",      type: "Workshop", headliner: false, desc: "The GeoJam joins the closing ceremony with drumming." },
+  { id: 520, name: "Herbal Workshop — Thyme & Nettle",  day: "sun", time: "12:00", stage: "Tea of Life",  type: "Workshop", desc: "" },
+  { id: 521, name: "Hum Resonance",                      day: "sun", time: "15:00", stage: "GeoJam",      type: "Workshop", desc: "" },
+  { id: 522, name: "Taste of Tarot",                     day: "sun", time: "16:00", stage: "Tea of Life",  type: "Workshop", desc: "" },
+  { id: 523, name: "Closing Ceremony Drumming",          day: "sun", time: "20:00", stage: "GeoJam",      type: "Workshop", desc: "" },
 
   // ═══════════════════════════════════════════
   // KIDS & YOUTH
   // Open: Fri 10:00–18:30 · Sat 10:00–21:30 · Sun 10:00–18:30
   // ═══════════════════════════════════════════
-  { id: 600, name: "Mini Terrariums",                    day: "fri", time: "10:00", stage: "Kids & Youth", type: "Kids", headliner: false, desc: "Build your own tiny world — make a mini terrarium to take home." },
-  { id: 601, name: "Dreamcatchers",                      day: "fri", time: "11:30", stage: "Kids & Youth", type: "Kids", headliner: false, desc: "Weave your own dreamcatcher with natural materials and colourful thread." },
-  { id: 602, name: "Movement with Fay",                  day: "fri", time: "11:30", stage: "Kids & Youth", type: "Kids", headliner: false, desc: "Outdoor movement session with Fay — playful, energetic and joyful." },
-  { id: 603, name: "Willow",                             day: "fri", time: "12:30", stage: "Kids & Youth", type: "Kids", headliner: false, desc: "Willow weaving craft session — create something beautiful from living willow." },
-  { id: 604, name: "Poi Making",                         day: "fri", time: "13:30", stage: "Kids & Youth", type: "Kids", headliner: false, desc: "Make your own poi and start learning to spin them." },
-  { id: 605, name: "Yoga (Outside)",                     day: "fri", time: "14:00", stage: "Kids & Youth", type: "Kids", headliner: false, desc: "Outdoor kids yoga — playful poses, breathing and fun." },
-  { id: 606, name: "Mooncraft",                          day: "fri", time: "14:30", stage: "Kids & Youth", type: "Kids", headliner: false, desc: "Moon-inspired crafting for young festival-goers." },
-  { id: 607, name: "Solwen Art",                         day: "fri", time: "15:30", stage: "Kids & Youth", type: "Kids", headliner: false, desc: "Creative art session with Solwen — expressive and exploratory." },
-  { id: 608, name: "Poi Making",                         day: "fri", time: "16:30", stage: "Kids & Youth", type: "Kids", headliner: false, desc: "Second poi making session — more spinning, more fun." },
-  { id: 609, name: "Driftwood Decor",                    day: "fri", time: "17:30", stage: "Kids & Youth", type: "Kids", headliner: false, desc: "Create beautiful decorations from driftwood and natural materials." },
-  { id: 610, name: "Amy Singing (Outside)",              day: "fri", time: "17:30", stage: "Kids & Youth", type: "Kids", headliner: false, desc: "Outdoor singing session with Amy — songs, rounds and vocal joy." },
+  { id: 600, name: "Mini Terrariums",                    day: "fri", time: "10:00", stage: "Kids & Youth", type: "Kids", desc: "" },
+  { id: 601, name: "Dreamcatchers",                      day: "fri", time: "11:30", stage: "Kids & Youth", type: "Kids", desc: "" },
+  { id: 602, name: "Movement with Fay",                  day: "fri", time: "11:30", stage: "Kids & Youth", type: "Kids", desc: "" },
+  { id: 603, name: "Willow",                             day: "fri", time: "12:30", stage: "Kids & Youth", type: "Kids", desc: "" },
+  { id: 604, name: "Poi Making",                         day: "fri", time: "13:30", stage: "Kids & Youth", type: "Kids", desc: "" },
+  { id: 605, name: "Yoga (Outside)",                     day: "fri", time: "14:00", stage: "Kids & Youth", type: "Kids", desc: "" },
+  { id: 606, name: "Mooncraft",                          day: "fri", time: "14:30", stage: "Kids & Youth", type: "Kids", desc: "" },
+  { id: 607, name: "Solwen Art",                         day: "fri", time: "15:30", stage: "Kids & Youth", type: "Kids", desc: "" },
+  { id: 608, name: "Poi Making",                         day: "fri", time: "16:30", stage: "Kids & Youth", type: "Kids", desc: "" },
+  { id: 609, name: "Driftwood Decor",                    day: "fri", time: "17:30", stage: "Kids & Youth", type: "Kids", desc: "" },
+  { id: 610, name: "Amy Singing (Outside)",              day: "fri", time: "17:30", stage: "Kids & Youth", type: "Kids", desc: "" },
 
-  { id: 620, name: "Willow",                             day: "sat", time: "10:00", stage: "Kids & Youth", type: "Kids", headliner: false, desc: "Saturday willow weaving session — create something beautiful." },
-  { id: 621, name: "Dreamcatchers",                      day: "sat", time: "11:30", stage: "Kids & Youth", type: "Kids", headliner: false, desc: "Weave your own dreamcatcher." },
-  { id: 622, name: "Movement with Fay (Outside)",        day: "sat", time: "12:00", stage: "Kids & Youth", type: "Kids", headliner: false, desc: "Saturday outdoor movement session with Fay." },
-  { id: 623, name: "Mini Terrariums",                    day: "sat", time: "13:00", stage: "Kids & Youth", type: "Kids", headliner: false, desc: "Build your own tiny world — mini terrarium workshop." },
-  { id: 624, name: "TrashCats",                          day: "sat", time: "13:30", stage: "Kids & Youth", type: "Kids", headliner: false, desc: "Creative recycling and upcycling — make art from trash." },
-  { id: 625, name: "Mooncraft",                          day: "sat", time: "14:30", stage: "Kids & Youth", type: "Kids", headliner: false, desc: "Moon-inspired crafting session." },
-  { id: 626, name: "Yoga (Outside)",                     day: "sat", time: "15:00", stage: "Kids & Youth", type: "Kids", headliner: false, desc: "Saturday outdoor kids yoga session." },
-  { id: 627, name: "Solwen Art",                         day: "sat", time: "15:30", stage: "Kids & Youth", type: "Kids", headliner: false, desc: "Creative art with Solwen." },
-  { id: 628, name: "Second Chance Charms",               day: "sat", time: "16:30", stage: "Kids & Youth", type: "Kids", headliner: false, desc: "Turn old things into new treasures — charm making from found objects." },
-  { id: 629, name: "Driftwood Decor",                    day: "sat", time: "17:30", stage: "Kids & Youth", type: "Kids", headliner: false, desc: "Create beautiful decorations from driftwood." },
-  { id: 630, name: "Amy Singing (Outside)",              day: "sat", time: "17:30", stage: "Kids & Youth", type: "Kids", headliner: false, desc: "Saturday outdoor singing with Amy." },
-  { id: 631, name: "Jester Workshop",                    day: "sat", time: "20:30", stage: "Kids & Youth", type: "Kids", headliner: false, desc: "Evening jester and clown skills workshop — a late treat for the young ones." },
+  { id: 620, name: "Willow",                             day: "sat", time: "10:00", stage: "Kids & Youth", type: "Kids", desc: "" },
+  { id: 621, name: "Dreamcatchers",                      day: "sat", time: "11:30", stage: "Kids & Youth", type: "Kids", desc: "" },
+  { id: 622, name: "Movement with Fay (Outside)",        day: "sat", time: "12:00", stage: "Kids & Youth", type: "Kids", desc: "" },
+  { id: 623, name: "Mini Terrariums",                    day: "sat", time: "13:00", stage: "Kids & Youth", type: "Kids", desc: "" },
+  { id: 624, name: "TrashCats",                          day: "sat", time: "13:30", stage: "Kids & Youth", type: "Kids", desc: "" },
+  { id: 625, name: "Mooncraft",                          day: "sat", time: "14:30", stage: "Kids & Youth", type: "Kids", desc: "" },
+  { id: 626, name: "Yoga (Outside)",                     day: "sat", time: "15:00", stage: "Kids & Youth", type: "Kids", desc: "" },
+  { id: 627, name: "Solwen Art",                         day: "sat", time: "15:30", stage: "Kids & Youth", type: "Kids", desc: "" },
+  { id: 628, name: "Second Chance Charms",               day: "sat", time: "16:30", stage: "Kids & Youth", type: "Kids", desc: "" },
+  { id: 629, name: "Driftwood Decor",                    day: "sat", time: "17:30", stage: "Kids & Youth", type: "Kids", desc: "" },
+  { id: 630, name: "Amy Singing (Outside)",              day: "sat", time: "17:30", stage: "Kids & Youth", type: "Kids", desc: "" },
+  { id: 631, name: "Jester Workshop",                    day: "sat", time: "20:30", stage: "Kids & Youth", type: "Kids", desc: "" },
 
-  { id: 640, name: "Mooncraft",                          day: "sun", time: "10:00", stage: "Kids & Youth", type: "Kids", headliner: false, desc: "Sunday moon crafting session." },
-  { id: 641, name: "TrashCats",                          day: "sun", time: "11:00", stage: "Kids & Youth", type: "Kids", headliner: false, desc: "Creative recycling — making art from trash." },
-  { id: 642, name: "Movement with Fay (Outside)",        day: "sun", time: "11:30", stage: "Kids & Youth", type: "Kids", headliner: false, desc: "Final outdoor movement session with Fay." },
-  { id: 643, name: "Solwen Art",                         day: "sun", time: "12:00", stage: "Kids & Youth", type: "Kids", headliner: false, desc: "Creative art with Solwen — final Sunday session." },
-  { id: 644, name: "Second Chance Charms",               day: "sun", time: "13:30", stage: "Kids & Youth", type: "Kids", headliner: false, desc: "Make charms from found and repurposed objects." },
-  { id: 645, name: "Willow",                             day: "sun", time: "14:00", stage: "Kids & Youth", type: "Kids", headliner: false, desc: "Sunday willow weaving session." },
-  { id: 646, name: "Yoga (Outside)",                     day: "sun", time: "15:00", stage: "Kids & Youth", type: "Kids", headliner: false, desc: "Final outdoor kids yoga of the weekend." },
-  { id: 647, name: "Dreamcatchers",                      day: "sun", time: "15:00", stage: "Kids & Youth", type: "Kids", headliner: false, desc: "Last dreamcatcher session — weave your memories of the weekend." },
-  { id: 648, name: "Mini Terrariums",                    day: "sun", time: "16:30", stage: "Kids & Youth", type: "Kids", headliner: false, desc: "Final mini terrarium workshop — take a little world home with you." },
-  { id: 649, name: "Tie Dye",                            day: "sun", time: "17:30", stage: "Kids & Youth", type: "Kids", headliner: false, desc: "Tie dye to close the Kids & Youth programme — colourful, messy and brilliant." },
-  { id: 650, name: "Amy Singing (Outside)",              day: "sun", time: "17:30", stage: "Kids & Youth", type: "Kids", headliner: false, desc: "Final outdoor singing with Amy to close the Kids & Youth weekend." },
+  { id: 640, name: "Mooncraft",                          day: "sun", time: "10:00", stage: "Kids & Youth", type: "Kids", desc: "" },
+  { id: 641, name: "TrashCats",                          day: "sun", time: "11:00", stage: "Kids & Youth", type: "Kids", desc: "" },
+  { id: 642, name: "Movement with Fay (Outside)",        day: "sun", time: "11:30", stage: "Kids & Youth", type: "Kids", desc: "" },
+  { id: 643, name: "Solwen Art",                         day: "sun", time: "12:00", stage: "Kids & Youth", type: "Kids", desc: "" },
+  { id: 644, name: "Second Chance Charms",               day: "sun", time: "13:30", stage: "Kids & Youth", type: "Kids", desc: "" },
+  { id: 645, name: "Willow",                             day: "sun", time: "14:00", stage: "Kids & Youth", type: "Kids", desc: "" },
+  { id: 646, name: "Yoga (Outside)",                     day: "sun", time: "15:00", stage: "Kids & Youth", type: "Kids", desc: "" },
+  { id: 647, name: "Dreamcatchers",                      day: "sun", time: "15:00", stage: "Kids & Youth", type: "Kids", desc: "" },
+  { id: 648, name: "Mini Terrariums",                    day: "sun", time: "16:30", stage: "Kids & Youth", type: "Kids", desc: "" },
+  { id: 649, name: "Tie Dye",                            day: "sun", time: "17:30", stage: "Kids & Youth", type: "Kids", desc: "" },
+  { id: 650, name: "Amy Singing (Outside)",              day: "sun", time: "17:30", stage: "Kids & Youth", type: "Kids", desc: "" },
 ];
 
 // ——— STATE ———
@@ -1243,7 +1204,6 @@ function cardHTML(act) {
     <div class="act-meta">
       ${stageTag(act.stage)}
       <span class="tag tag-type">${act.type}</span>
-      ${act.headliner ? '<span class="tag tag-headliner">Headliner</span>' : ''}
     </div>
   </div>`;
 }
@@ -1279,7 +1239,7 @@ function renderTimeline(acts) {
       html += `<div class="timeline-act${s ? ' saved' : ''}" data-id="${act.id}">
         <span class="tl-time">${act.time}</span>
         <span class="tl-stage" style="background:${sc.bg};color:${sc.label||'#fff'}">${act.stage}</span>
-        <span class="tl-name">${act.name}${act.headliner ? ' ★' : ''}</span>
+        <span class="tl-name">${act.name}</span>
         <button class="tl-save" data-id="${act.id}">${s ? '♥' : '♡'}</button>
       </div>`;
     });
@@ -1333,7 +1293,7 @@ function renderMyProg() {
     html += `<div class="timeline-act saved" data-id="${act.id}">
       <span class="tl-time">${act.time}</span>
       <span class="tl-stage" style="background:${sc.bg};color:${sc.label||'#fff'}">${act.stage}</span>
-      <span class="tl-name">${act.name}${act.headliner ? ' ★' : ''}</span>
+      <span class="tl-name">${act.name}</span>
       <button class="tl-save" data-id="${act.id}" title="Remove">♥</button>
     </div>`;
   });
@@ -1377,7 +1337,7 @@ function openModal(id, pushHistory = true) {
     linksEl.style.display = 'none';
   }
   const tags = document.getElementById('modal-tags');
-  tags.innerHTML = `${stageTag(act.stage)}<span class="tag tag-type">${act.type}</span>${act.headliner ? '<span class="tag tag-headliner">Headliner</span>' : ''}`;
+  tags.innerHTML = `${stageTag(act.stage)}<span class="tag tag-type">${act.type}</span>`;
   updateModalButtons(id);
   document.getElementById('modal').classList.add('open');
   if (pushHistory) {
