@@ -467,6 +467,7 @@
   }
 
   footer a { color: var(--teal-l); text-decoration: none; }
+  footer span { white-space: nowrap; }
 
   @keyframes pulse-orange {
     0%, 100% { box-shadow: 4px 4px 0 var(--magenta); }
@@ -796,9 +797,9 @@
 </div>
 
 <footer>
-  <a href="https://www.unearthedfestival.co.uk" target="_blank">unearthedfestival.co.uk</a>
-  &nbsp;·&nbsp; Programme guide · unofficial companion app
-  &nbsp;·&nbsp; <a href="https://www.facebook.com/ash.triggs/" target="_blank" rel="noopener noreferrer">Built by Ash</a>
+  <span><a href="https://www.unearthedfestival.co.uk" target="_blank">unearthedfestival.co.uk</a></span>
+  <span>&nbsp;·&nbsp; Programme guide · unofficial companion app</span>
+  <span>&nbsp;·&nbsp; <a href="https://www.facebook.com/ash.triggs/" target="_blank" rel="noopener noreferrer">Built by Ash</a></span>
 </footer>
 
 <script>
@@ -1533,6 +1534,7 @@ self.addEventListener('activate', e => {
   ));
 });
 self.addEventListener('fetch', e => {
+  if (e.request.cache === 'no-store') return;
   e.respondWith(
     caches.match(e.request).then(cached => {
       const fresh = fetch(e.request).then(res => {
