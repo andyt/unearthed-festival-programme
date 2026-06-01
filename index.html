@@ -785,11 +785,11 @@
 
   <!-- MY PROGRAMME VIEW -->
   <div id="myprog-view" style="display:none">
-    <div style="margin-bottom:1rem">
-      <button class="saved-toggle" id="subscribe-btn" title="Subscribe to your saved acts in your calendar app">📅 Subscribe to Calendar</button>
-      <p class="cal-note">Subscribing adds your saved acts to your calendar app with 15-minute alerts. <strong>Apple Calendar:</strong> alerts fire automatically. <strong>Google Calendar:</strong> you'll need to set a default notification in the calendar's settings, and events may take up to 24 hours to appear.</p>
-    </div>
     <div id="my-programme-list"></div>
+    <div id="subscribe-section" style="display:none;margin-top:1.5rem">
+      <button class="saved-toggle" id="subscribe-btn" title="Subscribe to your saved acts in your calendar app">📅 Subscribe to Calendar</button>
+      <p class="cal-note">Subscribing adds your programme to your calendar app with 15-minute alerts. <strong>Apple Calendar:</strong> alerts fire automatically. <strong>Google Calendar:</strong> you'll need to set a default notification in the calendar's settings, and events may take up to 24 hours to appear.</p>
+    </div>
   </div>
 </main>
 
@@ -802,7 +802,7 @@
     <div class="modal-desc" id="modal-desc"></div>
     <div class="act-links" id="modal-links" style="display:none;margin-bottom:1rem"></div>
     <div class="modal-actions">
-      <button class="modal-save-btn" id="modal-save">♥ Save to My List</button>
+      <button class="modal-save-btn" id="modal-save">♥ Add to My Programme</button>
     </div>
   </div>
 </div>
@@ -1142,10 +1142,10 @@ function isSaved(id) { return saved.includes(id); }
 function toggleSave(id, onComplete) {
   if (isSaved(id)) {
     saved = saved.filter(s => s !== id);
-    showToast('Removed from your list');
+    showToast('Removed from your programme');
   } else {
     saved.push(id);
-    showToast('Added to your list ♥');
+    showToast('Added to your programme ♥');
   }
   localStorage.setItem('uf26_saved', JSON.stringify(saved));
   pushToWorker();
@@ -1312,6 +1312,9 @@ function renderMyProg() {
     return sa - sb;
   });
 
+  const subscribeSection = document.getElementById('subscribe-section');
+  subscribeSection.style.display = mine.length > 0 ? '' : 'none';
+
   if (mine.length === 0) {
     list.innerHTML = '<div class="my-prog-empty">You haven\'t saved anything yet.<br>Browse the programme and tap ♡ to add acts.</div>';
     return;
@@ -1398,10 +1401,10 @@ function closeModal() {
 function updateModalButtons(id) {
   const saveBtn = document.getElementById('modal-save');
   if (isSaved(id)) {
-    saveBtn.textContent = '♥ Saved';
+    saveBtn.textContent = '♥ In My Programme';
     saveBtn.classList.add('saved');
   } else {
-    saveBtn.textContent = '♡ Save to My List';
+    saveBtn.textContent = '♡ Add to My Programme';
     saveBtn.classList.remove('saved');
   }
 }
@@ -1910,7 +1913,7 @@ document.getElementById('subscribe-btn').addEventListener('click', async () => {
   const httpsUrl = `${WORKER_URL}/calendar/${USER_UUID}`;
 
   if (saved.length === 0) {
-    showToast('Save some acts first, then subscribe');
+    showToast('Add some acts to your programme first, then subscribe');
     return;
   }
 
