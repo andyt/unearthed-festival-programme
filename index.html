@@ -533,12 +533,13 @@
     text-transform: uppercase;
     padding: 0.15rem 0.35rem;
   }
-  .nn-badge.now  { background: var(--orange); color: #fff; }
+  .nn-badge.now  { background: var(--teal-d); color: var(--teal-l); border: 1px solid var(--teal); }
   .nn-badge.next { background: var(--teal-d); color: var(--teal-l); border: 1px solid var(--teal); }
 
   .nn-act-name { font-size: 1rem; font-weight: 600; color: var(--cream); }
   .nn-act-time { font-family: 'Space Mono', monospace; font-size: 0.52rem; color: var(--text-dim); }
-  .nn-empty-slot { color: var(--mid); font-size: 0.9rem; padding: 0 0.4rem; }
+  .nn-empty { display: inline-flex; align-items: center; gap: 0.4rem; padding: 0.25rem 0.4rem; }
+  .nn-empty-slot { color: var(--mid); font-size: 0.9rem; }
   .nn-arrow { color: var(--mid); font-size: 0.9rem; }
 
   .nothing-on {
@@ -678,6 +679,8 @@
     .festival-name { text-shadow: 3px 3px 0 var(--orange), 5px 5px 0 var(--magenta); }
     .nn-row { flex-direction: column; align-items: flex-start; gap: 0.4rem; }
     .nn-stage-chip { min-width: auto; }
+    .nn-acts { flex-direction: column; align-items: flex-start; gap: 0.25rem; }
+    .nn-arrow { display: none; }
   }
 </style>
 </head>
@@ -1798,7 +1801,7 @@ function renderNowNext() {
     const col = STAGE_COLOURS[stage] || { bg: '#2a4a4a', text: '#fff' };
     const nowHtml  = nowAct
       ? `<span class="nn-act" data-id="${nowAct.id}"><span class="nn-badge now">Now</span><span class="nn-act-name">${nowAct.name}</span><span class="nn-act-time">${nowAct.time}</span></span>`
-      : `<span class="nn-empty-slot">—</span>`;
+      : `<span class="nn-empty"><span class="nn-badge now">Now</span><span class="nn-empty-slot">—</span></span>`;
     const nextHtml = nextAct
       ? `<span class="nn-act" data-id="${nextAct.id}"><span class="nn-badge next">Next</span><span class="nn-act-name">${nextAct.name}</span><span class="nn-act-time">${nextAct.time}</span></span>`
       : `<span class="nn-empty-slot">—</span>`;
