@@ -581,8 +581,6 @@
   }
 
   /* ——— NOW & NEXT VIEW ——— */
-  #nownext-view { display: none; }
-
   .festival-clock {
     font-family: 'Space Mono', monospace;
     font-size: 0.7rem;
@@ -595,64 +593,54 @@
     border: 1px solid var(--teal-d);
   }
 
-  .now-section-label {
-    font-family: 'Space Mono', monospace;
-    font-size: 0.62rem;
-    font-weight: 700;
-    letter-spacing: 0.2em;
-    text-transform: uppercase;
-    margin: 1.5rem 0 0.5rem;
-    padding: 0.55rem 0.9rem;
+  .nn-row {
     display: flex;
     align-items: center;
     gap: 0.75rem;
+    padding: 0.6rem 0;
+    border-bottom: 1px solid var(--teal-d);
   }
+  .nn-row:last-child { border-bottom: none; }
 
-  .now-section-label.on-now { background: var(--orange); color: #fff; }
-  .now-section-label.up-next { background: var(--teal-d); color: var(--teal-l); border: 1px solid var(--teal); }
-
-  .now-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
-    gap: 3px;
-    background: var(--teal-d);
-    margin-bottom: 0.5rem;
-  }
-
-  .now-card {
-    background: var(--dark-2);
-    padding: 1rem;
-    cursor: pointer;
-    transition: background 0.12s;
-    position: relative;
-    border-left: 4px solid transparent;
-  }
-
-  .now-card.is-now { border-left-color: var(--orange); background: rgba(232,99,26,0.1); }
-  .now-card.is-next { border-left-color: var(--teal); }
-  .now-card:hover { background: var(--dark-3); }
-
-  .now-card-time {
+  .nn-stage-chip {
     font-family: 'Space Mono', monospace;
-    font-size: 0.6rem;
-    color: var(--teal-l);
-    letter-spacing: 0.15em;
-    margin-bottom: 0.25rem;
+    font-size: 0.52rem;
     font-weight: 700;
+    letter-spacing: 0.07em;
+    text-transform: uppercase;
+    padding: 0.3rem 0.6rem;
+    white-space: nowrap;
+    min-width: 105px;
+    text-align: center;
   }
 
-  .now-card-name { font-size: 1.15rem; font-weight: 600; line-height: 1.2; margin-bottom: 0.35rem; color: var(--cream); }
+  .nn-acts { flex: 1; display: flex; align-items: center; gap: 0.5rem; flex-wrap: wrap; }
 
-  .now-save-btn {
-    position: absolute;
-    top: 0.65rem; right: 0.65rem;
-    background: none; border: none;
-    cursor: pointer; color: var(--mid);
-    font-size: 1.1rem; transition: color 0.12s;
+  .nn-act {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.4rem;
+    cursor: pointer;
+    padding: 0.25rem 0.4rem;
+    transition: background 0.12s;
   }
+  .nn-act:hover { background: var(--dark-3); }
 
-  .now-card.saved .now-save-btn { color: var(--magenta-l); }
-  .now-save-btn:hover { color: var(--magenta-l); }
+  .nn-badge {
+    font-family: 'Space Mono', monospace;
+    font-size: 0.48rem;
+    font-weight: 700;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    padding: 0.15rem 0.35rem;
+  }
+  .nn-badge.now  { background: var(--orange); color: #fff; }
+  .nn-badge.next { background: var(--teal-d); color: var(--teal-l); border: 1px solid var(--teal); }
+
+  .nn-act-name { font-size: 1rem; font-weight: 600; color: var(--cream); }
+  .nn-act-time { font-family: 'Space Mono', monospace; font-size: 0.52rem; color: var(--text-dim); }
+  .nn-empty-slot { color: var(--mid); font-size: 0.9rem; padding: 0 0.4rem; }
+  .nn-arrow { color: var(--mid); font-size: 0.9rem; }
 
   .nothing-on {
     text-align: center;
@@ -663,6 +651,25 @@
     border: 2px dashed var(--teal-d);
     margin-top: 1rem;
   }
+
+  /* ——— BROWSE SWITCHER ——— */
+  .browse-switcher { display: flex; gap: 2px; margin-bottom: 1rem; }
+
+  .browse-btn {
+    background: var(--dark-3);
+    border: none;
+    color: var(--text-dim);
+    font-family: 'Space Mono', monospace;
+    font-size: 0.58rem;
+    font-weight: 700;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    padding: 0.4rem 0.9rem;
+    cursor: pointer;
+    transition: all 0.12s;
+  }
+  .browse-btn:hover { background: var(--mid); color: var(--cream); }
+  .browse-btn.active { background: var(--mid); color: var(--cream); }
 
   /* ——— DEV OVERLAY ——— */
   #dev-overlay {
@@ -765,9 +772,11 @@
   @media (max-width: 600px) {
     .controls-inner { flex-direction: column; align-items: stretch; }
     .filter-group { justify-content: flex-start; }
-    .programme-grid, .now-grid { grid-template-columns: 1fr; }
+    .programme-grid { grid-template-columns: 1fr; }
     .view-tabs { font-size: 0.62rem; }
     .festival-name { text-shadow: 3px 3px 0 var(--orange), 5px 5px 0 var(--magenta); }
+    .nn-row { flex-direction: column; align-items: flex-start; gap: 0.4rem; }
+    .nn-stage-chip { min-width: auto; }
   }
 </style>
 </head>
@@ -812,28 +821,30 @@
 <main>
   <div class="view-tabs">
     <button class="view-tab active" data-view="nownext">Now &amp; Next</button>
-    <button class="view-tab" data-view="grid">Grid</button>
-    <button class="view-tab" data-view="timeline">Timeline</button>
+    <button class="view-tab" data-view="browse">Browse</button>
     <button class="view-tab" data-view="myprog">My Programme</button>
   </div>
 
-  <div id="results-meta" class="results-meta"></div>
-
-  <!-- GRID VIEW -->
-  <div id="grid-view">
-    <div id="programme-grid" class="programme-grid"></div>
-    <div id="empty-state" class="empty-state" style="display:none">Nothing found — try a different search</div>
-  </div>
-
-  <!-- TIMELINE VIEW -->
-  <div id="timeline-view" style="display:none">
-    <div id="timeline-content"></div>
-  </div>
-
   <!-- NOW & NEXT VIEW -->
-  <div id="nownext-view" style="display:none">
+  <div id="nownext-view">
     <div class="festival-clock" id="festival-clock"></div>
     <div id="nownext-content"></div>
+  </div>
+
+  <!-- BROWSE VIEW -->
+  <div id="browse-view" style="display:none">
+    <div class="browse-switcher">
+      <button class="browse-btn active" data-browse="grid">Grid</button>
+      <button class="browse-btn" data-browse="timeline">Timeline</button>
+    </div>
+    <div id="results-meta" class="results-meta"></div>
+    <div id="grid-view">
+      <div id="programme-grid" class="programme-grid"></div>
+      <div id="empty-state" class="empty-state" style="display:none">Nothing found — try a different search</div>
+    </div>
+    <div id="timeline-view" style="display:none">
+      <div id="timeline-content"></div>
+    </div>
   </div>
 
   <!-- MY PROGRAMME VIEW -->
@@ -1192,6 +1203,7 @@ let saved = JSON.parse(localStorage.getItem('uf26_saved') || '[]');
 let notifications = JSON.parse(localStorage.getItem('uf26_notif') || '[]');
 let currentFilters = { day: 'all', stage: 'all', search: '' };
 let currentView = 'nownext';
+let currentBrowse = 'grid';
 let modalActId = null;
 
 // ——— UTILITIES ———
@@ -1556,8 +1568,9 @@ document.getElementById('modal-notify').addEventListener('click', () => {
 // ——— URL ROUTING ———
 function syncURLToState() {
   const params = new URLSearchParams(window.location.search);
-  ['v', 'day', 'stage', 'q'].forEach(k => params.delete(k));
+  ['v', 'b', 'day', 'stage', 'q'].forEach(k => params.delete(k));
   if (currentView !== 'nownext') params.set('v', currentView);
+  if (currentView === 'browse' && currentBrowse !== 'grid') params.set('b', currentBrowse);
   if (currentFilters.day !== 'all') params.set('day', currentFilters.day);
   if (currentFilters.stage !== 'all') params.set('stage', currentFilters.stage);
   if (currentFilters.search) params.set('q', currentFilters.search);
@@ -1568,20 +1581,24 @@ function syncURLToState() {
 function applyURLState() {
   const params = new URLSearchParams(window.location.search);
   const v = params.get('v');
-  if (v && ['grid','timeline','nownext','myprog'].includes(v)) currentView = v;
+  if (v && ['browse','nownext','myprog'].includes(v)) currentView = v;
+  const b = params.get('b');
+  if (b && ['grid','timeline'].includes(b)) currentBrowse = b;
   const day = params.get('day');
   if (day && ['all','fri','sat','sun'].includes(day)) currentFilters.day = day;
   const stage = params.get('stage');
   if (stage) currentFilters.stage = stage;
   const q = params.get('q');
   if (q) { currentFilters.search = q; document.getElementById('search').value = q; document.getElementById('search-clear').style.display = 'block'; }
-  document.querySelectorAll('[data-day]').forEach(b => b.classList.toggle('active', b.dataset.day === currentFilters.day));
-  document.querySelectorAll('[data-stage]').forEach(b => b.classList.toggle('active', b.dataset.stage === currentFilters.stage));
+  document.querySelectorAll('[data-day]').forEach(el => el.classList.toggle('active', el.dataset.day === currentFilters.day));
+  document.querySelectorAll('[data-stage]').forEach(el => el.classList.toggle('active', el.dataset.stage === currentFilters.stage));
   document.querySelectorAll('.view-tab').forEach(t => t.classList.toggle('active', t.dataset.view === currentView));
-  document.getElementById('grid-view').style.display     = currentView === 'grid'     ? '' : 'none';
-  document.getElementById('timeline-view').style.display = currentView === 'timeline' ? '' : 'none';
-  document.getElementById('nownext-view').style.display  = currentView === 'nownext'  ? '' : 'none';
-  document.getElementById('myprog-view').style.display   = currentView === 'myprog'   ? '' : 'none';
+  document.querySelectorAll('.browse-btn').forEach(el => el.classList.toggle('active', el.dataset.browse === currentBrowse));
+  document.getElementById('nownext-view').style.display = currentView === 'nownext' ? '' : 'none';
+  document.getElementById('browse-view').style.display  = currentView === 'browse'  ? '' : 'none';
+  document.getElementById('myprog-view').style.display  = currentView === 'myprog'  ? '' : 'none';
+  document.getElementById('grid-view').style.display     = currentBrowse === 'grid'     ? '' : 'none';
+  document.getElementById('timeline-view').style.display = currentBrowse === 'timeline' ? '' : 'none';
 
   const actId = params.get('act');
   if (actId) setTimeout(() => openModal(+actId, false), 0);
@@ -1603,10 +1620,8 @@ function render() {
   const acts = getFiltered();
   const meta = document.getElementById('results-meta');
   meta.textContent = `${acts.length} act${acts.length !== 1 ? 's' : ''} shown`;
-
-  if (currentView === 'grid') renderGrid(acts);
-  else if (currentView === 'timeline') renderTimeline(acts);
-  else if (currentView === 'myprog') renderMyProg();
+  if (currentBrowse === 'grid') renderGrid(acts);
+  else renderTimeline(acts);
 }
 
 // ——— EVENT LISTENERS ———
@@ -1642,16 +1657,23 @@ document.querySelectorAll('.view-tab').forEach(tab => {
   tab.addEventListener('click', () => {
     currentView = tab.dataset.view;
     document.querySelectorAll('.view-tab').forEach(t => t.classList.toggle('active', t === tab));
-    document.getElementById('grid-view').style.display     = currentView === 'grid'     ? '' : 'none';
-    document.getElementById('timeline-view').style.display = currentView === 'timeline' ? '' : 'none';
-    document.getElementById('nownext-view').style.display  = currentView === 'nownext'  ? '' : 'none';
-    document.getElementById('myprog-view').style.display   = currentView === 'myprog'   ? '' : 'none';
-    if (currentView === 'nownext') {
-      document.getElementById('results-meta').textContent = '';
-      renderNowNext();
-    } else {
-      render();
-    }
+    document.getElementById('nownext-view').style.display = currentView === 'nownext' ? '' : 'none';
+    document.getElementById('browse-view').style.display  = currentView === 'browse'  ? '' : 'none';
+    document.getElementById('myprog-view').style.display  = currentView === 'myprog'  ? '' : 'none';
+    if (currentView === 'nownext') renderNowNext();
+    else if (currentView === 'browse') render();
+    else renderMyProg();
+    syncURLToState();
+  });
+});
+
+document.querySelectorAll('.browse-btn').forEach(btn => {
+  btn.addEventListener('click', () => {
+    currentBrowse = btn.dataset.browse;
+    document.querySelectorAll('.browse-btn').forEach(b => b.classList.toggle('active', b === btn));
+    document.getElementById('grid-view').style.display     = currentBrowse === 'grid'     ? '' : 'none';
+    document.getElementById('timeline-view').style.display = currentBrowse === 'timeline' ? '' : 'none';
+    render();
     syncURLToState();
   });
 });
@@ -1784,13 +1806,11 @@ if (IS_DEV) {
       // Switch to Now & Next so the simulated time is immediately visible
       currentView = 'nownext';
       document.querySelectorAll('.view-tab').forEach(t => t.classList.toggle('active', t.dataset.view === 'nownext'));
-      document.getElementById('grid-view').style.display      = 'none';
-      document.getElementById('timeline-view').style.display  = 'none';
-      document.getElementById('nownext-view').style.display   = '';
-      document.getElementById('myprog-view').style.display    = 'none';
-      document.getElementById('results-meta').textContent     = '';
+      document.getElementById('nownext-view').style.display = '';
+      document.getElementById('browse-view').style.display  = 'none';
+      document.getElementById('myprog-view').style.display  = 'none';
     }
-    if (currentView === 'nownext') renderNowNext();
+    renderNowNext();
     updateClock();
   }
 
@@ -1948,54 +1968,48 @@ function renderNowNext() {
   updateClock();
 
   const { nowActs, nextActs } = getNowNextActs();
+  const now = getNow();
 
-  let html = '';
+  const stageOrder = Object.keys(STAGE_COLOURS);
+  const activeStages = stageOrder.filter(stage =>
+    nowActs.some(a => a.stage === stage) || nextActs.some(a => a.stage === stage)
+  );
 
-  if (nowActs.length === 0 && nextActs.length === 0) {
-    const now = getNow();
+  if (activeStages.length === 0) {
     const inFest = now >= new Date(FEST_START) && now <= new Date(FEST_END);
-    html = `<div class="nothing-on">${inFest
+    wrap.innerHTML = `<div class="nothing-on">${inFest
       ? 'Nothing on right now — check back soon'
       : 'The festival hasn\'t started yet — see you 19 June!'
     }</div>`;
-  } else {
-    if (nowActs.length > 0) {
-      html += `<div class="now-section-label on-now">On Now</div>`;
-      html += `<div class="now-grid">`;
-      nowActs.sort((a,b) => a.stage.localeCompare(b.stage)).forEach(act => {
-        html += nowCard(act, 'is-now');
-      });
-      html += `</div>`;
-    }
-
-    if (nextActs.length > 0) {
-      html += `<div class="now-section-label up-next">Up Next</div>`;
-      html += `<div class="now-grid">`;
-      nextActs.sort((a,b) => a.stage.localeCompare(b.stage)).forEach(act => {
-        html += nowCard(act, 'is-next');
-      });
-      html += `</div>`;
-    }
+    return;
   }
+
+  let html = '';
+  activeStages.forEach(stage => {
+    const nowAct  = nowActs.find(a => a.stage === stage);
+    const nextAct = nextActs.find(a => a.stage === stage);
+    const col = STAGE_COLOURS[stage] || { bg: '#2a4a4a', text: '#fff' };
+    const nowHtml  = nowAct
+      ? `<span class="nn-act" data-id="${nowAct.id}"><span class="nn-badge now">Now</span><span class="nn-act-name">${nowAct.name}</span><span class="nn-act-time">${nowAct.time}</span></span>`
+      : `<span class="nn-empty-slot">—</span>`;
+    const nextHtml = nextAct
+      ? `<span class="nn-act" data-id="${nextAct.id}"><span class="nn-badge next">Next</span><span class="nn-act-name">${nextAct.name}</span><span class="nn-act-time">${nextAct.time}</span></span>`
+      : `<span class="nn-empty-slot">—</span>`;
+    html += `<div class="nn-row">
+      <div class="nn-stage-chip" style="background:${col.bg};color:${col.text}">${stage}</div>
+      <div class="nn-acts">${nowHtml}<span class="nn-arrow">→</span>${nextHtml}</div>
+    </div>`;
+  });
 
   wrap.innerHTML = html;
 
-  wrap.querySelectorAll('.now-card').forEach(card => {
-    card.addEventListener('click', e => {
-      if (e.target.classList.contains('now-save-btn')) return;
-      openModal(+card.dataset.id);
-    });
-  });
-  wrap.querySelectorAll('.now-save-btn').forEach(btn => {
-    btn.addEventListener('click', e => { e.stopPropagation(); toggleSave(+btn.dataset.id); });
+  wrap.querySelectorAll('.nn-act').forEach(el => {
+    el.addEventListener('click', () => openModal(+el.dataset.id));
   });
 }
 
 // Auto-refresh Now & Next every 30 seconds
-setInterval(() => {
-  if (currentView === 'nownext') renderNowNext();
-  updateClock();
-}, 30000);
+setInterval(renderNowNext, 30000);
 
 // Clock ticks every second
 setInterval(updateClock, 1000);
@@ -2004,11 +2018,9 @@ setInterval(updateClock, 1000);
 document.getElementById('now-pill-btn').addEventListener('click', () => {
   currentView = 'nownext';
   document.querySelectorAll('.view-tab').forEach(t => t.classList.toggle('active', t.dataset.view === 'nownext'));
-  document.getElementById('grid-view').style.display = 'none';
-  document.getElementById('timeline-view').style.display = 'none';
   document.getElementById('nownext-view').style.display = '';
-  document.getElementById('myprog-view').style.display = 'none';
-  document.getElementById('results-meta').textContent = '';
+  document.getElementById('browse-view').style.display  = 'none';
+  document.getElementById('myprog-view').style.display  = 'none';
   renderNowNext();
   syncURLToState();
 });
@@ -2082,12 +2094,9 @@ document.getElementById('subscribe-btn').addEventListener('click', () => {
 updateNotifStatus();
 restoreNotifications();
 applyURLState();
-if (currentView === 'nownext') {
-  document.getElementById('results-meta').textContent = '';
-  renderNowNext();
-} else {
-  render();
-}
+if (currentView === 'nownext') renderNowNext();
+else if (currentView === 'browse') render();
+else renderMyProg();
 </script>
 </body>
 </html>
