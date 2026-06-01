@@ -8,7 +8,6 @@ load_dotenv(os.path.join(os.path.dirname(__file__), ".env"))
 PLAYLIST_ID = os.environ["SPOTIFY_PLAYLIST_ID"]
 
 ARTISTS = [
-    ("Cosmic Smiles",        "1fBAtXPNZIdhgiRagbEQbG"),
     ("Twpsyn",               "02yBquhX7ueKHmZrxfjlim"),
     ("Amy True",             "7oVEKfsDB4c8t7RMPfNyWv"),
     ("Samana",               "0gf5phmsYQSLhOvHfgazMz"),
@@ -25,6 +24,7 @@ ARTISTS = [
     ("Arron Kirwan",         "6o59Rm36G0Zbkb7MpWlyXk"),
     ("Timbali",              "3uhmYgpdouANfuan9nk0tq"),
     ("Omega Nebula",         "2iWJJEfxmQK1CZeWqjh4Xn"),
+    ("Cosmic Smiles",        "1fBAtXPNZIdhgiRagbEQbG"),
 ]
 
 TRACKS_PER_ARTIST = 3
