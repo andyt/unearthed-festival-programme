@@ -106,11 +106,28 @@
     text-transform: uppercase;
   }
 
-  /* ——— CONTROLS ——— */
-  .controls {
+  /* ——— STICKY BAR (tabs + controls) ——— */
+  .sticky-bar {
     position: sticky;
     top: 0;
     z-index: 100;
+  }
+
+  .tab-bar {
+    background: var(--yellow);
+    padding: 0.4rem 1rem 0;
+  }
+
+  .tab-bar-inner {
+    max-width: 1100px;
+    margin: 0 auto;
+    display: flex;
+    gap: 3px;
+    align-items: flex-end;
+  }
+
+  /* ——— CONTROLS ——— */
+  .controls {
     background: var(--dark-2);
     border-bottom: 3px solid var(--teal);
     padding: 0.7rem 1rem;
@@ -208,33 +225,28 @@
   main { max-width: 1100px; margin: 0 auto; padding: 1.5rem 1rem 6rem; }
 
   /* ——— VIEW TABS ——— */
-  .view-tabs {
-    display: flex;
-    margin-bottom: 1.5rem;
-    gap: 3px;
-    overflow-x: auto;
-    scrollbar-width: none;
-  }
-  .view-tabs::-webkit-scrollbar { display: none; }
-
   .view-tab {
-    background: var(--dark-3);
+    background: rgba(0,0,0,0.18);
     border: none;
-    border-top: 3px solid transparent;
-    color: var(--text-dim);
+    color: rgba(10,26,26,0.72);
     font-family: 'Space Mono', monospace;
-    font-size: 0.6rem;
+    font-size: 0.65rem;
     font-weight: 700;
     letter-spacing: 0.12em;
     text-transform: uppercase;
-    padding: 0.7rem 1.1rem;
+    padding: 0.55rem 1.2rem 0.7rem;
     cursor: pointer;
-    transition: all 0.15s;
+    transition: all 0.12s;
     white-space: nowrap;
   }
 
-  .view-tab:hover { background: var(--mid); color: var(--cream); }
-  .view-tab.active { background: var(--teal-d); color: var(--yellow); border-top-color: var(--yellow); }
+  .view-tab:hover { background: rgba(0,0,0,0.28); color: var(--dark); }
+  .view-tab.active {
+    background: var(--dark-2);
+    color: var(--yellow);
+    padding-top: 0.7rem;
+    padding-bottom: 0.85rem;
+  }
 
   /* ——— DAY HEADERS ——— */
   .day-header {
@@ -256,6 +268,9 @@
     gap: 3px;
     background: var(--teal-d);
   }
+
+  .programme-grid > .day-header:first-child,
+  #timeline-content > .day-header:first-child { margin-top: 0; }
 
   .act-card {
     background: var(--dark-2);
@@ -333,6 +348,7 @@
 
   .timeline-act:hover { background: var(--dark-3); border-left-color: var(--yellow); }
   .timeline-act.saved { border-left-color: var(--teal-l); background: rgba(13,122,122,0.15); }
+  .timeline-act.removing { opacity: 0; transform: translateX(-1.5rem); transition: opacity 0.22s ease, transform 0.22s ease; pointer-events: none; }
 
   .tl-time {
     font-family: 'Space Mono', monospace;
@@ -349,7 +365,7 @@
     text-transform: uppercase;
     font-weight: 700;
     padding: 0.2rem 0.45rem;
-    border-radius: 3px;
+    border-radius: 0;
     white-space: nowrap;
     flex-shrink: 0;
   }
@@ -516,14 +532,6 @@
 
   .toast.show { transform: translateY(0); opacity: 1; }
 
-  .results-meta {
-    font-family: 'Space Mono', monospace;
-    font-size: 0.58rem;
-    color: var(--mid);
-    letter-spacing: 0.12em;
-    margin-bottom: 1rem;
-    text-transform: uppercase;
-  }
 
   .empty-state { text-align: center; padding: 4rem 2rem; font-style: italic; color: var(--mid); font-size: 1.1rem; }
 
@@ -538,37 +546,6 @@
   }
 
   footer a { color: var(--teal-l); text-decoration: none; }
-
-  /* ——— NOW PILL ——— */
-  .now-pill {
-    display: inline-flex;
-    align-items: center;
-    gap: 0.5rem;
-    background: var(--orange);
-    color: #fff;
-    font-family: 'Space Mono', monospace;
-    font-size: 0.7rem;
-    font-weight: 700;
-    letter-spacing: 0.15em;
-    text-transform: uppercase;
-    padding: 0.55rem 1.4rem;
-    border: none;
-    cursor: pointer;
-    margin-top: 0.8rem;
-    box-shadow: 4px 4px 0 var(--magenta);
-    transition: transform 0.12s, box-shadow 0.12s;
-    animation: pulse-orange 2.5s ease-in-out infinite;
-  }
-
-  .now-pill:hover { transform: translate(-2px,-2px); box-shadow: 6px 6px 0 var(--magenta); }
-  .now-pill:active { transform: translate(2px,2px); box-shadow: 2px 2px 0 var(--magenta); }
-
-  .now-pill .dot {
-    width: 8px; height: 8px;
-    background: var(--yellow);
-    border-radius: 50%;
-    animation: blink 1s ease-in-out infinite;
-  }
 
   @keyframes pulse-orange {
     0%, 100% { box-shadow: 4px 4px 0 var(--magenta); }
@@ -773,7 +750,9 @@
     .controls-inner { flex-direction: column; align-items: stretch; }
     .filter-group { justify-content: flex-start; }
     .programme-grid { grid-template-columns: 1fr; }
-    .view-tabs { font-size: 0.62rem; }
+    .tab-bar { padding: 0.3rem 0.5rem 0; }
+    .view-tab { font-size: 0.58rem; padding: 0.45rem 0.75rem 0.6rem; }
+    .view-tab.active { padding-top: 0.55rem; padding-bottom: 0.7rem; }
     .festival-name { text-shadow: 3px 3px 0 var(--orange), 5px 5px 0 var(--magenta); }
     .nn-row { flex-direction: column; align-items: flex-start; gap: 0.4rem; }
     .nn-stage-chip { min-width: auto; }
@@ -789,41 +768,45 @@
   <div class="header-dates">Pembrokeshire · 19–21 June 2026</div>
 </header>
 
-<div class="controls">
-  <div class="controls-inner">
-    <div class="search-wrap">
-      <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.35-4.35"/></svg>
-      <input type="text" id="search" placeholder="Search acts, stages, types…" autocomplete="off">
-      <button id="search-clear" aria-label="Clear search">&times;</button>
+<div class="sticky-bar">
+  <div class="tab-bar">
+    <div class="tab-bar-inner">
+      <button class="view-tab active" data-view="nownext">Now &amp; Next</button>
+      <button class="view-tab" data-view="browse">Browse</button>
+      <button class="view-tab" data-view="myprog">My Programme</button>
     </div>
-    <div class="filter-group" id="day-filters">
-      <button class="filter-btn active" data-day="all">All Days</button>
-      <button class="filter-btn" data-day="fri">Fri</button>
-      <button class="filter-btn" data-day="sat">Sat</button>
-      <button class="filter-btn" data-day="sun">Sun</button>
+  </div>
+
+  <div class="controls" id="controls-bar" style="display:none">
+    <div class="controls-inner">
+      <div class="search-wrap">
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.35-4.35"/></svg>
+        <input type="text" id="search" placeholder="Search acts, stages, types…" autocomplete="off">
+        <button id="search-clear" aria-label="Clear search">&times;</button>
+      </div>
+      <div class="filter-group" id="day-filters">
+        <button class="filter-btn active" data-day="all">All Days</button>
+        <button class="filter-btn" data-day="fri">Fri</button>
+        <button class="filter-btn" data-day="sat">Sat</button>
+        <button class="filter-btn" data-day="sun">Sun</button>
+      </div>
+      <div class="filter-group" id="stage-filters">
+        <button class="filter-btn active" data-stage="all">All Stages</button>
+        <button class="filter-btn" data-stage="Main Stage">Main</button>
+        <button class="filter-btn" data-stage="Freedom Stage">Freedom</button>
+        <button class="filter-btn" data-stage="Dub Corner">Dub Corner</button>
+        <button class="filter-btn" data-stage="Cosmic Cwtsh">Cosmic Cwtsh</button>
+        <button class="filter-btn" data-stage="Temple Tent">Temple</button>
+        <button class="filter-btn" data-stage="Sacred Fire">Sacred Fire</button>
+        <button class="filter-btn" data-stage="GeoJam">GeoJam</button>
+        <button class="filter-btn" data-stage="Tea of Life">Tea of Life</button>
+        <button class="filter-btn" data-stage="Kids &amp; Youth">Kids &amp; Youth</button>
+      </div>
     </div>
-    <div class="filter-group" id="stage-filters">
-      <button class="filter-btn active" data-stage="all">All Stages</button>
-      <button class="filter-btn" data-stage="Main Stage">Main</button>
-      <button class="filter-btn" data-stage="Freedom Stage">Freedom</button>
-      <button class="filter-btn" data-stage="Dub Corner">Dub Corner</button>
-      <button class="filter-btn" data-stage="Cosmic Cwtsh">Cosmic Cwtsh</button>
-      <button class="filter-btn" data-stage="Temple Tent">Temple</button>
-      <button class="filter-btn" data-stage="Sacred Fire">Sacred Fire</button>
-      <button class="filter-btn" data-stage="GeoJam">GeoJam</button>
-      <button class="filter-btn" data-stage="Tea of Life">Tea of Life</button>
-      <button class="filter-btn" data-stage="Kids &amp; Youth">Kids &amp; Youth</button>
-    </div>
-    <button class="saved-toggle" id="subscribe-btn" title="Subscribe to your saved acts in your calendar app">📅 Subscribe</button>
   </div>
 </div>
 
 <main>
-  <div class="view-tabs">
-    <button class="view-tab active" data-view="nownext">Now &amp; Next</button>
-    <button class="view-tab" data-view="browse">Browse</button>
-    <button class="view-tab" data-view="myprog">My Programme</button>
-  </div>
 
   <!-- NOW & NEXT VIEW -->
   <div id="nownext-view">
@@ -837,7 +820,6 @@
       <button class="browse-btn active" data-browse="grid">Grid</button>
       <button class="browse-btn" data-browse="timeline">Timeline</button>
     </div>
-    <div id="results-meta" class="results-meta"></div>
     <div id="grid-view">
       <div id="programme-grid" class="programme-grid"></div>
       <div id="empty-state" class="empty-state" style="display:none">Nothing found — try a different search</div>
@@ -849,6 +831,9 @@
 
   <!-- MY PROGRAMME VIEW -->
   <div id="myprog-view" style="display:none">
+    <div style="margin-bottom:1rem">
+      <button class="saved-toggle" id="subscribe-btn" title="Subscribe to your saved acts in your calendar app">📅 Subscribe to Calendar</button>
+    </div>
     <div class="notify-banner">
       <div>
         <p>Enable notifications to get reminders before acts you've saved start. You'll get a nudge 15 minutes before curtain.</p>
@@ -1210,7 +1195,7 @@ let modalActId = null;
 function isSaved(id) { return saved.includes(id); }
 function isNotified(id) { return notifications.includes(id); }
 
-function toggleSave(id) {
+function toggleSave(id, onComplete) {
   if (isSaved(id)) {
     saved = saved.filter(s => s !== id);
     showToast('Removed from your list');
@@ -1220,7 +1205,8 @@ function toggleSave(id) {
   }
   localStorage.setItem('uf26_saved', JSON.stringify(saved));
   pushToWorker();
-  render();
+  if (onComplete) onComplete();
+  else render();
 }
 
 function toggleNotify(id) {
@@ -1386,7 +1372,6 @@ function cardHTML(act) {
       ${stageTag(act.stage)}
       <span class="tag tag-type">${act.type}</span>
       ${act.headliner ? '<span class="tag tag-headliner">Headliner</span>' : ''}
-      ${act.links && act.links.length ? '<span class="tag" style="background:var(--teal-d);color:var(--teal-l);border:1px solid var(--teal)">♫ Links</span>' : ''}
     </div>
   </div>`;
 }
@@ -1465,18 +1450,21 @@ function renderMyProg() {
   mine.forEach(act => {
     const dday = displayDay(act);
     if (dday !== lastDay) {
-      html += `<div class="day-header">${dayLabel(dday)}</div>`;
+      if (lastDay !== null) html += `</div>`;
+      html += `<div class="day-header">${dayLabel(dday)}</div><div class="timeline-row">`;
       lastDay = dday;
     }
     const notified = isNotified(act.id);
-    html += `<div class="timeline-act saved" data-id="${act.id}" style="gap:0.75rem">
+    const sc = STAGE_COLOURS[act.stage] || { bg: '#2a4a4a', label: '#8ab0b0' };
+    html += `<div class="timeline-act saved" data-id="${act.id}">
       <span class="tl-time">${act.time}</span>
-      <span class="tl-name" style="flex:1">${act.name}</span>
-      <span class="tag tag-stage" style="font-size:0.55rem">${act.stage}</span>
+      <span class="tl-stage" style="background:${sc.bg};color:${sc.label||'#fff'}">${act.stage}</span>
+      <span class="tl-name">${act.name}${act.headliner ? ' ★' : ''}</span>
       <button class="tl-save" data-id="${act.id}" title="Remove">♥</button>
-      <button class="tl-save notify-act" data-id="${act.id}" title="${notified ? 'Cancel reminder' : 'Set reminder'}" style="color:${notified ? 'var(--amber)' : 'var(--bark)'}">${notified ? '🔔' : '🔕'}</button>
+      <button class="tl-save notify-act" data-id="${act.id}" title="${notified ? 'Cancel reminder' : 'Set reminder'}">${notified ? '🔔' : '🔕'}</button>
     </div>`;
   });
+  if (lastDay !== null) html += `</div>`;
   list.innerHTML = html;
 
   list.querySelectorAll('.timeline-act').forEach(el => {
@@ -1486,7 +1474,14 @@ function renderMyProg() {
     });
   });
   list.querySelectorAll('.tl-save:not(.notify-act)').forEach(btn => {
-    btn.addEventListener('click', e => { e.stopPropagation(); toggleSave(+btn.dataset.id); });
+    btn.addEventListener('click', e => {
+      e.stopPropagation();
+      const row = btn.closest('.timeline-act');
+      row.classList.add('removing');
+      row.addEventListener('transitionend', () => {
+        toggleSave(+btn.dataset.id, () => renderMyProg());
+      }, { once: true });
+    });
   });
   list.querySelectorAll('.notify-act').forEach(btn => {
     btn.addEventListener('click', e => { e.stopPropagation(); toggleNotify(+btn.dataset.id); });
@@ -1599,6 +1594,7 @@ function applyURLState() {
   document.getElementById('myprog-view').style.display  = currentView === 'myprog'  ? '' : 'none';
   document.getElementById('grid-view').style.display     = currentBrowse === 'grid'     ? '' : 'none';
   document.getElementById('timeline-view').style.display = currentBrowse === 'timeline' ? '' : 'none';
+  setControlsVisibility();
 
   const actId = params.get('act');
   if (actId) setTimeout(() => openModal(+actId, false), 0);
@@ -1618,8 +1614,6 @@ window.addEventListener('popstate', () => {
 // ——— MAIN RENDER ———
 function render() {
   const acts = getFiltered();
-  const meta = document.getElementById('results-meta');
-  meta.textContent = `${acts.length} act${acts.length !== 1 ? 's' : ''} shown`;
   if (currentBrowse === 'grid') renderGrid(acts);
   else renderTimeline(acts);
 }
@@ -1653,6 +1647,10 @@ document.getElementById('day-filters').addEventListener('click', e => {
 });
 
 
+function setControlsVisibility() {
+  document.getElementById('controls-bar').style.display = currentView === 'browse' ? '' : 'none';
+}
+
 document.querySelectorAll('.view-tab').forEach(tab => {
   tab.addEventListener('click', () => {
     currentView = tab.dataset.view;
@@ -1660,6 +1658,7 @@ document.querySelectorAll('.view-tab').forEach(tab => {
     document.getElementById('nownext-view').style.display = currentView === 'nownext' ? '' : 'none';
     document.getElementById('browse-view').style.display  = currentView === 'browse'  ? '' : 'none';
     document.getElementById('myprog-view').style.display  = currentView === 'myprog'  ? '' : 'none';
+    setControlsVisibility();
     if (currentView === 'nownext') renderNowNext();
     else if (currentView === 'browse') render();
     else renderMyProg();
@@ -1809,6 +1808,7 @@ if (IS_DEV) {
       document.getElementById('nownext-view').style.display = '';
       document.getElementById('browse-view').style.display  = 'none';
       document.getElementById('myprog-view').style.display  = 'none';
+      setControlsVisibility();
     }
     renderNowNext();
     updateClock();
@@ -2014,16 +2014,6 @@ setInterval(renderNowNext, 30000);
 // Clock ticks every second
 setInterval(updateClock, 1000);
 
-// Now pill button
-document.getElementById('now-pill-btn').addEventListener('click', () => {
-  currentView = 'nownext';
-  document.querySelectorAll('.view-tab').forEach(t => t.classList.toggle('active', t.dataset.view === 'nownext'));
-  document.getElementById('nownext-view').style.display = '';
-  document.getElementById('browse-view').style.display  = 'none';
-  document.getElementById('myprog-view').style.display  = 'none';
-  renderNowNext();
-  syncURLToState();
-});
 
 // ——— INIT ———
 // After deploying your Cloudflare Worker, replace this with your worker URL:
