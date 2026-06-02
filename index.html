@@ -1155,15 +1155,11 @@ function dayLabel(d) {
   return { fri: 'Friday', sat: 'Saturday', sun: 'Sunday' }[d] || d;
 }
 
-// Festival day cutoff — anything before 06:00 belongs to the previous day's programme
+// Hours before this are treated as "late night" continuation of the previous slot (for sort)
 const DAY_CUTOFF_HOUR = 6;
 
+// Acts are tagged with their festival night (fri/sat/sun), including post-midnight slots
 function displayDay(act) {
-  const h = parseInt(act.time.split(':')[0], 10);
-  if (h < DAY_CUTOFF_HOUR) {
-    const prev = { sat: 'fri', sun: 'sat' };
-    return prev[act.day] || act.day;
-  }
   return act.day;
 }
 
@@ -1670,7 +1666,14 @@ function buildEndTimes() {
   });
 
   Object.entries(byStageDay).forEach(([key, acts]) => {
-    acts.sort((a, b) => a.time.localeCompare(b.time));
+    acts.sort((a, b) => {
+      const ha = parseInt(a.time.split(':')[0], 10);
+      const hb = parseInt(b.time.split(':')[0], 10);
+      const sa = ha < DAY_CUTOFF_HOUR ? ha + 24 : ha;
+      const sb = hb < DAY_CUTOFF_HOUR ? hb + 24 : hb;
+      if (sa !== sb) return sa - sb;
+      return parseInt(a.time.split(':')[1], 10) - parseInt(b.time.split(':')[1], 10);
+    });
     acts.forEach((act, i) => {
       if (i < acts.length - 1) {
         endTimes[act.id] = acts[i + 1].time;
