@@ -1567,7 +1567,13 @@ if ('serviceWorker' in navigator) {
     const ut = document.getElementById('update-toast');
     if (!ut || ut.classList.contains('show')) return;
     ut.classList.add('show');
-    ut.addEventListener('click', () => window.location.reload());
+    ut.addEventListener('click', async () => {
+      if ('caches' in window) {
+        const keys = await caches.keys();
+        await Promise.all(keys.map(k => caches.delete(k)));
+      }
+      window.location.reload();
+    });
   }
 
   async function checkVersion() {
@@ -1580,6 +1586,9 @@ if ('serviceWorker' in navigator) {
   }
 
   setInterval(checkVersion, 5 * 60 * 1000);
+  document.addEventListener('visibilitychange', () => {
+    if (document.visibilityState === 'visible') checkVersion();
+  });
 })();
 
 // ——— DEV MODE — gated on ?dev query param ———
