@@ -638,6 +638,28 @@
   }
   .update-toast.show { transform: translateX(-50%) translateY(0); }
 
+  .reload-btn {
+    display: none;
+    position: absolute;
+    top: 0.75rem; right: 0.75rem;
+    background: none;
+    border: 2px solid var(--yellow);
+    color: var(--yellow);
+    border-radius: 50%;
+    width: 2rem; height: 2rem;
+    font-size: 1rem;
+    line-height: 1;
+    cursor: pointer;
+    opacity: 0.85;
+    transition: opacity 0.2s, transform 0.3s;
+    z-index: 10;
+  }
+  .reload-btn:hover { opacity: 1; transform: rotate(30deg); }
+  @media (min-width: 601px) {
+    .reload-btn.show { display: flex; align-items: center; justify-content: center; }
+    .update-toast.show { transform: translateX(-50%) translateY(-80px); } /* hide toast on desktop */
+  }
+
   .act-links {
     display: flex;
     gap: 0.5rem;
@@ -688,6 +710,7 @@
 
 <header>
   <img src="https://www.unearthedfestival.co.uk/cdn/shop/files/mainfestivallogo_date_location.png?v=1770309129&width=300" alt="Unearthed Festival" class="festival-logo">
+  <button class="reload-btn" id="reload-btn" title="Update available — click to reload">↻</button>
 </header>
 
 <div class="sticky-bar">
@@ -1576,17 +1599,20 @@ if ('serviceWorker' in navigator) {
   const CURRENT_VERSION = document.querySelector('meta[name="app-version"]')?.content;
   if (!CURRENT_VERSION) return;
 
+  async function doReload() {
+    if ('caches' in window) {
+      const keys = await caches.keys();
+      await Promise.all(keys.map(k => caches.delete(k)));
+    }
+    window.location.reload();
+  }
+
   function showUpdateToast() {
+    if (document.getElementById('update-toast')?.classList.contains('show')) return;
     const ut = document.getElementById('update-toast');
-    if (!ut || ut.classList.contains('show')) return;
-    ut.classList.add('show');
-    ut.addEventListener('click', async () => {
-      if ('caches' in window) {
-        const keys = await caches.keys();
-        await Promise.all(keys.map(k => caches.delete(k)));
-      }
-      window.location.reload();
-    });
+    if (ut) { ut.classList.add('show'); ut.addEventListener('click', doReload); }
+    const rb = document.getElementById('reload-btn');
+    if (rb) { rb.classList.add('show'); rb.addEventListener('click', doReload); }
   }
 
   async function checkVersion() {
