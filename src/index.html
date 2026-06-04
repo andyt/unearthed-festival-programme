@@ -784,14 +784,22 @@
     <div id="my-programme-list"></div>
     <div id="subscribe-section" style="display:none;margin-top:1.5rem">
       <button class="saved-toggle" id="subscribe-btn" title="Subscribe to your saved acts in your calendar app">📅 Subscribe to Calendar</button>
-      <div class="cal-link-row">
-        <input type="text" class="cal-link-input" id="cal-link-input" readonly autocomplete="off">
-        <button class="cal-link-copy" id="cal-link-copy">Copy link</button>
-      </div>
-      <p class="cal-note">Subscribing adds your programme to your calendar app with 15-minute alerts. <strong>Apple Calendar:</strong> alerts fire automatically. <strong>Google Calendar:</strong> you'll need to set a default notification in the calendar's settings, and events may take up to 24 hours to appear.</p>
     </div>
   </div>
 </main>
+
+<div class="modal-overlay" id="cal-modal">
+  <div class="modal">
+    <button class="modal-close" id="cal-modal-close">×</button>
+    <div class="modal-name" style="margin-bottom:1.25rem">📅 Subscribe to Calendar</div>
+    <button class="saved-toggle" id="cal-open-btn" style="width:100%;margin-bottom:0.75rem">Open in Calendar App</button>
+    <div class="cal-link-row">
+      <input type="text" class="cal-link-input" id="cal-link-input" readonly autocomplete="off">
+      <button class="cal-link-copy" id="cal-link-copy">Copy link</button>
+    </div>
+    <p class="cal-note">Subscribing adds your programme to your calendar app with 15-minute alerts. <strong>Apple Calendar:</strong> alerts fire automatically. <strong>Google Calendar:</strong> you'll need to set a default notification in the calendar's settings, and events may take up to 24 hours to appear.</p>
+  </div>
+</div>
 
 <div class="modal-overlay" id="modal">
   <div class="modal">
@@ -3913,28 +3921,36 @@ function pushToWorker() {
   pushDebounceTimer = setTimeout(pushNow, 1000);
 }
 
-// ——— SUBSCRIBE BUTTON & CALENDAR LINK ———
+// ——— CALENDAR MODAL ———
 const httpsCalUrl = `${WORKER_URL}/calendar/${USER_UUID}`;
+const webcalUrl   = `webcal://${new URL(WORKER_URL).host}/calendar/${USER_UUID}`;
 document.getElementById('cal-link-input').value = httpsCalUrl;
+
+function openCalModal() { document.getElementById('cal-modal').classList.add('open'); }
+function closeCalModal() { document.getElementById('cal-modal').classList.remove('open'); }
+
+document.getElementById('cal-modal-close').addEventListener('click', closeCalModal);
+document.getElementById('cal-modal').addEventListener('click', e => {
+  if (e.target === e.currentTarget) closeCalModal();
+});
 
 document.getElementById('cal-link-copy').addEventListener('click', () => {
   navigator.clipboard?.writeText(httpsCalUrl).catch(() => {});
   showToast('Calendar link copied');
 });
 
-document.getElementById('subscribe-btn').addEventListener('click', async () => {
-  const webcalUrl = `webcal://${new URL(WORKER_URL).host}/calendar/${USER_UUID}`;
+document.getElementById('cal-open-btn').addEventListener('click', () => {
+  window.open(webcalUrl, '_blank');
+  showToast('📅 Opening your calendar app…');
+});
 
+document.getElementById('subscribe-btn').addEventListener('click', async () => {
   if (saved.length === 0) {
     showToast('Add some acts to your programme first, then subscribe');
     return;
   }
-
-  // Ensure KV is populated before the calendar app fetches the feed
   await pushNow();
-
-  window.open(webcalUrl, '_blank');
-  showToast('📅 Opening your calendar app…');
+  openCalModal();
 });
 
 applyURLState();
