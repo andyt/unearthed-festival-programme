@@ -4,3 +4,8 @@ private/
 playlist/.env
 playlist/.spotify_cache
 node_modules/
+test-results/
+playwright-report/
+schedule_images/
+mise.toml
+.claude/
