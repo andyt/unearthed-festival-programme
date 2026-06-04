@@ -91,6 +91,25 @@ test('Subscribe button is hidden when nothing is saved', async ({ page }) => {
   await expect(page.locator('#subscribe-section')).not.toBeVisible();
 });
 
+test('calendar link input shows the HTTPS feed URL', async ({ page }) => {
+  await mockWorker(page);
+  await setSaved(page, [9]);
+  await page.goto('/?v=myprog');
+  const value = await page.locator('#cal-link-input').inputValue();
+  expect(value).toMatch(/^https:\/\/.+\/calendar\/[0-9a-f-]{36}$/);
+});
+
+test('Copy link button copies the feed URL to clipboard', async ({ page, context }) => {
+  await context.grantPermissions(['clipboard-read', 'clipboard-write']);
+  await mockWorker(page);
+  await setSaved(page, [9]);
+  await page.goto('/?v=myprog');
+  await page.locator('#cal-link-copy').click();
+  const copied = await page.evaluate(() => navigator.clipboard.readText());
+  const inputValue = await page.locator('#cal-link-input').inputValue();
+  expect(copied).toBe(inputValue);
+});
+
 test('removing an act from My Programme takes it off the list', async ({ page }) => {
   await mockWorker(page);
   await setSaved(page, [9]);
