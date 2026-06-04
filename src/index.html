@@ -3918,7 +3918,7 @@ document.getElementById('subscribe-btn').addEventListener('click', async () => {
   // Ensure KV is populated before the calendar app fetches the feed
   await pushNow();
 
-  window.location.href = webcalUrl;
+  window.open(webcalUrl, '_blank');
   setTimeout(() => {
     navigator.clipboard?.writeText(httpsUrl).catch(() => {});
     showToast('📅 Opening your calendar app…');
