@@ -4,6 +4,7 @@ private/
 playlist/.env
 playlist/.spotify_cache
 node_modules/
+dist/
 test-results/
 playwright-report/
 schedule_images/

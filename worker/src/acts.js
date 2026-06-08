@@ -835,21 +835,21 @@ export default [
   },
   {
     "id": 146,
-    "name": "Sylark",
+    "name": "DJ Froo",
     "day": "sat",
     "time": "17:30",
     "stage": "Cosmic Cwtsh",
     "type": "DJ",
-    "desc": "Abstract frequencies layered into progressive storytelling journeys. Atmospheric vibes, energetic baselines and exhilarating drops — a musical odyssey from beginning to end."
+    "desc": "Eclectic mix of tribal, afrobeat, funky techno house dance music — Cosmic Cwtsh energy, bouncy and fun."
   },
   {
     "id": 147,
-    "name": "DJ Froo",
+    "name": "Sylark",
     "day": "sat",
     "time": "19:00",
     "stage": "Cosmic Cwtsh",
     "type": "DJ",
-    "desc": "Eclectic mix of tribal, afrobeat, funky techno house dance music — Cosmic Cwtsh energy, bouncy and fun."
+    "desc": "Abstract frequencies layered into progressive storytelling journeys. Atmospheric vibes, energetic baselines and exhilarating drops — a musical odyssey from beginning to end."
   },
   {
     "id": 148,
@@ -877,7 +877,7 @@ export default [
   },
   {
     "id": 150,
-    "name": "Sonic Smudge",
+    "name": "SonicSmudge",
     "day": "sat",
     "time": "23:00",
     "stage": "Cosmic Cwtsh",
@@ -1267,7 +1267,7 @@ export default [
     "time": "18:30",
     "stage": "Cosmic Cwtsh",
     "type": "DJ",
-    "desc": "Algae Rhythm crafts deep, dark, rhythm-driven dubstep built to consume the dancefloor. The sound is atmospheric, weighty and hypnotic; a sonic ecosystem where basslines crawl, echoes spiral and textures bloom in the depths. Each track unfolds like a slow-moving tide, pulling listeners into a submerged world of tension, groove and immersive low-frequency energy."
+    "desc": "Deep, dark, rhythm-driven dubstep built to consume the dancefloor. Atmospheric and hypnotic — basslines crawl, echoes spiral and textures bloom in a submerged world of tension, groove and low-frequency energy."
   },
   {
     "id": 247,
