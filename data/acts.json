@@ -191,7 +191,7 @@
     "time": "01:00",
     "stage": "Main Stage",
     "type": "DJ",
-    "desc": ""
+    "desc": "Emerging force in the UK underground electronic music scene, blending bouncy house, hard techno, speed garage and bass-heavy rave music. Born and raised in West Wales — now in his fourth consecutive year at Unearthed."
   },
   {
     "id": 11,
@@ -215,7 +215,7 @@
     "time": "11:00",
     "stage": "Dub Corner",
     "type": "Music",
-    "desc": ""
+    "desc": "Brazilian DJ selector with decades of experience and one of the UK's most extensive collections of Brazilian vinyl. Based in Tenby — sets spanning samba, MPB, bossa nova, tropicalia, reggae, ska, funk and soul."
   },
   {
     "id": 21,
@@ -224,7 +224,7 @@
     "time": "13:00",
     "stage": "Dub Corner",
     "type": "DJ",
-    "desc": ""
+    "desc": "Playing an eclectic mix of Afro-disco, afrobeat, world music, rhythmic dance music and more."
   },
   {
     "id": 22,
@@ -242,7 +242,7 @@
     "time": "18:00",
     "stage": "Dub Corner",
     "type": "DJ",
-    "desc": ""
+    "desc": "Dub reggae roots DJ — also psychedelic ambient."
   },
   {
     "id": 24,
@@ -269,7 +269,7 @@
     "time": "21:00",
     "stage": "Dub Corner",
     "type": "DJ",
-    "desc": ""
+    "desc": "Upstepper Sound operate out of Ceredigion, playing Roots, Steppers and Dub with long-time collector and selector Bon Bon at the controls."
   },
   {
     "id": 27,
@@ -305,7 +305,7 @@
     "time": "01:00",
     "stage": "Dub Corner",
     "type": "DJ",
-    "desc": ""
+    "desc": "A woman who feels and knows the scene — selections spanning 70s rockers to contemporary roots. A regular at Dub Corner and United Nations of Dub, now a fixture on the European reggae circuit."
   },
   {
     "id": 31,
@@ -318,12 +318,12 @@
   },
   {
     "id": 40,
-    "name": "Lus\u00e4rdi",
+    "name": "Lusärdi",
     "day": "fri",
     "time": "16:00",
     "stage": "Cosmic Cwtsh",
     "type": "DJ",
-    "desc": "",
+    "desc": "Unique style blending pulsating beats, hypnotic basslines and ethereal melodies. Known for taking the crowd on an immersive musical journey — a founding member of Moss Collectiv.",
     "links": [
       {
         "label": "SoundCloud",
@@ -338,7 +338,7 @@
     "time": "18:00",
     "stage": "Cosmic Cwtsh",
     "type": "DJ",
-    "desc": ""
+    "desc": "Deep, dark progressive house and techno with a strong focus on atmosphere and long-form progression. Sets built for late hours and dark rooms, favouring tension and groove over obvious drops."
   },
   {
     "id": 42,
@@ -347,7 +347,7 @@
     "time": "19:30",
     "stage": "Cosmic Cwtsh",
     "type": "DJ",
-    "desc": "",
+    "desc": "Welsh-German DJ and Music Producer. 'What matters to me is that music comes from the heart and I share this energy with the crowd — when I play it's about taking the journey together.'",
     "links": [
       {
         "label": "SoundCloud",
@@ -362,7 +362,7 @@
     "time": "21:00",
     "stage": "Cosmic Cwtsh",
     "type": "DJ",
-    "desc": ""
+    "desc": "From murky origins in 90s Bristol, now a familiar face in West Wales techno party-land — a Nevern and Cosmic Cwtsh veteran."
   },
   {
     "id": 44,
@@ -371,7 +371,7 @@
     "time": "22:30",
     "stage": "Cosmic Cwtsh",
     "type": "DJ",
-    "desc": ""
+    "desc": "Abstract frequencies layered into progressive storytelling journeys. Atmospheric vibes, energetic baselines and exhilarating drops — a musical odyssey from beginning to end."
   },
   {
     "id": 45,
@@ -380,7 +380,7 @@
     "time": "00:00",
     "stage": "Cosmic Cwtsh",
     "type": "DJ",
-    "desc": ""
+    "desc": "Deeply groovy and psychedelic dance music sets, rooted in the psychedelic trance scene. Uplifting, high-energy sets expertly mixed for a fun journey through the sonic soundscape."
   },
   {
     "id": 46,
@@ -389,7 +389,7 @@
     "time": "01:30",
     "stage": "Cosmic Cwtsh",
     "type": "DJ",
-    "desc": ""
+    "desc": "Zenonesque psy dub, from Dub to trance through tangled webs of sonic playfulness."
   },
   {
     "id": 50,
@@ -416,7 +416,7 @@
     "time": "18:00",
     "stage": "Freedom Stage",
     "type": "Music",
-    "desc": ""
+    "desc": "A hybrid DJ set and spoken word performance of their mixtape Eyes Gone Sorbet. Jack Ford's poetry meshes the natural world with life lived fully; NKC's beats blend dancehall to tribal house with earthy bass tones and Afro-Latin rhythms."
   },
   {
     "id": 53,
@@ -425,7 +425,7 @@
     "time": "19:00",
     "stage": "Freedom Stage",
     "type": "DJ",
-    "desc": ""
+    "desc": "Local folk-punk singer-songwriter loved for her fiery ballads. Drawing inspiration from fairytales and dreams, her lyrical landscapes explore love, grief and creativity."
   },
   {
     "id": 54,
@@ -434,7 +434,7 @@
     "time": "20:00",
     "stage": "Freedom Stage",
     "type": "DJ",
-    "desc": ""
+    "desc": "Solo acoustic musician from North Pembrokeshire, known for a rhythmic, percussive guitar style. Blending indie pop/rock and folk, with well-loved covers and thoughtfully crafted originals."
   },
   {
     "id": 55,
@@ -452,7 +452,7 @@
     "time": "22:00",
     "stage": "Freedom Stage",
     "type": "DJ",
-    "desc": ""
+    "desc": "Rap-punk with a sprinkling of myth and folk. Expect banging breaks and lots of live chaos."
   },
   {
     "id": 57,
@@ -502,7 +502,7 @@
     "time": "13:30",
     "stage": "Main Stage",
     "type": "Music",
-    "desc": "",
+    "desc": "Young folk singer-songwriter from Pembrokeshire amassing 28,000 YouTube subscribers from just two music videos. Heartfelt storytelling recognised by the prestigious Forte Project as one of folk's new voices.",
     "links": [
       {
         "label": "Spotify",
@@ -521,7 +521,7 @@
     "time": "15:00",
     "stage": "Main Stage",
     "type": "Music",
-    "desc": "",
+    "desc": "Five-piece band from the Pembrokeshire coast bringing funky baselines and even sexier guitar riffs. Funk, reggae and rock with echoes of punk and soul, fronted by powerful female vocals.",
     "links": [
       {
         "label": "Spotify",
@@ -549,7 +549,7 @@
     "time": "19:00",
     "stage": "Main Stage",
     "type": "Music",
-    "desc": "",
+    "desc": "Singer-songwriter crafting introspective, brooding ear-worms that feel both deeply personal and quietly universal. BBC Radio favourite, Rolling Stone-featured, and Bob Harris's pick for Maida Vale — immersive live moments where vulnerability transforms into connection.",
     "links": [
       {
         "label": "Spotify",
@@ -572,7 +572,7 @@
     "time": "20:30",
     "stage": "Main Stage",
     "type": "Music",
-    "desc": "",
+    "desc": "Genre-squiggling indie trio from coastal West Wales. Groove-based, hook-heavy, vocal-laden and lyrically connective — rooted in songwriting but with a wonky edge.",
     "links": [
       {
         "label": "Spotify",
@@ -595,7 +595,7 @@
     "time": "22:00",
     "stage": "Main Stage",
     "type": "Music",
-    "desc": "",
+    "desc": "Four blood brothers from East London, uniting the spiritual roots of Rastafari with the timeless sounds of Bob Marley, James Brown and Stevie Wonder. Reggae as a movement — grounded in authenticity, powered by high-vibrational energy.",
     "links": [
       {
         "label": "Spotify",
@@ -641,7 +641,7 @@
     "time": "01:00",
     "stage": "Main Stage",
     "type": "Music",
-    "desc": "",
+    "desc": "A one-off collaboration built on a shared love of soundsystem culture and bass-driven music. Blending reggae, dub, jungle and garage — originals, unreleased material, and exclusive dub plates from all three artists.",
     "links": [
       {
         "label": "Spotify",
@@ -669,7 +669,7 @@
     "time": "11:00",
     "stage": "Dub Corner",
     "type": "DJ",
-    "desc": ""
+    "desc": "Playing an eclectic mix of Afro-disco, afrobeat, world music, rhythmic dance music and more."
   },
   {
     "id": 121,
@@ -687,7 +687,7 @@
     "time": "15:00",
     "stage": "Dub Corner",
     "type": "DJ",
-    "desc": ""
+    "desc": "Drawing influences from every artist encountered, with a passion for all genres woven into every soundscape. Sets built on funky baselines, irresistible rhythms and intricate instrumental solos."
   },
   {
     "id": 123,
@@ -714,7 +714,7 @@
     "time": "19:00",
     "stage": "Dub Corner",
     "type": "DJ",
-    "desc": ""
+    "desc": "Dub reggae roots DJ — also psychedelic ambient."
   },
   {
     "id": 126,
@@ -741,7 +741,7 @@
     "time": "22:00",
     "stage": "Dub Corner",
     "type": "DJ",
-    "desc": ""
+    "desc": "Upstepper Sound operate out of Ceredigion, playing Roots, Steppers and Dub with long-time collector and selector Bon Bon at the controls."
   },
   {
     "id": 129,
@@ -759,7 +759,7 @@
     "time": "00:00",
     "stage": "Dub Corner",
     "type": "DJ",
-    "desc": ""
+    "desc": "Dedicated selector rooted in the Pembrokeshire dub community. Deep, rootical cuts at Unearthed, Westival and Riptide — playing with respect for the culture and a focus on foundational riddims."
   },
   {
     "id": 131,
@@ -768,7 +768,7 @@
     "time": "01:00",
     "stage": "Dub Corner",
     "type": "DJ",
-    "desc": ""
+    "desc": "From the Llyn Peninsula ('Pen Dub' also means 'Dub Head' in Welsh), showcasing his own productions throughout his sets — from old to new, Welsh to English, hip hop to steppers."
   },
   {
     "id": 132,
@@ -786,7 +786,7 @@
     "time": "11:00",
     "stage": "Cosmic Cwtsh",
     "type": "DJ",
-    "desc": ""
+    "desc": "Cardigan-based DJ collective specialising in bass-heavy dance music. They run a regular club night and host a radio show featuring local DJs and producers — unity through music."
   },
   {
     "id": 141,
@@ -795,7 +795,7 @@
     "time": "12:30",
     "stage": "Cosmic Cwtsh",
     "type": "DJ",
-    "desc": ""
+    "desc": "I bring the music, u bring the boogie"
   },
   {
     "id": 142,
@@ -804,7 +804,7 @@
     "time": "13:30",
     "stage": "Cosmic Cwtsh",
     "type": "DJ",
-    "desc": ""
+    "desc": "A journey through the spectrum of house music — from deep, melodic soundscapes to vibrant dynamic rhythms, unified by a consistent thread of groove, emotion and soul."
   },
   {
     "id": 143,
@@ -813,7 +813,7 @@
     "time": "14:30",
     "stage": "Cosmic Cwtsh",
     "type": "Music",
-    "desc": ""
+    "desc": "All-acoustic rave extravaganza with a didgeridoo, no loops, no FX — no nonsense! Just a raving good time."
   },
   {
     "id": 144,
@@ -822,7 +822,7 @@
     "time": "15:30",
     "stage": "Cosmic Cwtsh",
     "type": "Music",
-    "desc": ""
+    "desc": "Pembrokeshire-based artist merging live folk and blues with electronic sounds."
   },
   {
     "id": 145,
@@ -831,7 +831,7 @@
     "time": "16:30",
     "stage": "Cosmic Cwtsh",
     "type": "DJ",
-    "desc": ""
+    "desc": "Downtempo psychedelic music."
   },
   {
     "id": 146,
@@ -840,7 +840,7 @@
     "time": "17:30",
     "stage": "Cosmic Cwtsh",
     "type": "DJ",
-    "desc": ""
+    "desc": "Abstract frequencies layered into progressive storytelling journeys. Atmospheric vibes, energetic baselines and exhilarating drops — a musical odyssey from beginning to end."
   },
   {
     "id": 147,
@@ -849,7 +849,7 @@
     "time": "19:00",
     "stage": "Cosmic Cwtsh",
     "type": "DJ",
-    "desc": ""
+    "desc": "Eclectic mix of tribal, afrobeat, funky techno house dance music — Cosmic Cwtsh energy, bouncy and fun."
   },
   {
     "id": 148,
@@ -858,16 +858,16 @@
     "time": "20:00",
     "stage": "Cosmic Cwtsh",
     "type": "DJ",
-    "desc": ""
+    "desc": "Hipnotic spirital techno dj"
   },
   {
     "id": 149,
-    "name": "Lus\u00e4rdi",
+    "name": "Lusärdi",
     "day": "sat",
     "time": "21:30",
     "stage": "Cosmic Cwtsh",
     "type": "DJ",
-    "desc": "",
+    "desc": "Unique style blending pulsating beats, hypnotic basslines and ethereal melodies. Known for taking the crowd on an immersive musical journey — a founding member of Moss Collectiv.",
     "links": [
       {
         "label": "SoundCloud",
@@ -882,7 +882,7 @@
     "time": "23:00",
     "stage": "Cosmic Cwtsh",
     "type": "DJ",
-    "desc": ""
+    "desc": "Ximon is one of the driving forces behind the Cosmic Cwtsh and the Moss Collectiv. Heart fully committed to representing the many facets of electronic dance culture through the deep undercurrents of the psychedelic music scene."
   },
   {
     "id": 151,
@@ -891,7 +891,7 @@
     "time": "00:30",
     "stage": "Cosmic Cwtsh",
     "type": "DJ",
-    "desc": ""
+    "desc": "Swampy, night-time DJ sets exploring the intersection of psytech and dark progressive. Thick baselines and crispy percussion, with a penchant for both groovy and industrial sounds."
   },
   {
     "id": 152,
@@ -900,7 +900,7 @@
     "time": "02:00",
     "stage": "Cosmic Cwtsh",
     "type": "DJ",
-    "desc": ""
+    "desc": "A journey of deep and boundary-pushing psychedelic dark progressive techno trance."
   },
   {
     "id": 160,
@@ -936,7 +936,7 @@
     "time": "13:00",
     "stage": "Freedom Stage",
     "type": "DJ",
-    "desc": ""
+    "desc": "Destan Dönemi (The Era of the Mythology) — a Turkish folk duo based in Cardiff. Blending timeless sounds of Turkish folk with modern acoustic elements, featuring vocalist/flautist Büşra Algeç and fingerstyle guitarist Evan Graham."
   },
   {
     "id": 164,
@@ -945,7 +945,7 @@
     "time": "14:00",
     "stage": "Freedom Stage",
     "type": "DJ",
-    "desc": ""
+    "desc": "Modern folk artist whose music calls listeners back to nature, truth and emotional freedom. Living on the road with her two cats, creating songs shaped by wild landscapes and deep honesty."
   },
   {
     "id": 165,
@@ -954,7 +954,7 @@
     "time": "15:00",
     "stage": "Freedom Stage",
     "type": "DJ",
-    "desc": ""
+    "desc": "An eccentric acoustic theatrical/comical/cabaret duo on a musical mission to inspire audiences toward environmental action with songs that put the 'ooh' in 'existential dooom'!"
   },
   {
     "id": 166,
@@ -963,7 +963,7 @@
     "time": "16:00",
     "stage": "Freedom Stage",
     "type": "DJ",
-    "desc": ""
+    "desc": "Two Northern men, a fiddle, a guitar and a large beard — plus a 90s drum synth, mighty fiddle tunes, songs, busking battle scars, and a barrowload of end-of-the-pier banter."
   },
   {
     "id": 167,
@@ -981,7 +981,7 @@
     "time": "19:00",
     "stage": "Freedom Stage",
     "type": "DJ",
-    "desc": ""
+    "desc": "Mike Chant and Abbie Jebbers are accomplished singer-songwriters who have developed strong individual reputations locally and further afield. They formed in September 2025, combining their talents and creative energies."
   },
   {
     "id": 169,
@@ -990,7 +990,7 @@
     "time": "20:00",
     "stage": "Freedom Stage",
     "type": "Music",
-    "desc": ""
+    "desc": "All-acoustic rave extravaganza with a didgeridoo, no loops, no FX — no nonsense! Just a raving good time."
   },
   {
     "id": 170,
@@ -999,7 +999,7 @@
     "time": "21:00",
     "stage": "Freedom Stage",
     "type": "DJ",
-    "desc": ""
+    "desc": "Voice, beatboxing, psychedelic guitar solos and lots of original sounds — a truly unique experience combining old-school hip hop, reggae and blues with the vibrations of Tibetan and Mongolian chants."
   },
   {
     "id": 171,
@@ -1008,7 +1008,7 @@
     "time": "22:00",
     "stage": "Freedom Stage",
     "type": "DJ",
-    "desc": ""
+    "desc": "Pedal-rock band from South-West Wales blending alternative rock with cinematic, emotionally driven atmospherics. From grassroots venues to headline shows, creating an ambient and immersive dome for the listener."
   },
   {
     "id": 200,
@@ -1026,7 +1026,7 @@
     "time": "12:00",
     "stage": "Main Stage",
     "type": "DJ",
-    "desc": ""
+    "desc": "Cellist spanning classical performance, sound design, punk philosophy and spiritual inquiry. Live performances weave modern understandings of frequency with ancient approaches to sound and embodiment."
   },
   {
     "id": 202,
@@ -1058,7 +1058,7 @@
     "time": "15:00",
     "stage": "Main Stage",
     "type": "Music",
-    "desc": ""
+    "desc": "Collective redefining contemporary music and sound healing in sacred space. Founded by opera-trained Catarina Carvalho and jazz saxophonist Alex Dmochowski, exploring sound, silence and presence through improvisation."
   },
   {
     "id": 204,
@@ -1067,7 +1067,7 @@
     "time": "17:30",
     "stage": "Main Stage",
     "type": "Music",
-    "desc": ""
+    "desc": "Gritty rock with a twist of sonic madness — bold, unpolished and exhilarating. Recorded live in warehouses and barns across the UK, their debut captures the chaotic, untamed energy that defines their live shows."
   },
   {
     "id": 205,
@@ -1076,7 +1076,7 @@
     "time": "19:00",
     "stage": "Main Stage",
     "type": "Music",
-    "desc": "",
+    "desc": "Electronic future-dub duo taking the most powerful elements of dub reggae and dubstep and rolling them into uplifting, emotionally weighted anthems. Heart-shaking sound, profound message, invigorating energy.",
     "links": [
       {
         "label": "Spotify",
@@ -1132,7 +1132,7 @@
     "time": "11:00",
     "stage": "Dub Corner",
     "type": "DJ",
-    "desc": ""
+    "desc": "Drawing influences from every artist encountered, with a passion for all genres woven into every soundscape. Sets built on funky baselines, irresistible rhythms and intricate instrumental solos."
   },
   {
     "id": 221,
@@ -1141,7 +1141,7 @@
     "time": "13:00",
     "stage": "Dub Corner",
     "type": "Music",
-    "desc": ""
+    "desc": "Brazilian DJ selector with decades of experience and one of the UK's most extensive collections of Brazilian vinyl. Based in Tenby — sets spanning samba, MPB, bossa nova, tropicalia, reggae, ska, funk and soul."
   },
   {
     "id": 222,
@@ -1195,7 +1195,7 @@
     "time": "22:00",
     "stage": "Dub Corner",
     "type": "DJ",
-    "desc": ""
+    "desc": "Upstepper Sound operate out of Ceredigion, playing Roots, Steppers and Dub with long-time collector and selector Bon Bon at the controls."
   },
   {
     "id": 228,
@@ -1213,7 +1213,7 @@
     "time": "10:00",
     "stage": "Cosmic Cwtsh",
     "type": "Music",
-    "desc": ""
+    "desc": "A live looping, junk drumming, gadget tweaking mad hype jam. \"I look forward to making some noise at Unearthed again. It was a fantastic whirlwind of chaos last time!\""
   },
   {
     "id": 241,
@@ -1222,7 +1222,7 @@
     "time": "12:30",
     "stage": "Cosmic Cwtsh",
     "type": "DJ",
-    "desc": ""
+    "desc": "A high-vibes wander through some datty reggae-infused bad man drum and bass!"
   },
   {
     "id": 242,
@@ -1231,7 +1231,7 @@
     "time": "13:30",
     "stage": "Cosmic Cwtsh",
     "type": "DJ",
-    "desc": ""
+    "desc": "Bristol-based Jungle DnB DJ/producer with roots in West Wales and over 25 years of experience. Part of The Fat Lace Crew — adapts to the crowd, repping both oldschool and cutting-edge."
   },
   {
     "id": 243,
@@ -1240,7 +1240,7 @@
     "time": "14:30",
     "stage": "Cosmic Cwtsh",
     "type": "DJ",
-    "desc": ""
+    "desc": "Dub reggae roots DJ — also psychedelic ambient."
   },
   {
     "id": 244,
@@ -1249,7 +1249,7 @@
     "time": "15:30",
     "stage": "Cosmic Cwtsh",
     "type": "DJ",
-    "desc": ""
+    "desc": "Deep, dreamy psychill/dubby vibes. Organic textures and hypnotic grooves, excavating ancient frequencies in a prehistoric haze."
   },
   {
     "id": 245,
@@ -1258,7 +1258,7 @@
     "time": "17:00",
     "stage": "Cosmic Cwtsh",
     "type": "DJ",
-    "desc": ""
+    "desc": "Psychedelic bass music producer spanning glitch-hop to dubstep to drum and bass. Driving beats, hypnotic basslines and soaring melodies aimed toward a fuller, darker side of midtempo psychedelic music."
   },
   {
     "id": 246,
@@ -1267,7 +1267,7 @@
     "time": "18:30",
     "stage": "Cosmic Cwtsh",
     "type": "DJ",
-    "desc": ""
+    "desc": "Algae Rhythm crafts deep, dark, rhythm-driven dubstep built to consume the dancefloor. The sound is atmospheric, weighty and hypnotic; a sonic ecosystem where basslines crawl, echoes spiral and textures bloom in the depths. Each track unfolds like a slow-moving tide, pulling listeners into a submerged world of tension, groove and immersive low-frequency energy."
   },
   {
     "id": 247,
@@ -1276,7 +1276,7 @@
     "time": "19:30",
     "stage": "Cosmic Cwtsh",
     "type": "DJ",
-    "desc": ""
+    "desc": "A high-energy mix of smooth, bouncing, liquid DnB, blended with an eclectic selection of gritty rollers bound to get you moving and grooving."
   },
   {
     "id": 248,
@@ -1285,7 +1285,7 @@
     "time": "22:00",
     "stage": "Cosmic Cwtsh",
     "type": "DJ",
-    "desc": ""
+    "desc": "Music producers playing psytechno and progressive dance genres. Blending organic flavours alongside dark progressive electronic sounds."
   },
   {
     "id": 260,
@@ -1330,7 +1330,7 @@
     "time": "16:00",
     "stage": "Freedom Stage",
     "type": "Music",
-    "desc": "",
+    "desc": "Arron Kirwan is a remarkable singer-songwriter based in West Wales. A brilliant lyricist with a powerful voice and deep passion for his craft, Arron has become a familiar face on the local open mic scene while building a strong repertoire of original songs and a growing fanbase.",
     "links": [
       {
         "label": "Spotify",
@@ -1349,7 +1349,7 @@
     "time": "17:00",
     "stage": "Freedom Stage",
     "type": "Music",
-    "desc": ""
+    "desc": "Becky blends folk, blues and reggae into a soulful, rhythm-driven sound. A guitarist and singer known for dynamic songwriting, playing upbeat rhythm and intricate fingerpicking, with an accompaniment of punchy bass lines and hip-hop beats."
   },
   {
     "id": 266,
@@ -1358,7 +1358,7 @@
     "time": "18:00",
     "stage": "Freedom Stage",
     "type": "DJ",
-    "desc": ""
+    "desc": "Psychedelic folk rock mixed with world music and exotic harmonies. Connor and his band have just released a new single and been playing stages across the UK."
   },
   {
     "id": 300,
@@ -1425,7 +1425,7 @@
   },
   {
     "id": 307,
-    "name": "The Intuitive Woman - Soh\u00e8re Roked",
+    "name": "The Intuitive Woman - Sohère Roked",
     "day": "fri",
     "time": "18:00",
     "stage": "Temple Tent",
@@ -1736,7 +1736,7 @@
     "time": "20:00",
     "stage": "Sacred Fire",
     "type": "Workshop",
-    "desc": ""
+    "desc": "We gather to drum and welcome the fire brought in procession from the sacred fire to the Main Arena. A communal moment of rhythm, connection and celebration as the festival draws towards its closing ceremony."
   },
   {
     "id": 500,
