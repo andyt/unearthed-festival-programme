@@ -2,7 +2,7 @@ import { test, expect } from '@playwright/test';
 
 // Open the browse/grid view before each test so all act cards are in the DOM.
 test.beforeEach(async ({ page }) => {
-  await page.goto('/?v=browse');
+  await page.goto('/#v=browse');
   await page.waitForSelector('.act-card');
 });
 
@@ -55,7 +55,7 @@ test('Freedom Stage pre-midnight: Freaky Deaky Takeover (id 57)', async ({ page 
 // ─── Temple Tent ─────────────────────────────────────────────────────────────
 
 test('Temple Tent: Celtic Grief Keening (id 309)', async ({ page }) => {
-  await checkAct(page, { id: 309, name: 'Celtic Grief Keening — Jewels Wingfield', time: '19:30', day: 'fri', stage: 'Temple Tent' });
+  await checkAct(page, { id: 309, name: 'Celtic Grief Keening - Jewels Wingfield', time: '19:30', day: 'fri', stage: 'Temple Tent' });
 });
 
 // ─── Sacred Fire ─────────────────────────────────────────────────────────────

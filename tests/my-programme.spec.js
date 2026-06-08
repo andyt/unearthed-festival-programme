@@ -19,7 +19,7 @@ async function mockWorker(page, onRequest) {
 
 test('clicking heart saves an act and marks the card', async ({ page }) => {
   await mockWorker(page);
-  await page.goto('/?v=browse');
+  await page.goto('/#v=browse');
   await page.waitForSelector('.act-card');
 
   const card = page.locator('.act-card[data-id="9"]');
@@ -31,7 +31,7 @@ test('clicking heart saves an act and marks the card', async ({ page }) => {
 test('clicking heart again unsaves the act', async ({ page }) => {
   await mockWorker(page);
   await setSaved(page, [9]);
-  await page.goto('/?v=browse');
+  await page.goto('/#v=browse');
   await page.waitForSelector('.act-card');
 
   const card = page.locator('.act-card[data-id="9"]');
@@ -45,7 +45,7 @@ test('clicking heart again unsaves the act', async ({ page }) => {
 test('saved act appears in My Programme with correct name, time and stage', async ({ page }) => {
   await mockWorker(page);
   await setSaved(page, [9]);
-  await page.goto('/?v=myprog');
+  await page.goto('/#v=myprog');
 
   const act = page.locator('#my-programme-list .timeline-act[data-id="9"]');
   await expect(act.locator('.tl-name')).toHaveText('Roni Size');
@@ -56,7 +56,7 @@ test('saved act appears in My Programme with correct name, time and stage', asyn
 test('My Programme shows all saved acts', async ({ page }) => {
   await mockWorker(page);
   await setSaved(page, [9, 10, 108]);
-  await page.goto('/?v=myprog');
+  await page.goto('/#v=myprog');
 
   const list = page.locator('#my-programme-list');
   await expect(list.locator('.timeline-act[data-id="9"]')).toBeVisible();
@@ -70,7 +70,7 @@ test('My Programme sorts acts by day then by time, post-midnight after pre-midni
   // id 10 = DJ Moonshine, fri 01:00 (post-midnight, same festival night)
   // id 108 = Goldie Lookin Chain, sat 23:30 (Saturday)
   await setSaved(page, [10, 108, 9]);
-  await page.goto('/?v=myprog');
+  await page.goto('/#v=myprog');
 
   const acts = page.locator('#my-programme-list .timeline-act');
   await expect(acts).toHaveCount(3);
@@ -82,19 +82,19 @@ test('My Programme sorts acts by day then by time, post-midnight after pre-midni
 test('Subscribe button is visible when acts are saved', async ({ page }) => {
   await mockWorker(page);
   await setSaved(page, [9]);
-  await page.goto('/?v=myprog');
+  await page.goto('/#v=myprog');
   await expect(page.locator('#subscribe-section')).toBeVisible();
 });
 
 test('Subscribe button is hidden when nothing is saved', async ({ page }) => {
-  await page.goto('/?v=myprog');
+  await page.goto('/#v=myprog');
   await expect(page.locator('#subscribe-section')).not.toBeVisible();
 });
 
 test('Subscribe button opens the calendar modal', async ({ page }) => {
   await mockWorker(page);
   await setSaved(page, [9]);
-  await page.goto('/?v=myprog');
+  await page.goto('/#v=myprog');
   await expect(page.locator('#cal-modal')).not.toHaveClass(/open/);
   await page.locator('#subscribe-btn').click();
   await expect(page.locator('#cal-modal')).toHaveClass(/open/);
@@ -103,7 +103,7 @@ test('Subscribe button opens the calendar modal', async ({ page }) => {
 test('calendar modal shows the HTTPS feed URL', async ({ page }) => {
   await mockWorker(page);
   await setSaved(page, [9]);
-  await page.goto('/?v=myprog');
+  await page.goto('/#v=myprog');
   await page.locator('#subscribe-btn').click();
   const value = await page.locator('#cal-link-input').inputValue();
   expect(value).toMatch(/^https:\/\/.+\/calendar\/[0-9a-f-]{36}$/);
@@ -113,7 +113,7 @@ test('Copy link button copies the feed URL to clipboard', async ({ page, context
   await context.grantPermissions(['clipboard-read', 'clipboard-write']);
   await mockWorker(page);
   await setSaved(page, [9]);
-  await page.goto('/?v=myprog');
+  await page.goto('/#v=myprog');
   await page.locator('#subscribe-btn').click();
   await page.locator('#cal-link-copy').click();
   const copied = await page.evaluate(() => navigator.clipboard.readText());
@@ -124,7 +124,7 @@ test('Copy link button copies the feed URL to clipboard', async ({ page, context
 test('calendar modal closes on × button', async ({ page }) => {
   await mockWorker(page);
   await setSaved(page, [9]);
-  await page.goto('/?v=myprog');
+  await page.goto('/#v=myprog');
   await page.locator('#subscribe-btn').click();
   await expect(page.locator('#cal-modal')).toHaveClass(/open/);
   await page.locator('#cal-modal-close').click();
@@ -134,7 +134,7 @@ test('calendar modal closes on × button', async ({ page }) => {
 test('removing an act from My Programme takes it off the list', async ({ page }) => {
   await mockWorker(page);
   await setSaved(page, [9]);
-  await page.goto('/?v=myprog');
+  await page.goto('/#v=myprog');
 
   const act = page.locator('#my-programme-list .timeline-act[data-id="9"]');
   await expect(act).toBeVisible();
@@ -151,7 +151,7 @@ test('saving an act triggers a PUT to the worker with the act data', async ({ pa
     if (req.method() === 'PUT') putBody = req.postData();
   });
 
-  await page.goto('/?v=browse');
+  await page.goto('/#v=browse');
   await page.waitForSelector('.act-card');
   await page.locator('.act-card[data-id="9"] .save-btn').click();
 

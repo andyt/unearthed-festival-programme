@@ -3408,20 +3408,20 @@ function openModal(id, pushHistory = true) {
   updateModalButtons(id);
   document.getElementById('modal').classList.add('open');
   if (pushHistory) {
-    const params = new URLSearchParams(window.location.search);
+    const params = new URLSearchParams(window.location.hash.slice(1));
     params.set('act', id);
-    history.pushState(null, '', `?${params.toString()}`);
+    history.pushState(null, '', `#${params.toString()}`);
   }
 }
 
 function closeModal() {
   document.getElementById('modal').classList.remove('open');
   modalActId = null;
-  const params = new URLSearchParams(window.location.search);
+  const params = new URLSearchParams(window.location.hash.slice(1));
   if (params.has('act')) {
     params.delete('act');
     const str = params.toString();
-    history.replaceState(null, '', str ? `?${str}` : window.location.pathname);
+    history.replaceState(null, '', str ? `#${str}` : window.location.pathname);
   }
 }
 
@@ -3444,7 +3444,7 @@ document.getElementById('modal-save').addEventListener('click', () => { toggleSa
 
 // ——— URL ROUTING ———
 function syncURLToState() {
-  const params = new URLSearchParams(window.location.search);
+  const params = new URLSearchParams(window.location.hash.slice(1));
   ['v', 'b', 'day', 'stage', 'q'].forEach(k => params.delete(k));
   if (currentView !== 'nownext') params.set('v', currentView);
   if (currentView === 'browse' && currentBrowse !== 'grid') params.set('b', currentBrowse);
@@ -3452,11 +3452,11 @@ function syncURLToState() {
   if (currentFilters.stage !== 'all') params.set('stage', currentFilters.stage);
   if (currentFilters.search) params.set('q', currentFilters.search);
   const str = params.toString();
-  history.replaceState(null, '', str ? `?${str}` : window.location.pathname);
+  history.replaceState(null, '', str ? `#${str}` : window.location.pathname);
 }
 
 function applyURLState() {
-  const params = new URLSearchParams(window.location.search);
+  const params = new URLSearchParams(window.location.hash.slice(1));
   const v = params.get('v');
   if (v && ['browse','nownext','myprog'].includes(v)) currentView = v;
   const b = params.get('b');
@@ -3483,7 +3483,7 @@ function applyURLState() {
 }
 
 window.addEventListener('popstate', () => {
-  const params = new URLSearchParams(window.location.search);
+  const params = new URLSearchParams(window.location.hash.slice(1));
   const actId = params.get('act');
   if (actId) {
     openModal(+actId, false);
