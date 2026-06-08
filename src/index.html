@@ -477,6 +477,11 @@
   footer a { color: var(--teal-l); text-decoration: none; }
   footer span { white-space: nowrap; }
 
+  @media (max-width: 600px) {
+    footer { display: flex; flex-direction: column; align-items: center; gap: 0.3rem; }
+    footer .sep { display: none; }
+  }
+
   @keyframes pulse-orange {
     0%, 100% { box-shadow: 4px 4px 0 var(--magenta); }
     50% { box-shadow: 4px 4px 0 var(--magenta), 0 0 24px rgba(232,99,26,0.45); }
@@ -845,8 +850,10 @@
 
 <footer>
   <span><a href="https://www.unearthedfestival.co.uk" target="_blank">unearthedfestival.co.uk</a></span>
-  <span>&nbsp;·&nbsp; Programme guide · unofficial companion app</span>
-  <span>&nbsp;·&nbsp; <a href="https://triggs.dev/" target="_blank" rel="noopener noreferrer">Built by Ash</a></span>
+  <span class="sep">&nbsp;·&nbsp;</span>
+  <span>Programme guide · unofficial companion app</span>
+  <span class="sep">&nbsp;·&nbsp;</span>
+  <span><a href="https://triggs.dev/" target="_blank" rel="noopener noreferrer">Built by Ash</a></span>
 </footer>
 
 <script>
