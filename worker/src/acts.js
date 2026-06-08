@@ -15,7 +15,7 @@ export default [
     "time": "11:00",
     "stage": "Main Stage",
     "type": "Music",
-    "desc": "Space rock veterans from the Welsh Marches — swirling, cosmic and joyous. The perfect Friday morning opener.",
+    "desc": "Space rock veterans from the Welsh Marches - swirling, cosmic and joyous. The perfect Friday morning opener.",
     "links": [
       {
         "label": "Spotify",
@@ -62,6 +62,10 @@ export default [
       {
         "label": "Spotify",
         "url": "https://open.spotify.com/artist/26D0xSr2eIef3ivt0yrfGK"
+      },
+      {
+        "label": "song.link",
+        "url": "https://song.link/s/1X10ITNk2apBLknfWBiJjf"
       }
     ]
   },
@@ -77,6 +81,10 @@ export default [
       {
         "label": "Spotify",
         "url": "https://open.spotify.com/artist/1PynWVTuXMAva0dUKXtEUP"
+      },
+      {
+        "label": "song.link",
+        "url": "https://song.link/s/6VotMsC6HxdlrlKAEOjbx2"
       }
     ]
   },
@@ -137,7 +145,7 @@ export default [
     "time": "22:00",
     "stage": "Main Stage",
     "type": "Music",
-    "desc": "Jay McAllister has been the folk circuit's most beloved troublemaker since 2005 — fifteen albums, a Glastonbury appearance every year since 2007, and songs that make you laugh and ache in equal measure. Heart-on-sleeve songwriting for the wide-eyed and world-weary.",
+    "desc": "Jay McAllister has been the folk circuit's most beloved troublemaker since 2005 - fifteen albums, a Glastonbury appearance every year since 2007, and songs that make you laugh and ache in equal measure. Heart-on-sleeve songwriting for the wide-eyed and world-weary.",
     "links": [
       {
         "label": "Spotify",
@@ -160,7 +168,7 @@ export default [
     "time": "23:30",
     "stage": "Main Stage",
     "type": "Music",
-    "desc": "Born and raised in Bristol, Roni Size won the Mercury Prize in 1997 with Reprazent's New Forms — one of the defining drum & bass albums ever made. A rare and special late-night headline set.",
+    "desc": "Born and raised in Bristol, Roni Size won the Mercury Prize in 1997 with Reprazent's New Forms - one of the defining drum & bass albums ever made. A rare and special late-night headline set.",
     "links": [
       {
         "label": "Spotify",
@@ -192,7 +200,7 @@ export default [
     "time": "02:00",
     "stage": "Main Stage",
     "type": "DJ",
-    "desc": "A husband-and-wife spiritual Drum & Bass duo — Nori (vocalist, relationship therapist) and Zee (producer, mix engineer). Fusing healing frequencies with rolling DnB and Jungle roots, their sets twist and evolve on a deeper level. Music as medicine, rhythm as awakening.",
+    "desc": "A husband-and-wife spiritual Drum & Bass duo - Nori (vocalist, relationship therapist) and Zee (producer, mix engineer). Fusing healing frequencies with rolling DnB and Jungle roots, their sets twist and evolve on a deeper level. Music as medicine, rhythm as awakening.",
     "links": [
       {
         "label": "SoundCloud",
@@ -385,7 +393,7 @@ export default [
   },
   {
     "id": 50,
-    "name": "Dance Workshop 2–4",
+    "name": "Dance Workshop 2-4",
     "day": "fri",
     "time": "14:00",
     "stage": "Freedom Stage",
@@ -457,7 +465,7 @@ export default [
   },
   {
     "id": 100,
-    "name": "Manifestation Breathwork — Freya MacFarlane",
+    "name": "Manifestation Breathwork - Freya MacFarlane",
     "day": "sat",
     "time": "10:00",
     "stage": "Main Stage",
@@ -471,7 +479,7 @@ export default [
     "time": "12:00",
     "stage": "Main Stage",
     "type": "Music",
-    "desc": "Singer, songweaver and medicine musician from Scotland. Her music fuses Celtic roots with New Age folk and spiritual overtones — songs of remembrance, land, unity and freedom.",
+    "desc": "Singer, songweaver and medicine musician from Scotland. Her music fuses Celtic roots with New Age folk and spiritual overtones - songs of remembrance, land, unity and freedom.",
     "links": [
       {
         "label": "Spotify",
@@ -532,7 +540,7 @@ export default [
     "time": "17:30",
     "stage": "Main Stage",
     "type": "Music",
-    "desc": "A traditional Welsh ceilidh — communal dancing with a caller and live folk band. No experience needed, just willingness to join in. One of the great Unearthed traditions."
+    "desc": "A traditional Welsh ceilidh - communal dancing with a caller and live folk band. No experience needed, just willingness to join in. One of the great Unearthed traditions."
   },
   {
     "id": 105,
@@ -606,7 +614,7 @@ export default [
     "time": "23:30",
     "stage": "Main Stage",
     "type": "Music",
-    "desc": "Newport's finest — the GLC have been Wales's most irreverent rap collective since the early 2000s. Massive in da house. Guns Don't Kill People, Rappers Do. You Are Not a Chav. A riotous, essential late-night headline.",
+    "desc": "Newport's finest - the GLC have been Wales's most irreverent rap collective since the early 2000s. Massive in da house. Guns Don't Kill People, Rappers Do. You Are Not a Chav. A riotous, essential late-night headline.",
     "links": [
       {
         "label": "Spotify",
@@ -896,7 +904,7 @@ export default [
   },
   {
     "id": 160,
-    "name": "Dance Workshop 2–4",
+    "name": "Dance Workshop 2-4",
     "day": "sat",
     "time": "10:00",
     "stage": "Freedom Stage",
@@ -1100,7 +1108,7 @@ export default [
     "time": "22:00",
     "stage": "Main Stage",
     "type": "Music",
-    "desc": "Unearthed's very own house band close the festival. Chaotic, joyful, unclassifiable — the perfect end to the weekend.",
+    "desc": "Unearthed's very own house band close the festival. Chaotic, joyful, unclassifiable - the perfect end to the weekend.",
     "links": [
       {
         "label": "Facebook",
@@ -1281,7 +1289,7 @@ export default [
   },
   {
     "id": 260,
-    "name": "Dance Workshop 2–4",
+    "name": "Dance Workshop 2-4",
     "day": "sun",
     "time": "10:00",
     "stage": "Freedom Stage",
@@ -1354,7 +1362,7 @@ export default [
   },
   {
     "id": 300,
-    "name": "Yoga — Elle Beamish (Green Lotus Studios)",
+    "name": "Yoga - Elle Beamish (Green Lotus Studios)",
     "day": "fri",
     "time": "09:00",
     "stage": "Temple Tent",
@@ -1363,7 +1371,7 @@ export default [
   },
   {
     "id": 301,
-    "name": "Shaolin Qigong — Rhys Rogers",
+    "name": "Shaolin Qigong - Rhys Rogers",
     "day": "fri",
     "time": "10:00",
     "stage": "Temple Tent",
@@ -1372,16 +1380,16 @@ export default [
   },
   {
     "id": 302,
-    "name": "Acroyoga — Yoga of Dragons (Sam & Bongo)",
+    "name": "Acroyoga - Yoga of Dragons (Sam & Bongo)",
     "day": "fri",
     "time": "11:30",
     "stage": "Temple Tent",
     "type": "Workshop",
-    "desc": "The grounding of yoga meets the liberation of flying. A playful, safety-conscious session blending acrobatics with yoga and teamwork. Flyer and base flow through postures and transitions — building connection, synchronicity and body awareness. All levels welcome."
+    "desc": "The grounding of yoga meets the liberation of flying. A playful, safety-conscious session blending acrobatics with yoga and teamwork. Flyer and base flow through postures and transitions - building connection, synchronicity and body awareness. All levels welcome."
   },
   {
     "id": 303,
-    "name": "Journeying Within — Bronwyn Claire Asha",
+    "name": "Journeying Within - Bronwyn Claire Asha",
     "day": "fri",
     "time": "12:50",
     "stage": "Temple Tent",
@@ -1390,7 +1398,7 @@ export default [
   },
   {
     "id": 304,
-    "name": "Opening Ceremony — Hoppi, Dia, Tim, Yeshe",
+    "name": "Opening Ceremony - Hoppi, Dia, Tim, Yeshe",
     "day": "fri",
     "time": "14:00",
     "stage": "Temple Tent",
@@ -1399,7 +1407,7 @@ export default [
   },
   {
     "id": 305,
-    "name": "The Frequency Experience Pt 1 — Adam Slawson",
+    "name": "The Frequency Experience Pt 1 - Adam Slawson",
     "day": "fri",
     "time": "15:45",
     "stage": "Temple Tent",
@@ -1408,7 +1416,7 @@ export default [
   },
   {
     "id": 306,
-    "name": "RAVE AF: The Frequency Experience Pt 2 — Adam Slawson & DJ Bill T",
+    "name": "RAVE AF: The Frequency Experience Pt 2 - Adam Slawson & DJ Bill T",
     "day": "fri",
     "time": "16:45",
     "stage": "Temple Tent",
@@ -1417,7 +1425,7 @@ export default [
   },
   {
     "id": 307,
-    "name": "The Intuitive Woman — Sohère Roked",
+    "name": "The Intuitive Woman - Sohère Roked",
     "day": "fri",
     "time": "18:00",
     "stage": "Temple Tent",
@@ -1426,25 +1434,25 @@ export default [
   },
   {
     "id": 308,
-    "name": "Magic in Motion Cabaret — Tripod Rig",
+    "name": "Magic in Motion Cabaret - Tripod Rig",
     "day": "fri",
     "time": "19:00",
     "stage": "Temple Tent",
     "type": "Music",
-    "desc": "A circus cabaret where the sky comes alive with movement, rhythm, and flashes of the fantastical. We lift, swing, spin and drop — a journey of self revealed through movement: how we choose to move, pause, risk and release."
+    "desc": "A circus cabaret where the sky comes alive with movement, rhythm, and flashes of the fantastical. We lift, swing, spin and drop - a journey of self revealed through movement: how we choose to move, pause, risk and release."
   },
   {
     "id": 309,
-    "name": "Celtic Grief Keening — Jewels Wingfield",
+    "name": "Celtic Grief Keening - Jewels Wingfield",
     "day": "fri",
     "time": "19:30",
     "stage": "Temple Tent",
     "type": "Workshop",
-    "desc": "A grief ceremony from the traditions of the Celtic keening lineage. A space to grieve personal losses and the pain of the current world situation. Grieving is a radical act of courage and love — when we grieve together we find strength and resilience."
+    "desc": "A grief ceremony from the traditions of the Celtic keening lineage. A space to grieve personal losses and the pain of the current world situation. Grieving is a radical act of courage and love - when we grieve together we find strength and resilience."
   },
   {
     "id": 310,
-    "name": "Yoga — Elle Beamish (Green Lotus Studios)",
+    "name": "Yoga - Elle Beamish (Green Lotus Studios)",
     "day": "sat",
     "time": "08:00",
     "stage": "Temple Tent",
@@ -1453,7 +1461,7 @@ export default [
   },
   {
     "id": 311,
-    "name": "Shaolin Qigong — Rhys Rogers",
+    "name": "Shaolin Qigong - Rhys Rogers",
     "day": "sat",
     "time": "09:00",
     "stage": "Temple Tent",
@@ -1462,7 +1470,7 @@ export default [
   },
   {
     "id": 312,
-    "name": "Relationship Anarchy — Austin Douillard",
+    "name": "Relationship Anarchy - Austin Douillard",
     "day": "sat",
     "time": "11:45",
     "stage": "Temple Tent",
@@ -1471,16 +1479,16 @@ export default [
   },
   {
     "id": 313,
-    "name": "Ceremony of Pollen, Honey & Divine Gold — Hoppi Wimbush",
+    "name": "Ceremony of Pollen, Honey & Divine Gold - Hoppi Wimbush",
     "day": "sat",
     "time": "13:15",
     "stage": "Temple Tent",
     "type": "Workshop",
-    "desc": "Working with the alchemical magic of the bees and their sacraments of pollen, honey, and Divine Gold. A ceremony to soften, open, and melt into the liquid gold of our Divinity — where the illusion of separation dissolves and the tender beauty of connection comes into being."
+    "desc": "Working with the alchemical magic of the bees and their sacraments of pollen, honey, and Divine Gold. A ceremony to soften, open, and melt into the liquid gold of our Divinity - where the illusion of separation dissolves and the tender beauty of connection comes into being."
   },
   {
     "id": 314,
-    "name": "Sacred Shibari — Danielle Landman",
+    "name": "Sacred Shibari - Danielle Landman",
     "day": "sat",
     "time": "15:00",
     "stage": "Temple Tent",
@@ -1489,25 +1497,25 @@ export default [
   },
   {
     "id": 315,
-    "name": "Contact Improv Dance — Lucia Escuder & Mairead Spangler",
+    "name": "Contact Improv Dance - Lucia Escuder & Mairead Spangler",
     "day": "sat",
     "time": "17:15",
     "stage": "Temple Tent",
     "type": "Workshop",
-    "desc": "Exploring reciprocity, balance, connection, and deep listening through contact dance. A practice of trust and grounding — learning to communicate through the body, meet someone else in their current state while staying centred in your own. Above all, it's about playing and having fun."
+    "desc": "Exploring reciprocity, balance, connection, and deep listening through contact dance. A practice of trust and grounding - learning to communicate through the body, meet someone else in their current state while staying centred in your own. Above all, it's about playing and having fun."
   },
   {
     "id": 316,
-    "name": "Magic in Motion Cabaret — Tripod Rig",
+    "name": "Magic in Motion Cabaret - Tripod Rig",
     "day": "sat",
     "time": "18:30",
     "stage": "Temple Tent",
     "type": "Music",
-    "desc": "A circus cabaret where the sky comes alive with movement, rhythm, and flashes of the fantastical. We lift, swing, spin and drop — a journey of self revealed through movement: how we choose to move, pause, risk and release."
+    "desc": "A circus cabaret where the sky comes alive with movement, rhythm, and flashes of the fantastical. We lift, swing, spin and drop - a journey of self revealed through movement: how we choose to move, pause, risk and release."
   },
   {
     "id": 317,
-    "name": "Divinely Untamed Temple — Jessica Ashby",
+    "name": "Divinely Untamed Temple - Jessica Ashby",
     "day": "sat",
     "time": "19:00",
     "stage": "Temple Tent",
@@ -1516,16 +1524,16 @@ export default [
   },
   {
     "id": 320,
-    "name": "Yoga Nidra Rest and Reset — Lottie Lernelius-Tonks",
+    "name": "Yoga Nidra Rest and Reset - Lottie Lernelius-Tonks",
     "day": "sun",
     "time": "08:00",
     "stage": "Temple Tent",
     "type": "Workshop",
-    "desc": "Step away from the noise and sink into stillness. A restorative Yoga Nidra session taking you to the sweet spot between waking and dreaming. Through guided breathwork and visualisation, soothe the nervous system and nourish the soul. Accessible to everyone — no movement required, can be enjoyed in a wheelchair."
+    "desc": "Step away from the noise and sink into stillness. A restorative Yoga Nidra session taking you to the sweet spot between waking and dreaming. Through guided breathwork and visualisation, soothe the nervous system and nourish the soul. Accessible to everyone - no movement required, can be enjoyed in a wheelchair."
   },
   {
     "id": 321,
-    "name": "Shaolin Qigong — Rhys Rogers",
+    "name": "Shaolin Qigong - Rhys Rogers",
     "day": "sun",
     "time": "09:00",
     "stage": "Temple Tent",
@@ -1534,7 +1542,7 @@ export default [
   },
   {
     "id": 322,
-    "name": "Gong Bath — Jay Herring",
+    "name": "Gong Bath - Jay Herring",
     "day": "sun",
     "time": "12:00",
     "stage": "Temple Tent",
@@ -1543,39 +1551,39 @@ export default [
   },
   {
     "id": 323,
-    "name": "Self-Discovery with Life Drawing — Fede Art Muse",
+    "name": "Self-Discovery with Life Drawing - Fede Art Muse",
     "day": "sun",
     "time": "13:15",
     "stage": "Temple Tent",
     "type": "Workshop",
-    "desc": "A creative ritual of presence, freedom, and letting go. Through timed poses, instinctive drawing and shared vulnerability, we explore the nude form — not to perfect it, but to meet ourselves. No judgment, no pressure, just pure expression, connection, and creative flow."
+    "desc": "A creative ritual of presence, freedom, and letting go. Through timed poses, instinctive drawing and shared vulnerability, we explore the nude form - not to perfect it, but to meet ourselves. No judgment, no pressure, just pure expression, connection, and creative flow."
   },
   {
     "id": 324,
-    "name": "Neurodiversity: It's Not a F*cking Label — Hapus Training & Sam Charlesworth",
+    "name": "Neurodiversity: It's Not a F*cking Label - Hapus Training & Sam Charlesworth",
     "day": "sun",
     "time": "15:30",
     "stage": "Temple Tent",
     "type": "Workshop",
-    "desc": "An interactive workshop delving into the subject of Neurodiversity in a light-hearted, informative and inclusive space. Presented by Sian Powell of Hapus Training and Sam — sharing lived experience, ways of managing the chaos, and breaking down the stigma."
+    "desc": "An interactive workshop delving into the subject of Neurodiversity in a light-hearted, informative and inclusive space. Presented by Sian Powell of Hapus Training and Sam - sharing lived experience, ways of managing the chaos, and breaking down the stigma."
   },
   {
     "id": 325,
-    "name": "Men's Circle — Charlie Cavell",
+    "name": "Men's Circle - Charlie Cavell",
     "day": "sun",
     "time": "17:15",
     "stage": "Temple Tent",
     "type": "Workshop",
-    "desc": "A safe space for men to gather, be heard, share wisdom and gain support. As we gather in circle as our ancestors did, we connect as one — gaining clarity in a confusing world and leaving grounded in positive masculinity."
+    "desc": "A safe space for men to gather, be heard, share wisdom and gain support. As we gather in circle as our ancestors did, we connect as one - gaining clarity in a confusing world and leaving grounded in positive masculinity."
   },
   {
     "id": 326,
-    "name": "Reclaiming Our Humanity — Savannah Lovelock",
+    "name": "Reclaiming Our Humanity - Savannah Lovelock",
     "day": "sun",
     "time": "18:45",
     "stage": "Temple Tent",
     "type": "Workshop",
-    "desc": "What if we lived as the animals we are? In a world built for speed, control, and productivity, many of us are surviving conditions our bodies were never meant to endure. Burnout, numbness, rage, and grief are not personal failures — but signals of deeper relational and systemic harm."
+    "desc": "What if we lived as the animals we are? In a world built for speed, control, and productivity, many of us are surviving conditions our bodies were never meant to endure. Burnout, numbness, rage, and grief are not personal failures - but signals of deeper relational and systemic harm."
   },
   {
     "id": 327,
@@ -1606,7 +1614,7 @@ export default [
   },
   {
     "id": 402,
-    "name": "Chief Seattle — A Song in 8 Parts",
+    "name": "Chief Seattle - A Song in 8 Parts",
     "day": "fri",
     "time": "16:00",
     "stage": "Sacred Fire",
@@ -1651,7 +1659,7 @@ export default [
   },
   {
     "id": 412,
-    "name": "Celtic Sacred Songlines — Jewels Wingfield",
+    "name": "Celtic Sacred Songlines - Jewels Wingfield",
     "day": "sat",
     "time": "14:00",
     "stage": "Sacred Fire",
@@ -1696,7 +1704,7 @@ export default [
   },
   {
     "id": 422,
-    "name": "Caves of Power — Ancient Energy Techniques for Healing",
+    "name": "Caves of Power - Ancient Energy Techniques for Healing",
     "day": "sun",
     "time": "14:00",
     "stage": "Sacred Fire",
@@ -1714,7 +1722,7 @@ export default [
   },
   {
     "id": 424,
-    "name": "Together in Song — Vocal Activation Sound Journey",
+    "name": "Together in Song - Vocal Activation Sound Journey",
     "day": "sun",
     "time": "18:00",
     "stage": "Sacred Fire",
@@ -1741,7 +1749,7 @@ export default [
   },
   {
     "id": 501,
-    "name": "Herbal Workshop — Lemon Balm & Sage Flower",
+    "name": "Herbal Workshop - Lemon Balm & Sage Flower",
     "day": "fri",
     "time": "12:00",
     "stage": "Tea of Life",
@@ -1823,7 +1831,7 @@ export default [
   },
   {
     "id": 512,
-    "name": "Herbal Workshop — Three Mint, Wild Apple & Spearmint",
+    "name": "Herbal Workshop - Three Mint, Wild Apple & Spearmint",
     "day": "sat",
     "time": "13:00",
     "stage": "Tea of Life",
@@ -1887,7 +1895,7 @@ export default [
   },
   {
     "id": 520,
-    "name": "Herbal Workshop — Thyme & Nettle",
+    "name": "Herbal Workshop - Thyme & Nettle",
     "day": "sun",
     "time": "12:00",
     "stage": "Tea of Life",
@@ -2108,7 +2116,7 @@ export default [
     "time": "16:30",
     "stage": "Kids & Youth",
     "type": "Kids",
-    "desc": "Choose from beads, buttons, stones, sticks and much more — turn them into your own teeny treasure. Create a charm to wear, gift or hang as a small piece of everyday magic."
+    "desc": "Choose from beads, buttons, stones, sticks and much more - turn them into your own teeny treasure. Create a charm to wear, gift or hang as a small piece of everyday magic."
   },
   {
     "id": 629,
@@ -2180,7 +2188,7 @@ export default [
     "time": "13:30",
     "stage": "Kids & Youth",
     "type": "Kids",
-    "desc": "Choose from beads, buttons, stones, sticks and much more — turn them into your own teeny treasure. Create a charm to wear, gift or hang as a small piece of everyday magic."
+    "desc": "Choose from beads, buttons, stones, sticks and much more - turn them into your own teeny treasure. Create a charm to wear, gift or hang as a small piece of everyday magic."
   },
   {
     "id": 645,
