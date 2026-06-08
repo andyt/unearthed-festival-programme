@@ -1,4 +1,4 @@
-import os
+import os, json
 import spotipy
 from spotipy.oauth2 import SpotifyOAuth
 from dotenv import load_dotenv
@@ -7,6 +7,7 @@ load_dotenv(os.path.join(os.path.dirname(__file__), ".env"))
 
 PLAYLIST_ID = os.environ["SPOTIFY_PLAYLIST_ID"]
 
+# Ordered list of acts. Add new acts here; existing ones are left unchanged.
 ARTISTS = [
     ("Twpsyn",               "02yBquhX7ueKHmZrxfjlim"),
     ("Amy True",             "7oVEKfsDB4c8t7RMPfNyWv"),
@@ -47,18 +48,32 @@ sp = spotipy.Spotify(auth_manager=SpotifyOAuth(
 
 print(f"Logged in as: {sp.current_user()['display_name']}\n")
 
-track_uris = []
-playlist_snapshot = []  # for playlist/tracks.json
+# Load existing locked tracks so previously chosen tracks aren't re-fetched
+snapshot_path = os.path.join(os.path.dirname(__file__), "tracks.json")
+existing = json.load(open(snapshot_path)) if os.path.exists(snapshot_path) else []
+locked = {}  # artist_id -> list of snapshot dicts
+for entry in existing:
+    if "artist_id" in entry:
+        locked.setdefault(entry["artist_id"], []).append(entry)
+
+playlist_snapshot = []
 
 for name, artist_id in ARTISTS:
-    if artist_id in MANUAL_TRACKS:
-        entries = MANUAL_TRACKS[artist_id][:TRACKS_PER_ARTIST]
-        for track_name, uri in entries:
-            print(f"  {name}: {track_name}")
-            track_uris.append(uri)
-            playlist_snapshot.append({"artist": name, "track": track_name, "uri": uri})
+    # Use locked tracks if already chosen for this artist_id
+    if artist_id in locked:
+        for entry in locked[artist_id]:
+            print(f"  {name}: {entry['track']} (locked)")
+            playlist_snapshot.append(entry)
         continue
 
+    # Manual override
+    if artist_id in MANUAL_TRACKS:
+        for track_name, uri in MANUAL_TRACKS[artist_id][:TRACKS_PER_ARTIST]:
+            print(f"  {name}: {track_name}")
+            playlist_snapshot.append({"artist": name, "artist_id": artist_id, "track": track_name, "uri": uri})
+        continue
+
+    # Fetch from Spotify
     results = sp.search(q=f'artist:"{name}"', type="track", limit=10)
     all_tracks = results["tracks"]["items"]
     artist_tracks = [t for t in all_tracks if any(a["id"] == artist_id for a in t["artists"])]
@@ -71,20 +86,20 @@ for name, artist_id in ARTISTS:
             seen.add(key)
             unique.append(t)
 
+    unique.sort(key=lambda t: t["name"].lower())
     top = unique[:TRACKS_PER_ARTIST]
     if top:
         for track in top:
-            print(f"  {name}: {track['name']}")
-            track_uris.append(track["uri"])
-            playlist_snapshot.append({"artist": name, "track": track["name"], "uri": track["uri"]})
+            print(f"  {name}: {track['name']} (new)")
+            playlist_snapshot.append({"artist": name, "artist_id": artist_id, "track": track["name"], "uri": track["uri"]})
     else:
         print(f"  {name}: no tracks found")
 
-import json, os
-snapshot_path = os.path.join(os.path.dirname(__file__), "tracks.json")
+track_uris = [e["uri"] for e in playlist_snapshot]
+
 with open(snapshot_path, "w") as f:
     json.dump(playlist_snapshot, f, indent=2)
-print(f"\nSaved snapshot → playlist/tracks.json")
+print(f"\nSaved snapshot -> playlist/tracks.json")
 
 print(f"Replacing playlist tracks ({len(track_uris)} total)...")
 sp.playlist_replace_items(PLAYLIST_ID, track_uris)
