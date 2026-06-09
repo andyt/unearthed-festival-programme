@@ -77,7 +77,7 @@ describe('ACTS data — Freedom Stage', () => {
 
 describe('ACTS data — Temple Tent', () => {
   it('pre-midnight: Celtic Grief Keening (id 309)', () => {
-    expect(byId(309)).toMatchObject({ name: 'Celtic Grief Keening — Jewels Wingfield', day: 'fri', time: '19:30', stage: 'Temple Tent' });
+    expect(byId(309)).toMatchObject({ name: 'Celtic Grief Keening - Jewels Wingfield', day: 'fri', time: '19:30', stage: 'Temple Tent' });
   });
 });
 

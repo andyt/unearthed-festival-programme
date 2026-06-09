@@ -6,8 +6,19 @@
 // Run from the repo root: node scripts/build.js
 import { readFileSync, writeFileSync, mkdirSync, copyFileSync } from 'fs';
 import { execSync } from 'child_process';
+import { validate } from './validate-acts.js';
 
 const acts = JSON.parse(readFileSync('data/acts.json', 'utf8'));
+
+// ── 0. Validate before building ──────────────────────────────────────────────
+const { errors, warnings } = validate(acts);
+warnings.forEach((w) => console.warn(`⚠ [${w.id}] ${w.msg}`));
+if (errors.length) {
+  errors.forEach((e) => console.error(`✖ ${e}`));
+  console.error(`\nAborting build: ${errors.length} validation error(s) in data/acts.json`);
+  process.exit(1);
+}
+
 const actsJson = JSON.stringify(acts, null, 2);
 
 mkdirSync('dist', { recursive: true });

@@ -31,7 +31,7 @@
     "id": 3,
     "name": "Twpsyn",
     "day": "fri",
-    "time": "13:30",
+    "time": "12:00",
     "stage": "Main Stage",
     "type": "Music",
     "desc": "South Wales band formed in 2024 with a debut EP dropping in 2026. Anarchic, witty and utterly Welsh. FOMO Magazine called them \"one to be excited about.\"",
@@ -54,7 +54,7 @@
     "id": 4,
     "name": "Excellent Birds",
     "day": "fri",
-    "time": "15:00",
+    "time": "13:30",
     "stage": "Main Stage",
     "type": "Music",
     "desc": "",
@@ -73,7 +73,7 @@
     "id": 5,
     "name": "The Pavilion",
     "day": "fri",
-    "time": "17:30",
+    "time": "15:00",
     "stage": "Main Stage",
     "type": "Music",
     "desc": "",
@@ -92,7 +92,7 @@
     "id": 6,
     "name": "Amy True",
     "day": "fri",
-    "time": "19:00",
+    "time": "17:30",
     "stage": "Main Stage",
     "type": "Music",
     "desc": "London-based Irish/Ugandan poet, rapper and singer-songwriter creating universal hip hop, soul and jazz. Has collaborated with Akala, Benjamin Zephaniah and Asian Dub Foundation.",
@@ -115,7 +115,7 @@
     "id": 7,
     "name": "Samana",
     "day": "fri",
-    "time": "20:30",
+    "time": "19:00",
     "stage": "Main Stage",
     "type": "Music",
     "desc": "British duo Rebecca Rose and Franklin Mockett, creating music from their analogue studio in the remote valleys of Wales. Forged from dreams, ancient rituals, and interior discovery. Utterly transcendent.",
@@ -142,7 +142,7 @@
     "id": 8,
     "name": "Beans on Toast",
     "day": "fri",
-    "time": "22:00",
+    "time": "20:30",
     "stage": "Main Stage",
     "type": "Music",
     "desc": "Jay McAllister has been the folk circuit's most beloved troublemaker since 2005 - fifteen albums, a Glastonbury appearance every year since 2007, and songs that make you laugh and ache in equal measure. Heart-on-sleeve songwriting for the wide-eyed and world-weary.",
@@ -160,6 +160,15 @@
         "url": "https://www.beansontoastmusic.com"
       }
     ]
+  },
+  {
+    "id": 721,
+    "name": "The Herbaliser Band",
+    "day": "fri",
+    "time": "22:00",
+    "stage": "Main Stage",
+    "type": "Music",
+    "desc": ""
   },
   {
     "id": 9,
@@ -191,11 +200,11 @@
     "time": "01:00",
     "stage": "Main Stage",
     "type": "DJ",
-    "desc": "Emerging force in the UK underground electronic music scene, blending bouncy house, hard techno, speed garage and bass-heavy rave music. Born and raised in West Wales — now in his fourth consecutive year at Unearthed."
+    "desc": "Emerging force in the UK underground electronic music scene, blending bouncy house, hard techno, speed garage and bass-heavy rave music. Born and raised in West Wales - now in his fourth consecutive year at Unearthed."
   },
   {
     "id": 11,
-    "name": "Norizee",
+    "name": "DJ Norizee",
     "day": "fri",
     "time": "02:00",
     "stage": "Main Stage",
@@ -214,8 +223,8 @@
     "day": "fri",
     "time": "11:00",
     "stage": "Dub Corner",
-    "type": "Music",
-    "desc": "Brazilian DJ selector with decades of experience and one of the UK's most extensive collections of Brazilian vinyl. Based in Tenby — sets spanning samba, MPB, bossa nova, tropicalia, reggae, ska, funk and soul."
+    "type": "DJ",
+    "desc": "Brazilian DJ selector with decades of experience and one of the UK's most extensive collections of Brazilian vinyl. Based in Tenby - sets spanning samba, MPB, bossa nova, tropicalia, reggae, ska, funk and soul."
   },
   {
     "id": 21,
@@ -242,11 +251,11 @@
     "time": "18:00",
     "stage": "Dub Corner",
     "type": "DJ",
-    "desc": "Dub reggae roots DJ — also psychedelic ambient."
+    "desc": "Dub reggae roots DJ - also psychedelic ambient."
   },
   {
     "id": 24,
-    "name": "Ozimu Sound",
+    "name": "Omizu Sound",
     "day": "fri",
     "time": "19:00",
     "stage": "Dub Corner",
@@ -305,11 +314,11 @@
     "time": "01:00",
     "stage": "Dub Corner",
     "type": "DJ",
-    "desc": "A woman who feels and knows the scene — selections spanning 70s rockers to contemporary roots. A regular at Dub Corner and United Nations of Dub, now a fixture on the European reggae circuit."
+    "desc": "A woman who feels and knows the scene - selections spanning 70s rockers to contemporary roots. A regular at Dub Corner and United Nations of Dub, now a fixture on the European reggae circuit."
   },
   {
     "id": 31,
-    "name": "Silent Disco (Menikoo / Rackitt)",
+    "name": "Silent Disco",
     "day": "fri",
     "time": "02:00",
     "stage": "Dub Corner",
@@ -318,12 +327,12 @@
   },
   {
     "id": 40,
-    "name": "Lusärdi",
+    "name": "Lus\u00e4rdi",
     "day": "fri",
     "time": "16:00",
     "stage": "Cosmic Cwtsh",
     "type": "DJ",
-    "desc": "Unique style blending pulsating beats, hypnotic basslines and ethereal melodies. Known for taking the crowd on an immersive musical journey — a founding member of Moss Collectiv.",
+    "desc": "Unique style blending pulsating beats, hypnotic basslines and ethereal melodies. Known for taking the crowd on an immersive musical journey - a founding member of Moss Collectiv.",
     "links": [
       {
         "label": "SoundCloud",
@@ -347,7 +356,7 @@
     "time": "19:30",
     "stage": "Cosmic Cwtsh",
     "type": "DJ",
-    "desc": "Welsh-German DJ and Music Producer. 'What matters to me is that music comes from the heart and I share this energy with the crowd — when I play it's about taking the journey together.'",
+    "desc": "Welsh-German DJ and Music Producer. 'What matters to me is that music comes from the heart and I share this energy with the crowd - when I play it's about taking the journey together.'",
     "links": [
       {
         "label": "SoundCloud",
@@ -362,7 +371,7 @@
     "time": "21:00",
     "stage": "Cosmic Cwtsh",
     "type": "DJ",
-    "desc": "From murky origins in 90s Bristol, now a familiar face in West Wales techno party-land — a Nevern and Cosmic Cwtsh veteran."
+    "desc": "From murky origins in 90s Bristol, now a familiar face in West Wales techno party-land - a Nevern and Cosmic Cwtsh veteran."
   },
   {
     "id": 44,
@@ -371,7 +380,7 @@
     "time": "22:30",
     "stage": "Cosmic Cwtsh",
     "type": "DJ",
-    "desc": "Abstract frequencies layered into progressive storytelling journeys. Atmospheric vibes, energetic baselines and exhilarating drops — a musical odyssey from beginning to end."
+    "desc": "Abstract frequencies layered into progressive storytelling journeys. Atmospheric vibes, energetic baselines and exhilarating drops - a musical odyssey from beginning to end."
   },
   {
     "id": 45,
@@ -393,7 +402,7 @@
   },
   {
     "id": 50,
-    "name": "Dance Workshop 2-4",
+    "name": "Workshop - Closing Ceremony Dancing Group",
     "day": "fri",
     "time": "14:00",
     "stage": "Freedom Stage",
@@ -447,12 +456,12 @@
   },
   {
     "id": 56,
-    "name": "Alexander Canwell",
+    "name": "TBC",
     "day": "fri",
     "time": "22:00",
     "stage": "Freedom Stage",
     "type": "DJ",
-    "desc": "Rap-punk with a sprinkling of myth and folk. Expect banging breaks and lots of live chaos."
+    "desc": ""
   },
   {
     "id": 57,
@@ -460,7 +469,7 @@
     "day": "fri",
     "time": "23:00",
     "stage": "Freedom Stage",
-    "type": "Music",
+    "type": "Comedy/Theatre",
     "desc": ""
   },
   {
@@ -546,10 +555,10 @@
     "id": 105,
     "name": "Dan Bettridge",
     "day": "sat",
-    "time": "19:00",
+    "time": "20:30",
     "stage": "Main Stage",
     "type": "Music",
-    "desc": "Singer-songwriter crafting introspective, brooding ear-worms that feel both deeply personal and quietly universal. BBC Radio favourite, Rolling Stone-featured, and Bob Harris's pick for Maida Vale — immersive live moments where vulnerability transforms into connection.",
+    "desc": "Singer-songwriter crafting introspective, brooding ear-worms that feel both deeply personal and quietly universal. BBC Radio favourite, Rolling Stone-featured, and Bob Harris's pick for Maida Vale - immersive live moments where vulnerability transforms into connection.",
     "links": [
       {
         "label": "Spotify",
@@ -569,10 +578,10 @@
     "id": 106,
     "name": "Sky Barkers",
     "day": "sat",
-    "time": "20:30",
+    "time": "19:00",
     "stage": "Main Stage",
     "type": "Music",
-    "desc": "Genre-squiggling indie trio from coastal West Wales. Groove-based, hook-heavy, vocal-laden and lyrically connective — rooted in songwriting but with a wonky edge.",
+    "desc": "Genre-squiggling indie trio from coastal West Wales. Groove-based, hook-heavy, vocal-laden and lyrically connective - rooted in songwriting but with a wonky edge.",
     "links": [
       {
         "label": "Spotify",
@@ -595,7 +604,7 @@
     "time": "22:00",
     "stage": "Main Stage",
     "type": "Music",
-    "desc": "Four blood brothers from East London, uniting the spiritual roots of Rastafari with the timeless sounds of Bob Marley, James Brown and Stevie Wonder. Reggae as a movement — grounded in authenticity, powered by high-vibrational energy.",
+    "desc": "Four blood brothers from East London, uniting the spiritual roots of Rastafari with the timeless sounds of Bob Marley, James Brown and Stevie Wonder. Reggae as a movement - grounded in authenticity, powered by high-vibrational energy.",
     "links": [
       {
         "label": "Spotify",
@@ -641,7 +650,7 @@
     "time": "01:00",
     "stage": "Main Stage",
     "type": "Music",
-    "desc": "A one-off collaboration built on a shared love of soundsystem culture and bass-driven music. Blending reggae, dub, jungle and garage — originals, unreleased material, and exclusive dub plates from all three artists.",
+    "desc": "A one-off collaboration built on a shared love of soundsystem culture and bass-driven music. Blending reggae, dub, jungle and garage - originals, unreleased material, and exclusive dub plates from all three artists.",
     "links": [
       {
         "label": "Spotify",
@@ -714,7 +723,7 @@
     "time": "19:00",
     "stage": "Dub Corner",
     "type": "DJ",
-    "desc": "Dub reggae roots DJ — also psychedelic ambient."
+    "desc": "Dub reggae roots DJ - also psychedelic ambient."
   },
   {
     "id": 126,
@@ -759,7 +768,7 @@
     "time": "00:00",
     "stage": "Dub Corner",
     "type": "DJ",
-    "desc": "Dedicated selector rooted in the Pembrokeshire dub community. Deep, rootical cuts at Unearthed, Westival and Riptide — playing with respect for the culture and a focus on foundational riddims."
+    "desc": "Dedicated selector rooted in the Pembrokeshire dub community. Deep, rootical cuts at Unearthed, Westival and Riptide - playing with respect for the culture and a focus on foundational riddims."
   },
   {
     "id": 131,
@@ -768,7 +777,7 @@
     "time": "01:00",
     "stage": "Dub Corner",
     "type": "DJ",
-    "desc": "From the Llyn Peninsula ('Pen Dub' also means 'Dub Head' in Welsh), showcasing his own productions throughout his sets — from old to new, Welsh to English, hip hop to steppers."
+    "desc": "From the Llyn Peninsula ('Pen Dub' also means 'Dub Head' in Welsh), showcasing his own productions throughout his sets - from old to new, Welsh to English, hip hop to steppers."
   },
   {
     "id": 132,
@@ -786,7 +795,7 @@
     "time": "11:00",
     "stage": "Cosmic Cwtsh",
     "type": "DJ",
-    "desc": "Cardigan-based DJ collective specialising in bass-heavy dance music. They run a regular club night and host a radio show featuring local DJs and producers — unity through music."
+    "desc": "Cardigan-based DJ collective specialising in bass-heavy dance music. They run a regular club night and host a radio show featuring local DJs and producers - unity through music."
   },
   {
     "id": 141,
@@ -804,7 +813,7 @@
     "time": "13:30",
     "stage": "Cosmic Cwtsh",
     "type": "DJ",
-    "desc": "A journey through the spectrum of house music — from deep, melodic soundscapes to vibrant dynamic rhythms, unified by a consistent thread of groove, emotion and soul."
+    "desc": "A journey through the spectrum of house music - from deep, melodic soundscapes to vibrant dynamic rhythms, unified by a consistent thread of groove, emotion and soul."
   },
   {
     "id": 143,
@@ -813,7 +822,7 @@
     "time": "14:30",
     "stage": "Cosmic Cwtsh",
     "type": "Music",
-    "desc": "All-acoustic rave extravaganza with a didgeridoo, no loops, no FX — no nonsense! Just a raving good time."
+    "desc": "All-acoustic rave extravaganza with a didgeridoo, no loops, no FX - no nonsense! Just a raving good time."
   },
   {
     "id": 144,
@@ -840,7 +849,7 @@
     "time": "17:30",
     "stage": "Cosmic Cwtsh",
     "type": "DJ",
-    "desc": "Eclectic mix of tribal, afrobeat, funky techno house dance music — Cosmic Cwtsh energy, bouncy and fun."
+    "desc": "Eclectic mix of tribal, afrobeat, funky techno house dance music - Cosmic Cwtsh energy, bouncy and fun."
   },
   {
     "id": 147,
@@ -849,7 +858,7 @@
     "time": "19:00",
     "stage": "Cosmic Cwtsh",
     "type": "DJ",
-    "desc": "Abstract frequencies layered into progressive storytelling journeys. Atmospheric vibes, energetic baselines and exhilarating drops — a musical odyssey from beginning to end."
+    "desc": "Abstract frequencies layered into progressive storytelling journeys. Atmospheric vibes, energetic baselines and exhilarating drops - a musical odyssey from beginning to end."
   },
   {
     "id": 148,
@@ -862,12 +871,12 @@
   },
   {
     "id": 149,
-    "name": "Lusärdi",
+    "name": "Lus\u00e4rdi",
     "day": "sat",
     "time": "21:30",
     "stage": "Cosmic Cwtsh",
     "type": "DJ",
-    "desc": "Unique style blending pulsating beats, hypnotic basslines and ethereal melodies. Known for taking the crowd on an immersive musical journey — a founding member of Moss Collectiv.",
+    "desc": "Unique style blending pulsating beats, hypnotic basslines and ethereal melodies. Known for taking the crowd on an immersive musical journey - a founding member of Moss Collectiv.",
     "links": [
       {
         "label": "SoundCloud",
@@ -904,7 +913,7 @@
   },
   {
     "id": 160,
-    "name": "Dance Workshop 2-4",
+    "name": "Workshop - Closing Ceremony Dancing Group",
     "day": "sat",
     "time": "10:00",
     "stage": "Freedom Stage",
@@ -913,7 +922,7 @@
   },
   {
     "id": 161,
-    "name": "Grand Finale Dance Practice",
+    "name": "Workshop - Closing Ceremony Dancing Group",
     "day": "sat",
     "time": "11:00",
     "stage": "Freedom Stage",
@@ -927,7 +936,7 @@
     "time": "12:00",
     "stage": "Freedom Stage",
     "type": "Kids",
-    "desc": ""
+    "desc": "Family-friendly theatre (outside). 12:00 Tom: Spolin Games. 12:20 Pizza + Puppets: interactive play. 12:40 Fitness workout silly time."
   },
   {
     "id": 163,
@@ -936,7 +945,7 @@
     "time": "13:00",
     "stage": "Freedom Stage",
     "type": "DJ",
-    "desc": "Destan Dönemi (The Era of the Mythology) — a Turkish folk duo based in Cardiff. Blending timeless sounds of Turkish folk with modern acoustic elements, featuring vocalist/flautist Büşra Algeç and fingerstyle guitarist Evan Graham."
+    "desc": "Destan D\u00f6nemi (The Era of the Mythology) - a Turkish folk duo based in Cardiff. Blending timeless sounds of Turkish folk with modern acoustic elements, featuring vocalist/flautist B\u00fc\u015fra Alge\u00e7 and fingerstyle guitarist Evan Graham."
   },
   {
     "id": 164,
@@ -963,13 +972,22 @@
     "time": "16:00",
     "stage": "Freedom Stage",
     "type": "DJ",
-    "desc": "Two Northern men, a fiddle, a guitar and a large beard — plus a 90s drum synth, mighty fiddle tunes, songs, busking battle scars, and a barrowload of end-of-the-pier banter."
+    "desc": "Two Northern men, a fiddle, a guitar and a large beard - plus a 90s drum synth, mighty fiddle tunes, songs, busking battle scars, and a barrowload of end-of-the-pier banter."
+  },
+  {
+    "id": 722,
+    "name": "Syambolical: Vote Conform",
+    "day": "sat",
+    "time": "17:00",
+    "stage": "Freedom Stage",
+    "type": "Music",
+    "desc": ""
   },
   {
     "id": 167,
-    "name": "Frekshow Theatre Takeover",
+    "name": "Frekshow Takeover - Seaside Spectacular",
     "day": "sat",
-    "time": "17:00",
+    "time": "17:30",
     "stage": "Freedom Stage",
     "type": "Music",
     "desc": ""
@@ -990,7 +1008,7 @@
     "time": "20:00",
     "stage": "Freedom Stage",
     "type": "Music",
-    "desc": "All-acoustic rave extravaganza with a didgeridoo, no loops, no FX — no nonsense! Just a raving good time."
+    "desc": "All-acoustic rave extravaganza with a didgeridoo, no loops, no FX - no nonsense! Just a raving good time."
   },
   {
     "id": 170,
@@ -999,7 +1017,7 @@
     "time": "21:00",
     "stage": "Freedom Stage",
     "type": "DJ",
-    "desc": "Voice, beatboxing, psychedelic guitar solos and lots of original sounds — a truly unique experience combining old-school hip hop, reggae and blues with the vibrations of Tibetan and Mongolian chants."
+    "desc": "Voice, beatboxing, psychedelic guitar solos and lots of original sounds - a truly unique experience combining old-school hip hop, reggae and blues with the vibrations of Tibetan and Mongolian chants."
   },
   {
     "id": 171,
@@ -1067,7 +1085,7 @@
     "time": "17:30",
     "stage": "Main Stage",
     "type": "Music",
-    "desc": "Gritty rock with a twist of sonic madness — bold, unpolished and exhilarating. Recorded live in warehouses and barns across the UK, their debut captures the chaotic, untamed energy that defines their live shows."
+    "desc": "Gritty rock with a twist of sonic madness - bold, unpolished and exhilarating. Recorded live in warehouses and barns across the UK, their debut captures the chaotic, untamed energy that defines their live shows."
   },
   {
     "id": 205,
@@ -1140,8 +1158,8 @@
     "day": "sun",
     "time": "13:00",
     "stage": "Dub Corner",
-    "type": "Music",
-    "desc": "Brazilian DJ selector with decades of experience and one of the UK's most extensive collections of Brazilian vinyl. Based in Tenby — sets spanning samba, MPB, bossa nova, tropicalia, reggae, ska, funk and soul."
+    "type": "DJ",
+    "desc": "Brazilian DJ selector with decades of experience and one of the UK's most extensive collections of Brazilian vinyl. Based in Tenby - sets spanning samba, MPB, bossa nova, tropicalia, reggae, ska, funk and soul."
   },
   {
     "id": 222,
@@ -1172,7 +1190,7 @@
   },
   {
     "id": 225,
-    "name": "Ozimu Sound",
+    "name": "Omizu Sound",
     "day": "sun",
     "time": "19:00",
     "stage": "Dub Corner",
@@ -1207,6 +1225,15 @@
     "desc": ""
   },
   {
+    "id": 723,
+    "name": "Silent Disco",
+    "day": "sun",
+    "time": "02:00",
+    "stage": "Dub Corner",
+    "type": "DJ",
+    "desc": ""
+  },
+  {
     "id": 240,
     "name": "The Re-Psych Project",
     "day": "sun",
@@ -1231,7 +1258,7 @@
     "time": "13:30",
     "stage": "Cosmic Cwtsh",
     "type": "DJ",
-    "desc": "Bristol-based Jungle DnB DJ/producer with roots in West Wales and over 25 years of experience. Part of The Fat Lace Crew — adapts to the crowd, repping both oldschool and cutting-edge."
+    "desc": "Bristol-based Jungle DnB DJ/producer with roots in West Wales and over 25 years of experience. Part of The Fat Lace Crew - adapts to the crowd, repping both oldschool and cutting-edge."
   },
   {
     "id": 243,
@@ -1240,7 +1267,7 @@
     "time": "14:30",
     "stage": "Cosmic Cwtsh",
     "type": "DJ",
-    "desc": "Dub reggae roots DJ — also psychedelic ambient."
+    "desc": "Dub reggae roots DJ - also psychedelic ambient."
   },
   {
     "id": 244,
@@ -1267,7 +1294,7 @@
     "time": "18:30",
     "stage": "Cosmic Cwtsh",
     "type": "DJ",
-    "desc": "Deep, dark, rhythm-driven dubstep built to consume the dancefloor. Atmospheric and hypnotic — basslines crawl, echoes spiral and textures bloom in a submerged world of tension, groove and low-frequency energy."
+    "desc": "Deep, dark, rhythm-driven dubstep built to consume the dancefloor. Atmospheric and hypnotic - basslines crawl, echoes spiral and textures bloom in a submerged world of tension, groove and low-frequency energy."
   },
   {
     "id": 247,
@@ -1289,7 +1316,7 @@
   },
   {
     "id": 260,
-    "name": "Dance Workshop 2-4",
+    "name": "Workshop - Closing Ceremony Dancing Group",
     "day": "sun",
     "time": "10:00",
     "stage": "Freedom Stage",
@@ -1298,7 +1325,7 @@
   },
   {
     "id": 261,
-    "name": "Grand Finale Dance Practice",
+    "name": "Workshop - Closing Ceremony Dancing Group",
     "day": "sun",
     "time": "11:00",
     "stage": "Freedom Stage",
@@ -1312,7 +1339,7 @@
     "time": "12:00",
     "stage": "Freedom Stage",
     "type": "Music",
-    "desc": ""
+    "desc": "12:00 Comedy with Phil Cooper. 12:40 Pizza and Puppets: Intergalactic Space Garden. 13:20 Come Down With Me game show."
   },
   {
     "id": 263,
@@ -1425,7 +1452,7 @@
   },
   {
     "id": 307,
-    "name": "The Intuitive Woman - Sohère Roked",
+    "name": "Returning to Wholeness & Heart - Freya Gabriel",
     "day": "fri",
     "time": "18:00",
     "stage": "Temple Tent",
@@ -1488,7 +1515,7 @@
   },
   {
     "id": 314,
-    "name": "Sacred Shibari - Danielle Landman",
+    "name": "The Rope Temple Sacred Shibari - Iris",
     "day": "sat",
     "time": "15:00",
     "stage": "Temple Tent",
@@ -1922,7 +1949,7 @@
   },
   {
     "id": 522,
-    "name": "Taste of Tarot",
+    "name": "A Taste of Tarot",
     "day": "sun",
     "time": "16:00",
     "stage": "Tea of Life",
@@ -2068,7 +2095,7 @@
     "id": 623,
     "name": "Mini Terrariums",
     "day": "sat",
-    "time": "13:00",
+    "time": "12:30",
     "stage": "Kids & Youth",
     "type": "Kids",
     "desc": "Create and care for your own bite-sized, low-maintenance terrarium, using provided materials while foraging for your own small plants or trinkets to personalise each build."
@@ -2185,7 +2212,7 @@
     "id": 644,
     "name": "Second Chance Charms",
     "day": "sun",
-    "time": "13:30",
+    "time": "13:00",
     "stage": "Kids & Youth",
     "type": "Kids",
     "desc": "Choose from beads, buttons, stones, sticks and much more - turn them into your own teeny treasure. Create a charm to wear, gift or hang as a small piece of everyday magic."
@@ -2198,15 +2225,6 @@
     "stage": "Kids & Youth",
     "type": "Kids",
     "desc": "Come and weave a willow snail to take home with you, or a star or some bunting."
-  },
-  {
-    "id": 646,
-    "name": "Yoga (Outside)",
-    "day": "sun",
-    "time": "15:00",
-    "stage": "Kids & Youth",
-    "type": "Kids",
-    "desc": "The family yoga class tells a story, with yoga poses intertwined, encouraging playful exploration, embracing the magic of imagination, whilst refining concentration, confidence and creativity."
   },
   {
     "id": 647,
@@ -2234,15 +2252,6 @@
     "stage": "Kids & Youth",
     "type": "Kids",
     "desc": "Come and use a mix of techniques to create your own tie dye garment. T-shirts provided or bring along your own."
-  },
-  {
-    "id": 650,
-    "name": "Amy Singing (Outside)",
-    "day": "sun",
-    "time": "17:30",
-    "stage": "Kids & Youth",
-    "type": "Kids",
-    "desc": "A facilitated singing circle using medicine songs from around the world and vocal exploration to create connection, emotional openness, and a sense of belonging."
   },
   {
     "id": 700,
@@ -2275,7 +2284,7 @@
     "id": 711,
     "name": "Summer Story",
     "day": "sat",
-    "time": "18:00",
+    "time": "16:00",
     "stage": "Kids Tipi",
     "type": "Kids",
     "desc": ""
@@ -2284,7 +2293,7 @@
     "id": 720,
     "name": "Summer Solstice Celebration Ritual",
     "day": "sun",
-    "time": "20:00",
+    "time": "18:00",
     "stage": "Kids Tipi",
     "type": "Kids",
     "desc": ""
