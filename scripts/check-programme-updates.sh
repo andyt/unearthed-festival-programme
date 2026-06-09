@@ -1,18 +1,19 @@
 #!/usr/bin/env bash
 # Fetches the 2026-programme page, checks image versions against the local
-# manifest, and downloads any that have changed. Prints a summary of what's
-# new so you can ask Claude to re-read those images and generate a diff.
+# manifest by page position, and downloads any that have changed. Prints a
+# summary of what's new so you can ask Claude to re-read those images and
+# generate a diff.
 #
 # Usage: ./scripts/check-programme-updates.sh
 #
-# Image → stage/day mapping (for context in the summary):
-#   friday-main-arena.png    → Fri: Main Stage, Dub Corner, Cosmic Cwtsh, Freedom Stage
-#   saturday-main-arena.png  → Sat: Main Stage, Dub Corner, Cosmic Cwtsh, Freedom Stage
-#   sunday-main-arena.png    → Sun: Main Stage, Dub Corner, Cosmic Cwtsh, Freedom Stage
-#   temple-tent.png          → Fri/Sat/Sun: Temple Tent
-#   kids-and-youth.png       → Fri/Sat/Sun: Kids & Youth
-#   sacred-fire-tan-tips.png → Fri/Sat/Sun: Sacred Fire
-#   geojam-tea-of-life.png   → Fri/Sat/Sun: GeoJam & Tea of Life
+# Image → stage/day mapping (by page position):
+#   pos 1: friday-main-arena.png    → Fri: Main Stage, Dub Corner, Cosmic Cwtsh, Freedom Stage
+#   pos 2: saturday-main-arena.png  → Sat: Main Stage, Dub Corner, Cosmic Cwtsh, Freedom Stage
+#   pos 3: sunday-main-arena.png    → Sun: Main Stage, Dub Corner, Cosmic Cwtsh, Freedom Stage
+#   pos 4: temple-tent.png          → Fri/Sat/Sun: Temple Tent
+#   pos 5: sacred-fire-tan-tips.png → Fri/Sat/Sun: Sacred Fire & Tan Tips
+#   pos 6: kids-and-youth.png       → Fri/Sat/Sun: Kids & Youth
+#   pos 7: geojam-tea-of-life.png   → Fri/Sat/Sun: GeoJam & Tea of Life
 
 set -euo pipefail
 
@@ -21,70 +22,84 @@ DIR="$(cd "$(dirname "$0")/.." && pwd)/schedule_images"
 MANIFEST="$DIR/manifest.json"
 CDN_BASE="https://www.unearthedfestival.co.uk/cdn/shop/files"
 
-# Map: local filename → CDN filename
-declare -A CDN_NAME
-CDN_NAME["friday-main-arena.png"]="2_00e91664-be55-4f4e-86e2-154cce334546.png"
-CDN_NAME["saturday-main-arena.png"]="3_3cbf658f-a85e-4eed-ab62-f8c2f3e69f42.png"
-CDN_NAME["sunday-main-arena.png"]="UF_Timetable_PHONE_format.png"
-CDN_NAME["temple-tent.png"]="5_732960e1-af37-4ef3-8341-1f60877067f3.png"
-CDN_NAME["kids-and-youth.png"]="6_f9cd445b-c0f8-40aa-bed2-20600cb47270.png"
-CDN_NAME["sacred-fire-tan-tips.png"]="7_5a88a0e7-cee8-4102-babf-e480a6dbb40e.png"
-CDN_NAME["geojam-tea-of-life.png"]="8_7d141d94-4d03-4d86-bd06-a6f344279713.png"
+# Local filenames in the order they appear on the programme page.
+# If the count check below warns of a mismatch, update this list and the
+# mapping comment above to reflect the new page order.
+LOCAL_ORDER=(
+  "friday-main-arena.png"
+  "saturday-main-arena.png"
+  "sunday-main-arena.png"
+  "temple-tent.png"
+  "sacred-fire-tan-tips.png"
+  "kids-and-youth.png"
+  "geojam-tea-of-life.png"
+)
 
 echo "=== Unearthed Programme Update Check ==="
 echo "Fetching: $PROGRAMME_URL"
 echo ""
 
-# Fetch the page and extract CDN files + version numbers
-PAGE_HTML=$(curl -sL "$PROGRAMME_URL")
+TMPFILE=$(mktemp)
+trap "rm -f $TMPFILE" EXIT
+curl -sL "$PROGRAMME_URL" > "$TMPFILE"
 
-get_version() {
-  local cdn_file="$1"
-  # Match cdn/shop/files/<name>?v=<version> or cdn/shop/files/<name>?v=<version>&
-  echo "$PAGE_HTML" \
-    | grep -oP "cdn/shop/files/${cdn_file}\?v=[0-9]+" \
-    | head -1 \
-    | grep -oP 'v=[0-9]+' \
-    | grep -oP '[0-9]+'
-}
+# Extract schedule CDN filenames + versions in page order.
+# Deduplicates by filename and excludes site-chrome images.
+readarray -t LIVE_ENTRIES < <(python3 -c "
+import re, sys
+html = open(sys.argv[1]).read()
+exclude = re.compile(r'logo|background|yin_yang|WG_Part|Untitled_design|our.vision', re.I)
+seen = set()
+for m in re.finditer(r'cdn/shop/files/([^?&\s\"\']+)\?v=([0-9]+)', html):
+    fname, ver = m.group(1), m.group(2)
+    if fname in seen or exclude.search(fname):
+        continue
+    seen.add(fname)
+    print(fname, ver)
+" "$TMPFILE")
 
-get_stored_version() {
-  local local_file="$1"
+if [[ ${#LIVE_ENTRIES[@]} -ne ${#LOCAL_ORDER[@]} ]]; then
+  echo "WARNING: Expected ${#LOCAL_ORDER[@]} schedule images on page, found ${#LIVE_ENTRIES[@]}."
+  echo "Live entries detected:"
+  for e in "${LIVE_ENTRIES[@]}"; do echo "  $e"; done
+  echo ""
+  echo "Update LOCAL_ORDER in this script to match, then re-run."
+  exit 1
+fi
+
+get_stored() {
+  local local_file="$1" field="$2"
   python3 -c "
 import json, sys
 try:
     d = json.load(open('$MANIFEST'))
     entry = d.get('$local_file', {})
-    print(entry.get('version', '') if isinstance(entry, dict) else '')
+    print(entry.get('$field', '') if isinstance(entry, dict) else '')
 except:
-    print('')
-" 2>/dev/null
+    pass
+" 2>/dev/null || true
 }
 
 CHANGED=()
 UNCHANGED=()
-FAILED=()
 
-for local_file in "${!CDN_NAME[@]}"; do
-  cdn_file="${CDN_NAME[$local_file]}"
-  live_ver=$(get_version "$cdn_file")
-  stored_ver=$(get_stored_version "$local_file")
-
-  if [[ -z "$live_ver" ]]; then
-    FAILED+=("$local_file (could not find on page)")
-    continue
-  fi
+for i in "${!LOCAL_ORDER[@]}"; do
+  local_file="${LOCAL_ORDER[$i]}"
+  cdn_file="${LIVE_ENTRIES[$i]%% *}"
+  live_ver="${LIVE_ENTRIES[$i]##* }"
+  stored_ver=$(get_stored "$local_file" "version")
 
   if [[ "$live_ver" == "$stored_ver" ]] && [[ -f "$DIR/$local_file" ]]; then
     UNCHANGED+=("$local_file (v=$live_ver)")
   else
-    CHANGED+=("$local_file (v=$stored_ver → v=$live_ver)")
-    echo "  DOWNLOADING: $local_file (was v=$stored_ver, now v=$live_ver)"
-    curl -sL "${CDN_BASE}/${cdn_file}?v=${live_ver}&width=1600" \
-      -o "$DIR/$local_file" \
-      && echo "    ✓ $(wc -c < "$DIR/$local_file") bytes" \
-      || echo "    ✗ download failed"
-    # Update manifest
+    CHANGED+=("$local_file (v=${stored_ver:-none} → v=$live_ver, cdn=$cdn_file)")
+    echo "  DOWNLOADING: $local_file"
+    echo "    cdn=$cdn_file  v=${stored_ver:-none} → v=$live_ver"
+    if curl -sL "${CDN_BASE}/${cdn_file}?v=${live_ver}&width=1600" -o "$DIR/$local_file"; then
+      echo "    ✓ $(wc -c < "$DIR/$local_file") bytes"
+    else
+      echo "    ✗ download failed"
+    fi
     python3 -c "
 import json
 try:
@@ -111,12 +126,6 @@ if [[ ${#UNCHANGED[@]} -gt 0 ]]; then
   echo ""
   echo "Unchanged:"
   for f in "${UNCHANGED[@]}"; do echo "  · $f"; done
-fi
-
-if [[ ${#FAILED[@]} -gt 0 ]]; then
-  echo ""
-  echo "WARNING — could not check (page structure may have changed):"
-  for f in "${FAILED[@]}"; do echo "  ! $f"; done
 fi
 
 echo ""
