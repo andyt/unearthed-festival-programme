@@ -801,7 +801,7 @@
   <div class="modal">
     <button class="modal-close" id="cal-modal-close">×</button>
     <div class="modal-name" style="margin-bottom:1.25rem">📅 Subscribe to Calendar</div>
-    <button class="saved-toggle" id="cal-open-btn" style="width:100%;margin-bottom:0.75rem">Open in Calendar App</button>
+    <a class="saved-toggle" id="cal-open-btn" target="_blank" rel="noopener" style="width:100%;margin-bottom:0.75rem;display:block;text-align:center;text-decoration:none">Open in Calendar App</a>
     <div class="cal-link-row">
       <input type="text" class="cal-link-input" id="cal-link-input" readonly autocomplete="off">
       <button class="cal-link-copy" id="cal-link-copy">Copy link</button>
@@ -1637,6 +1637,7 @@ function pushToWorker() {
 const httpsCalUrl = `${WORKER_URL}/calendar/${USER_UUID}`;
 const webcalUrl   = `webcal://${new URL(WORKER_URL).host}/calendar/${USER_UUID}`;
 document.getElementById('cal-link-input').value = httpsCalUrl;
+document.getElementById('cal-open-btn').href = webcalUrl;
 
 function openCalModal() { document.getElementById('cal-modal').classList.add('open'); }
 function closeCalModal() { document.getElementById('cal-modal').classList.remove('open'); }
@@ -1651,10 +1652,6 @@ document.getElementById('cal-link-copy').addEventListener('click', () => {
   showToast('Calendar link copied');
 });
 
-document.getElementById('cal-open-btn').addEventListener('click', () => {
-  window.open(webcalUrl, '_blank');
-  showToast('📅 Opening your calendar app…');
-});
 
 document.getElementById('subscribe-btn').addEventListener('click', async () => {
   if (saved.length === 0) {

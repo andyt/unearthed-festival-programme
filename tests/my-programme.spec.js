@@ -143,6 +143,64 @@ test('removing an act from My Programme takes it off the list', async ({ page })
   await expect(page.locator('#my-programme-list .timeline-act[data-id="9"]')).not.toBeAttached({ timeout: 2000 });
 });
 
+// ─── Subscribe regression ────────────────────────────────────────────────────
+
+test('subscribe button pushes saved acts to worker before opening the modal', async ({ page }) => {
+  let putFired = false;
+  await page.route('**/acts/**', async route => {
+    if (route.request().method() === 'PUT') putFired = true;
+    await route.fulfill({ status: 200, body: 'OK' });
+  });
+  await setSaved(page, [9]);
+  await page.goto('/#v=myprog');
+  await page.locator('#subscribe-btn').click();
+  // Modal opens only after pushNow() resolves, so putFired must be true by here
+  await expect(page.locator('#cal-modal')).toHaveClass(/open/);
+  expect(putFired).toBe(true);
+});
+
+test('copying the calendar link shows a "Calendar link copied" toast', async ({ page, context }) => {
+  await context.grantPermissions(['clipboard-read', 'clipboard-write']);
+  await mockWorker(page);
+  await setSaved(page, [9]);
+  await page.goto('/#v=myprog');
+  await page.locator('#subscribe-btn').click();
+  await page.locator('#cal-link-copy').click();
+  await expect(page.locator('#toast')).toHaveClass(/show/);
+  await expect(page.locator('#toast')).toContainText('Calendar link copied');
+});
+
+test('Open in Calendar App button uses a webcal:// URL', async ({ page }) => {
+  await mockWorker(page);
+  await setSaved(page, [9]);
+  await page.goto('/#v=myprog');
+  await page.locator('#subscribe-btn').click();
+  const href = await page.locator('#cal-open-btn').getAttribute('href');
+  expect(href).toMatch(/^webcal:\/\/.+\/calendar\/[0-9a-f-]{36}$/);
+});
+
+test('calendar modal closes when clicking the overlay', async ({ page }) => {
+  await mockWorker(page);
+  await setSaved(page, [9]);
+  await page.goto('/#v=myprog');
+  await page.locator('#subscribe-btn').click();
+  await expect(page.locator('#cal-modal')).toHaveClass(/open/);
+  // Click the overlay area (top-left corner, outside the modal box)
+  await page.locator('#cal-modal').click({ position: { x: 5, y: 5 } });
+  await expect(page.locator('#cal-modal')).not.toHaveClass(/open/);
+});
+
+test('subscribe section hides after the last saved act is removed', async ({ page }) => {
+  await mockWorker(page);
+  await setSaved(page, [9]);
+  await page.goto('/#v=myprog');
+  await expect(page.locator('#subscribe-section')).toBeVisible();
+  const act = page.locator('#my-programme-list .timeline-act[data-id="9"]');
+  await act.locator('.tl-save').click();
+  await expect(page.locator('#my-programme-list .timeline-act[data-id="9"]')).not.toBeAttached({ timeout: 2000 });
+  await expect(page.locator('#subscribe-section')).not.toBeVisible();
+});
+
 // ─── Worker sync ─────────────────────────────────────────────────────────────
 
 test('saving an act triggers a PUT to the worker with the act data', async ({ page }) => {
