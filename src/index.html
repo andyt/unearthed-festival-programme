@@ -806,7 +806,7 @@
       <input type="text" class="cal-link-input" id="cal-link-input" readonly autocomplete="off">
       <button class="cal-link-copy" id="cal-link-copy">Copy link</button>
     </div>
-    <p class="cal-note">Subscribing adds your programme to your calendar app with 15-minute alerts. <strong>Apple Calendar:</strong> alerts fire automatically. <strong>Google Calendar:</strong> you'll need to set a default notification in the calendar's settings, and events may take up to 24 hours to appear.</p>
+    <p class="cal-note">Subscribing adds your programme to your calendar app with 15-minute alerts. <strong>Apple Calendar:</strong> alerts fire automatically. <strong>Android/Google Calendar:</strong> tap "Open in Calendar App" to subscribe via Google Calendar - you'll need to set a default notification in the calendar's settings, and events may take up to 24 hours to appear.</p>
   </div>
 </div>
 
@@ -1636,8 +1636,10 @@ function pushToWorker() {
 // ——— CALENDAR MODAL ———
 const httpsCalUrl = `${WORKER_URL}/calendar/${USER_UUID}`;
 const webcalUrl   = `webcal://${new URL(WORKER_URL).host}/calendar/${USER_UUID}`;
+const gcalUrl     = `https://calendar.google.com/calendar/render?cid=${encodeURIComponent(webcalUrl)}`;
+const isAndroid   = /Android/i.test(navigator.userAgent);
 document.getElementById('cal-link-input').value = httpsCalUrl;
-document.getElementById('cal-open-btn').href = webcalUrl;
+document.getElementById('cal-open-btn').href = isAndroid ? gcalUrl : webcalUrl;
 
 function openCalModal() { document.getElementById('cal-modal').classList.add('open'); }
 function closeCalModal() { document.getElementById('cal-modal').classList.remove('open'); }
