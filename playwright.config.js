@@ -13,7 +13,7 @@ export default defineConfig({
     { name: 'chromium', use: { ...devices['Desktop Chrome'] } },
   ],
   webServer: {
-    command: 'python3 -m http.server 4000 --directory src',
+    command: 'python3 -m http.server 4000 --directory dist',
     url: 'http://localhost:4000',
     reuseExistingServer: !process.env.CI,
   },
