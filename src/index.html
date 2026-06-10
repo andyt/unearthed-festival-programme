@@ -106,12 +106,71 @@
     max-width: 1100px;
     margin: 0 auto;
     display: flex;
-    flex-wrap: wrap;
+    flex-direction: column;
+    gap: 0;
+  }
+
+  .search-row {
+    display: flex;
     gap: 0.5rem;
     align-items: center;
   }
 
   .search-wrap { flex: 1; min-width: 180px; position: relative; }
+
+  #filter-toggle {
+    background: transparent;
+    border: 2px solid var(--mid);
+    color: var(--text-dim);
+    padding: 0.45rem 0.6rem;
+    font-family: 'Space Mono', monospace;
+    font-size: 0.65rem;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    font-weight: 700;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    gap: 0.3rem;
+    white-space: nowrap;
+    flex-shrink: 0;
+    transition: border-color 0.15s, color 0.15s;
+  }
+  #filter-toggle:hover { border-color: var(--yellow); color: var(--yellow); }
+  #filter-toggle.has-active { border-color: var(--yellow); color: var(--yellow); }
+
+  #filter-dot {
+    width: 6px;
+    height: 6px;
+    border-radius: 50%;
+    background: var(--yellow);
+    display: none;
+    flex-shrink: 0;
+  }
+  #filter-toggle.has-active #filter-dot { display: block; }
+
+  #filter-chevron {
+    display: block;
+    flex-shrink: 0;
+    transition: transform 0.2s ease;
+  }
+  #controls-bar.filters-collapsed #filter-chevron { transform: rotate(180deg); }
+
+  #filter-rows {
+    overflow: hidden;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.3rem;
+    max-height: 200px;
+    opacity: 1;
+    margin-top: 0.45rem;
+    transition: max-height 0.25s ease, opacity 0.2s ease, margin-top 0.25s ease;
+  }
+  #controls-bar.filters-collapsed #filter-rows {
+    max-height: 0;
+    opacity: 0;
+    margin-top: 0;
+  }
 
   .search-wrap svg {
     position: absolute;
@@ -220,7 +279,7 @@
   /* ——— DAY HEADERS ——— */
   .day-header {
     font-family: 'Cinzel Decorative', serif;
-    font-size: 1.2rem;
+    font-size: 1.1rem;
     color: var(--dark);
     background: var(--yellow);
     margin: 2rem 0 0;
@@ -256,7 +315,7 @@
 
   .act-time {
     font-family: 'Space Mono', monospace;
-    font-size: 0.62rem;
+    font-size: 0.56rem;
     color: var(--teal-l);
     letter-spacing: 0.15em;
     margin-bottom: 0.2rem;
@@ -264,7 +323,7 @@
   }
 
   .act-name {
-    font-size: 1.25rem;
+    font-size: 1.13rem;
     font-weight: 600;
     color: var(--cream);
     line-height: 1.2;
@@ -275,7 +334,7 @@
 
   .tag {
     font-family: 'Space Mono', monospace;
-    font-size: 0.62rem;
+    font-size: 0.56rem;
     letter-spacing: 0.08em;
     padding: 0.2rem 0.5rem;
     text-transform: uppercase;
@@ -292,7 +351,7 @@
     border: none;
     cursor: pointer;
     color: rgba(255,255,255,0.4);
-    font-size: 1.15rem;
+    font-size: 1.04rem;
     transition: color 0.12s, transform 0.12s;
     line-height: 1;
   }
@@ -320,7 +379,7 @@
 
   .tl-time {
     font-family: 'Space Mono', monospace;
-    font-size: 0.62rem;
+    font-size: 0.56rem;
     color: var(--teal-l);
     min-width: 42px;
     font-weight: 700;
@@ -328,7 +387,7 @@
 
   .tl-stage {
     font-family: 'Space Mono', monospace;
-    font-size: 0.55rem;
+    font-size: 0.50rem;
     letter-spacing: 0.08em;
     text-transform: uppercase;
     font-weight: 700;
@@ -338,9 +397,9 @@
     flex-shrink: 0;
   }
 
-  .tl-name { flex: 1; font-size: 1.05rem; font-weight: 600; }
+  .tl-name { flex: 1; font-size: 0.95rem; font-weight: 600; }
 
-  .tl-save { background: none; border: none; cursor: pointer; color: rgba(255,255,255,0.4); font-size: 1rem; transition: color 0.12s; }
+  .tl-save { background: none; border: none; cursor: pointer; color: rgba(255,255,255,0.4); font-size: 0.9rem; transition: color 0.12s; }
   .timeline-act.saved .tl-save { color: var(--magenta-l); }
   .tl-save:hover { color: var(--magenta-l); }
 
@@ -705,7 +764,6 @@
 
 
   @media (max-width: 600px) {
-    .controls-inner { flex-direction: column; align-items: stretch; }
     .filter-group { justify-content: flex-start; }
     .programme-grid { grid-template-columns: 1fr; }
     .tab-bar { padding: 0.3rem 0.5rem 0; }
@@ -737,29 +795,38 @@
 
   <div class="controls" id="controls-bar" style="display:none">
     <div class="controls-inner">
-      <div class="search-wrap">
-        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.35-4.35"/></svg>
-        <input type="text" id="search" placeholder="Search acts, stages, types…" autocomplete="off">
-        <button id="search-clear" aria-label="Clear search">&times;</button>
+      <div class="search-row">
+        <div class="search-wrap">
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.35-4.35"/></svg>
+          <input type="text" id="search" placeholder="Search acts, stages, types…" autocomplete="off">
+          <button id="search-clear" aria-label="Clear search">&times;</button>
+        </div>
+        <button id="filter-toggle" aria-expanded="true" title="Show/hide filters">
+          <span id="filter-dot"></span>
+          Filters
+          <svg id="filter-chevron" width="10" height="6" viewBox="0 0 10 6" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M1 1L5 5L9 1"/></svg>
+        </button>
       </div>
-      <div class="filter-group" id="day-filters">
-        <button class="filter-btn active" data-day="all">All Days</button>
-        <button class="filter-btn" data-day="fri">Fri</button>
-        <button class="filter-btn" data-day="sat">Sat</button>
-        <button class="filter-btn" data-day="sun">Sun</button>
-      </div>
-      <div class="filter-group" id="stage-filters">
-        <button class="filter-btn active" data-stage="all">All Stages</button>
-        <button class="filter-btn" data-stage="Main Stage">Main</button>
-        <button class="filter-btn" data-stage="Freedom Stage">Freedom</button>
-        <button class="filter-btn" data-stage="Dub Corner">Dub Corner</button>
-        <button class="filter-btn" data-stage="Cosmic Cwtsh">Cosmic Cwtsh</button>
-        <button class="filter-btn" data-stage="Temple Tent">Temple</button>
-        <button class="filter-btn" data-stage="Sacred Fire">Sacred Fire</button>
-        <button class="filter-btn" data-stage="GeoJam">GeoJam</button>
-        <button class="filter-btn" data-stage="Tea of Life">Tea of Life</button>
-        <button class="filter-btn" data-stage="Kids &amp; Youth">Kids &amp; Youth</button>
-        <button class="filter-btn" data-stage="Kids Tipi">Kids Tipi</button>
+      <div id="filter-rows">
+        <div class="filter-group" id="day-filters">
+          <button class="filter-btn active" data-day="all">All Days</button>
+          <button class="filter-btn" data-day="fri">Fri</button>
+          <button class="filter-btn" data-day="sat">Sat</button>
+          <button class="filter-btn" data-day="sun">Sun</button>
+        </div>
+        <div class="filter-group" id="stage-filters">
+          <button class="filter-btn active" data-stage="all">All Stages</button>
+          <button class="filter-btn" data-stage="Main Stage">Main</button>
+          <button class="filter-btn" data-stage="Freedom Stage">Freedom</button>
+          <button class="filter-btn" data-stage="Dub Corner">Dub Corner</button>
+          <button class="filter-btn" data-stage="Cosmic Cwtsh">Cosmic Cwtsh</button>
+          <button class="filter-btn" data-stage="Temple Tent">Temple</button>
+          <button class="filter-btn" data-stage="Sacred Fire">Sacred Fire</button>
+          <button class="filter-btn" data-stage="GeoJam">GeoJam</button>
+          <button class="filter-btn" data-stage="Tea of Life">Tea of Life</button>
+          <button class="filter-btn" data-stage="Kids &amp; Youth">Kids &amp; Youth</button>
+          <button class="filter-btn" data-stage="Kids Tipi">Kids Tipi</button>
+        </div>
       </div>
     </div>
   </div>
@@ -1242,11 +1309,51 @@ document.getElementById('day-filters').addEventListener('click', e => {
   document.querySelectorAll('[data-day]').forEach(b => b.classList.toggle('active', b.dataset.day === currentFilters.day));
   render();
   syncURLToState();
+  updateFilterToggle();
 });
 
+// ——— FILTER COLLAPSE ———
+let filtersExpanded = true;
+let filterUserPinned = false;
+
+function updateFilterToggle() {
+  const hasActive = currentFilters.day !== 'all' || currentFilters.stage !== 'all';
+  const bar = document.getElementById('controls-bar');
+  const btn = document.getElementById('filter-toggle');
+  bar.classList.toggle('filters-collapsed', !filtersExpanded);
+  btn.setAttribute('aria-expanded', String(filtersExpanded));
+  btn.classList.toggle('has-active', hasActive && !filtersExpanded);
+}
+
+function setFiltersExpanded(expanded, pinned) {
+  filtersExpanded = expanded;
+  filterUserPinned = pinned;
+  updateFilterToggle();
+}
+
+document.getElementById('filter-toggle').addEventListener('click', () => {
+  const expanding = !filtersExpanded;
+  setFiltersExpanded(expanding, expanding);
+});
+
+let scrollTicking = false;
+window.addEventListener('scroll', () => {
+  if (scrollTicking) return;
+  scrollTicking = true;
+  requestAnimationFrame(() => {
+    const scrolled = window.scrollY > 80;
+    if (!scrolled) {
+      setFiltersExpanded(true, false);
+    } else if (scrolled && filtersExpanded && !filterUserPinned) {
+      setFiltersExpanded(false, false);
+    }
+    scrollTicking = false;
+  });
+}, { passive: true });
 
 function setControlsVisibility() {
   document.getElementById('controls-bar').style.display = currentView === 'browse' ? '' : 'none';
+  if (currentView === 'browse') updateFilterToggle();
 }
 
 document.querySelectorAll('.view-tab').forEach(tab => {
@@ -1281,6 +1388,7 @@ document.getElementById('stage-filters').addEventListener('click', e => {
   document.querySelectorAll('[data-stage]').forEach(b => b.classList.toggle('active', b.dataset.stage === currentFilters.stage));
   render();
   syncURLToState();
+  updateFilterToggle();
 });
 
 // ——— PWA MANIFEST (inlined as blob) ———
