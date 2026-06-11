@@ -412,6 +412,12 @@
   .cal-link-copy { background: var(--dark-3); border: 1px solid var(--dark-4); border-radius: 6px; padding: 0.4rem 0.75rem; font-size: 0.78em; color: var(--cream); cursor: pointer; white-space: nowrap; transition: background 0.15s; }
   .cal-link-copy:hover { background: var(--dark-4); }
 
+  /* ——— IMPORT VIEW ——— */
+  .import-banner { background: var(--teal-d); border: 2px solid var(--teal); padding: 1.25rem 1rem 1rem; margin-bottom: 1.5rem; text-align: center; }
+  .import-title { font-family: 'Cinzel Decorative', serif; font-size: 1rem; color: var(--yellow); margin-bottom: 0.4rem; letter-spacing: 0.05em; }
+  .import-desc { color: var(--text-dim); font-size: 0.9rem; margin-bottom: 1rem; }
+  .import-actions { display: flex; gap: 0.5rem; justify-content: center; flex-wrap: wrap; }
+
   /* ——— MODAL ——— */
   .modal-overlay {
     display: none;
@@ -860,7 +866,21 @@
     <div id="my-programme-list"></div>
     <div id="subscribe-section" style="display:none;margin-top:1.5rem">
       <button class="saved-toggle" id="subscribe-btn" title="Subscribe to your saved acts in your calendar app">📅 Subscribe to Calendar</button>
+      <button class="saved-toggle" id="share-btn" style="margin-top:0.5rem" title="Share your programme with a friend">↗ Share Programme</button>
     </div>
+  </div>
+
+  <!-- IMPORT VIEW -->
+  <div id="import-view" style="display:none">
+    <div class="import-banner">
+      <div class="import-title">Shared Programme</div>
+      <p id="import-desc" class="import-desc"></p>
+      <div class="import-actions">
+        <button class="saved-toggle" id="import-add-all">♥ Add all to My Programme</button>
+        <button class="filter-btn" id="import-done">Go to My Programme</button>
+      </div>
+    </div>
+    <div id="import-list"></div>
   </div>
 </main>
 
@@ -1257,6 +1277,7 @@ function applyURLState() {
   document.getElementById('nownext-view').style.display = currentView === 'nownext' ? '' : 'none';
   document.getElementById('browse-view').style.display  = currentView === 'browse'  ? '' : 'none';
   document.getElementById('myprog-view').style.display  = currentView === 'myprog'  ? '' : 'none';
+  document.getElementById('import-view').style.display  = currentView === 'import'  ? '' : 'none';
   document.getElementById('grid-view').style.display     = currentBrowse === 'grid'     ? '' : 'none';
   document.getElementById('timeline-view').style.display = currentBrowse === 'timeline' ? '' : 'none';
   setControlsVisibility();
@@ -1363,6 +1384,7 @@ document.querySelectorAll('.view-tab').forEach(tab => {
     document.getElementById('nownext-view').style.display = currentView === 'nownext' ? '' : 'none';
     document.getElementById('browse-view').style.display  = currentView === 'browse'  ? '' : 'none';
     document.getElementById('myprog-view').style.display  = currentView === 'myprog'  ? '' : 'none';
+    document.getElementById('import-view').style.display  = 'none';
     setControlsVisibility();
     if (currentView === 'nownext') renderNowNext();
     else if (currentView === 'browse') render();
@@ -1772,10 +1794,101 @@ document.getElementById('subscribe-btn').addEventListener('click', async () => {
   openCalModal();
 });
 
+// ——— SHARE PROGRAMME ———
+document.getElementById('share-btn').addEventListener('click', () => {
+  const url = `${location.origin}/?share=${saved.join(',')}`;
+  navigator.clipboard?.writeText(url).catch(() => {});
+  showToast('Programme link copied - share it with a friend!');
+});
+
+// ——— IMPORT FROM SHARE LINK ———
+const _shareParam = new URLSearchParams(location.search).get('share');
+const importActs = _shareParam
+  ? _shareParam.split(',').map(Number).filter(n => n > 0).map(id => ACTS.find(a => a.id === id)).filter(Boolean)
+  : [];
+
+function renderImportView() {
+  const sorted = [...importActs].sort((a, b) => {
+    const dayOrder = { fri: 0, sat: 1, sun: 2 };
+    const da = displayDay(a), db = displayDay(b);
+    if (da !== db) return dayOrder[da] - dayOrder[db];
+    const ha = parseInt(a.time.split(':')[0], 10);
+    const hb = parseInt(b.time.split(':')[0], 10);
+    const sa = ha < DAY_CUTOFF_HOUR ? ha + 24 : ha;
+    const sb = hb < DAY_CUTOFF_HOUR ? hb + 24 : hb;
+    return sa - sb;
+  });
+
+  const unsavedCount = importActs.filter(a => !isSaved(a.id)).length;
+  document.getElementById('import-desc').textContent =
+    `${importActs.length} act${importActs.length !== 1 ? 's' : ''} · add some or all to your programme`;
+  document.getElementById('import-add-all').textContent =
+    unsavedCount > 0 ? `♥ Add all (${unsavedCount})` : '✓ All added';
+  document.getElementById('import-add-all').disabled = unsavedCount === 0;
+
+  const list = document.getElementById('import-list');
+  let html = '';
+  let lastDay = null;
+  sorted.forEach(act => {
+    const dday = displayDay(act);
+    if (dday !== lastDay) {
+      if (lastDay !== null) html += `</div>`;
+      html += `<div class="day-header">${dayLabel(dday)}</div><div class="timeline-row">`;
+      lastDay = dday;
+    }
+    const s = isSaved(act.id);
+    const sc = STAGE_COLOURS[act.stage] || { bg: '#2a4a4a', label: '#8ab0b0' };
+    html += `<div class="timeline-act${s ? ' saved' : ''}" data-id="${act.id}">
+      <span class="tl-time">${act.time}</span>
+      <span class="tl-stage" style="background:${sc.bg};color:${sc.label||'#fff'}">${act.stage}</span>
+      <span class="tl-name">${act.name}</span>
+      <button class="tl-save" data-id="${act.id}">${s ? '♥' : '♡'}</button>
+    </div>`;
+  });
+  if (lastDay !== null) html += `</div>`;
+  list.innerHTML = html;
+
+  list.querySelectorAll('.timeline-act').forEach(el => {
+    el.addEventListener('click', e => {
+      if (e.target.classList.contains('tl-save')) return;
+      openModal(+el.dataset.id);
+    });
+  });
+  list.querySelectorAll('.tl-save').forEach(btn => {
+    btn.addEventListener('click', e => {
+      e.stopPropagation();
+      toggleSave(+btn.dataset.id, () => renderImportView());
+    });
+  });
+}
+
+function leaveImport() {
+  history.replaceState(null, '', location.pathname + location.hash);
+  currentView = 'myprog';
+  document.getElementById('import-view').style.display = 'none';
+  document.getElementById('myprog-view').style.display = '';
+  document.querySelectorAll('.view-tab').forEach(t => t.classList.toggle('active', t.dataset.view === 'myprog'));
+  setControlsVisibility();
+  renderMyProg();
+}
+
+document.getElementById('import-add-all').addEventListener('click', () => {
+  importActs.forEach(act => { if (!isSaved(act.id)) saved.push(act.id); });
+  localStorage.setItem('uf26_saved', JSON.stringify(saved));
+  pushToWorker();
+  showToast(`Added to your programme ♥`);
+  leaveImport();
+});
+
+document.getElementById('import-done').addEventListener('click', leaveImport);
+
+if (importActs.length > 0) currentView = 'import';
+
 applyURLState();
 if (saved.length > 0) pushNow();
 if (currentView === 'nownext') renderNowNext();
 else if (currentView === 'browse') render();
+else if (currentView === 'import') renderImportView();
 else renderMyProg();
 </script>
 </body>

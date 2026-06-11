@@ -371,7 +371,13 @@ export default [
     "time": "21:00",
     "stage": "Cosmic Cwtsh",
     "type": "DJ",
-    "desc": "From murky origins in 90s Bristol, now a familiar face in West Wales techno party-land - a Nevern and Cosmic Cwtsh veteran."
+    "desc": "From murky origins in 90s Bristol, now a familiar face in West Wales techno party-land - a Nevern and Cosmic Cwtsh veteran.",
+    "links": [
+      {
+        "label": "SoundCloud",
+        "url": "https://soundcloud.com/tom-moses-861069143"
+      }
+    ]
   },
   {
     "id": 44,
@@ -822,7 +828,13 @@ export default [
     "time": "14:30",
     "stage": "Cosmic Cwtsh",
     "type": "Music",
-    "desc": "All-acoustic rave extravaganza with a didgeridoo, no loops, no FX - no nonsense! Just a raving good time."
+    "desc": "All-acoustic rave extravaganza with a didgeridoo, no loops, no FX - no nonsense! Just a raving good time.",
+    "links": [
+      {
+        "label": "YouTube",
+        "url": "https://www.youtube.com/@didgebeatgeorge5668"
+      }
+    ]
   },
   {
     "id": 144,
@@ -831,7 +843,13 @@ export default [
     "time": "15:30",
     "stage": "Cosmic Cwtsh",
     "type": "Music",
-    "desc": "Pembrokeshire-based artist merging live folk and blues with electronic sounds."
+    "desc": "Pembrokeshire-based artist merging live folk and blues with electronic sounds.",
+    "links": [
+      {
+        "label": "SoundCloud",
+        "url": "https://soundcloud.com/geoffungus"
+      }
+    ]
   },
   {
     "id": 145,
@@ -891,7 +909,13 @@ export default [
     "time": "23:00",
     "stage": "Cosmic Cwtsh",
     "type": "DJ",
-    "desc": "Ximon is one of the driving forces behind the Cosmic Cwtsh and the Moss Collectiv. Heart fully committed to representing the many facets of electronic dance culture through the deep undercurrents of the psychedelic music scene."
+    "desc": "Ximon is one of the driving forces behind the Cosmic Cwtsh and the Moss Collectiv. Heart fully committed to representing the many facets of electronic dance culture through the deep undercurrents of the psychedelic music scene.",
+    "links": [
+      {
+        "label": "SoundCloud",
+        "url": "https://soundcloud.com/sonicsmudge"
+      }
+    ]
   },
   {
     "id": 151,
@@ -1008,7 +1032,13 @@ export default [
     "time": "20:00",
     "stage": "Freedom Stage",
     "type": "Music",
-    "desc": "All-acoustic rave extravaganza with a didgeridoo, no loops, no FX - no nonsense! Just a raving good time."
+    "desc": "All-acoustic rave extravaganza with a didgeridoo, no loops, no FX - no nonsense! Just a raving good time.",
+    "links": [
+      {
+        "label": "YouTube",
+        "url": "https://www.youtube.com/@didgebeatgeorge5668"
+      }
+    ]
   },
   {
     "id": 170,
