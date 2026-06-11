@@ -1796,7 +1796,8 @@ document.getElementById('subscribe-btn').addEventListener('click', async () => {
 
 // ——— SHARE PROGRAMME ———
 document.getElementById('share-btn').addEventListener('click', () => {
-  const url = `${location.origin}/?share=${saved.join(',')}`;
+  const base = location.href.split('?')[0].split('#')[0];
+  const url = `${base}?share=${saved.join(',')}`;
   navigator.clipboard?.writeText(url).catch(() => {});
   showToast('Programme link copied - share it with a friend!');
 });
