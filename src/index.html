@@ -649,29 +649,28 @@
   .browse-btn:hover { background: var(--mid); color: var(--cream); }
   .browse-btn.active { background: var(--mid); color: var(--cream); }
 
-  /* ——— DEV OVERLAY ——— */
-  #dev-overlay {
-    display: none;
-    position: fixed;
-    bottom: 0; left: 0; right: 0;
-    background: #000;
-    border-top: 3px solid var(--yellow);
-    padding: 1rem 1.2rem;
-    z-index: 800;
+  /* ——— TIME MACHINE ——— */
+  #time-machine {
+    margin-top: 2rem;
+    border-top: 1px solid var(--teal-d);
     font-family: 'Space Mono', monospace;
   }
 
-  #dev-overlay.open { display: block; }
-
-  .dev-header { display: flex; justify-content: space-between; align-items: center; margin-bottom: 0.6rem; }
-
-  .dev-title { font-size: 0.58rem; letter-spacing: 0.2em; color: var(--yellow); text-transform: uppercase; font-weight: 700; }
-
-  .dev-close {
-    background: var(--yellow); border: none; color: #000;
-    font-size: 1rem; cursor: pointer; width: 1.6rem; height: 1.6rem;
-    font-weight: 700; display: flex; align-items: center; justify-content: center;
+  #time-machine-btn {
+    display: block; width: 100%;
+    background: none; border: none;
+    padding: 0.75rem 0;
+    color: var(--text-dim); font-family: 'Space Mono', monospace;
+    font-size: 0.6rem; letter-spacing: 0.15em; text-transform: uppercase;
+    cursor: pointer; text-align: left;
   }
+  #time-machine-btn:hover { color: var(--yellow); }
+
+  #time-machine-body {
+    display: none;
+    padding-bottom: 1rem;
+  }
+  #time-machine.open #time-machine-body { display: block; }
 
   .dev-time-display { font-size: 0.78rem; color: var(--orange); margin-bottom: 0.5rem; letter-spacing: 0.1em; font-weight: 700; }
 
@@ -846,6 +845,24 @@
   <div id="nownext-view">
     <div class="festival-clock" id="festival-clock"></div>
     <div id="nownext-content"></div>
+    <div id="time-machine">
+      <button id="time-machine-btn">⏱ Time Machine!</button>
+      <div id="time-machine-body">
+        <div class="dev-time-display" id="dev-time-display"></div>
+        <input type="range" id="dev-scrubber" min="0" max="100" value="0" step="0.1">
+        <div class="dev-day-btns">
+          <button class="dev-day-btn" data-jump="fri-10">Fri 10:00</button>
+          <button class="dev-day-btn" data-jump="fri-19">Fri 19:00</button>
+          <button class="dev-day-btn" data-jump="fri-23">Fri 23:00</button>
+          <button class="dev-day-btn" data-jump="sat-10">Sat 10:00</button>
+          <button class="dev-day-btn" data-jump="sat-17">Sat 17:00</button>
+          <button class="dev-day-btn" data-jump="sat-23">Sat 23:00</button>
+          <button class="dev-day-btn" data-jump="sun-10">Sun 10:00</button>
+          <button class="dev-day-btn" data-jump="sun-20">Sun 20:00</button>
+          <button class="dev-day-btn" data-jump="real">Real Time</button>
+        </div>
+      </div>
+    </div>
   </div>
 
   <!-- BROWSE VIEW -->
@@ -916,26 +933,6 @@
 <div class="toast" id="toast"></div>
 <div class="update-toast" id="update-toast">✦ Update available — tap to refresh</div>
 
-<!-- DEVELOPER OVERLAY — gated by ?dev in URL -->
-<div id="dev-overlay">
-  <div class="dev-header">
-    <span class="dev-title">⚙ Developer · Time Simulation</span>
-    <button class="dev-close" id="dev-close">×</button>
-  </div>
-  <div class="dev-time-display" id="dev-time-display"></div>
-  <input type="range" id="dev-scrubber" min="0" max="100" value="0" step="0.1">
-  <div class="dev-day-btns">
-    <button class="dev-day-btn" data-jump="fri-10">Fri 10:00</button>
-    <button class="dev-day-btn" data-jump="fri-19">Fri 19:00</button>
-    <button class="dev-day-btn" data-jump="fri-23">Fri 23:00</button>
-    <button class="dev-day-btn" data-jump="sat-10">Sat 10:00</button>
-    <button class="dev-day-btn" data-jump="sat-17">Sat 17:00</button>
-    <button class="dev-day-btn" data-jump="sat-23">Sat 23:00</button>
-    <button class="dev-day-btn" data-jump="sun-10">Sun 10:00</button>
-    <button class="dev-day-btn" data-jump="sun-20">Sun 20:00</button>
-    <button class="dev-day-btn" data-jump="real">Real Time</button>
-  </div>
-</div>
 
 <footer>
   <span><a href="https://www.unearthedfestival.co.uk" target="_blank">unearthedfestival.co.uk</a></span>
@@ -1474,73 +1471,67 @@ if ('serviceWorker' in navigator) {
 
 // ——— DEV MODE — gated on ?dev query param ———
 // To enable: add ?dev to the URL. Remove for production.
-const IS_DEV = new URLSearchParams(window.location.search).has('dev');
 let simulatedTime = null; // null = use real time
 
 // Festival time bounds (minutes since epoch for ranging)
 const FEST_START = new Date('2026-06-19T10:00:00').getTime();
-const FEST_END   = new Date('2026-06-21T03:00:00').getTime();
+const FEST_END   = new Date('2026-06-22T04:00:00').getTime();
 const FEST_RANGE = FEST_END - FEST_START;
 
 function getNow() {
   return simulatedTime ? new Date(simulatedTime) : new Date();
 }
 
-if (IS_DEV) {
-  document.getElementById('dev-overlay').classList.add('open');
+// ——— TIME MACHINE ———
+const scrubber = document.getElementById('dev-scrubber');
+const display  = document.getElementById('dev-time-display');
 
-  const scrubber = document.getElementById('dev-scrubber');
-  const display  = document.getElementById('dev-time-display');
-
-  function updateDevDisplay() {
-    const t = simulatedTime ? new Date(simulatedTime) : new Date();
-    const dayNames = ['Sun','Mon','Tue','Wed','Thu','Fri','Sat'];
-    display.textContent = simulatedTime
-      ? `Simulating: ${dayNames[t.getDay()]} ${t.toLocaleTimeString('en-GB', {hour:'2-digit',minute:'2-digit'})}`
-      : `Real time: ${t.toLocaleTimeString('en-GB', {hour:'2-digit',minute:'2-digit'})}`;
-    if (simulatedTime) {
-      // Switch to Now & Next so the simulated time is immediately visible
-      currentView = 'nownext';
-      document.querySelectorAll('.view-tab').forEach(t => t.classList.toggle('active', t.dataset.view === 'nownext'));
-      document.getElementById('nownext-view').style.display = '';
-      document.getElementById('browse-view').style.display  = 'none';
-      document.getElementById('myprog-view').style.display  = 'none';
-      setControlsVisibility();
-    }
+function updateDevDisplay() {
+  const t = simulatedTime ? new Date(simulatedTime) : new Date();
+  const dayNames = ['Sun','Mon','Tue','Wed','Thu','Fri','Sat'];
+  display.textContent = simulatedTime
+    ? `Simulating: ${dayNames[t.getDay()]} ${t.toLocaleTimeString('en-GB', {hour:'2-digit',minute:'2-digit'})}`
+    : `Real time: ${t.toLocaleTimeString('en-GB', {hour:'2-digit',minute:'2-digit'})}`;
+  if (simulatedTime) {
+    // Switch to Now & Next so the simulated time is immediately visible
+    currentView = 'nownext';
+    document.querySelectorAll('.view-tab').forEach(t => t.classList.toggle('active', t.dataset.view === 'nownext'));
+    document.getElementById('nownext-view').style.display = '';
+    document.getElementById('browse-view').style.display  = 'none';
+    document.getElementById('myprog-view').style.display  = 'none';
+    setControlsVisibility();
     renderNowNext();
-    updateClock();
   }
+  updateClock();
+}
 
-  scrubber.addEventListener('input', () => {
-    const pct = scrubber.value / 100;
-    simulatedTime = FEST_START + pct * FEST_RANGE;
+document.getElementById('time-machine-btn').addEventListener('click', () => {
+  document.getElementById('time-machine').classList.toggle('open');
+});
+
+scrubber.addEventListener('input', () => {
+  const pct = scrubber.value / 100;
+  simulatedTime = FEST_START + pct * FEST_RANGE;
+  updateDevDisplay();
+});
+
+document.querySelectorAll('.dev-day-btn').forEach(btn => {
+  btn.addEventListener('click', () => {
+    const jump = btn.dataset.jump;
+    if (jump === 'real') {
+      simulatedTime = null;
+      scrubber.value = 0;
+    } else {
+      const [day, hour] = jump.split('-');
+      const dateMap = { fri: '2026-06-19', sat: '2026-06-20', sun: '2026-06-21' };
+      simulatedTime = new Date(`${dateMap[day]}T${hour.padStart(2,'0')}:00:00`).getTime();
+      scrubber.value = ((simulatedTime - FEST_START) / FEST_RANGE) * 100;
+    }
+    document.querySelectorAll('.dev-day-btn').forEach(b => b.classList.remove('active'));
+    btn.classList.add('active');
     updateDevDisplay();
   });
-
-  document.getElementById('dev-close').addEventListener('click', () => {
-    document.getElementById('dev-overlay').classList.remove('open');
-  });
-
-  document.querySelectorAll('.dev-day-btn').forEach(btn => {
-    btn.addEventListener('click', () => {
-      const jump = btn.dataset.jump;
-      if (jump === 'real') {
-        simulatedTime = null;
-        scrubber.value = 0;
-      } else {
-        const [day, hour] = jump.split('-');
-        const dateMap = { fri: '2026-06-19', sat: '2026-06-20', sun: '2026-06-21' };
-        simulatedTime = new Date(`${dateMap[day]}T${hour.padStart(2,'0')}:00:00`).getTime();
-        scrubber.value = ((simulatedTime - FEST_START) / FEST_RANGE) * 100;
-      }
-      document.querySelectorAll('.dev-day-btn').forEach(b => b.classList.remove('active'));
-      btn.classList.add('active');
-      updateDevDisplay();
-    });
-  });
-
-  updateDevDisplay();
-}
+});
 
 // ——— END TIME INFERENCE ———
 // Build a map of inferred end times for each act
