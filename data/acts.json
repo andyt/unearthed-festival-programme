@@ -225,7 +225,7 @@
     "time": "11:00",
     "stage": "Dub Corner",
     "type": "DJ",
-    "desc": "Brazilian DJ selector with decades of experience and one of the UK's most extensive collections of Brazilian vinyl. Based in Tenby - sets spanning samba, MPB, bossa nova, tropicalia, reggae, ska, funk and soul."
+    "desc": "2 hour world music set. Brazilian DJ selector with decades of experience and one of the UK's most extensive collections of Brazilian vinyl. Based in Tenby - sets spanning samba, MPB, bossa nova, tropicalia, reggae, ska, funk and soul."
   },
   {
     "id": 21,
@@ -234,7 +234,7 @@
     "time": "13:00",
     "stage": "Dub Corner",
     "type": "DJ",
-    "desc": "Playing an eclectic mix of Afro-disco, afrobeat, world music, rhythmic dance music and more."
+    "desc": "2 hour world music set. Playing an eclectic mix of Afro-disco, afrobeat, world music, rhythmic dance music and more."
   },
   {
     "id": 22,
@@ -243,7 +243,7 @@
     "time": "15:00",
     "stage": "Dub Corner",
     "type": "DJ",
-    "desc": ""
+    "desc": "2 hour world music set."
   },
   {
     "id": 23,
@@ -324,7 +324,7 @@
     "time": "02:00",
     "stage": "Dub Corner",
     "type": "DJ",
-    "desc": ""
+    "desc": "Three channels. WORLDY: Jiva Tao & Tanji / Professor Jo B2B DJ Froo. BREAKSY: Menikoo. BOUNCY: Rackitt & Odds of Abe."
   },
   {
     "id": 40,
@@ -687,7 +687,7 @@
     "time": "11:00",
     "stage": "Dub Corner",
     "type": "DJ",
-    "desc": "Playing an eclectic mix of Afro-disco, afrobeat, world music, rhythmic dance music and more."
+    "desc": "2 hour world music set. Playing an eclectic mix of Afro-disco, afrobeat, world music, rhythmic dance music and more."
   },
   {
     "id": 121,
@@ -696,7 +696,7 @@
     "time": "13:00",
     "stage": "Dub Corner",
     "type": "DJ",
-    "desc": ""
+    "desc": "2 hour world music set."
   },
   {
     "id": 122,
@@ -705,7 +705,7 @@
     "time": "15:00",
     "stage": "Dub Corner",
     "type": "DJ",
-    "desc": "Drawing influences from every artist encountered, with a passion for all genres woven into every soundscape. Sets built on funky baselines, irresistible rhythms and intricate instrumental solos."
+    "desc": "2 hour world music set. Drawing influences from every artist encountered, with a passion for all genres woven into every soundscape. Sets built on funky baselines, irresistible rhythms and intricate instrumental solos."
   },
   {
     "id": 123,
@@ -790,12 +790,12 @@
   },
   {
     "id": 132,
-    "name": "Silent Disco (Arianarchy / Morfa)",
+    "name": "Silent Disco",
     "day": "sat",
     "time": "02:00",
     "stage": "Dub Corner",
     "type": "DJ",
-    "desc": ""
+    "desc": "Three channels. WORLDY: Purple Daffodil / Machine & Robbie. BREAKSY: Intents & Tanji / Professor Jo. BOUNCY: Arianarchy / Menikoo & Rackitt."
   },
   {
     "id": 140,
@@ -1176,7 +1176,7 @@
     "time": "11:00",
     "stage": "Dub Corner",
     "type": "DJ",
-    "desc": "Drawing influences from every artist encountered, with a passion for all genres woven into every soundscape. Sets built on funky baselines, irresistible rhythms and intricate instrumental solos."
+    "desc": "2 hour world music set. Drawing influences from every artist encountered, with a passion for all genres woven into every soundscape. Sets built on funky baselines, irresistible rhythms and intricate instrumental solos."
   },
   {
     "id": 221,
@@ -1185,7 +1185,7 @@
     "time": "13:00",
     "stage": "Dub Corner",
     "type": "DJ",
-    "desc": "Brazilian DJ selector with decades of experience and one of the UK's most extensive collections of Brazilian vinyl. Based in Tenby - sets spanning samba, MPB, bossa nova, tropicalia, reggae, ska, funk and soul."
+    "desc": "2 hour world music set. Brazilian DJ selector with decades of experience and one of the UK's most extensive collections of Brazilian vinyl. Based in Tenby - sets spanning samba, MPB, bossa nova, tropicalia, reggae, ska, funk and soul."
   },
   {
     "id": 222,
@@ -1194,7 +1194,7 @@
     "time": "15:00",
     "stage": "Dub Corner",
     "type": "DJ",
-    "desc": ""
+    "desc": "2 hour world music set."
   },
   {
     "id": 223,
@@ -1257,7 +1257,7 @@
     "time": "02:00",
     "stage": "Dub Corner",
     "type": "DJ",
-    "desc": ""
+    "desc": "Three channels. WORLDY: Solja. BREAKSY: Robbie & Arianarchy. BOUNCY: Libtexx, DJ Froo & Tanji."
   },
   {
     "id": 240,
