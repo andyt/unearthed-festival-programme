@@ -78,8 +78,8 @@ test('"Add all" adds acts to My Programme and navigates there', async ({ page })
   await page.locator('#import-add-all').click();
   await expect(page.locator('#myprog-view')).toBeVisible();
   await expect(page.locator('#import-view')).not.toBeVisible();
-  await expect(page.locator('#my-programme-list .timeline-act[data-id="9"]')).toBeVisible();
-  await expect(page.locator('#my-programme-list .timeline-act[data-id="10"]')).toBeVisible();
+  await expect(page.locator('#myprog-grid .act-card[data-id="9"]')).toBeVisible();
+  await expect(page.locator('#myprog-grid .act-card[data-id="10"]')).toBeVisible();
 });
 
 test('"Add all" does not re-add acts already in My Programme', async ({ page }) => {

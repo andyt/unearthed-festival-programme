@@ -54,14 +54,14 @@ test('Freedom Stage pre-midnight: Freaky Deaky Takeover (id 57)', async ({ page 
 
 // ─── Temple Tent ─────────────────────────────────────────────────────────────
 
-test('Temple Tent: Celtic Grief Keening (id 309)', async ({ page }) => {
-  await checkAct(page, { id: 309, name: 'Celtic Grief Keening - Jewels Wingfield', time: '19:30', day: 'fri', stage: 'Temple Tent' });
+test('Temple Tent: Rituals of Renewal (id 309)', async ({ page }) => {
+  await checkAct(page, { id: 309, name: 'Rituals of Renewal', time: '19:30', day: 'fri', stage: 'Temple Tent' });
 });
 
 // ─── Sacred Fire ─────────────────────────────────────────────────────────────
 
-test('Sacred Fire: Stories & Hot Chocolate round the Fire (id 404)', async ({ page }) => {
-  await checkAct(page, { id: 404, name: 'Stories & Hot Chocolate round the Fire', time: '20:30', day: 'fri', stage: 'Sacred Fire' });
+test('Sacred Fire: Stories & Hot Chocolate Around the Fire (id 404)', async ({ page }) => {
+  await checkAct(page, { id: 404, name: 'Stories & Hot Chocolate Around the Fire', time: '20:30', day: 'fri', stage: 'Sacred Fire' });
 });
 
 // ─── GeoJam ──────────────────────────────────────────────────────────────────

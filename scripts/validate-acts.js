@@ -130,8 +130,15 @@ export function validate(acts) {
       }
     }
 
+    if ('subtitle' in a) {
+      if (typeof a.subtitle !== 'string' || a.subtitle.trim() === '') {
+        errors.push(`${where}: subtitle must be a non-empty string if present`);
+      }
+    }
+
     // Warn (don't fail) on unicode dashes/separators in any text field.
-    for (const k of ['name', 'desc']) {
+    for (const k of ['name', 'desc', 'subtitle']) {
+      if (!(k in a)) continue;
       const bad = findBadChars(a[k]);
       if (bad.length) {
         addWarning(`unicode:${a.id}:${k}`, `${where}: ${k} contains ${bad.join(', ')} - prefer plain ASCII`);

@@ -47,10 +47,10 @@ test('saved act appears in My Programme with correct name, time and stage', asyn
   await setSaved(page, [9]);
   await page.goto('/#v=myprog');
 
-  const act = page.locator('#my-programme-list .timeline-act[data-id="9"]');
-  await expect(act.locator('.tl-name')).toHaveText('Roni Size');
-  await expect(act.locator('.tl-time')).toHaveText('23:30');
-  await expect(act.locator('.tl-stage')).toHaveText('Main Stage');
+  const card = page.locator('#myprog-grid .act-card[data-id="9"]');
+  await expect(card.locator('.act-name')).toHaveText('Roni Size');
+  await expect(card.locator('.act-time')).toContainText('23:30');
+  await expect(card.locator('.act-meta .tag').first()).toHaveText('Main Stage');
 });
 
 test('My Programme shows all saved acts', async ({ page }) => {
@@ -58,10 +58,10 @@ test('My Programme shows all saved acts', async ({ page }) => {
   await setSaved(page, [9, 10, 108]);
   await page.goto('/#v=myprog');
 
-  const list = page.locator('#my-programme-list');
-  await expect(list.locator('.timeline-act[data-id="9"]')).toBeVisible();
-  await expect(list.locator('.timeline-act[data-id="10"]')).toBeVisible();
-  await expect(list.locator('.timeline-act[data-id="108"]')).toBeVisible();
+  const grid = page.locator('#myprog-grid');
+  await expect(grid.locator('.act-card[data-id="9"]')).toBeVisible();
+  await expect(grid.locator('.act-card[data-id="10"]')).toBeVisible();
+  await expect(grid.locator('.act-card[data-id="108"]')).toBeVisible();
 });
 
 test('My Programme sorts acts by day then by time, post-midnight after pre-midnight', async ({ page }) => {
@@ -72,11 +72,11 @@ test('My Programme sorts acts by day then by time, post-midnight after pre-midni
   await setSaved(page, [10, 108, 9]);
   await page.goto('/#v=myprog');
 
-  const acts = page.locator('#my-programme-list .timeline-act');
-  await expect(acts).toHaveCount(3);
-  await expect(acts.nth(0).locator('.tl-name')).toHaveText('Roni Size');        // fri 23:30
-  await expect(acts.nth(1).locator('.tl-name')).toHaveText('DJ Moonshine');     // fri 01:00 (post-midnight)
-  await expect(acts.nth(2).locator('.tl-name')).toHaveText('Goldie Lookin Chain'); // sat 23:30
+  const cards = page.locator('#myprog-grid .act-card');
+  await expect(cards).toHaveCount(3);
+  await expect(cards.nth(0).locator('.act-name')).toHaveText('Roni Size');           // fri 23:30
+  await expect(cards.nth(1).locator('.act-name')).toHaveText('DJ Moonshine');        // fri 01:00 (post-midnight)
+  await expect(cards.nth(2).locator('.act-name')).toHaveText('Goldie Lookin Chain'); // sat 23:30
 });
 
 test('Subscribe button is visible when acts are saved', async ({ page }) => {
@@ -136,11 +136,10 @@ test('removing an act from My Programme takes it off the list', async ({ page })
   await setSaved(page, [9]);
   await page.goto('/#v=myprog');
 
-  const act = page.locator('#my-programme-list .timeline-act[data-id="9"]');
-  await expect(act).toBeVisible();
-  await act.locator('.tl-save').click();
-  // CSS transition fires transitionend (~220ms) then the list re-renders
-  await expect(page.locator('#my-programme-list .timeline-act[data-id="9"]')).not.toBeAttached({ timeout: 2000 });
+  const card = page.locator('#myprog-grid .act-card[data-id="9"]');
+  await expect(card).toBeVisible();
+  await card.locator('.save-btn').click();
+  await expect(page.locator('#myprog-grid .act-card[data-id="9"]')).not.toBeAttached({ timeout: 2000 });
 });
 
 // ─── Subscribe regression ────────────────────────────────────────────────────
@@ -195,9 +194,9 @@ test('subscribe section hides after the last saved act is removed', async ({ pag
   await setSaved(page, [9]);
   await page.goto('/#v=myprog');
   await expect(page.locator('#subscribe-section')).toBeVisible();
-  const act = page.locator('#my-programme-list .timeline-act[data-id="9"]');
-  await act.locator('.tl-save').click();
-  await expect(page.locator('#my-programme-list .timeline-act[data-id="9"]')).not.toBeAttached({ timeout: 2000 });
+  const card = page.locator('#myprog-grid .act-card[data-id="9"]');
+  await card.locator('.save-btn').click();
+  await expect(page.locator('#myprog-grid .act-card[data-id="9"]')).not.toBeAttached({ timeout: 2000 });
   await expect(page.locator('#subscribe-section')).not.toBeVisible();
 });
 

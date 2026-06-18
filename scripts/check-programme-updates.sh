@@ -7,13 +7,14 @@
 # Usage: ./scripts/check-programme-updates.sh
 #
 # Image → stage/day mapping (by page position):
-#   pos 1: friday-main-arena.png    → Fri: Main Stage, Dub Corner, Cosmic Cwtsh, Freedom Stage
-#   pos 2: saturday-main-arena.png  → Sat: Main Stage, Dub Corner, Cosmic Cwtsh, Freedom Stage
-#   pos 3: sunday-main-arena.png    → Sun: Main Stage, Dub Corner, Cosmic Cwtsh, Freedom Stage
-#   pos 4: temple-tent.png          → Fri/Sat/Sun: Temple Tent
-#   pos 5: sacred-fire-tan-tips.png → Fri/Sat/Sun: Sacred Fire & Tan Tips
-#   pos 6: kids-and-youth.png       → Fri/Sat/Sun: Kids & Youth
-#   pos 7: geojam-tea-of-life.png   → Fri/Sat/Sun: GeoJam & Tea of Life
+#   pos 1: friday-main-arena.png    → Fri: Main Stage, Dub Corner, Cosmic Cwtsh
+#   pos 2: saturday-main-arena.png  → Sat: Main Stage, Dub Corner, Cosmic Cwtsh
+#   pos 3: sunday-main-arena.png    → Sun: Main Stage, Dub Corner, Cosmic Cwtsh
+#   pos 4: freedom-stage.png        → Fri/Sat/Sun: Freedom Stage
+#   pos 5: temple-tent.png          → Fri/Sat/Sun: Temple Tent
+#   pos 6: sacred-fire-tan-tips.png → Fri/Sat/Sun: Sacred Fire & Tan Tips
+#   pos 7: kids-and-youth.png       → Fri/Sat/Sun: Kids & Youth
+#   pos 8: geojam-tea-of-life.png   → Fri/Sat/Sun: GeoJam & Tea of Life
 
 set -euo pipefail
 
@@ -29,6 +30,7 @@ LOCAL_ORDER=(
   "friday-main-arena.png"
   "saturday-main-arena.png"
   "sunday-main-arena.png"
+  "freedom-stage.png"
   "temple-tent.png"
   "sacred-fire-tan-tips.png"
   "kids-and-youth.png"

@@ -1173,7 +1173,11 @@ function renderMyProg() {
   gridView.style.display = hasActs && currentBrowse === 'grid' ? '' : 'none';
   timelineView.style.display = hasActs && currentBrowse === 'timeline' ? '' : 'none';
 
-  if (!hasActs) return;
+  if (!hasActs) {
+    document.getElementById('myprog-grid').innerHTML = '';
+    document.getElementById('my-programme-list').innerHTML = '';
+    return;
+  }
   if (currentBrowse === 'grid') renderMyProgGrid(mine);
   else renderMyProgTimeline(mine);
 }

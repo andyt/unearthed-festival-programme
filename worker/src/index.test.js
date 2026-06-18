@@ -76,14 +76,14 @@ describe('ACTS data — Freedom Stage', () => {
 });
 
 describe('ACTS data — Temple Tent', () => {
-  it('pre-midnight: Celtic Grief Keening (id 309)', () => {
-    expect(byId(309)).toMatchObject({ name: 'Celtic Grief Keening - Jewels Wingfield', day: 'fri', time: '19:30', stage: 'Temple Tent' });
+  it('pre-midnight: Rituals of Renewal (id 309)', () => {
+    expect(byId(309)).toMatchObject({ name: 'Rituals of Renewal', day: 'fri', time: '19:30', stage: 'Temple Tent' });
   });
 });
 
 describe('ACTS data — Sacred Fire', () => {
-  it('pre-midnight: Stories & Hot Chocolate round the Fire (id 404)', () => {
-    expect(byId(404)).toMatchObject({ name: 'Stories & Hot Chocolate round the Fire', day: 'fri', time: '20:30', stage: 'Sacred Fire' });
+  it('pre-midnight: Stories & Hot Chocolate Around the Fire (id 404)', () => {
+    expect(byId(404)).toMatchObject({ name: 'Stories & Hot Chocolate Around the Fire', day: 'fri', time: '20:30', stage: 'Sacred Fire' });
   });
 });
 

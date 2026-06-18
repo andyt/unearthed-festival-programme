@@ -1,12 +1,13 @@
 export default [
   {
     "id": 1,
-    "name": "Dance Workshop with Lucy Hurst",
+    "name": "Dance Workshop",
     "day": "fri",
     "time": "10:00",
     "stage": "Main Stage",
     "type": "Workshop",
-    "desc": ""
+    "desc": "",
+    "subtitle": "with Lucy Hurst"
   },
   {
     "id": 2,
@@ -408,18 +409,19 @@ export default [
   },
   {
     "id": 50,
-    "name": "Workshop - Closing Ceremony Dancing Group",
+    "name": "Dance Workshop",
     "day": "fri",
     "time": "14:00",
     "stage": "Freedom Stage",
     "type": "Workshop",
-    "desc": ""
+    "desc": "",
+    "subtitle": "Closing ceremony dancers"
   },
   {
     "id": 51,
-    "name": "Open Stage / Mic",
+    "name": "Open Stage/Mic",
     "day": "fri",
-    "time": "17:00",
+    "time": "16:00",
     "stage": "Freedom Stage",
     "type": "Workshop",
     "desc": ""
@@ -480,12 +482,13 @@ export default [
   },
   {
     "id": 100,
-    "name": "Manifestation Breathwork - Freya MacFarlane",
+    "name": "Manifestation Breathwork",
     "day": "sat",
     "time": "10:00",
     "stage": "Main Stage",
     "type": "Workshop",
-    "desc": ""
+    "desc": "",
+    "subtitle": "with Freya MacFarlane"
   },
   {
     "id": 101,
@@ -796,7 +799,7 @@ export default [
   },
   {
     "id": 140,
-    "name": "Tell Your Friends (TYF)",
+    "name": "Tell Your Friends",
     "day": "sat",
     "time": "11:00",
     "stage": "Cosmic Cwtsh",
@@ -937,34 +940,26 @@ export default [
   },
   {
     "id": 160,
-    "name": "Workshop - Closing Ceremony Dancing Group",
+    "name": "Dance Workshop",
     "day": "sat",
     "time": "10:00",
     "stage": "Freedom Stage",
     "type": "Workshop",
-    "desc": ""
+    "desc": "",
+    "subtitle": "Closing ceremony dancers"
   },
   {
     "id": 161,
-    "name": "Workshop - Closing Ceremony Dancing Group",
+    "name": "Family Friendly Theatre (outside)",
     "day": "sat",
     "time": "11:00",
     "stage": "Freedom Stage",
-    "type": "Workshop",
-    "desc": ""
-  },
-  {
-    "id": 162,
-    "name": "Kids Theatre",
-    "day": "sat",
-    "time": "12:00",
-    "stage": "Freedom Stage",
     "type": "Kids",
-    "desc": "Family-friendly theatre (outside). 12:00 Tom: Spolin Games. 12:20 Pizza + Puppets: interactive play. 12:40 Fitness workout silly time."
+    "desc": "11:00 Spolin Games. 11:20 Gráinne Young-Monaghan: Clown. 11:40 Workout Silly Time."
   },
   {
     "id": 163,
-    "name": "Destan Donemi",
+    "name": "Destan Dönemi",
     "day": "sat",
     "time": "13:00",
     "stage": "Freedom Stage",
@@ -1000,12 +995,13 @@ export default [
   },
   {
     "id": 722,
-    "name": "Syambolical: Vote Conform",
+    "name": "Papier Mache Powerpoint",
     "day": "sat",
     "time": "17:00",
     "stage": "Freedom Stage",
     "type": "Music",
-    "desc": ""
+    "desc": "",
+    "subtitle": "Non-digital Extension Pack"
   },
   {
     "id": 167,
@@ -1018,7 +1014,7 @@ export default [
   },
   {
     "id": 168,
-    "name": "Chant & Jebbers",
+    "name": "Chant and Jebbers",
     "day": "sat",
     "time": "19:00",
     "stage": "Freedom Stage",
@@ -1060,7 +1056,7 @@ export default [
   },
   {
     "id": 200,
-    "name": "CacaoAmor Ecstatic Dance",
+    "name": "CacaoAmor & Ecstatic Dance",
     "day": "sun",
     "time": "10:00",
     "stage": "Main Stage",
@@ -1142,9 +1138,9 @@ export default [
   },
   {
     "id": 206,
-    "name": "Fire Procession",
+    "name": "Fire Procession & Sculpture Burn",
     "day": "sun",
-    "time": "20:30",
+    "time": "20:00",
     "stage": "Main Stage",
     "type": "Workshop",
     "desc": ""
@@ -1346,21 +1342,23 @@ export default [
   },
   {
     "id": 260,
-    "name": "Workshop - Closing Ceremony Dancing Group",
+    "name": "Dance Workshop",
     "day": "sun",
     "time": "10:00",
     "stage": "Freedom Stage",
     "type": "Workshop",
-    "desc": ""
+    "desc": "",
+    "subtitle": "Closing ceremony dancers"
   },
   {
     "id": 261,
-    "name": "Workshop - Closing Ceremony Dancing Group",
+    "name": "Dance Workshop",
     "day": "sun",
     "time": "11:00",
     "stage": "Freedom Stage",
     "type": "Workshop",
-    "desc": ""
+    "desc": "",
+    "subtitle": "Closing ceremony dancers"
   },
   {
     "id": 262,
@@ -1369,11 +1367,11 @@ export default [
     "time": "12:00",
     "stage": "Freedom Stage",
     "type": "Music",
-    "desc": "12:00 Comedy with Phil Cooper. 12:40 Pizza and Puppets: Intergalactic Space Garden. 13:20 Come Down With Me game show."
+    "desc": "12:00 Comedy: Phil Cooper. 12:40 Syambolical: Vote Conform. 13:20 Come Down With Me: Game show."
   },
   {
     "id": 263,
-    "name": "Open Stage / Mic",
+    "name": "Open Stage/Mic",
     "day": "sun",
     "time": "15:00",
     "stage": "Freedom Stage",
@@ -1419,232 +1417,257 @@ export default [
   },
   {
     "id": 300,
-    "name": "Yoga - Elle Beamish (Green Lotus Studios)",
+    "name": "Yoga: Green Lotus Studios",
     "day": "fri",
     "time": "09:00",
     "stage": "Temple Tent",
     "type": "Workshop",
-    "desc": "A 500-hour certified yoga teacher offers a space to Restore & Rejuvenate. Through asana, pranayama and relaxation, explore movement, witness stillness, and find union in body and breath. Come as you are."
+    "desc": "A 500-hour certified yoga teacher offers a space to Restore & Rejuvenate. Through asana, pranayama and relaxation, explore movement, witness stillness, and find union in body and breath. Come as you are.",
+    "subtitle": "Elle Beamish"
   },
   {
     "id": 301,
-    "name": "Shaolin Qigong - Rhys Rogers",
+    "name": "Shaolin Qigong",
     "day": "fri",
     "time": "10:00",
     "stage": "Temple Tent",
     "type": "Workshop",
-    "desc": "Through gentle movements, breathwork, and meditation, practice the ancient art of cultivating life-force energy, developed by Shaolin monks over 1,500 years ago. Strengthen the body, calm the mind, and awaken your natural vitality."
+    "desc": "Through gentle movements, breathwork, and meditation, practice the ancient art of cultivating life-force energy, developed by Shaolin monks over 1,500 years ago. Strengthen the body, calm the mind, and awaken your natural vitality.",
+    "subtitle": "Rhys Rogers"
   },
   {
     "id": 302,
-    "name": "Acroyoga - Yoga of Dragons (Sam & Bongo)",
+    "name": "Acroyoga",
     "day": "fri",
     "time": "11:30",
     "stage": "Temple Tent",
     "type": "Workshop",
-    "desc": "The grounding of yoga meets the liberation of flying. A playful, safety-conscious session blending acrobatics with yoga and teamwork. Flyer and base flow through postures and transitions - building connection, synchronicity and body awareness. All levels welcome."
+    "desc": "The grounding of yoga meets the liberation of flying. A playful, safety-conscious session blending acrobatics with yoga and teamwork. Flyer and base flow through postures and transitions - building connection, synchronicity and body awareness. All levels welcome.",
+    "subtitle": "Yoga of Dragons (Sam & Bongo)"
   },
   {
     "id": 303,
-    "name": "Journeying Within - Bronwyn Claire Asha",
+    "name": "Journeying Within",
     "day": "fri",
     "time": "12:50",
     "stage": "Temple Tent",
     "type": "Workshop",
-    "desc": "A gentle, participatory workshop weaving together movement, mythic storytelling, and guided meditation. Drawing on Celtic myth, the session flows into a calm guided journey with sound healing instruments to meet inner wisdom. No prior experience required."
+    "desc": "A gentle, participatory workshop weaving together movement, mythic storytelling, and guided meditation. Drawing on Celtic myth, the session flows into a calm guided journey with sound healing instruments to meet inner wisdom. No prior experience required.",
+    "subtitle": "Bronwyn Claire Asha"
   },
   {
     "id": 304,
-    "name": "Opening Ceremony - Hoppi, Dia, Tim, Yeshe",
+    "name": "Opening Ceremony",
     "day": "fri",
     "time": "14:00",
     "stage": "Temple Tent",
     "type": "Workshop",
-    "desc": ""
+    "desc": "",
+    "subtitle": "Hoppi, Dia, Tim, Yeshe"
   },
   {
     "id": 305,
-    "name": "The Frequency Experience Pt 1 - Adam Slawson",
+    "name": "Trust Yourself When It Matters",
     "day": "fri",
     "time": "15:45",
     "stage": "Temple Tent",
     "type": "Workshop",
-    "desc": "Learn to stop defaulting to old patterns, make courageous life decisions, and align with the life you were born to live. Part 1 of The Frequency Experience."
+    "desc": "Learn to stop defaulting to old patterns, make courageous life decisions, and align with the life you were born to live. Part 1 of The Frequency Experience.",
+    "subtitle": "The Frequency Experience Pt 1, Adam Slawson"
   },
   {
     "id": 306,
-    "name": "RAVE AF: The Frequency Experience Pt 2 - Adam Slawson & DJ Bill T",
+    "name": "RAVE AF",
     "day": "fri",
     "time": "16:45",
     "stage": "Temple Tent",
     "type": "Workshop",
-    "desc": "Move Energy. Express Emotion. RAVE As Frequency. Release, connect, and feel the kind of presence you cannot think your way into. Part 2 of The Frequency Experience."
+    "desc": "Move Energy. Express Emotion. RAVE As Frequency. Release, connect, and feel the kind of presence you cannot think your way into. Part 2 of The Frequency Experience.",
+    "subtitle": "The Frequency Experience Pt 2, Adam Slawson & DJ Bill T"
   },
   {
     "id": 307,
-    "name": "Returning to Wholeness & Heart - Freya Gabriel",
+    "name": "Returning to Wholeness & Heart",
     "day": "fri",
     "time": "18:00",
     "stage": "Temple Tent",
     "type": "Workshop",
-    "desc": ""
+    "desc": "",
+    "subtitle": "Freya Gabriel"
   },
   {
     "id": 308,
-    "name": "Magic in Motion Cabaret - Tripod Rig",
+    "name": "Magic in Motion",
     "day": "fri",
     "time": "19:00",
     "stage": "Temple Tent",
     "type": "Music",
-    "desc": "A circus cabaret where the sky comes alive with movement, rhythm, and flashes of the fantastical. We lift, swing, spin and drop - a journey of self revealed through movement: how we choose to move, pause, risk and release."
+    "desc": "A circus cabaret where the sky comes alive with movement, rhythm, and flashes of the fantastical. We lift, swing, spin and drop - a journey of self revealed through movement: how we choose to move, pause, risk and release.",
+    "subtitle": "Tripod Rig cabaret"
   },
   {
     "id": 309,
-    "name": "Celtic Grief Keening - Jewels Wingfield",
+    "name": "Rituals of Renewal",
     "day": "fri",
     "time": "19:30",
     "stage": "Temple Tent",
     "type": "Workshop",
-    "desc": "A grief ceremony from the traditions of the Celtic keening lineage. A space to grieve personal losses and the pain of the current world situation. Grieving is a radical act of courage and love - when we grieve together we find strength and resilience."
+    "desc": "A grief ceremony from the traditions of the Celtic keening lineage. A space to grieve personal losses and the pain of the current world situation. Grieving is a radical act of courage and love - when we grieve together we find strength and resilience.",
+    "subtitle": "Celtic grief keening, Jewels Wingfield"
   },
   {
     "id": 310,
-    "name": "Yoga - Elle Beamish (Green Lotus Studios)",
+    "name": "Yoga: Green Lotus Studios",
     "day": "sat",
     "time": "08:00",
     "stage": "Temple Tent",
     "type": "Workshop",
-    "desc": "A 500-hour certified yoga teacher offers a space to Restore & Rejuvenate. Through asana, pranayama and relaxation, explore movement, witness stillness, and find union in body and breath. Come as you are."
+    "desc": "A 500-hour certified yoga teacher offers a space to Restore & Rejuvenate. Through asana, pranayama and relaxation, explore movement, witness stillness, and find union in body and breath. Come as you are.",
+    "subtitle": "Elle Beamish"
   },
   {
     "id": 311,
-    "name": "Shaolin Qigong - Rhys Rogers",
+    "name": "Shaolin Qigong",
     "day": "sat",
     "time": "09:00",
     "stage": "Temple Tent",
     "type": "Workshop",
-    "desc": "Through gentle movements, breathwork, and meditation, practice the ancient art of cultivating life-force energy, developed by Shaolin monks over 1,500 years ago. Strengthen the body, calm the mind, and awaken your natural vitality."
+    "desc": "Through gentle movements, breathwork, and meditation, practice the ancient art of cultivating life-force energy, developed by Shaolin monks over 1,500 years ago. Strengthen the body, calm the mind, and awaken your natural vitality.",
+    "subtitle": "Rhys Rogers"
   },
   {
     "id": 312,
-    "name": "Relationship Anarchy - Austin Douillard",
+    "name": "Relationship Anarchy",
     "day": "sat",
     "time": "11:45",
     "stage": "Temple Tent",
     "type": "Workshop",
-    "desc": "What if relationships didn't have to follow a pre-written script? Through interactive exercises, movement, discussion, and playful reflection, explore Relationship Anarchy as a way to rethink intimacy, autonomy, and connection beyond the traditional \"relationship escalator.\""
+    "desc": "What if relationships didn't have to follow a pre-written script? Through interactive exercises, movement, discussion, and playful reflection, explore Relationship Anarchy as a way to rethink intimacy, autonomy, and connection beyond the traditional \"relationship escalator.\"",
+    "subtitle": "Austin Douillard"
   },
   {
     "id": 313,
-    "name": "Ceremony of Pollen, Honey & Divine Gold - Hoppi Wimbush",
+    "name": "Ceremony of Pollen, Honey & Divine Gold",
     "day": "sat",
     "time": "13:15",
     "stage": "Temple Tent",
     "type": "Workshop",
-    "desc": "Working with the alchemical magic of the bees and their sacraments of pollen, honey, and Divine Gold. A ceremony to soften, open, and melt into the liquid gold of our Divinity - where the illusion of separation dissolves and the tender beauty of connection comes into being."
+    "desc": "Working with the alchemical magic of the bees and their sacraments of pollen, honey, and Divine Gold. A ceremony to soften, open, and melt into the liquid gold of our Divinity - where the illusion of separation dissolves and the tender beauty of connection comes into being.",
+    "subtitle": "Hoppi Wimbush"
   },
   {
     "id": 314,
-    "name": "The Rope Temple Sacred Shibari - Iris",
+    "name": "The Rope Temple Sacred Shibari",
     "day": "sat",
     "time": "15:00",
     "stage": "Temple Tent",
     "type": "Workshop",
-    "desc": "Explore rope as a mindful medium for creativity and connection. Learn foundational knot techniques and intentional pattern work in decorative and ceremonial contexts. A calm, respectful space centred on presence, craft, and personal meaning. No prior experience needed."
+    "desc": "Explore rope as a mindful medium for creativity and connection. Learn foundational knot techniques and intentional pattern work in decorative and ceremonial contexts. A calm, respectful space centred on presence, craft, and personal meaning. No prior experience needed.",
+    "subtitle": "Iris"
   },
   {
     "id": 315,
-    "name": "Contact Improv Dance - Lucia Escuder & Mairead Spangler",
+    "name": "Contact Improv Dance",
     "day": "sat",
     "time": "17:15",
     "stage": "Temple Tent",
     "type": "Workshop",
-    "desc": "Exploring reciprocity, balance, connection, and deep listening through contact dance. A practice of trust and grounding - learning to communicate through the body, meet someone else in their current state while staying centred in your own. Above all, it's about playing and having fun."
+    "desc": "Exploring reciprocity, balance, connection, and deep listening through contact dance. A practice of trust and grounding - learning to communicate through the body, meet someone else in their current state while staying centred in your own. Above all, it's about playing and having fun.",
+    "subtitle": "Lucia Escuder & Mairead Spangler"
   },
   {
     "id": 316,
-    "name": "Magic in Motion Cabaret - Tripod Rig",
+    "name": "Magic in Motion",
     "day": "sat",
     "time": "18:30",
     "stage": "Temple Tent",
     "type": "Music",
-    "desc": "A circus cabaret where the sky comes alive with movement, rhythm, and flashes of the fantastical. We lift, swing, spin and drop - a journey of self revealed through movement: how we choose to move, pause, risk and release."
+    "desc": "A circus cabaret where the sky comes alive with movement, rhythm, and flashes of the fantastical. We lift, swing, spin and drop - a journey of self revealed through movement: how we choose to move, pause, risk and release.",
+    "subtitle": "Tripod Rig cabaret"
   },
   {
     "id": 317,
-    "name": "Divinely Untamed Temple - Jessica Ashby",
+    "name": "Divinely Untamed Temple",
     "day": "sat",
     "time": "19:00",
     "stage": "Temple Tent",
     "type": "Workshop",
-    "desc": "An immersive two-hour ritual space where Eros, presence, and devotion meet. Through guided practices, rituals and conscious connection, explore intimacy and aliveness beyond performance or expectation. Come ready to soften, awaken, and meet yourself and others in depth."
+    "desc": "An immersive two-hour ritual space where Eros, presence, and devotion meet. Through guided practices, rituals and conscious connection, explore intimacy and aliveness beyond performance or expectation. Come ready to soften, awaken, and meet yourself and others in depth.",
+    "subtitle": "Jessica Ashby"
   },
   {
     "id": 320,
-    "name": "Yoga Nidra Rest and Reset - Lottie Lernelius-Tonks",
+    "name": "Yoga Nidra Rest & Reset",
     "day": "sun",
     "time": "08:00",
     "stage": "Temple Tent",
     "type": "Workshop",
-    "desc": "Step away from the noise and sink into stillness. A restorative Yoga Nidra session taking you to the sweet spot between waking and dreaming. Through guided breathwork and visualisation, soothe the nervous system and nourish the soul. Accessible to everyone - no movement required, can be enjoyed in a wheelchair."
+    "desc": "Step away from the noise and sink into stillness. A restorative Yoga Nidra session taking you to the sweet spot between waking and dreaming. Through guided breathwork and visualisation, soothe the nervous system and nourish the soul. Accessible to everyone - no movement required, can be enjoyed in a wheelchair.",
+    "subtitle": "Lottie Lernelius-Tonks"
   },
   {
     "id": 321,
-    "name": "Shaolin Qigong - Rhys Rogers",
+    "name": "Shaolin Qigong",
     "day": "sun",
     "time": "09:00",
     "stage": "Temple Tent",
     "type": "Workshop",
-    "desc": "Through gentle movements, breathwork, and meditation, practice the ancient art of cultivating life-force energy, developed by Shaolin monks over 1,500 years ago. Strengthen the body, calm the mind, and awaken your natural vitality."
+    "desc": "Through gentle movements, breathwork, and meditation, practice the ancient art of cultivating life-force energy, developed by Shaolin monks over 1,500 years ago. Strengthen the body, calm the mind, and awaken your natural vitality.",
+    "subtitle": "Rhys Rogers"
   },
   {
     "id": 322,
-    "name": "Gong Bath - Jay Herring",
+    "name": "Gong Bath",
     "day": "sun",
     "time": "12:00",
     "stage": "Temple Tent",
     "type": "Workshop",
-    "desc": "Guided relaxation meditation followed by a gong bath."
+    "desc": "Guided relaxation meditation followed by a gong bath.",
+    "subtitle": "Jay Herring"
   },
   {
     "id": 323,
-    "name": "Self-Discovery with Life Drawing - Fede Art Muse",
+    "name": "Self-Discovery with Life Drawing",
     "day": "sun",
     "time": "13:15",
     "stage": "Temple Tent",
     "type": "Workshop",
-    "desc": "A creative ritual of presence, freedom, and letting go. Through timed poses, instinctive drawing and shared vulnerability, we explore the nude form - not to perfect it, but to meet ourselves. No judgment, no pressure, just pure expression, connection, and creative flow."
+    "desc": "A creative ritual of presence, freedom, and letting go. Through timed poses, instinctive drawing and shared vulnerability, we explore the nude form - not to perfect it, but to meet ourselves. No judgment, no pressure, just pure expression, connection, and creative flow.",
+    "subtitle": "Fede Art Muse"
   },
   {
     "id": 324,
-    "name": "Neurodiversity: It's Not a F*cking Label - Hapus Training & Sam Charlesworth",
+    "name": "Neurodiversity: It's Not a F*cking Label",
     "day": "sun",
     "time": "15:30",
     "stage": "Temple Tent",
     "type": "Workshop",
-    "desc": "An interactive workshop delving into the subject of Neurodiversity in a light-hearted, informative and inclusive space. Presented by Sian Powell of Hapus Training and Sam - sharing lived experience, ways of managing the chaos, and breaking down the stigma."
+    "desc": "An interactive workshop delving into the subject of Neurodiversity in a light-hearted, informative and inclusive space. Presented by Sian Powell of Hapus Training and Sam - sharing lived experience, ways of managing the chaos, and breaking down the stigma.",
+    "subtitle": "Hapus Training & Sam Charlesworth"
   },
   {
     "id": 325,
-    "name": "Men's Circle - Charlie Cavell",
+    "name": "Men's Circle",
     "day": "sun",
     "time": "17:15",
     "stage": "Temple Tent",
     "type": "Workshop",
-    "desc": "A safe space for men to gather, be heard, share wisdom and gain support. As we gather in circle as our ancestors did, we connect as one - gaining clarity in a confusing world and leaving grounded in positive masculinity."
+    "desc": "A safe space for men to gather, be heard, share wisdom and gain support. As we gather in circle as our ancestors did, we connect as one - gaining clarity in a confusing world and leaving grounded in positive masculinity.",
+    "subtitle": "Charlie Cavell"
   },
   {
     "id": 326,
-    "name": "Reclaiming Our Humanity - Savannah Lovelock",
+    "name": "Reclaiming Our Humanity Through Community",
     "day": "sun",
     "time": "18:45",
     "stage": "Temple Tent",
     "type": "Workshop",
-    "desc": "What if we lived as the animals we are? In a world built for speed, control, and productivity, many of us are surviving conditions our bodies were never meant to endure. Burnout, numbness, rage, and grief are not personal failures - but signals of deeper relational and systemic harm."
+    "desc": "What if we lived as the animals we are? In a world built for speed, control, and productivity, many of us are surviving conditions our bodies were never meant to endure. Burnout, numbness, rage, and grief are not personal failures - but signals of deeper relational and systemic harm.",
+    "subtitle": "Savannah Lovelock"
   },
   {
     "id": 327,
-    "name": "Fire Procession Begins at Sacred Fire",
+    "name": "Fire Procession & Sculpture Burn",
     "day": "sun",
     "time": "20:00",
     "stage": "Temple Tent",
@@ -1671,12 +1694,13 @@ export default [
   },
   {
     "id": 402,
-    "name": "Chief Seattle - A Song in 8 Parts",
+    "name": "Chief Seattle",
     "day": "fri",
     "time": "16:00",
     "stage": "Sacred Fire",
     "type": "Music",
-    "desc": ""
+    "desc": "",
+    "subtitle": "A Song in 8 Parts"
   },
   {
     "id": 403,
@@ -1689,7 +1713,7 @@ export default [
   },
   {
     "id": 404,
-    "name": "Stories & Hot Chocolate round the Fire",
+    "name": "Stories & Hot Chocolate Around the Fire",
     "day": "fri",
     "time": "20:30",
     "stage": "Sacred Fire",
@@ -1716,12 +1740,13 @@ export default [
   },
   {
     "id": 412,
-    "name": "Celtic Sacred Songlines - Jewels Wingfield",
+    "name": "Jewels Wingfield",
     "day": "sat",
     "time": "14:00",
     "stage": "Sacred Fire",
     "type": "Music",
-    "desc": ""
+    "desc": "",
+    "subtitle": "Celtic sacred songlines"
   },
   {
     "id": 413,
@@ -1734,7 +1759,7 @@ export default [
   },
   {
     "id": 415,
-    "name": "Stories & Hot Chocolate round the Fire",
+    "name": "Stories & Hot Chocolate Around the Fire",
     "day": "sat",
     "time": "20:30",
     "stage": "Sacred Fire",
@@ -1761,12 +1786,13 @@ export default [
   },
   {
     "id": 422,
-    "name": "Caves of Power - Ancient Energy Techniques for Healing",
+    "name": "Caves of Power",
     "day": "sun",
     "time": "14:00",
     "stage": "Sacred Fire",
     "type": "Workshop",
-    "desc": ""
+    "desc": "",
+    "subtitle": "Ancient energy techniques for healing"
   },
   {
     "id": 423,
@@ -1779,12 +1805,13 @@ export default [
   },
   {
     "id": 424,
-    "name": "Together in Song - Vocal Activation Sound Journey",
+    "name": "Together in Song",
     "day": "sun",
     "time": "18:00",
     "stage": "Sacred Fire",
     "type": "Music",
-    "desc": ""
+    "desc": "",
+    "subtitle": "Vocal activation sound journey"
   },
   {
     "id": 425,
