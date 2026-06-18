@@ -214,7 +214,8 @@
   #search:focus { border-color: var(--yellow); }
   #search::placeholder { color: var(--mid); }
 
-  .filter-group { display: flex; gap: 0.3rem; flex-wrap: wrap; }
+  .filter-group { display: flex; gap: 0.3rem; flex-wrap: wrap; width: 100%; }
+  #stage-filters { margin-top: 0.3em; }
 
   .filter-btn {
     background: transparent;
@@ -312,6 +313,7 @@
 
   .act-card:hover { background: var(--dark-3); border-top-color: var(--yellow); }
   .act-card.saved { background: rgba(13,122,122,0.2); border-top-color: var(--teal-l); }
+  #myprog-grid .act-card.saved { background: var(--dark-2); border-top-color: transparent; }
 
   .act-time {
     font-family: 'Space Mono', monospace;
@@ -327,10 +329,11 @@
     font-weight: 600;
     color: var(--cream);
     line-height: 1.2;
-    margin-bottom: 0.4rem;
+    margin-bottom: 0.15rem;
   }
+  .act-subtitle { font-size: 0.85rem; color: var(--cream-d); margin-bottom: 0.35rem; }
 
-  .act-meta { display: flex; gap: 0.4rem; flex-wrap: wrap; align-items: center; }
+  .act-meta { display: flex; gap: 0.4rem; flex-wrap: wrap; align-items: center; margin-top: 0.5em; }
 
   .tag {
     font-family: 'Space Mono', monospace;
@@ -351,7 +354,7 @@
     border: none;
     cursor: pointer;
     color: rgba(255,255,255,0.4);
-    font-size: 1.04rem;
+    font-size: 1.25rem;
     transition: color 0.12s, transform 0.12s;
     line-height: 1;
   }
@@ -395,11 +398,15 @@
     border-radius: 0;
     white-space: nowrap;
     flex-shrink: 0;
+    min-width: 6rem;
+    text-align: center;
   }
 
-  .tl-name { flex: 1; font-size: 0.95rem; font-weight: 600; }
+  .tl-name-wrap { flex: 1; display: flex; flex-direction: column; gap: 0.1rem; }
+  .tl-name { font-size: 0.95rem; font-weight: 600; }
+  .tl-subtitle { font-size: 0.8rem; color: var(--cream-d); }
 
-  .tl-save { background: none; border: none; cursor: pointer; color: rgba(255,255,255,0.4); font-size: 0.9rem; transition: color 0.12s; }
+  .tl-save { background: none; border: none; cursor: pointer; color: rgba(255,255,255,0.4); font-size: 1.08rem; transition: color 0.12s; }
   .timeline-act.saved .tl-save { color: var(--magenta-l); }
   .tl-save:hover { color: var(--magenta-l); }
 
@@ -483,6 +490,7 @@
 
   .modal-tags { display: flex; gap: 0.5rem; flex-wrap: wrap; margin-bottom: 1rem; }
 
+  .modal-subtitle { font-size: 1em; color: var(--cream-d); margin-bottom: 0.9rem; }
   .modal-desc { font-size: 1em; line-height: 1.65; color: var(--cream-d); margin-bottom: 1.5rem; font-style: italic; font-weight: 300; }
 
   .modal-actions { display: flex; gap: 0.6rem; flex-wrap: wrap; }
@@ -882,7 +890,17 @@
 
   <!-- MY PROGRAMME VIEW -->
   <div id="myprog-view" style="display:none">
-    <div id="my-programme-list"></div>
+    <div class="browse-switcher" id="myprog-switcher">
+      <button class="browse-btn active" data-browse="grid">Grid</button>
+      <button class="browse-btn" data-browse="timeline">Timeline</button>
+    </div>
+    <div id="myprog-grid-view">
+      <div id="myprog-grid" class="programme-grid"></div>
+    </div>
+    <div id="myprog-timeline-view" style="display:none">
+      <div id="my-programme-list"></div>
+    </div>
+    <div id="myprog-empty" class="my-prog-empty" style="display:none">You haven't saved anything yet.<br>Browse the programme and tap ♡ to add acts.</div>
     <div id="subscribe-section" style="display:none;margin-top:1.5rem">
       <button class="saved-toggle" id="subscribe-btn" title="Subscribe to your saved acts in your calendar app">📅 Subscribe to Calendar</button>
       <button class="saved-toggle" id="share-btn" style="margin-top:0.5rem" title="Share your programme with a friend">↗ Share Programme</button>
@@ -921,6 +939,7 @@
     <button class="modal-close" id="modal-close">×</button>
     <div class="modal-time" id="modal-time"></div>
     <div class="modal-name" id="modal-name"></div>
+    <div class="modal-subtitle" id="modal-subtitle" style="display:none"></div>
     <div class="modal-tags" id="modal-tags"></div>
     <div class="modal-desc" id="modal-desc"></div>
     <div class="act-links" id="modal-links" style="display:none;margin-bottom:1rem"></div>
@@ -1070,6 +1089,7 @@ function cardHTML(act) {
     <button class="save-btn" data-id="${act.id}" title="${s ? 'Remove' : 'Save'}">${s ? '♥' : '♡'}</button>
     <div class="act-time">${act.time} · ${dayLabel(displayDay(act)).toUpperCase().slice(0,3)}</div>
     <div class="act-name">${act.name}</div>
+    ${act.subtitle ? `<div class="act-subtitle">${act.subtitle}</div>` : ''}
     <div class="act-meta">
       ${stageTag(act.stage)}
       <span class="tag tag-type">${act.type}</span>
@@ -1108,7 +1128,7 @@ function renderTimeline(acts) {
       html += `<div class="timeline-act${s ? ' saved' : ''}" data-id="${act.id}">
         <span class="tl-time">${act.time}</span>
         <span class="tl-stage" style="background:${sc.bg};color:${sc.label||'#fff'}">${act.stage}</span>
-        <span class="tl-name">${act.name}</span>
+        <span class="tl-name-wrap"><span class="tl-name">${act.name}</span>${act.subtitle ? `<span class="tl-subtitle">${act.subtitle}</span>` : ''}</span>
         <button class="tl-save" data-id="${act.id}">${s ? '♥' : '♡'}</button>
       </div>`;
     });
@@ -1129,7 +1149,6 @@ function renderTimeline(acts) {
 
 // ——— RENDER MY PROGRAMME ———
 function renderMyProg() {
-  const list = document.getElementById('my-programme-list');
   const mine = ACTS.filter(a => isSaved(a.id)).sort((a, b) => {
     const dayOrder = { fri: 0, sat: 1, sun: 2 };
     const da = displayDay(a), db = displayDay(b);
@@ -1142,13 +1161,52 @@ function renderMyProg() {
   });
 
   const subscribeSection = document.getElementById('subscribe-section');
-  subscribeSection.style.display = mine.length > 0 ? '' : 'none';
+  const switcher = document.getElementById('myprog-switcher');
+  const emptyEl = document.getElementById('myprog-empty');
+  const gridView = document.getElementById('myprog-grid-view');
+  const timelineView = document.getElementById('myprog-timeline-view');
 
-  if (mine.length === 0) {
-    list.innerHTML = '<div class="my-prog-empty">You haven\'t saved anything yet.<br>Browse the programme and tap ♡ to add acts.</div>';
-    return;
-  }
+  const hasActs = mine.length > 0;
+  subscribeSection.style.display = hasActs ? '' : 'none';
+  switcher.style.display = hasActs ? '' : 'none';
+  emptyEl.style.display = hasActs ? 'none' : '';
+  gridView.style.display = hasActs && currentBrowse === 'grid' ? '' : 'none';
+  timelineView.style.display = hasActs && currentBrowse === 'timeline' ? '' : 'none';
 
+  if (!hasActs) return;
+  if (currentBrowse === 'grid') renderMyProgGrid(mine);
+  else renderMyProgTimeline(mine);
+}
+
+function renderMyProgGrid(mine) {
+  const grid = document.getElementById('myprog-grid');
+  let html = '';
+  let lastDay = null;
+  mine.forEach(act => {
+    const dday = displayDay(act);
+    if (dday !== lastDay) {
+      html += `<div class="day-header" style="grid-column:1/-1">${dayLabel(dday)}</div>`;
+      lastDay = dday;
+    }
+    html += cardHTML(act);
+  });
+  grid.innerHTML = html;
+  grid.querySelectorAll('.act-card').forEach(card => {
+    card.addEventListener('click', e => {
+      if (e.target.classList.contains('save-btn')) return;
+      openModal(+card.dataset.id);
+    });
+  });
+  grid.querySelectorAll('.save-btn').forEach(btn => {
+    btn.addEventListener('click', e => {
+      e.stopPropagation();
+      toggleSave(+btn.dataset.id, () => renderMyProg());
+    });
+  });
+}
+
+function renderMyProgTimeline(mine) {
+  const list = document.getElementById('my-programme-list');
   let html = '';
   let lastDay = null;
   mine.forEach(act => {
@@ -1162,7 +1220,7 @@ function renderMyProg() {
     html += `<div class="timeline-act saved" data-id="${act.id}">
       <span class="tl-time">${act.time}</span>
       <span class="tl-stage" style="background:${sc.bg};color:${sc.label||'#fff'}">${act.stage}</span>
-      <span class="tl-name">${act.name}</span>
+      <span class="tl-name-wrap"><span class="tl-name">${act.name}</span>${act.subtitle ? `<span class="tl-subtitle">${act.subtitle}</span>` : ''}</span>
       <button class="tl-save" data-id="${act.id}" title="Remove">♥</button>
     </div>`;
   });
@@ -1194,6 +1252,9 @@ function openModal(id, pushHistory = true) {
   modalActId = id;
   document.getElementById('modal-time').textContent = `${dayLabel(displayDay(act))} · ${act.time} · ${act.stage}`;
   document.getElementById('modal-name').textContent = act.name;
+  const modalSubEl = document.getElementById('modal-subtitle');
+  modalSubEl.textContent = act.subtitle || '';
+  modalSubEl.style.display = act.subtitle ? '' : 'none';
   document.getElementById('modal-desc').textContent = act.desc;
   const linksEl = document.getElementById('modal-links');
   if (act.links && act.links.length) {
@@ -1395,10 +1456,11 @@ document.querySelectorAll('.view-tab').forEach(tab => {
 document.querySelectorAll('.browse-btn').forEach(btn => {
   btn.addEventListener('click', () => {
     currentBrowse = btn.dataset.browse;
-    document.querySelectorAll('.browse-btn').forEach(b => b.classList.toggle('active', b === btn));
+    document.querySelectorAll('.browse-btn').forEach(b => b.classList.toggle('active', b.dataset.browse === currentBrowse));
     document.getElementById('grid-view').style.display     = currentBrowse === 'grid'     ? '' : 'none';
     document.getElementById('timeline-view').style.display = currentBrowse === 'timeline' ? '' : 'none';
-    render();
+    if (currentView === 'browse') render();
+    if (currentView === 'myprog') renderMyProg();
     syncURLToState();
   });
 });
