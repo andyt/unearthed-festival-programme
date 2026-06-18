@@ -3,6 +3,7 @@
   "private": true,
   "type": "module",
   "scripts": {
+    "prepare": "git config core.hooksPath .githooks",
     "build": "node scripts/build.js",
     "validate": "node scripts/validate-acts.js",
     "timetable": "node scripts/print-timetable.js",
